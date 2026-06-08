@@ -71,7 +71,7 @@ export default function BlogPage() {
 
                 <div className="p-6">
                   <div className="flex items-center gap-3 mb-3">
-                    <span className="text-xs text-neon-purple font-semibold uppercase tracking-wider">
+                    <span className="text-xs text-gold font-semibold uppercase tracking-wider">
                       {article.category}
                     </span>
                     <span className="text-xs text-gray-500">•</span>

@@ -18,7 +18,7 @@ export default function PromoBanner() {
           <TiltCard maxTilt={5}>
             <div className="card-3d card-shadow p-8 sm:p-10 relative overflow-hidden rounded-xl bg-dark-700 border border-dark-600">
               {/* Accent line top */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-neon-green via-amber to-neon-purple" />
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald via-gold to-emerald" />
 
               <div className="text-center">
                 {/* Logo placeholder */}

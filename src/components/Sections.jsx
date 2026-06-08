@@ -278,7 +278,7 @@ export function WhyLinebet() {
           className="text-center mb-14"
         >
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
-            Pourquoi <span className="text-neon-purple">Linebet</span> ?
+            Pourquoi <span className="text-gold">Linebet</span> ?
           </h2>
           <p className="text-gray-400">Une plateforme recommandée pour parier avec nos pronostics.</p>
         </motion.div>
@@ -294,7 +294,7 @@ export function WhyLinebet() {
             >
               <TiltCard className="h-full">
                 <div className="card card-3d p-5 h-full">
-                  <div className="w-10 h-10 bg-neon-purple/10 rounded-xl flex items-center justify-center text-neon-purple mb-4">
+                  <div className="w-10 h-10 bg-gold/10 rounded-xl flex items-center justify-center text-gold mb-4">
                     {icons[item.icon]}
                   </div>
                   <h3 className="text-base font-bold text-white mb-2">{item.title}</h3>
@@ -310,7 +310,7 @@ export function WhyLinebet() {
             href={AFFILIATE.linebet}
             rel={AFFILIATE.rel}
             target="_blank"
-            className="inline-block px-8 py-4 bg-neon-purple text-white font-bold rounded-xl hover:shadow-lg hover:shadow-neon-purple/30 transition-all hover:brightness-110 hover-lift"
+            className="inline-block px-8 py-4 bg-gold text-dark-900 font-bold rounded-xl hover:shadow-lg hover:shadow-gold/30 transition-all hover:brightness-110 hover-lift"
           >
             S'inscrire avec le code {SITE.promoCode}
           </a>
@@ -397,7 +397,7 @@ export function BlogSection() {
           className="text-center mb-14"
         >
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
-            Blog & <span className="text-neon-purple">Stratégies</span>
+            Blog & <span className="text-gold">Stratégies</span>
           </h2>
           <p className="text-gray-400">Articles de fond pour améliorer vos paris sportifs.</p>
         </motion.div>
@@ -439,7 +439,7 @@ export function BlogSection() {
                   className="card card-3d p-6 group block h-full"
                 >
                   <div className="text-3xl mb-4">{article.icon}</div>
-                  <span className="text-xs text-neon-purple font-semibold uppercase tracking-wider">
+                  <span className="text-xs text-gold font-semibold uppercase tracking-wider">
                     {article.category}
                   </span>
                   <h3 className="text-base font-bold text-white mt-2 mb-3 group-hover:text-neon-green transition-colors leading-snug">

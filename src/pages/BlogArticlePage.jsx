@@ -60,7 +60,7 @@ export default function BlogArticlePage() {
             className="mb-10"
           >
             <div className="flex items-center gap-3 mb-4">
-              <span className="text-xs text-neon-purple font-semibold uppercase tracking-wider px-3 py-1 glass rounded-full">
+              <span className="text-xs text-gold font-semibold uppercase tracking-wider px-3 py-1 glass rounded-full">
                 {article.category}
               </span>
               <span className="text-xs text-gray-500">{article.readTime} de lecture</span>
@@ -139,7 +139,7 @@ export default function BlogArticlePage() {
                     to={`/blog/${related.slug}`}
                     className="glass rounded-xl p-5 hover:bg-white/[0.07] transition-colors group"
                   >
-                    <span className="text-xs text-neon-purple font-semibold uppercase tracking-wider">
+                    <span className="text-xs text-gold font-semibold uppercase tracking-wider">
                       {related.category}
                     </span>
                     <h4 className="text-sm font-bold text-white mt-2 group-hover:text-emerald transition-colors leading-snug">

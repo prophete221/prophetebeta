@@ -17,7 +17,7 @@ export default function LockedCoupons() {
     {
       title: 'Over 2,5 Premium',
       subtitle: 'Plus de 2,5 buts',
-      color: 'neon-purple',
+      color: 'gold',
       matches: [
         { league: 'Bundesliga', match: 'Bayern vs Dortmund', time: '15:30' },
         { league: 'Ligue 1', match: 'PSG vs Lyon', time: '21:00' },
@@ -31,7 +31,7 @@ export default function LockedCoupons() {
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-14">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
-            Pronostics <span className="text-neon-purple">Premium</span>
+            Pronostics <span className="text-gold">Premium</span>
           </h2>
           <p className="text-gray-400">Accédez aux pronostics VIP validés par notre IA via WhatsApp.</p>
         </div>
@@ -71,7 +71,7 @@ export default function LockedCoupons() {
                   <div className="p-6">
                     <div className="flex items-center gap-3 mb-5">
                       <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
-                        coupon.color === 'neon-green' ? 'bg-neon-green/10 text-neon-green' : 'bg-neon-purple/10 text-neon-purple'
+                        coupon.color === 'neon-green' ? 'bg-neon-green/10 text-neon-green' : 'bg-gold/10 text-gold'
                       }`}>
                         {coupon.color === 'neon-green' ? (
                           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
