@@ -2,44 +2,9 @@
   "date": "2026-06-08",
   "predictions": [
     {
-      "match": "Almería vs Castellón",
-      "league": "Segunda Division",
-      "type": "Over 2.5",
-      "prediction": "Non",
-      "confidence": 87,
-      "time": "19:00",
-      "matchSemantic": "alm-cas-se-o25",
-      "source": "poisson",
-      "analysis": {
-        "bttsProb": 0.54,
-        "over25Prob": 0.3,
-        "homeLambda": 1.23,
-        "awayLambda": 0.77,
-        "dataQuality": 4,
-        "hasRealData": true
-      }
-    },
-    {
-      "match": "Almería vs Castellón",
-      "league": "Segunda Division",
-      "type": "BTTS",
-      "prediction": "Oui",
-      "confidence": 84,
-      "time": "19:00",
-      "matchSemantic": "alm-cas-se-btts",
-      "source": "poisson",
-      "analysis": {
-        "bttsProb": 0.54,
-        "over25Prob": 0.3,
-        "homeLambda": 1.23,
-        "awayLambda": 0.77,
-        "dataQuality": 4,
-        "hasRealData": true
-      }
-    },
-    {
       "match": "Peru vs Spain",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "BTTS",
       "prediction": "Non",
       "confidence": 74,
@@ -58,6 +23,7 @@
     {
       "match": "Indonesia vs Mozambique",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "BTTS",
       "prediction": "Non",
       "confidence": 74,
@@ -76,6 +42,7 @@
     {
       "match": "Tanzania vs Rwanda",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "BTTS",
       "prediction": "Oui",
       "confidence": 74,
@@ -94,6 +61,7 @@
     {
       "match": "Tanzania vs Rwanda",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "Over 2.5",
       "prediction": "Oui",
       "confidence": 74,
@@ -112,6 +80,7 @@
     {
       "match": "Russia vs Trinidad",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "BTTS",
       "prediction": "Non",
       "confidence": 74,
@@ -130,6 +99,7 @@
     {
       "match": "Atlético Nacional vs Atlético Junior",
       "league": "Primera A (COL)",
+      "date": "2026-06-08",
       "type": "BTTS",
       "prediction": "Non",
       "confidence": 73,
@@ -148,6 +118,7 @@
     {
       "match": "Atlético Nacional vs Atlético Junior",
       "league": "Primera A (COL)",
+      "date": "2026-06-08",
       "type": "Over 2.5",
       "prediction": "Non",
       "confidence": 73,
@@ -166,6 +137,7 @@
     {
       "match": "Liverpool vs Cerro Largo",
       "league": "Primera Division (URU)",
+      "date": "2026-06-08",
       "type": "BTTS",
       "prediction": "Oui",
       "confidence": 73,
@@ -184,6 +156,7 @@
     {
       "match": "Liverpool vs Cerro Largo",
       "league": "Primera Division (URU)",
+      "date": "2026-06-08",
       "type": "Over 2.5",
       "prediction": "Non",
       "confidence": 73,
@@ -202,6 +175,7 @@
     {
       "match": "France vs N Ireland",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "Over 2.5",
       "prediction": "Oui",
       "confidence": 73,
@@ -220,6 +194,7 @@
     {
       "match": "Peru vs Spain",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "Over 2.5",
       "prediction": "Non",
       "confidence": 73,
@@ -238,6 +213,7 @@
     {
       "match": "China vs Thailand",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "BTTS",
       "prediction": "Oui",
       "confidence": 73,
@@ -256,6 +232,7 @@
     {
       "match": "China vs Thailand",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "Over 2.5",
       "prediction": "Oui",
       "confidence": 73,
@@ -274,6 +251,7 @@
     {
       "match": "Indonesia vs Mozambique",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "Over 2.5",
       "prediction": "Non",
       "confidence": 73,
@@ -292,6 +270,7 @@
     {
       "match": "Armenia vs Moldova",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "BTTS",
       "prediction": "Oui",
       "confidence": 73,
@@ -310,6 +289,7 @@
     {
       "match": "Armenia vs Moldova",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "Over 2.5",
       "prediction": "Oui",
       "confidence": 73,
@@ -328,6 +308,7 @@
     {
       "match": "DR Congo vs Chile",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "BTTS",
       "prediction": "Oui",
       "confidence": 73,
@@ -346,6 +327,7 @@
     {
       "match": "DR Congo vs Chile",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "Over 2.5",
       "prediction": "Oui",
       "confidence": 73,
@@ -364,6 +346,7 @@
     {
       "match": "Russia vs Trinidad",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "Over 2.5",
       "prediction": "Non",
       "confidence": 73,
@@ -382,6 +365,7 @@
     {
       "match": "Azerbaijan vs San Marino",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "BTTS",
       "prediction": "Oui",
       "confidence": 73,
@@ -400,6 +384,7 @@
     {
       "match": "Azerbaijan vs San Marino",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "Over 2.5",
       "prediction": "Oui",
       "confidence": 73,
@@ -418,6 +403,7 @@
     {
       "match": "Saudi Arabia vs Senegal",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "BTTS",
       "prediction": "Oui",
       "confidence": 73,
@@ -436,6 +422,7 @@
     {
       "match": "Saudi Arabia vs Senegal",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "Over 2.5",
       "prediction": "Oui",
       "confidence": 73,
@@ -454,6 +441,7 @@
     {
       "match": "Argentina vs Iceland",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "BTTS",
       "prediction": "Oui",
       "confidence": 73,
@@ -472,6 +460,7 @@
     {
       "match": "Argentina vs Iceland",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "Over 2.5",
       "prediction": "Oui",
       "confidence": 73,
@@ -490,6 +479,7 @@
     {
       "match": "Iraq vs Venezuela",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "BTTS",
       "prediction": "Oui",
       "confidence": 73,
@@ -508,6 +498,7 @@
     {
       "match": "Iraq vs Venezuela",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "Over 2.5",
       "prediction": "Oui",
       "confidence": 73,
@@ -526,6 +517,7 @@
     {
       "match": "Portugal vs Nigeria",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "BTTS",
       "prediction": "Non",
       "confidence": 73,
@@ -544,6 +536,7 @@
     {
       "match": "Portugal vs Nigeria",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "Over 2.5",
       "prediction": "Non",
       "confidence": 73,
@@ -562,6 +555,7 @@
     {
       "match": "England vs Costa Rica",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "BTTS",
       "prediction": "Non",
       "confidence": 73,
@@ -580,6 +574,7 @@
     {
       "match": "England vs Costa Rica",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "Over 2.5",
       "prediction": "Non",
       "confidence": 73,
@@ -598,6 +593,7 @@
     {
       "match": "Netherlands vs Uzbekistan",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "BTTS",
       "prediction": "Non",
       "confidence": 72,
@@ -616,6 +612,7 @@
     {
       "match": "Netherlands vs Uzbekistan",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "Over 2.5",
       "prediction": "Oui",
       "confidence": 72,
@@ -634,6 +631,7 @@
     {
       "match": "France vs N Ireland",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "BTTS",
       "prediction": "Oui",
       "confidence": 72,
@@ -652,6 +650,7 @@
     {
       "match": "Mexico vs South Africa",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "BTTS",
       "prediction": "Non",
       "confidence": 72,
@@ -670,6 +669,7 @@
     {
       "match": "Mexico vs South Africa",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "Over 2.5",
       "prediction": "Oui",
       "confidence": 72,
@@ -688,6 +688,7 @@
     {
       "match": "Belarus vs Burkina Faso",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "BTTS",
       "prediction": "Non",
       "confidence": 72,
@@ -706,6 +707,7 @@
     {
       "match": "Belarus vs Burkina Faso",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "Over 2.5",
       "prediction": "Non",
       "confidence": 72,
@@ -724,6 +726,7 @@
     {
       "match": "Hungary vs Kazakhstan",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "BTTS",
       "prediction": "Non",
       "confidence": 72,
@@ -742,6 +745,7 @@
     {
       "match": "Hungary vs Kazakhstan",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "Over 2.5",
       "prediction": "Non",
       "confidence": 72,
@@ -760,6 +764,7 @@
     {
       "match": "Bolivia vs Algeria",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "BTTS",
       "prediction": "Oui",
       "confidence": 72,
@@ -778,6 +783,7 @@
     {
       "match": "Bolivia vs Algeria",
       "league": "International Friendly",
+      "date": "2026-06-08",
       "type": "Over 2.5",
       "prediction": "Oui",
       "confidence": 72,
@@ -791,6 +797,44 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
+      }
+    },
+    {
+      "match": "Almería vs Castellón",
+      "league": "Segunda Division",
+      "date": "2026-06-09",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "confidence": 87,
+      "time": "19:00",
+      "matchSemantic": "alm-cas-se-o25",
+      "source": "poisson",
+      "analysis": {
+        "bttsProb": 0.54,
+        "over25Prob": 0.3,
+        "homeLambda": 1.23,
+        "awayLambda": 0.77,
+        "dataQuality": 4,
+        "hasRealData": true
+      }
+    },
+    {
+      "match": "Almería vs Castellón",
+      "league": "Segunda Division",
+      "date": "2026-06-09",
+      "type": "BTTS",
+      "prediction": "Oui",
+      "confidence": 84,
+      "time": "19:00",
+      "matchSemantic": "alm-cas-se-btts",
+      "source": "poisson",
+      "analysis": {
+        "bttsProb": 0.54,
+        "over25Prob": 0.3,
+        "homeLambda": 1.23,
+        "awayLambda": 0.77,
+        "dataQuality": 4,
+        "hasRealData": true
       }
     }
   ]
