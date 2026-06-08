@@ -2,49 +2,786 @@
   "date": "2026-06-08",
   "predictions": [
     {
-      "match": "Audax Italiano vs La Serena",
-      "league": "Primera Division (CHI)",
+      "match": "Almería vs Castellón",
+      "league": "Segunda Division",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "confidence": 88,
+      "time": "19:00",
+      "matchSemantic": "alm-cas-se-o25",
+      "analysis": {
+        "bttsProb": 0.54,
+        "over25Prob": 0.3,
+        "homeLambda": 1.23,
+        "awayLambda": 0.8,
+        "dataQuality": 4,
+        "hasRealData": true
+      }
+    },
+    {
+      "match": "Almería vs Castellón",
+      "league": "Segunda Division",
       "type": "BTTS",
       "prediction": "Oui",
-      "confidence": 83,
-      "time": "00:00",
-      "matchSemantic": "aud-la -pr"
+      "confidence": 84,
+      "time": "19:00",
+      "matchSemantic": "alm-cas-se-btts",
+      "analysis": {
+        "bttsProb": 0.54,
+        "over25Prob": 0.3,
+        "homeLambda": 1.23,
+        "awayLambda": 0.8,
+        "dataQuality": 4,
+        "hasRealData": true
+      }
+    },
+    {
+      "match": "Atlético Nacional vs Atlético Junior",
+      "league": "Primera A (COL)",
+      "type": "BTTS",
+      "prediction": "Non",
+      "confidence": 73,
+      "time": "22:00",
+      "matchSemantic": "atl-atl-pr-btts",
+      "analysis": {
+        "bttsProb": 0.46,
+        "over25Prob": 0.48,
+        "homeLambda": 1.43,
+        "awayLambda": 1,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Liverpool vs Cerro Largo",
+      "league": "Primera Division (URU)",
+      "type": "BTTS",
+      "prediction": "Oui",
+      "confidence": 73,
+      "time": "22:00",
+      "matchSemantic": "liv-cer-pr-btts",
+      "analysis": {
+        "bttsProb": 0.53,
+        "over25Prob": 0.47,
+        "homeLambda": 1.19,
+        "awayLambda": 1.4,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Liverpool vs Cerro Largo",
+      "league": "Primera Division (URU)",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "confidence": 73,
+      "time": "22:00",
+      "matchSemantic": "liv-cer-pr-o25",
+      "analysis": {
+        "bttsProb": 0.53,
+        "over25Prob": 0.47,
+        "homeLambda": 1.19,
+        "awayLambda": 1.4,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Atlético Nacional vs Atlético Junior",
+      "league": "Primera A (COL)",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "confidence": 72,
+      "time": "22:00",
+      "matchSemantic": "atl-atl-pr-o25",
+      "analysis": {
+        "bttsProb": 0.46,
+        "over25Prob": 0.48,
+        "homeLambda": 1.43,
+        "awayLambda": 1,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Netherlands vs Uzbekistan",
+      "league": "International Friendly",
+      "type": "BTTS",
+      "prediction": "Non",
+      "confidence": 72,
+      "time": "19:45",
+      "matchSemantic": "net-uzb-in-btts",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Netherlands vs Uzbekistan",
+      "league": "International Friendly",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "confidence": 72,
+      "time": "19:45",
+      "matchSemantic": "net-uzb-in-o25",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "France vs N Ireland",
+      "league": "International Friendly",
+      "type": "BTTS",
+      "prediction": "Non",
+      "confidence": 72,
+      "time": "20:10",
+      "matchSemantic": "fra-n i-in-btts",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "France vs N Ireland",
+      "league": "International Friendly",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "confidence": 72,
+      "time": "20:10",
+      "matchSemantic": "fra-n i-in-o25",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Mexico vs South Africa",
+      "league": "International Friendly",
+      "type": "BTTS",
+      "prediction": "Non",
+      "confidence": 72,
+      "time": "20:00",
+      "matchSemantic": "mex-sou-in-btts",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Mexico vs South Africa",
+      "league": "International Friendly",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "confidence": 72,
+      "time": "20:00",
+      "matchSemantic": "mex-sou-in-o25",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Peru vs Spain",
+      "league": "International Friendly",
+      "type": "BTTS",
+      "prediction": "Non",
+      "confidence": 72,
+      "time": "03:00",
+      "matchSemantic": "per-spa-in-btts",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Peru vs Spain",
+      "league": "International Friendly",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "confidence": 72,
+      "time": "03:00",
+      "matchSemantic": "per-spa-in-o25",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "China vs Thailand",
+      "league": "International Friendly",
+      "type": "BTTS",
+      "prediction": "Non",
+      "confidence": 72,
+      "time": "12:35",
+      "matchSemantic": "chi-tha-in-btts",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "China vs Thailand",
+      "league": "International Friendly",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "confidence": 72,
+      "time": "12:35",
+      "matchSemantic": "chi-tha-in-o25",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Indonesia vs Mozambique",
+      "league": "International Friendly",
+      "type": "BTTS",
+      "prediction": "Non",
+      "confidence": 72,
+      "time": "14:00",
+      "matchSemantic": "ind-moz-in-btts",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Indonesia vs Mozambique",
+      "league": "International Friendly",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "confidence": 72,
+      "time": "14:00",
+      "matchSemantic": "ind-moz-in-o25",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Armenia vs Moldova",
+      "league": "International Friendly",
+      "type": "BTTS",
+      "prediction": "Non",
+      "confidence": 72,
+      "time": "16:00",
+      "matchSemantic": "arm-mol-in-btts",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Armenia vs Moldova",
+      "league": "International Friendly",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "confidence": 72,
+      "time": "16:00",
+      "matchSemantic": "arm-mol-in-o25",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "DR Congo vs Chile",
+      "league": "International Friendly",
+      "type": "BTTS",
+      "prediction": "Non",
+      "confidence": 72,
+      "time": "16:00",
+      "matchSemantic": "dr -chi-in-btts",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "DR Congo vs Chile",
+      "league": "International Friendly",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "confidence": 72,
+      "time": "16:00",
+      "matchSemantic": "dr -chi-in-o25",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Tanzania vs Rwanda",
+      "league": "International Friendly",
+      "type": "BTTS",
+      "prediction": "Non",
+      "confidence": 72,
+      "time": "17:00",
+      "matchSemantic": "tan-rwa-in-btts",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Tanzania vs Rwanda",
+      "league": "International Friendly",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "confidence": 72,
+      "time": "17:00",
+      "matchSemantic": "tan-rwa-in-o25",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Belarus vs Burkina Faso",
+      "league": "International Friendly",
+      "type": "BTTS",
+      "prediction": "Non",
+      "confidence": 72,
+      "time": "17:30",
+      "matchSemantic": "bel-bur-in-btts",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Belarus vs Burkina Faso",
+      "league": "International Friendly",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "confidence": 72,
+      "time": "17:30",
+      "matchSemantic": "bel-bur-in-o25",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
     },
     {
       "match": "Hungary vs Kazakhstan",
       "league": "International Friendly",
       "type": "BTTS",
       "prediction": "Non",
-      "confidence": 83,
+      "confidence": 72,
       "time": "18:00",
-      "matchSemantic": "hun-kaz-in"
+      "matchSemantic": "hun-kaz-in-btts",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Hungary vs Kazakhstan",
+      "league": "International Friendly",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "confidence": 72,
+      "time": "18:00",
+      "matchSemantic": "hun-kaz-in-o25",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Russia vs Trinidad",
+      "league": "International Friendly",
+      "type": "BTTS",
+      "prediction": "Non",
+      "confidence": 72,
+      "time": "18:00",
+      "matchSemantic": "rus-tri-in-btts",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Russia vs Trinidad",
+      "league": "International Friendly",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "confidence": 72,
+      "time": "18:00",
+      "matchSemantic": "rus-tri-in-o25",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Azerbaijan vs San Marino",
+      "league": "International Friendly",
+      "type": "BTTS",
+      "prediction": "Non",
+      "confidence": 72,
+      "time": "19:00",
+      "matchSemantic": "aze-san-in-btts",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Azerbaijan vs San Marino",
+      "league": "International Friendly",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "confidence": 72,
+      "time": "19:00",
+      "matchSemantic": "aze-san-in-o25",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
     },
     {
       "match": "Bolivia vs Algeria",
       "league": "International Friendly",
       "type": "BTTS",
       "prediction": "Non",
-      "confidence": 83,
+      "confidence": 72,
       "time": "00:00",
-      "matchSemantic": "bol-alg-in"
+      "matchSemantic": "bol-alg-in-btts",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Bolivia vs Algeria",
+      "league": "International Friendly",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "confidence": 72,
+      "time": "00:00",
+      "matchSemantic": "bol-alg-in-o25",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Saudi Arabia vs Senegal",
+      "league": "International Friendly",
+      "type": "BTTS",
+      "prediction": "Non",
+      "confidence": 72,
+      "time": "00:00",
+      "matchSemantic": "sau-sen-in-btts",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Saudi Arabia vs Senegal",
+      "league": "International Friendly",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "confidence": 72,
+      "time": "00:00",
+      "matchSemantic": "sau-sen-in-o25",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Argentina vs Iceland",
+      "league": "International Friendly",
+      "type": "BTTS",
+      "prediction": "Non",
+      "confidence": 72,
+      "time": "02:00",
+      "matchSemantic": "arg-ice-in-btts",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Argentina vs Iceland",
+      "league": "International Friendly",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "confidence": 72,
+      "time": "02:00",
+      "matchSemantic": "arg-ice-in-o25",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
     },
     {
       "match": "Iraq vs Venezuela",
       "league": "International Friendly",
       "type": "BTTS",
-      "prediction": "Oui",
-      "confidence": 83,
+      "prediction": "Non",
+      "confidence": 72,
       "time": "02:00",
-      "matchSemantic": "ira-ven-in"
+      "matchSemantic": "ira-ven-in-btts",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
     },
     {
-      "match": "Frosinone vs Juventus",
-      "league": "Serie A",
+      "match": "Iraq vs Venezuela",
+      "league": "International Friendly",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "confidence": 72,
+      "time": "02:00",
+      "matchSemantic": "ira-ven-in-o25",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Portugal vs Nigeria",
+      "league": "International Friendly",
       "type": "BTTS",
       "prediction": "Non",
-      "confidence": 82,
-      "time": "18:00",
-      "matchSemantic": "fro-juv-se"
+      "confidence": 72,
+      "time": "20:45",
+      "matchSemantic": "por-nig-in-btts",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Portugal vs Nigeria",
+      "league": "International Friendly",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "confidence": 72,
+      "time": "20:45",
+      "matchSemantic": "por-nig-in-o25",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "England vs Costa Rica",
+      "league": "International Friendly",
+      "type": "BTTS",
+      "prediction": "Non",
+      "confidence": 72,
+      "time": "21:00",
+      "matchSemantic": "eng-cos-in-btts",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "England vs Costa Rica",
+      "league": "International Friendly",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "confidence": 72,
+      "time": "21:00",
+      "matchSemantic": "eng-cos-in-o25",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Austria vs Guatemala",
+      "league": "International Friendly",
+      "type": "BTTS",
+      "prediction": "Non",
+      "confidence": 72,
+      "time": "05:00",
+      "matchSemantic": "aus-gua-in-btts",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Austria vs Guatemala",
+      "league": "International Friendly",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "confidence": 72,
+      "time": "05:00",
+      "matchSemantic": "aus-gua-in-o25",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
     }
   ]
 }
