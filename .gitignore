@@ -1,3 +1,5 @@
 node_modules/minimalcss/node_modules/puppeteer/.local-chromium/
 node_modules/**/puppeteer/.local-chromium/
 *.zip
+node_modules/**/puppeteer/
+node_modules/**/.local-chromium/
