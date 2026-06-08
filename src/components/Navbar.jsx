@@ -24,14 +24,14 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <a href="/" className="flex items-center gap-2.5 group">
-              <div className="w-8 h-8 rounded-lg bg-neon-green/20 flex items-center justify-center group-hover:bg-neon-green/30 transition-colors">
+              <div className="w-8 h-8 rounded-lg bg-emerald/20 flex items-center justify-center group-hover:bg-emerald/30 transition-colors">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <circle cx="12" cy="12" r="10"/>
                   <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
                   <path d="M2 12h20"/>
                 </svg>
               </div>
-              <span className="text-xl font-extrabold text-white group-hover:text-neon-green transition-colors">
+              <span className="text-xl font-extrabold text-white group-hover:text-emerald transition-colors">
                 {SITE.name}
               </span>
             </a>
@@ -42,17 +42,17 @@ export default function Navbar() {
                 <a
                   key={link.label}
                   href={link.href}
-                  className="text-gray-400 hover:text-neon-green transition-colors text-sm font-medium relative group"
+                  className="text-gray-400 hover:text-emerald transition-colors text-sm font-medium relative group"
                 >
                   {link.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-neon-green transition-all group-hover:w-full" />
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald transition-all group-hover:w-full" />
                 </a>
               ))}
               <a
                 href={AFFILIATE.linebet}
                 rel={AFFILIATE.rel}
                 target="_blank"
-                className="px-5 py-2.5 bg-neon-green text-dark-900 font-bold rounded-lg text-sm hover:shadow-lg hover:shadow-neon-green/25 transition-all hover:brightness-110 hover-lift"
+                className="px-5 py-2.5 bg-gradient-to-r from-emerald to-emerald-dark text-dark-900 font-bold rounded-lg text-sm hover:shadow-lg hover:shadow-emerald/30 transition-all hover:brightness-110 hover-lift"
               >
                 S'inscrire
               </a>
@@ -90,7 +90,7 @@ export default function Navbar() {
                     key={link.label}
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="block text-gray-300 hover:text-neon-green transition-colors font-medium py-3 px-3 rounded-lg hover:bg-white/5"
+                    className="block text-gray-300 hover:text-emerald transition-colors font-medium py-3 px-3 rounded-lg hover:bg-white/5"
                   >
                     {link.label}
                   </a>
@@ -108,7 +108,7 @@ export default function Navbar() {
                     href={AFFILIATE.linebet}
                     rel={AFFILIATE.rel}
                     target="_blank"
-                    className="block text-center px-5 py-3 bg-neon-green text-dark-900 font-bold rounded-lg"
+                    className="block text-center px-5 py-3 bg-gradient-to-r from-emerald to-emerald-dark text-dark-900 font-bold rounded-lg"
                   >
                     S'inscrire sur Linebet
                   </a>

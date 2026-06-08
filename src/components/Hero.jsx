@@ -44,10 +44,10 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0, rotateX: 0 }}
               transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
               style={{ transformOrigin: 'center bottom' }}
-              className="inline-flex items-center gap-2 bg-neon-green/10 border border-neon-green/20 rounded-full px-4 py-1.5 mb-6"
+              className="inline-flex items-center gap-2 bg-emerald/10 border border-emerald/20 rounded-full px-4 py-1.5 mb-6"
             >
-              <span className="w-1.5 h-1.5 bg-neon-green rounded-full animate-pulse" />
-              <span className="text-xs text-neon-green font-medium">Propulsé par l'intelligence artificielle</span>
+              <span className="w-1.5 h-1.5 bg-emerald rounded-full animate-pulse" />
+              <span className="text-xs text-emerald font-medium">Propulsé par l'intelligence artificielle</span>
             </motion.div>
 
             <motion.h1
@@ -58,7 +58,7 @@ export default function Hero() {
               className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6"
             >
               Pronostics BTTS & Over 2,5{' '}
-              <span className="text-neon-green neon-glow">basés sur l'IA</span>
+              <span className="text-emerald neon-glow">basés sur l'IA</span>
             </motion.h1>
 
             <motion.p
@@ -79,7 +79,7 @@ export default function Hero() {
             >
               <a
                 href="/#free-predictions"
-                className="px-8 py-4 bg-neon-green text-dark-900 font-bold rounded-xl text-base hover:shadow-lg hover:shadow-neon-green/25 transition-all hover:brightness-110 hover-lift"
+                className="px-8 py-4 bg-gradient-to-r from-emerald to-emerald-dark text-dark-900 font-bold rounded-xl text-base hover:shadow-lg hover:shadow-emerald/30 btn-emerald transition-all hover:brightness-110 hover-lift"
               >
                 Voir les pronostics du jour
               </a>

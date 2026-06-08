@@ -7,7 +7,7 @@ export default function LockedCoupons() {
     {
       title: 'BTTS Premium',
       subtitle: 'Les deux équipes marquent (BTTS)',
-      color: 'neon-green',
+      color: 'emerald',
       matches: [
         { league: 'Premier League', match: 'Man City vs Chelsea', time: '15:30' },
         { league: 'La Liga', match: 'Real Madrid vs Atletico', time: '18:00' },
@@ -61,7 +61,7 @@ export default function LockedCoupons() {
                       href={SITE.whatsapp}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-6 py-3 bg-neon-green text-dark-900 font-bold rounded-xl hover:brightness-110 transition-all hover-lift"
+                      className="px-6 py-3 btn-emerald text-dark-900 font-bold rounded-xl hover:brightness-110 transition-all hover-lift"
                     >
                       Rejoindre le VIP
                     </a>
@@ -71,9 +71,9 @@ export default function LockedCoupons() {
                   <div className="p-6">
                     <div className="flex items-center gap-3 mb-5">
                       <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
-                        coupon.color === 'neon-green' ? 'bg-neon-green/10 text-neon-green' : 'bg-gold/10 text-gold'
+                        coupon.color === 'emerald' ? 'bg-emerald/10 text-emerald' : 'bg-gold/10 text-gold'
                       }`}>
-                        {coupon.color === 'neon-green' ? (
+                        {coupon.color === 'emerald' ? (
                           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/>
                           </svg>

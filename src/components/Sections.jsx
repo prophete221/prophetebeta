@@ -237,7 +237,7 @@ export function HowItWorks() {
               <TiltCard className="h-full">
                 <div className="relative card card-3d p-6 text-center h-full">
                   {/* Step Number */}
-                  <div className="absolute -top-3 -left-3 w-8 h-8 bg-neon-green text-dark-900 rounded-lg flex items-center justify-center text-xs font-extrabold shadow-lg shadow-neon-green/20">
+                  <div className="absolute -top-3 -left-3 w-8 h-8 bg-gradient-to-r from-emerald to-emerald-dark text-dark-900 rounded-lg flex items-center justify-center text-xs font-extrabold shadow-lg shadow-emerald/25">
                     {step.step}
                   </div>
 
@@ -310,7 +310,7 @@ export function WhyLinebet() {
             href={AFFILIATE.linebet}
             rel={AFFILIATE.rel}
             target="_blank"
-            className="inline-block px-8 py-4 bg-gold text-dark-900 font-bold rounded-xl hover:shadow-lg hover:shadow-gold/30 transition-all hover:brightness-110 hover-lift"
+            className="inline-block px-8 py-4 bg-gradient-to-r from-gold to-gold-dark text-dark-900 font-bold rounded-xl hover:shadow-lg hover:shadow-gold/30 btn-gold transition-all hover:brightness-110 hover-lift"
           >
             S'inscrire avec le code {SITE.promoCode}
           </a>
@@ -335,12 +335,12 @@ export function Testimonials() {
           className="text-center mb-14"
         >
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
-            Ce que disent nos <span className="text-neon-green">utilisateurs</span>
+            Ce que disent nos <span className="text-emerald">utilisateurs</span>
           </h2>
           {/* Follower counter */}
-          <div className="inline-flex items-center gap-2 bg-neon-green/10 border border-neon-green/20 rounded-full px-4 py-1.5 mt-2">
-            <span className="w-1.5 h-1.5 bg-neon-green rounded-full animate-pulse" />
-            <span className="text-xs text-neon-green font-medium">2 400+ parieurs suivent BttsBet ce mois-ci</span>
+          <div className="inline-flex items-center gap-2 bg-emerald/10 border border-emerald/20 rounded-full px-4 py-1.5 mt-2">
+            <span className="w-1.5 h-1.5 bg-emerald rounded-full animate-pulse" />
+            <span className="text-xs text-emerald font-medium">2 400+ parieurs suivent BttsBet ce mois-ci</span>
           </div>
         </motion.div>
 
@@ -357,7 +357,7 @@ export function Testimonials() {
                 <div className="card card-3d p-6 h-full">
                   <div className="flex items-center gap-3 mb-4">
                     {/* Avatar with initials */}
-                    <div className="w-10 h-10 bg-neon-green/15 rounded-full flex items-center justify-center text-neon-green text-sm font-bold flex-shrink-0">
+                    <div className="w-10 h-10 bg-emerald/15 rounded-full flex items-center justify-center text-emerald text-sm font-bold flex-shrink-0">
                       {t.initials}
                     </div>
                     <div>
@@ -366,7 +366,7 @@ export function Testimonials() {
                     </div>
                     <div className="ml-auto flex items-center gap-0.5">
                       {Array.from({ length: t.rating }).map((_, j) => (
-                        <span key={j} className="text-amber text-xs">★</span>
+                        <span key={j} className="text-gold text-xs">★</span>
                       ))}
                     </div>
                   </div>
@@ -442,7 +442,7 @@ export function BlogSection() {
                   <span className="text-xs text-gold font-semibold uppercase tracking-wider">
                     {article.category}
                   </span>
-                  <h3 className="text-base font-bold text-white mt-2 mb-3 group-hover:text-neon-green transition-colors leading-snug">
+                  <h3 className="text-base font-bold text-white mt-2 mb-3 group-hover:text-emerald transition-colors leading-snug">
                     {article.title}
                   </h3>
                   <p className="text-gray-400 text-sm leading-relaxed">{article.excerpt}</p>
@@ -479,7 +479,7 @@ export function SeoBlock() {
           style={{ transformOrigin: 'center bottom' }}
           className="prose-dark"
         >
-          <h2 className="text-2xl font-extrabold text-neon-green mb-6">{SEO_BLOCK.title}</h2>
+          <h2 className="text-2xl font-extrabold text-emerald mb-6">{SEO_BLOCK.title}</h2>
           {SEO_BLOCK.paragraphs.map((p, i) => (
             <p key={i}>{p}</p>
           ))}

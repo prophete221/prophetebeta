@@ -10,7 +10,7 @@ export default function Footer() {
             href={AFFILIATE.linebet}
             rel={AFFILIATE.rel}
             target="_blank"
-            className="flex-1 text-center px-4 py-3 bg-neon-green text-dark-900 font-bold rounded-xl text-sm"
+            className="flex-1 text-center px-4 py-3 bg-gradient-to-r from-emerald to-emerald-dark text-dark-900 font-bold rounded-xl text-sm"
           >
             Bonus {SITE.promoCode}
           </a>
@@ -32,7 +32,7 @@ export default function Footer() {
             {/* Brand */}
             <div>
               <div className="flex items-center gap-2.5 mb-4">
-                <div className="w-8 h-8 rounded-lg bg-neon-green/20 flex items-center justify-center">
+                <div className="w-8 h-8 rounded-lg bg-emerald/20 flex items-center justify-center">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <circle cx="12" cy="12" r="10"/>
                     <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
@@ -52,10 +52,10 @@ export default function Footer() {
             <div>
               <h4 className="text-white font-bold mb-4 text-sm">Navigation</h4>
               <ul className="space-y-2 text-sm">
-                <li><a href="/" className="text-gray-500 hover:text-neon-green transition-colors">Accueil</a></li>
-                <li><a href="/#free-predictions" className="text-gray-500 hover:text-neon-green transition-colors">Pronostics Gratuits</a></li>
-                <li><a href="/blog" className="text-gray-500 hover:text-neon-green transition-colors">Blog</a></li>
-                <li><a href="/#faq" className="text-gray-500 hover:text-neon-green transition-colors">FAQ</a></li>
+                <li><a href="/" className="text-gray-500 hover:text-emerald transition-colors">Accueil</a></li>
+                <li><a href="/#free-predictions" className="text-gray-500 hover:text-emerald transition-colors">Pronostics Gratuits</a></li>
+                <li><a href="/blog" className="text-gray-500 hover:text-emerald transition-colors">Blog</a></li>
+                <li><a href="/#faq" className="text-gray-500 hover:text-emerald transition-colors">FAQ</a></li>
               </ul>
             </div>
 
@@ -65,7 +65,7 @@ export default function Footer() {
               <ul className="space-y-2 text-sm">
                 {LEGAL.links.map((link) => (
                   <li key={link.label}>
-                    <a href={link.href} className="text-gray-500 hover:text-neon-green transition-colors">
+                    <a href={link.href} className="text-gray-500 hover:text-emerald transition-colors">
                       {link.label}
                     </a>
                   </li>
@@ -90,7 +90,7 @@ export default function Footer() {
                   href={AFFILIATE.linebetDownload}
                   rel={AFFILIATE.rel}
                   target="_blank"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-neon-green text-dark-900 font-semibold rounded-xl transition-all hover:brightness-110 text-sm"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-emerald to-emerald-dark text-dark-900 font-semibold rounded-xl transition-all hover:brightness-110 text-sm"
                 >
                   Télécharger Linebet
                 </a>

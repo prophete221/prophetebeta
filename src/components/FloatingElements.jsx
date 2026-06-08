@@ -28,7 +28,7 @@ export default function FloatingElements() {
       {shapes.map((shape, i) => (
         <div
           key={i}
-          className="absolute text-neon-green floating-shape"
+          className="absolute text-emerald floating-shape"
           style={{
             left: shape.x,
             top: shape.y,
