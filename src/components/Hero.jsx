@@ -30,9 +30,9 @@ export default function Hero() {
       {/* Subtle Background with parallax */}
       <div ref={bgRef} style={bgStyle} className="absolute inset-0">
         <div className="absolute inset-0 bg-dark-900" />
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-neon-green/3 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-neon/3 rounded-full blur-[100px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-neon-purple/2 rounded-full blur-[80px]" />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald/3 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gold/3 rounded-full blur-[100px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-emerald-dark/2 rounded-full blur-[80px]" />
       </div>
 
       <div ref={heroContainerRef} style={heroParallaxStyle} className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 pt-20 pb-24 sm:pt-28 sm:pb-32">
@@ -104,47 +104,68 @@ export default function Hero() {
           >
             <TiltCard maxTilt={6}>
               <div className="glass-3d rounded-2xl p-6 sm:p-8">
-                <div className="flex items-center gap-2 mb-6">
-                  <div className="w-2 h-2 bg-neon-green rounded-full animate-pulse" />
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  className="flex items-center gap-2 mb-6"
+                >
+                  <div className="w-2 h-2 bg-emerald rounded-full animate-pulse" />
                   <span className="text-sm text-gray-400 font-medium">Données en temps réel</span>
-                </div>
+                </motion.div>
 
                 <div className="space-y-5">
                   {HERO_STATS.map((stat, i) => (
                     <motion.div
                       key={i}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5, delay: 0.5 + i * 0.15 }}
+                      initial={{ opacity: 0, x: 30, scale: 0.95 }}
+                      animate={{ opacity: 1, x: 0, scale: 1 }}
+                      transition={{ duration: 0.5, delay: 0.5 + i * 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
                       className="flex items-center gap-4"
                     >
-                      <div className="w-12 h-12 bg-neon-green/10 rounded-xl flex items-center justify-center text-neon-green flex-shrink-0">
+                      <motion.div
+                        initial={{ scale: 0, rotate: -90 }}
+                        animate={{ scale: 1, rotate: 0 }}
+                        transition={{ duration: 0.4, delay: 0.6 + i * 0.15, type: 'spring', stiffness: 180 }}
+                        className="w-12 h-12 bg-emerald/10 rounded-xl flex items-center justify-center text-emerald flex-shrink-0"
+                      >
                         {statIcons[stat.icon]}
-                      </div>
-                      <div>
+                      </motion.div>
+                      <motion.div
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4, delay: 0.7 + i * 0.15 }}
+                      >
                         <div className="text-2xl font-extrabold text-white">{stat.value}</div>
                         <div className="text-sm text-gray-500">{stat.label}</div>
-                      </div>
+                      </motion.div>
                     </motion.div>
                   ))}
                 </div>
 
-                <div className="mt-6 pt-5 border-t border-white/10">
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 1.2 }}
+                  className="mt-6 pt-5 border-t border-white/10"
+                >
                   <div className="flex items-center justify-between">
                     <div>
                       <div className="text-xs text-gray-500 mb-1">Code promo exclusif</div>
-                      <div className="text-neon-green font-bold text-lg tracking-wider animate-pulse-neon">{SITE.promoCode}</div>
+                      <div className="font-bold text-lg tracking-wider promo-code-shimmer">{SITE.promoCode}</div>
                     </div>
-                    <a
+                    <motion.a
                       href={AFFILIATE.linebet}
                       rel={AFFILIATE.rel}
                       target="_blank"
-                      className="px-4 py-2 bg-neon-green text-dark-900 font-bold rounded-lg text-sm hover:brightness-110 transition-all"
+                      whileHover={{ scale: 1.05, brightness: 1.1 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="px-4 py-2 bg-emerald text-dark-900 font-bold rounded-lg text-sm hover:brightness-110 transition-all"
                     >
                       Bonus 150$
-                    </a>
+                    </motion.a>
                   </div>
-                </div>
+                </motion.div>
               </div>
             </TiltCard>
           </motion.div>

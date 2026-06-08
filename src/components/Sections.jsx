@@ -97,17 +97,30 @@ export function StatsSection() {
           {stats.map((stat, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20, scale: 0.95, rotateX: 8 }}
-              animate={isVisible ? { opacity: 1, y: 0, scale: 1, rotateX: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+              initial={{ opacity: 0, y: 30, scale: 0.9 }}
+              animate={isVisible ? { opacity: 1, y: 0, scale: 1 } : {}}
+              transition={{ duration: 0.6, delay: i * 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
               style={{ transformOrigin: 'center bottom' }}
             >
               <TiltCard className="h-full">
-                <div className="card card-3d p-6 text-center h-full">
-                  <div className="w-14 h-14 bg-neon-green/10 rounded-2xl flex items-center justify-center text-neon-green mx-auto mb-4">
-                    {icons[stat.icon]}
+                <div className="card card-3d p-6 text-center h-full stat-card-animated">
+                  <div className="w-14 h-14 bg-emerald/10 rounded-2xl flex items-center justify-center text-emerald mx-auto mb-4">
+                    <motion.div
+                      initial={{ scale: 0, rotate: -180 }}
+                      animate={isVisible ? { scale: 1, rotate: 0 } : {}}
+                      transition={{ duration: 0.5, delay: 0.3 + i * 0.15, type: 'spring', stiffness: 200 }}
+                    >
+                      {icons[stat.icon]}
+                    </motion.div>
                   </div>
-                  <div className="text-3xl font-extrabold text-white mb-1">{stat.value}</div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={isVisible ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.5, delay: 0.4 + i * 0.15 }}
+                    className="text-3xl font-extrabold text-white mb-1 stat-value-animated"
+                  >
+                    {stat.value}
+                  </motion.div>
                   <div className="text-white font-semibold text-sm mb-1">{stat.label}</div>
                   <div className="text-gray-500 text-xs">{stat.desc}</div>
                 </div>
