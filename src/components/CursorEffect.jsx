@@ -49,7 +49,7 @@ export default function CursorEffect() {
         width: 300,
         height: 300,
         borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(60, 242, 140, 0.06) 0%, rgba(60, 242, 140, 0.02) 40%, transparent 70%)',
+        background: 'radial-gradient(circle, rgba(16, 185, 129, 0.06) 0%, rgba(16, 185, 129, 0.02) 40%, transparent 70%)',
         pointerEvents: 'none',
         zIndex: 1,
         opacity: 0,

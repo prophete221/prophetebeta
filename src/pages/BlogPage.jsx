@@ -22,7 +22,7 @@ export default function BlogPage() {
           className="text-center mb-12"
         >
           <h1 className="text-4xl sm:text-5xl font-black text-white mb-4">
-            Blog & <span className="bg-gradient-to-r from-neon to-neon-purple bg-clip-text text-transparent">Stratégies</span>
+            Blog & <span className="bg-gradient-to-r from-emerald to-gold bg-clip-text text-transparent">Stratégies</span>
           </h1>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
             Articles de fond sur les paris BTTS, Over 2.5, gestion de bankroll et stratégies avancées pour maximiser vos gains.
@@ -42,7 +42,7 @@ export default function BlogPage() {
               onClick={() => setSelectedCategory(cat)}
               className={`px-5 py-2 rounded-full text-sm font-semibold transition-all ${
                 selectedCategory === cat
-                  ? 'bg-gradient-to-r from-neon to-neon-purple text-dark-900'
+                  ? 'bg-gradient-to-r from-emerald to-gold text-dark-900'
                   : 'glass text-gray-300 hover:bg-white/10'
               }`}
             >
@@ -78,7 +78,7 @@ export default function BlogPage() {
                     <span className="text-xs text-gray-500">{article.readTime} de lecture</span>
                   </div>
 
-                  <h2 className="text-lg font-bold text-white mb-3 group-hover:text-neon transition-colors leading-snug">
+                  <h2 className="text-lg font-bold text-white mb-3 group-hover:text-emerald transition-colors leading-snug">
                     {article.title}
                   </h2>
 

@@ -90,7 +90,7 @@ function NotFoundPage() {
         <p className="text-gray-500 mb-8">La page que vous recherchez n'existe pas ou a été déplacée.</p>
         <a
           href="/"
-          className="px-8 py-3 bg-gradient-to-r from-neon to-neon-purple text-dark-900 font-bold rounded-full hover:shadow-lg hover:shadow-neon/30 transition-all"
+          className="px-8 py-3 bg-gradient-to-r from-emerald to-gold text-dark-900 font-bold rounded-full hover:shadow-lg hover:shadow-emerald/30 transition-all"
         >
           Retour à l'accueil
         </a>

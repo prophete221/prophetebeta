@@ -26,7 +26,7 @@ export default function WinHistory() {
     return (
       <section id="win-history" className="py-10 px-4 bg-dark-800/50">
         <div className="max-w-5xl mx-auto text-center">
-          <div className="inline-block w-8 h-8 border-2 border-neon/30 border-t-neon rounded-full animate-spin" />
+          <div className="inline-block w-8 h-8 border-2 border-emerald/30 border-t-emerald rounded-full animate-spin" />
         </div>
       </section>
     )
@@ -114,8 +114,8 @@ export default function WinHistory() {
               <div className="hidden sm:block">
                 <span className={`text-[10px] font-semibold px-1.5 py-0.5 rounded-full ${
                   item.type === 'BTTS'
-                    ? 'bg-neon/10 text-neon'
-                    : 'bg-neon-purple/10 text-neon-purple'
+                    ? 'bg-emerald/10 text-emerald'
+                    : 'bg-gold/10 text-gold'
                 }`}>
                   {item.type}
                 </span>

@@ -22,7 +22,7 @@ function LegalLayout({ title, slug, children }) {
             transition={{ duration: 0.5 }}
             className="mb-8 text-sm text-gray-500"
           >
-            <Link to="/" className="hover:text-neon transition-colors">Accueil</Link>
+            <Link to="/" className="hover:text-emerald transition-colors">Accueil</Link>
             <span className="mx-2">/</span>
             <span className="text-gray-400">{title}</span>
           </motion.nav>
@@ -54,7 +54,7 @@ function LegalLayout({ title, slug, children }) {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="mt-12 pt-8 border-t border-white/10"
           >
-            <Link to="/" className="text-neon hover:underline text-sm">
+            <Link to="/" className="text-emerald hover:underline text-sm">
               &larr; Retour à l'accueil
             </Link>
           </motion.div>

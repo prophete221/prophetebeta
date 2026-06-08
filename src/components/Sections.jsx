@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { WHY_LINEBET, TESTIMONIALS, SEO_BLOCK, AFFILIATE, SITE, HOW_IT_WORKS } from '../data/constants'
 import { useScrollAnimation, use3DScrollEntrance } from '../hooks/useAnimations'
@@ -67,14 +68,36 @@ const icons = {
   ),
 }
 
+// ─── Animated Counter Hook ───
+function useCountUp(target, duration = 2000, start = false) {
+  const [count, setCount] = useState(0)
+  useEffect(() => {
+    if (!start) { setCount(0); return }
+    let startTime = null
+    const animate = (timestamp) => {
+      if (!startTime) startTime = timestamp
+      const progress = Math.min((timestamp - startTime) / duration, 1)
+      const eased = 1 - Math.pow(1 - progress, 3) // easeOutCubic
+      setCount(Math.floor(eased * target))
+      if (progress < 1) requestAnimationFrame(animate)
+    }
+    requestAnimationFrame(animate)
+  }, [target, duration, start])
+  return count
+}
+
 // ─── Stats Section ───
 export function StatsSection() {
   const [ref, isVisible] = useScrollAnimation()
 
+  const precisionCount = useCountUp(78, 2200, isVisible)
+  const predictionsCount = useCountUp(15000, 2500, isVisible)
+  const championnatsCount = useCountUp(50, 2000, isVisible)
+
   const stats = [
-    { value: '~78%', label: 'Précision historique BTTS', desc: 'Sur plus de 15 000 pronostics analysés', icon: 'check' },
-    { value: '50+', label: 'Championnats couverts', desc: 'Europe, Afrique, Amérique et Asie', icon: 'globe' },
-    { value: '24/7', label: 'Analyse automatique', desc: 'Mise à jour quotidienne à 00h00 UTC', icon: 'chart' },
+    { animatedValue: `~${precisionCount}%`, label: 'Précision historique', desc: 'Sur plus de 15 000 pronostics analysés', icon: 'check', color: 'emerald' },
+    { animatedValue: `${predictionsCount.toLocaleString()}+`, label: 'Pronostics analysés', desc: 'Base de données en croissance continue', icon: 'chart', color: 'emerald' },
+    { animatedValue: `${championnatsCount}+`, label: 'Championnats couverts', desc: 'Europe, Afrique, Amérique et Asie', icon: 'globe', color: 'emerald' },
   ]
 
   return (
@@ -88,12 +111,12 @@ export function StatsSection() {
           className="text-center mb-14"
         >
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
-            Des résultats <span className="text-neon-green neon-glow">vérifiables</span>
+            Des résultats <span className="text-emerald neon-glow">vérifiables</span>
           </h2>
           <p className="text-gray-400 max-w-xl mx-auto">Notre IA fournit des résultats transparents basés sur des données historiques vérifiables.</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-6">
           {stats.map((stat, i) => (
             <motion.div
               key={i}
@@ -119,7 +142,7 @@ export function StatsSection() {
                     transition={{ duration: 0.5, delay: 0.4 + i * 0.15 }}
                     className="text-3xl font-extrabold text-white mb-1 stat-value-animated"
                   >
-                    {stat.value}
+                    {stat.animatedValue}
                   </motion.div>
                   <div className="text-white font-semibold text-sm mb-1">{stat.label}</div>
                   <div className="text-gray-500 text-xs">{stat.desc}</div>
@@ -128,6 +151,53 @@ export function StatsSection() {
             </motion.div>
           ))}
         </div>
+
+        {/* Promo Code + Bonus - Animated Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 20, scale: 0.95 }}
+          animate={isVisible ? { opacity: 1, y: 0, scale: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+          style={{ transformOrigin: 'center bottom' }}
+        >
+          <div className="card card-3d p-5 sm:p-6 stat-card-animated overflow-hidden">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center text-gold flex-shrink-0">
+                  <motion.div
+                    initial={{ scale: 0, rotate: -90 }}
+                    animate={isVisible ? { scale: 1, rotate: 0 } : {}}
+                    transition={{ duration: 0.5, delay: 0.8, type: 'spring', stiffness: 200 }}
+                  >
+                    {icons.gift}
+                  </motion.div>
+                </div>
+                <div>
+                  <div className="text-xs text-gray-500 mb-1">Code promo exclusif</div>
+                  <div className="font-bold text-xl tracking-wider promo-code-shimmer">VISION221</div>
+                </div>
+              </div>
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={isVisible ? { scale: 1, opacity: 1 } : {}}
+                transition={{ duration: 0.5, delay: 1.0, type: 'spring', stiffness: 150 }}
+                className="flex items-center gap-3"
+              >
+                <div className="text-right">
+                  <div className="text-emerald font-extrabold text-2xl">150$</div>
+                  <div className="text-gray-500 text-xs">Bonus Linebet</div>
+                </div>
+                <motion.div
+                  animate={isVisible ? { scale: [1, 1.05, 1] } : {}}
+                  transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                >
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                  </svg>
+                </motion.div>
+              </motion.div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   )
@@ -150,7 +220,7 @@ export function HowItWorks() {
           className="text-center mb-14"
         >
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
-            Comment ça <span className="text-neon">marche</span>
+            Comment ça <span className="text-emerald">marche</span>
           </h2>
           <p className="text-gray-400 max-w-xl mx-auto">De l'analyse IA à votre pari en 3 étapes simples.</p>
         </motion.div>
@@ -171,7 +241,7 @@ export function HowItWorks() {
                     {step.step}
                   </div>
 
-                  <div className="w-16 h-16 bg-neon/10 rounded-2xl flex items-center justify-center text-neon mx-auto mb-5">
+                  <div className="w-16 h-16 bg-emerald/10 rounded-2xl flex items-center justify-center text-emerald mx-auto mb-5">
                     {icons[stepIcons[i]]}
                   </div>
                   <h3 className="text-lg font-bold text-white mb-3">{step.title}</h3>

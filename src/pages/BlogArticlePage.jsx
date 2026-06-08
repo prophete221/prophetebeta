@@ -14,7 +14,7 @@ export default function BlogArticlePage() {
         <div className="text-center">
           <h1 className="text-4xl font-black text-white mb-4">Article non trouvé</h1>
           <p className="text-gray-400 mb-6">L'article que vous recherchez n'existe pas.</p>
-          <Link to="/blog" className="px-6 py-3 bg-neon text-dark-900 font-bold rounded-full hover:bg-neon/90 transition-colors">
+          <Link to="/blog" className="px-6 py-3 bg-emerald text-dark-900 font-bold rounded-full hover:bg-emerald/90 transition-colors">
             ← Retour au blog
           </Link>
         </div>
@@ -45,9 +45,9 @@ export default function BlogArticlePage() {
             transition={{ duration: 0.5 }}
             className="mb-8 text-sm text-gray-500"
           >
-            <Link to="/" className="hover:text-neon transition-colors">Accueil</Link>
+            <Link to="/" className="hover:text-emerald transition-colors">Accueil</Link>
             <span className="mx-2">/</span>
-            <Link to="/blog" className="hover:text-neon transition-colors">Blog</Link>
+            <Link to="/blog" className="hover:text-emerald transition-colors">Blog</Link>
             <span className="mx-2">/</span>
             <span className="text-gray-400">{article.category}</span>
           </motion.nav>
@@ -108,20 +108,20 @@ export default function BlogArticlePage() {
               Prêt à utiliser nos pronostics IA ?
             </h3>
             <p className="text-gray-400 mb-6">
-              Code promo <span className="text-neon font-bold">{SITE.promoCode}</span> — Bonus exclusif Linebet
+              Code promo <span className="text-emerald font-bold">{SITE.promoCode}</span> — Bonus exclusif Linebet
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href={AFFILIATE.linebet}
                 rel={AFFILIATE.rel}
                 target="_blank"
-                className="px-8 py-3 bg-gradient-to-r from-neon to-neon-purple text-dark-900 font-bold rounded-full hover:shadow-lg hover:shadow-neon/30 transition-all"
+                className="px-8 py-3 bg-gradient-to-r from-emerald to-gold text-dark-900 font-bold rounded-full hover:shadow-lg hover:shadow-emerald/30 transition-all"
               >
                 🎁 Réclamer le Bonus
               </a>
               <Link
                 to="/#free-predictions"
-                className="px-8 py-3 glass text-neon font-bold rounded-full hover:bg-neon/10 transition-all"
+                className="px-8 py-3 glass text-emerald font-bold rounded-full hover:bg-emerald/10 transition-all"
               >
                 ⚽ Voir les Pronostics
               </Link>
@@ -142,7 +142,7 @@ export default function BlogArticlePage() {
                     <span className="text-xs text-neon-purple font-semibold uppercase tracking-wider">
                       {related.category}
                     </span>
-                    <h4 className="text-sm font-bold text-white mt-2 group-hover:text-neon transition-colors leading-snug">
+                    <h4 className="text-sm font-bold text-white mt-2 group-hover:text-emerald transition-colors leading-snug">
                       {related.title}
                     </h4>
                   </Link>
