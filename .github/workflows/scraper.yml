@@ -1,0 +1,66 @@
+name: Daily Scraper & Deploy
+
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  scrape-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: 'true'
+
+      - name: Run scraper
+        run: node scripts/scraper.js
+        env:
+          NODE_ENV: production
+
+      - name: Debug — show generated files
+        run: |
+          echo "=== predictions.json ==="
+          cat public/predictions.json
+          echo ""
+          echo "=== win-history.json ==="
+          cat public/win-history.json
+          echo ""
+          echo "=== archive ==="
+          ls -la public/predictions-archive/ 2>/dev/null || echo "no archive dir"
+
+      - name: Build project (with updated predictions)
+        run: npm run build
+
+      - name: Deploy to FTP
+        uses: SamKirkland/FTP-Deploy-Action@4.3.3
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/
+          dangerous-clean-slate: true
+
+      - name: Commit and push updated data
+        run: |
+          git config --local user.email "bot@bttsbet.online"
+          git config --local user.name "BttsBet Bot"
+          git add public/predictions.json public/win-history.json public/predictions-archive/
+          git diff --staged --quiet || git commit -m "chore: update daily predictions & win history [skip ci]"
+          git remote set-url origin https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git
+          git push
