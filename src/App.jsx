@@ -40,7 +40,7 @@ function HomePage() {
   return (
     <>
       <Helmet>
-        <title>BttsBet – Pronostics BTTS & Over 2,5 | Précision IA ~82.7%</title>
+        <title>BttsBet – Pronostics BTTS & Over 2,5 | Précision IA ~68%</title>
       </Helmet>
       {/* Bloc 1 : Hero (promesse + preuve rapide + CTA) */}
       <Hero />
@@ -48,30 +48,30 @@ function HomePage() {
       {/* Bloc 2 : Stats clés (précision, matchs analysés, ligues) */}
       <Stats />
       <SectionDivider type="curve" flip color="#050816" />
-      {/* Bloc 3 : Comment ça marche (3 étapes max) */}
-      <HowItWorks />
-      <SectionDivider type="wave" color="#0B1020" />
-      {/* Bloc 4 : Pronostics gratuits */}
+      {/* Bloc 3 : Pronostics gratuits */}
       <FreePredictions />
       <SectionDivider type="mountain" color="#0B1020" />
-      {/* Bloc 5 : Pronostics Premium (VIP) */}
+      {/* Bloc 4 : Pronostics Premium (VIP) */}
       <LockedCoupons />
       <SectionDivider type="curve" flip color="#050816" />
-      {/* Bloc 6 : Bonus Linebet */}
+      {/* Bloc 5 : Bonus Linebet */}
       <PromoBanner />
       <SectionDivider type="wave" color="#0B1020" />
-      {/* Bloc 7 : Why Linebet */}
+      {/* Bloc 6 : Why Linebet */}
       <WhyLinebet />
       <SectionDivider type="curve" flip color="#050816" />
-      {/* Bloc 8 : Social proof (avis) */}
+      {/* Bloc 7 : Social proof (avis) */}
       <Testimonials />
       <SectionDivider type="wave" color="#0B1020" />
-      {/* Bloc 9 : Blog */}
+      {/* Bloc 8 : Blog */}
       <BlogSection />
       <SectionDivider type="curve" flip color="#050816" />
-      {/* Bloc 10 : SEO content */}
+      {/* Bloc 9 : SEO content */}
       <SeoBlock />
       <SectionDivider type="wave" color="#0B1020" />
+      {/* Bloc 10 : Comment ça marche (déplacé en bas) */}
+      <HowItWorks />
+      <SectionDivider type="curve" flip color="#050816" />
       {/* Bloc 11 : Historique des gains vérifiés (bas de page) */}
       <WinHistory />
       <SectionDivider type="curve" flip color="#050816" />

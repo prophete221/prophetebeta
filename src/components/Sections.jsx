@@ -72,7 +72,7 @@ export function StatsSection() {
   const [ref, isVisible] = useScrollAnimation()
 
   const stats = [
-    { value: '~82.7%', label: 'Précision historique BTTS', desc: 'Sur plus de 15 000 pronostics analysés', icon: 'check' },
+    { value: '~68%', label: 'Précision historique BTTS', desc: 'Sur plus de 15 000 pronostics analysés', icon: 'check' },
     { value: '50+', label: 'Championnats couverts', desc: 'Europe, Afrique, Amérique et Asie', icon: 'globe' },
     { value: '24/7', label: 'Analyse automatique', desc: 'Mise à jour quotidienne à 00h00 UTC', icon: 'chart' },
   ]
