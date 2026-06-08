@@ -45,35 +45,35 @@ function HomePage() {
       {/* Bloc 1 : Hero (promesse + preuve rapide + CTA) */}
       <Hero />
       <SectionDivider type="wave" color="#0B1020" />
-      {/* Bloc 2 : Stats clés (précision, matchs analysés, ligues) */}
-      <Stats />
-      <SectionDivider type="curve" flip color="#050816" />
-      {/* Bloc 3 : Pronostics Premium (VIP) */}
-      <LockedCoupons />
-      <SectionDivider type="mountain" color="#0B1020" />
-      {/* Bloc 4 : Bonus Linebet */}
-      <PromoBanner />
-      <SectionDivider type="curve" flip color="#050816" />
-      {/* Bloc 5 : Why Linebet */}
-      <WhyLinebet />
-      <SectionDivider type="curve" flip color="#050816" />
-      {/* Bloc 6 : Social proof (avis) */}
-      <Testimonials />
-      <SectionDivider type="wave" color="#0B1020" />
-      {/* Bloc 7 : Blog */}
-      <BlogSection />
-      <SectionDivider type="curve" flip color="#050816" />
-      {/* Bloc 8 : SEO content */}
-      <SeoBlock />
-      <SectionDivider type="wave" color="#0B1020" />
-      {/* Bloc 9 : Comment ça marche */}
-      <HowItWorks />
-      <SectionDivider type="curve" flip color="#050816" />
-      {/* Bloc 10 : Pronostics du jour (juste avant les résultats vérifiables) */}
+      {/* Bloc 2 : Pronostics Gratuits du Jour (MIS EN AVANT - première section visible) */}
       <FreePredictions />
       <SectionDivider type="mountain" color="#0B1020" />
-      {/* Bloc 11 : Historique des gains vérifiés (juste après les pronostics) */}
+      {/* Bloc 3 : Pronostics Premium (VIP) - après les pronostics gratuits */}
+      <LockedCoupons />
+      <SectionDivider type="mountain" color="#0B1020" />
+      {/* Bloc 4 : Historique des gains vérifiés */}
       <WinHistory />
+      <SectionDivider type="curve" flip color="#050816" />
+      {/* Bloc 5 : Stats clés (précision, matchs analysés, ligues) */}
+      <Stats />
+      <SectionDivider type="curve" flip color="#050816" />
+      {/* Bloc 6 : Bonus Linebet */}
+      <PromoBanner />
+      <SectionDivider type="curve" flip color="#050816" />
+      {/* Bloc 7 : Why Linebet */}
+      <WhyLinebet />
+      <SectionDivider type="curve" flip color="#050816" />
+      {/* Bloc 8 : Social proof (avis) */}
+      <Testimonials />
+      <SectionDivider type="wave" color="#0B1020" />
+      {/* Bloc 9 : Blog */}
+      <BlogSection />
+      <SectionDivider type="curve" flip color="#050816" />
+      {/* Bloc 10 : SEO content */}
+      <SeoBlock />
+      <SectionDivider type="wave" color="#0B1020" />
+      {/* Bloc 11 : Comment ça marche */}
+      <HowItWorks />
       <SectionDivider type="curve" flip color="#050816" />
       {/* Bloc 12 : FAQ */}
       <FaqAccordion />
