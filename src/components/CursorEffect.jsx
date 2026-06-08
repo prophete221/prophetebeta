@@ -1,54 +1,63 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useEffect, useRef, useCallback } from 'react'
 
 export default function CursorEffect() {
-  const [position, setPosition] = useState({ x: -100, y: -100 })
-  const [isVisible, setIsVisible] = useState(false)
-  const [isDesktop, setIsDesktop] = useState(false)
+  const ref = useRef(null)
 
   useEffect(() => {
-    const check = () => setIsDesktop(window.innerWidth >= 768)
-    check()
-    window.addEventListener('resize', check)
-    return () => window.removeEventListener('resize', check)
-  }, [])
+    // Desktop uniquement
+    if (window.innerWidth < 1024) return
 
-  const handleMouseMove = useCallback((e) => {
-    setPosition({ x: e.clientX, y: e.clientY })
-    if (!isVisible) setIsVisible(true)
-  }, [isVisible])
+    const el = ref.current
+    if (!el) return
 
-  const handleMouseLeave = useCallback(() => {
-    setIsVisible(false)
-  }, [])
+    let rafId = null
+    let visible = false
 
-  useEffect(() => {
-    if (!isDesktop) return
-    document.addEventListener('mousemove', handleMouseMove)
-    document.addEventListener('mouseleave', handleMouseLeave)
-    return () => {
-      document.removeEventListener('mousemove', handleMouseMove)
-      document.removeEventListener('mouseleave', handleMouseLeave)
+    const onMove = (e) => {
+      if (rafId) return
+      rafId = requestAnimationFrame(() => {
+        el.style.left = `${e.clientX - 150}px`
+        el.style.top = `${e.clientY - 150}px`
+        if (!visible) {
+          el.style.opacity = '1'
+          visible = true
+        }
+        rafId = null
+      })
     }
-  }, [isDesktop, handleMouseMove, handleMouseLeave])
 
-  if (!isDesktop) return null
+    const onLeave = () => {
+      el.style.opacity = '0'
+      visible = false
+    }
+
+    document.addEventListener('mousemove', onMove, { passive: true })
+    document.addEventListener('mouseleave', onLeave)
+    return () => {
+      document.removeEventListener('mousemove', onMove)
+      document.removeEventListener('mouseleave', onLeave)
+      if (rafId) cancelAnimationFrame(rafId)
+    }
+  }, [])
 
   return (
     <div
+      ref={ref}
       className="cursor-glow"
       style={{
         position: 'fixed',
-        left: position.x - 150,
-        top: position.y - 150,
         width: 300,
         height: 300,
         borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(60, 242, 140, 0.07) 0%, rgba(60, 242, 140, 0.02) 40%, transparent 70%)',
+        background: 'radial-gradient(circle, rgba(60, 242, 140, 0.06) 0%, rgba(60, 242, 140, 0.02) 40%, transparent 70%)',
         pointerEvents: 'none',
         zIndex: 1,
-        opacity: isVisible ? 1 : 0,
+        opacity: 0,
         transition: 'opacity 0.3s ease',
         transform: 'translate3d(0, 0, 0)',
+        willChange: 'left, top',
+        left: -300,
+        top: -300,
       }}
       aria-hidden="true"
     />

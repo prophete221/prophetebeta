@@ -1,82 +1,78 @@
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useEffect, useRef } from 'react'
 
 /**
- * useParallax — Hook for parallax scrolling effect.
- * Returns a ref to attach to the element, and a style object with translateY.
- * @param {number} speed - Parallax speed factor (0 = none, 1 = full scroll, default 0.3)
- * @param {object} options - { direction: 'up' | 'down' }
+ * useParallax — Parallax scroll via transform direct (pas de setState).
+ * Beaucoup plus performant que la version avec useState.
  */
-export function useParallax(speed = 0.3, options = {}) {
-  const { direction = 'up' } = options
+export function useParallax(speed = 0.15) {
   const ref = useRef(null)
-  const [offset, setOffset] = useState(0)
-  const rafId = useRef(null)
-
-  const handleScroll = useCallback(() => {
-    if (rafId.current) return
-    rafId.current = requestAnimationFrame(() => {
-      if (!ref.current) {
-        rafId.current = null
-        return
-      }
-      const rect = ref.current.getBoundingClientRect()
-      const windowHeight = window.innerHeight
-      // Only calculate when element is in or near viewport
-      if (rect.bottom >= -200 && rect.top <= windowHeight + 200) {
-        const scrollY = window.scrollY
-        const elementTop = rect.top + scrollY
-        const relativeScroll = scrollY - elementTop
-        const translateY = relativeScroll * speed * (direction === 'up' ? -1 : 1)
-        setOffset(translateY)
-      }
-      rafId.current = null
-    })
-  }, [speed, direction])
+  const rafRef = useRef(null)
 
   useEffect(() => {
+    const el = ref.current
+    if (!el) return
+
+    const handleScroll = () => {
+      if (rafRef.current) return
+      rafRef.current = requestAnimationFrame(() => {
+        const rect = el.getBoundingClientRect()
+        const windowHeight = window.innerHeight
+        if (rect.bottom >= -200 && rect.top <= windowHeight + 200) {
+          const scrollY = window.scrollY
+          const elementTop = rect.top + scrollY
+          const translateY = (scrollY - elementTop) * speed * -1
+          el.style.transform = `translate3d(0, ${translateY}px, 0)`
+        }
+        rafRef.current = null
+      })
+    }
+
     window.addEventListener('scroll', handleScroll, { passive: true })
     handleScroll()
     return () => {
       window.removeEventListener('scroll', handleScroll)
-      if (rafId.current) cancelAnimationFrame(rafId.current)
+      if (rafRef.current) cancelAnimationFrame(rafRef.current)
     }
-  }, [handleScroll])
+  }, [speed])
 
-  const style = {
-    transform: `translateY(${offset}px)`,
-    willChange: 'transform',
-  }
-
-  return [ref, style]
+  // Retourne juste le ref, le style est appliqué directement sur le DOM
+  return [ref, {}]
 }
 
 /**
- * useParallaxMouse — Hook for mouse-based parallax effect.
- * Returns { containerRef, style } for a subtle mouse-tracking parallax.
- * @param {number} intensity - Movement intensity in px (default 20)
+ * useParallaxMouse — Parallax souris via ref direct (pas de setState).
  */
-export function useParallaxMouse(intensity = 20) {
+export function useParallaxMouse(intensity = 15) {
   const containerRef = useRef(null)
-  const [style, setStyle] = useState({ transform: 'translate(0px, 0px)' })
 
   useEffect(() => {
+    const el = containerRef.current
+    if (!el) return
+
+    let rafId = null
+
     const handleMouseMove = (e) => {
-      if (!containerRef.current) return
-      const rect = containerRef.current.getBoundingClientRect()
-      const centerX = rect.left + rect.width / 2
-      const centerY = rect.top + rect.height / 2
-      const x = (e.clientX - centerX) / window.innerWidth * intensity
-      const y = (e.clientY - centerY) / window.innerHeight * intensity
-      setStyle({
-        transform: `translate(${x}px, ${y}px)`,
-        transition: 'transform 0.3s ease-out',
-        willChange: 'transform',
+      if (rafId) return
+      rafId = requestAnimationFrame(() => {
+        const rect = el.getBoundingClientRect()
+        const centerX = rect.left + rect.width / 2
+        const centerY = rect.top + rect.height / 2
+        const x = (e.clientX - centerX) / window.innerWidth * intensity
+        const y = (e.clientY - centerY) / window.innerHeight * intensity
+        el.style.transform = `translate3d(${x}px, ${y}px, 0)`
+        rafId = null
       })
     }
 
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
+    // Desktop uniquement
+    if (window.innerWidth < 1024) return
+
+    window.addEventListener('mousemove', handleMouseMove, { passive: true })
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove)
+      if (rafId) cancelAnimationFrame(rafId)
+    }
   }, [intensity])
 
-  return { containerRef, style }
+  return { containerRef, style: {} }
 }

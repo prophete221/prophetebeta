@@ -202,7 +202,7 @@ export function JouerResponsable() {
       <p>
         Les paris sportifs comportent des risques financiers réels. Il est important de comprendre que
         même avec des pronostics basés sur l'intelligence artificielle, aucun résultat n'est garanti.
-        Notre taux de précision historique d'environ 68% signifie que près de 32 pronostics sur 100
+        Notre taux de précision historique d'environ 78% signifie que près de 22 pronostics sur 100
         ne se réalisent pas. Les résultats passés ne garantissent en aucun cas les résultats futurs.
         Ne misez jamais plus que ce que vous pouvez vous permettre de perdre.
       </p>

@@ -40,7 +40,7 @@ function HomePage() {
   return (
     <>
       <Helmet>
-        <title>BttsBet – Pronostics BTTS & Over 2,5 | Précision IA ~68%</title>
+        <title>BttsBet – Pronostics BTTS & Over 2,5 | Précision IA ~78%</title>
       </Helmet>
       {/* Bloc 1 : Hero (promesse + preuve rapide + CTA) */}
       <Hero />
