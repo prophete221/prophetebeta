@@ -22,23 +22,20 @@ export default function WinHistory() {
       })
   }, [])
 
-  // Calculer les stats à partir des données réelles (toujours cohérent)
-  const computedStats = useMemo(() => {
-    if (!winData || !winData.history || winData.history.length === 0) return null
-
-    const history = winData.history
-    const total = history.length
-    const won = history.filter(h => h.result === 'Gagné').length
-    const rate = total > 0 ? ((won / total) * 100).toFixed(1) : '0.0'
-
-    // Derniers 30 jours
-    const now = new Date()
-    const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000)
-    const last30 = history.filter(h => new Date(h.date) >= thirtyDaysAgo)
-    const last30Won = last30.filter(h => h.result === 'Gagné').length
-    const last30Rate = last30.length > 0 ? ((last30Won / last30.length) * 100).toFixed(0) : '—'
-
-    return { total, won, rate: `${rate}%`, last30Rate: `${last30Rate}%` }
+  // Utiliser les stats globales du JSON (cohérentes avec les 15 000+ du site)
+  const displayStats = useMemo(() => {
+    if (!winData || !winData.stats) return null
+    const { stats } = winData
+    // Vérification de cohérence mathématique
+    const total = stats.total || 0
+    const won = stats.won || 0
+    const computedRate = total > 0 ? ((won / total) * 100).toFixed(1) : '0.0'
+    return {
+      total,
+      won,
+      rate: `${computedRate}%`,
+      last30Rate: stats.last30Rate || '—',
+    }
   }, [winData])
 
   if (loading) {
@@ -51,7 +48,7 @@ export default function WinHistory() {
     )
   }
 
-  if (!winData || !winData.history || winData.history.length === 0 || !computedStats) {
+  if (!winData || !winData.history || winData.history.length === 0 || !displayStats) {
     return null
   }
 
@@ -84,10 +81,10 @@ export default function WinHistory() {
           className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6"
         >
           {[
-            { value: computedStats.total, label: 'Analysés', color: 'text-white' },
-            { value: computedStats.won, label: 'Gagnants', color: 'text-emerald' },
-            { value: computedStats.rate, label: 'Réussite', color: 'text-emerald' },
-            { value: computedStats.last30Rate, label: '30 jours', color: 'text-gold' },
+            { value: displayStats.total.toLocaleString('fr-FR'), label: 'Analysés', color: 'text-white' },
+            { value: displayStats.won.toLocaleString('fr-FR'), label: 'Gagnants', color: 'text-emerald' },
+            { value: displayStats.rate, label: 'Réussite', color: 'text-emerald' },
+            { value: displayStats.last30Rate, label: '30 jours', color: 'text-gold' },
           ].map((item, i) => (
             <TiltCard key={i} maxTilt={4}>
               <div className="glass-3d rounded-lg p-3 text-center stat-card-animated">
