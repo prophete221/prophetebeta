@@ -45,13 +45,9 @@ const BLOG_ARTICLES = [
   },
 ]
 
-// ─── Pages statiques ───
+// ─── Pages statiques (NO hash URLs — Google ignores # fragments in sitemaps) ───
 const STATIC_PAGES = [
   { path: '/', priority: '1.0', changefreq: 'daily', lastmod: TODAY },
-  { path: '/#free-predictions', priority: '0.9', changefreq: 'daily', lastmod: TODAY },
-  { path: '/#vip', priority: '0.8', changefreq: 'weekly', lastmod: TODAY },
-  { path: '/#bonus', priority: '0.8', changefreq: 'monthly', lastmod: TODAY },
-  { path: '/#faq', priority: '0.6', changefreq: 'monthly', lastmod: TODAY },
   { path: '/blog', priority: '0.8', changefreq: 'weekly', lastmod: TODAY },
   { path: '/mentions-legales', priority: '0.3', changefreq: 'yearly', lastmod: '2026-06-01' },
   { path: '/politique-confidentialite', priority: '0.3', changefreq: 'yearly', lastmod: '2026-06-01' },
@@ -72,8 +68,7 @@ function generateSitemap() {
   let xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
 `
 
@@ -85,6 +80,7 @@ function generateSitemap() {
     <changefreq>${page.changefreq}</changefreq>
     <priority>${page.priority}</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="${SITE_URL}${page.path}"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="${SITE_URL}${page.path}"/>
 `
     if (page.path === '/') {
       xml += `    <image:image>
@@ -97,7 +93,7 @@ function generateSitemap() {
     xml += `  </url>\n\n`
   }
 
-  // Articles du blog
+  // Articles du blog (NO news:news — not in Google News, causes GSC errors)
   for (const article of BLOG_ARTICLES) {
     xml += `  <url>
     <loc>${SITE_URL}/blog/${article.slug}</loc>
@@ -105,14 +101,11 @@ function generateSitemap() {
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="${SITE_URL}/blog/${article.slug}"/>
-    <news:news>
-      <news:publication>
-        <news:name>BttsBet</news:name>
-        <news:language>fr</news:language>
-      </news:publication>
-      <news:publication_date>${article.date}</news:publication_date>
-      <news:title>${escapeXml(article.title)}</news:title>
-    </news:news>
+    <xhtml:link rel="alternate" hreflang="x-default" href="${SITE_URL}/blog/${article.slug}"/>
+    <image:image>
+      <image:loc>${SITE_URL}/og-image.png</image:loc>
+      <image:title>${escapeXml(article.title)}</image:title>
+    </image:image>
   </url>\n\n`
   }
 

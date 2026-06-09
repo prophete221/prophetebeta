@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Helmet } from 'react-helmet-async'
 import { BLOG_ARTICLES, AFFILIATE, SITE } from '../data/constants'
@@ -29,11 +29,47 @@ export default function BlogArticlePage() {
       <Helmet>
         <title>{article.title} | {SITE.name}</title>
         <meta name="description" content={article.metaDescription} />
+        <link rel="canonical" href={`${SITE.url}/blog/${article.slug}`} />
         <meta property="og:title" content={article.title} />
         <meta property="og:description" content={article.excerpt} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={`${SITE.url}/blog/${article.slug}`} />
-        <link rel="canonical" href={`${SITE.url}/blog/${article.slug}`} />
+        <meta property="og:image" content={`${SITE.url}/og-image.png`} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="article:published_time" content={article.date} />
+        <meta property="article:modified_time" content={article.date} />
+        <meta property="article:section" content={article.category} />
+        <meta property="article:author" content={SITE.name} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={article.title} />
+        <meta name="twitter:description" content={article.excerpt} />
+        <meta name="twitter:image" content={`${SITE.url}/og-image.png`} />
+        {/* BlogPosting Schema — per-page structured data */}
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          "headline": article.title,
+          "description": article.metaDescription,
+          "datePublished": article.date,
+          "dateModified": article.date,
+          "author": { "@type": "Organization", "name": "BttsBet" },
+          "publisher": { "@type": "Organization", "name": "BttsBet", "logo": { "@type": "ImageObject", "url": `${SITE.url}/logo.png` } },
+          "url": `${SITE.url}/blog/${article.slug}`,
+          "mainEntityOfPage": `${SITE.url}/blog/${article.slug}`,
+          "inLanguage": "fr",
+          "articleSection": article.category
+        })}</script>
+        {/* BreadcrumbList Schema */}
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Accueil", "item": SITE.url },
+            { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${SITE.url}/blog` },
+            { "@type": "ListItem", "position": 3, "name": article.title, "item": `${SITE.url}/blog/${article.slug}` }
+          ]
+        })}</script>
       </Helmet>
 
       <div className="min-h-screen pt-8 pb-20 px-4">
@@ -119,13 +155,13 @@ export default function BlogArticlePage() {
               >
                 Réclamer le Bonus
               </a>
-              <a
-                href="/#/"
-                onClick={(e) => { e.preventDefault(); window.location.hash = '#/'; setTimeout(() => document.getElementById('free-predictions')?.scrollIntoView({ behavior: 'smooth' }), 300) }}
+              <Link
+                to="/"
+                onClick={() => { setTimeout(() => document.getElementById('free-predictions')?.scrollIntoView({ behavior: 'smooth' }), 300) }}
                 className="px-8 py-3 glass text-emerald font-bold rounded-full hover:bg-emerald/10 transition-all"
               >
                 Voir les Pronostics
-              </a>
+              </Link>
             </div>
           </motion.div>
 

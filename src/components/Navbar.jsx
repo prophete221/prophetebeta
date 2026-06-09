@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { NAV_LINKS, SITE, AFFILIATE } from '../data/constants'
 
@@ -6,7 +7,6 @@ function scrollToSelector(selector) {
   const el = document.getElementById(selector)
   if (el) {
     el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    // Offset for sticky navbar
     setTimeout(() => {
       window.scrollBy({ top: -64, behavior: 'smooth' })
     }, 400)
@@ -16,6 +16,8 @@ function scrollToSelector(selector) {
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const location = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50)
@@ -23,12 +25,13 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  const isHomePage = location.pathname === '/'
+
   const handleNavClick = (e, link) => {
     if (link.scrollTarget) {
       e.preventDefault()
-      // If not on home page, navigate there first
-      if (window.location.hash !== '#/' && window.location.hash !== '#' && window.location.hash !== '') {
-        window.location.hash = '#/'
+      if (!isHomePage) {
+        navigate('/')
         setTimeout(() => scrollToSelector(link.scrollTarget), 300)
       } else {
         scrollToSelector(link.scrollTarget)
@@ -53,10 +56,9 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <a
-              href="/#/"
+              href="/"
               onClick={(e) => {
-                // If already on home, just scroll to top
-                if (window.location.hash === '#/' || window.location.hash === '#' || window.location.hash === '') {
+                if (isHomePage) {
                   e.preventDefault()
                   window.scrollTo({ top: 0, behavior: 'smooth' })
                 }
@@ -81,8 +83,9 @@ export default function Navbar() {
               {NAV_LINKS.map((link) => (
                 <a
                   key={link.label}
-                  href={link.href || '#'}
+                  href={link.href || '/'}
                   onClick={(e) => handleNavClick(e, link)}
+                  aria-current={link.href === '/' && isHomePage ? 'page' : undefined}
                   className="text-gray-400 hover:text-emerald transition-colors text-sm font-medium relative group cursor-pointer"
                 >
                   {link.label}
@@ -133,7 +136,7 @@ export default function Navbar() {
                 {NAV_LINKS.map((link) => (
                   <a
                     key={link.label}
-                    href={link.href || '#'}
+                    href={link.href || '/'}
                     onClick={(e) => handleNavClick(e, link)}
                     className="block text-gray-300 hover:text-emerald transition-colors font-medium py-3 px-3 rounded-lg hover:bg-white/5 cursor-pointer"
                     role="menuitem"

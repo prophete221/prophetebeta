@@ -86,7 +86,7 @@ function NotFoundPage() {
           <p className="text-xl text-gray-400 mb-2">Page non trouvée</p>
           <p className="text-gray-500 mb-8">La page que vous recherchez n'existe pas ou a été déplacée.</p>
           <a
-            href="/#/"
+            href="/"
             className="px-8 py-3 bg-gradient-to-r from-emerald to-emerald-dark text-midnight font-bold rounded-full hover:shadow-lg hover:shadow-emerald/30 transition-all"
           >
             Retour à l'accueil
@@ -119,7 +119,7 @@ export default function App() {
         <CursorEffect />
 
         {/* Main Content */}
-        <div id="main-content" className="relative z-10">
+        <main id="main-content" className="relative z-10">
           <Navbar />
           <Suspense fallback={<PageLoader />}>
             <Routes>
@@ -134,7 +134,7 @@ export default function App() {
             </Routes>
           </Suspense>
           <Footer />
-        </div>
+        </main>
 
         {/* Age Verification Modal (18+) */}
         <AgeVerification />

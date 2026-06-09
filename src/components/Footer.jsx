@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { SITE, AFFILIATE, LEGAL, FAQ_ITEMS } from '../data/constants'
 
@@ -11,6 +11,9 @@ function reopenCookieSettings() {
 
 export default function Footer() {
   const [openFaq, setOpenFaq] = useState(null)
+  const navigate = useNavigate()
+  const location = useLocation()
+  const isHomePage = location.pathname === '/'
 
   return (
     <>
@@ -108,10 +111,10 @@ export default function Footer() {
             <div>
               <h4 className="text-white font-bold text-xs uppercase tracking-wider mb-3">Navigation</h4>
               <ul className="space-y-1.5 text-xs">
-                <li><a href="/#/" className="text-gray-500 hover:text-emerald transition-colors">Accueil</a></li>
-                <li><a href="#" onClick={(e) => { e.preventDefault(); document.getElementById('free-predictions')?.scrollIntoView({ behavior: 'smooth' }) }} className="text-gray-500 hover:text-emerald transition-colors">Pronostics</a></li>
-                <li><a href="#" onClick={(e) => { e.preventDefault(); document.getElementById('vip')?.scrollIntoView({ behavior: 'smooth' }) }} className="text-gray-500 hover:text-emerald transition-colors">VIP</a></li>
-                <li><a href="#" onClick={(e) => { e.preventDefault(); document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' }) }} className="text-gray-500 hover:text-emerald transition-colors">FAQ</a></li>
+                <li><Link to="/" className="text-gray-500 hover:text-emerald transition-colors">Accueil</Link></li>
+                <li><Link to="/" onClick={() => { if (location.pathname === '/') { document.getElementById('free-predictions')?.scrollIntoView({ behavior: 'smooth' }) } else { navigate('/'); setTimeout(() => document.getElementById('free-predictions')?.scrollIntoView({ behavior: 'smooth' }), 300) }}} className="text-gray-500 hover:text-emerald transition-colors">Pronostics</Link></li>
+                <li><Link to="/" onClick={() => { if (location.pathname === '/') { document.getElementById('vip')?.scrollIntoView({ behavior: 'smooth' }) }}} className="text-gray-500 hover:text-emerald transition-colors">VIP</Link></li>
+                <li><Link to="/" onClick={() => { if (location.pathname === '/') { document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' }) }}} className="text-gray-500 hover:text-emerald transition-colors">FAQ</Link></li>
               </ul>
             </div>
 

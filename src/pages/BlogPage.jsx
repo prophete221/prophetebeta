@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { BLOG_ARTICLES } from '../data/constants'
+import { Helmet } from 'react-helmet-async'
+import { BLOG_ARTICLES, SITE } from '../data/constants'
 
 export default function BlogPage() {
   const [selectedCategory, setSelectedCategory] = useState('Tous')
@@ -12,6 +13,23 @@ export default function BlogPage() {
     : BLOG_ARTICLES.filter((a) => a.category === selectedCategory)
 
   return (
+    <>
+      <Helmet>
+        <title>Blog & Stratégies BTTS, Over 2.5 | {SITE.name}</title>
+        <meta name="description" content="Articles de fond sur les paris BTTS, Over 2.5, gestion de bankroll et stratégies avancées. Guides complets par l'IA BttsBet." />
+        <link rel="canonical" href={`${SITE.url}/blog`} />
+        <meta property="og:title" content={`Blog & Stratégies | ${SITE.name}`} />
+        <meta property="og:description" content="Guides complets sur les paris BTTS, Over 2.5 et gestion de bankroll." />
+        <meta property="og:url" content={`${SITE.url}/blog`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={`${SITE.url}/og-image.png`} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`Blog & Stratégies | ${SITE.name}`} />
+        <meta name="twitter:description" content="Guides complets sur les paris BTTS, Over 2.5 et gestion de bankroll." />
+        <meta name="twitter:image" content={`${SITE.url}/og-image.png`} />
+      </Helmet>
     <div className="min-h-screen pt-8 pb-20 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
@@ -94,5 +112,6 @@ export default function BlogPage() {
         </div>
       </div>
     </div>
+    </>
   )
 }
