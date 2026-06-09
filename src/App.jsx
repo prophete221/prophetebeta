@@ -12,7 +12,6 @@ import FloatingElements from './components/FloatingElements'
 import ErrorBoundary from './components/ErrorBoundary'
 import CookieConsent from './components/CookieConsent'
 import AgeVerification from './components/AgeVerification'
-import { MentionsLegales, PolitiqueConfidentialite, JouerResponsable, CGU } from './pages/LegalPages'
 
 // Lazy-loaded 3D Scene (desktop only, with fallback)
 const Scene3D = lazy(() => import('./components/Scene3D'))
@@ -20,6 +19,11 @@ const Scene3D = lazy(() => import('./components/Scene3D'))
 // Lazy-loaded pages (code splitting)
 const BlogPage = lazy(() => import('./pages/BlogPage'))
 const BlogArticlePage = lazy(() => import('./pages/BlogArticlePage'))
+const LegalPages = lazy(() => import('./pages/LegalPages'))
+const MentionsLegales = lazy(() => import('./pages/LegalPages').then(m => ({ default: m.MentionsLegales })))
+const PolitiqueConfidentialite = lazy(() => import('./pages/LegalPages').then(m => ({ default: m.PolitiqueConfidentialite })))
+const JouerResponsable = lazy(() => import('./pages/LegalPages').then(m => ({ default: m.JouerResponsable })))
+const CGU = lazy(() => import('./pages/LegalPages').then(m => ({ default: m.CGU })))
 
 // Loading fallback
 function PageLoader() {
@@ -59,7 +63,7 @@ function HomePage() {
   return (
     <>
       <Helmet>
-        <title>BttsBet – Pronostics BTTS & Over 2,5 | Précision IA ~78%</title>
+        <title>BttsBet – Pronostics BTTS & Over 2,5 | Précision IA ~68%</title>
       </Helmet>
       {/* Zone 1 : Hero — compact, bold, sportif */}
       <Hero />

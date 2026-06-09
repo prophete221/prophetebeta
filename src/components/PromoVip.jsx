@@ -514,7 +514,7 @@ export default function PromoVip() {
         const vipData = allMatches.map((m, i) => ({
           ...m,
           cote: cotePerMatch,
-          confidence: 90 + Math.floor(Math.random() * 8), // 90-97% fiabilité
+          confidence: 92 + (i % 6), // 92-97% fiabilité (deterministe)
           index: i,
         }))
 

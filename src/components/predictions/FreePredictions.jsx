@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useScrollAnimation } from '../../hooks/useAnimations'
 import { AFFILIATE } from '../../data/constants'
+import { resolveTeamLogo } from '../../utils/teamLogos'
 
 // ─── V20: Team Logo Component with fallback to initials ───
 function TeamLogo({ src, initials, size = 'sm', color = 'emerald' }) {
@@ -51,50 +52,7 @@ function TeamLogo({ src, initials, size = 'sm', color = 'emerald' }) {
   )
 }
 
-// ─── V20: Frontend logo resolver for national teams (flagcdn.com fallback) ───
-const COUNTRY_CODE_MAP = {
-  'argentina': 'ar', 'brazil': 'br', 'germany': 'de', 'france': 'fr',
-  'spain': 'es', 'italy': 'it', 'england': 'gb-eng', 'portugal': 'pt',
-  'netherlands': 'nl', 'belgium': 'be', 'croatia': 'hr', 'morocco': 'ma',
-  'japan': 'jp', 'south korea': 'kr', 'united states': 'us', 'mexico': 'mx',
-  'canada': 'ca', 'costa rica': 'cr', 'saudi arabia': 'sa',
-  'iran': 'ir', 'iraq': 'iq', 'qatar': 'qa', 'uae': 'ae',
-  'uruguay': 'uy', 'paraguay': 'py', 'colombia': 'co', 'ecuador': 'ec',
-  'peru': 'pe', 'venezuela': 've', 'chile': 'cl', 'bolivia': 'bo',
-  'tanzania': 'tz', 'rwanda': 'rw', 'senegal': 'sn', 'nigeria': 'ng',
-  'ivory coast': 'ci', 'ghana': 'gh', 'cameroon': 'cm', 'egypt': 'eg',
-  'tunisia': 'tn', 'algeria': 'dz', 'south africa': 'za',
-  'scotland': 'gb-sct', 'wales': 'gb-wls', 'iceland': 'is',
-  'sweden': 'se', 'norway': 'no', 'denmark': 'dk', 'finland': 'fi',
-  'switzerland': 'ch', 'austria': 'at', 'czechia': 'cz', 'czech republic': 'cz',
-  'poland': 'pl', 'romania': 'ro', 'hungary': 'hu', 'serbia': 'rs',
-  'greece': 'gr', 'turkey': 'tr', 'türkiye': 'tr', 'russia': 'ru',
-  'ukraine': 'ua', 'ireland': 'ie', 'bosnia-herzegovina': 'ba',
-  'new zealand': 'nz', 'australia': 'au', 'haiti': 'ht',
-  'cape verde': 'cv', 'curaçao': 'cw', 'suriname': 'sr',
-  'jamaica': 'jm', 'panama': 'pa', 'honduras': 'hn',
-  'guinea': 'gn', 'mali': 'ml', 'burkina faso': 'bf',
-  'dr congo': 'cd', 'gabon': 'ga', 'congo': 'cg',
-  'china': 'cn', 'thailand': 'th', 'vietnam': 'vn', 'india': 'in',
-  'indonesia': 'id', 'malaysia': 'my', 'philippines': 'ph',
-}
 
-function resolveTeamLogoFrontend(teamName) {
-  if (!teamName) return ''
-  const normalized = teamName.toLowerCase()
-    .replace(/[àáâãäå]/g, 'a').replace(/[èéêë]/g, 'e').replace(/[ìíîï]/g, 'i')
-    .replace(/[òóôõö]/g, 'o').replace(/[ùúûü]/g, 'u').replace(/ñ/g, 'n')
-    .replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, ' ').trim()
-  // Direct match
-  if (COUNTRY_CODE_MAP[normalized]) return `https://flagcdn.com/w40/${COUNTRY_CODE_MAP[normalized]}.png`
-  // Partial match
-  for (const [name, code] of Object.entries(COUNTRY_CODE_MAP)) {
-    if (normalized.includes(name) || name.includes(normalized)) {
-      return `https://flagcdn.com/w40/${code}.png`
-    }
-  }
-  return ''
-}
 
 function formatDateShort(dateStr) {
   if (!dateStr) return ''
@@ -214,8 +172,8 @@ function MatchRow({ match, index, isVisible }) {
   const initials2 = team2.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase()
 
   // V20: Extract logo URLs from match data, with frontend fallback
-  const homeLogo = match.homeLogo || resolveTeamLogoFrontend(team1)
-  const awayLogo = match.awayLogo || resolveTeamLogoFrontend(team2)
+  const homeLogo = match.homeLogo || resolveTeamLogo(team1)
+  const awayLogo = match.awayLogo || resolveTeamLogo(team2)
 
   return (
     <motion.div

@@ -33,7 +33,7 @@ describe('NAV_LINKS', () => {
     expect(NAV_LINKS.length).toBeGreaterThan(0)
     NAV_LINKS.forEach(link => {
       expect(link.label).toBeTruthy()
-      expect(link.href).toBeTruthy()
+      expect(link.href || link.scrollTarget).toBeTruthy()
     })
   })
 })

@@ -1,4 +1,4 @@
-import { useRef, useMemo, useState, useEffect } from 'react'
+import { useRef, useMemo } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 
@@ -55,19 +55,8 @@ function ParticleField({ count = 200 }) {
   )
 }
 
-// ─── Main Component (Desktop Only, lazy + reduced) ───
+// ─── Main Component (Desktop Only — wrapper already filters by screen size) ───
 export default function Scene3D() {
-  const [isDesktop, setIsDesktop] = useState(false)
-
-  useEffect(() => {
-    const check = () => setIsDesktop(window.innerWidth >= 1024)
-    check()
-    window.addEventListener('resize', check)
-    return () => window.removeEventListener('resize', check)
-  }, [])
-
-  if (!isDesktop) return null
-
   return (
     <div className="fixed inset-0 z-0" style={{ pointerEvents: 'none' }}>
       <Canvas
