@@ -116,6 +116,44 @@
       }
     },
     {
+      "match": "DR Congo vs Chile",
+      "league": "International Friendly",
+      "date": "2026-06-09",
+      "type": "BTTS",
+      "prediction": "Oui",
+      "confidence": 47,
+      "time": "17:00",
+      "matchSemantic": "dr -chi-in-btts",
+      "source": "poisson",
+      "analysis": {
+        "bttsProb": 0.53,
+        "over25Prob": 0.54,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "DR Congo vs Chile",
+      "league": "International Friendly",
+      "date": "2026-06-09",
+      "type": "Over 2.5",
+      "prediction": "Oui",
+      "confidence": 47,
+      "time": "17:00",
+      "matchSemantic": "dr -chi-in-o25",
+      "source": "poisson",
+      "analysis": {
+        "bttsProb": 0.53,
+        "over25Prob": 0.54,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
       "match": "Russia vs Trinidad",
       "league": "International Friendly",
       "date": "2026-06-09",
@@ -876,77 +914,39 @@
       }
     },
     {
-      "match": "United States vs Paraguay",
-      "league": "International Friendly",
+      "match": "Coquimbo Unido vs O'Higgins",
+      "league": "Primera Division (CHI)",
       "date": "2026-06-13",
       "type": "BTTS",
       "prediction": "Oui",
-      "confidence": 47,
-      "time": "03:00",
-      "matchSemantic": "uni-par-in-btts",
+      "confidence": 51,
+      "time": "18:30",
+      "matchSemantic": "coq-ohi-pr-btts",
       "source": "poisson",
       "analysis": {
-        "bttsProb": 0.52,
-        "over25Prob": 0.53,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
+        "bttsProb": 0.71,
+        "over25Prob": 0.85,
+        "homeLambda": 1.49,
+        "awayLambda": 2.33,
         "dataQuality": 0,
         "hasRealData": false
       }
     },
     {
-      "match": "United States vs Paraguay",
-      "league": "International Friendly",
+      "match": "Coquimbo Unido vs O'Higgins",
+      "league": "Primera Division (CHI)",
       "date": "2026-06-13",
       "type": "Over 2.5",
       "prediction": "Oui",
-      "confidence": 47,
-      "time": "03:00",
-      "matchSemantic": "uni-par-in-o25",
+      "confidence": 51,
+      "time": "18:30",
+      "matchSemantic": "coq-ohi-pr-o25",
       "source": "poisson",
       "analysis": {
-        "bttsProb": 0.52,
-        "over25Prob": 0.53,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
-      "match": "Qatar vs Switzerland",
-      "league": "International Friendly",
-      "date": "2026-06-13",
-      "type": "BTTS",
-      "prediction": "Oui",
-      "confidence": 47,
-      "time": "21:00",
-      "matchSemantic": "qat-swi-in-btts",
-      "source": "poisson",
-      "analysis": {
-        "bttsProb": 0.54,
-        "over25Prob": 0.55,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
-      "match": "Qatar vs Switzerland",
-      "league": "International Friendly",
-      "date": "2026-06-13",
-      "type": "Over 2.5",
-      "prediction": "Oui",
-      "confidence": 47,
-      "time": "21:00",
-      "matchSemantic": "qat-swi-in-o25",
-      "source": "poisson",
-      "analysis": {
-        "bttsProb": 0.54,
-        "over25Prob": 0.55,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
+        "bttsProb": 0.71,
+        "over25Prob": 0.85,
+        "homeLambda": 1.49,
+        "awayLambda": 2.33,
         "dataQuality": 0,
         "hasRealData": false
       }
