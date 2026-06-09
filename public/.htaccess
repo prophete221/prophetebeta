@@ -2,6 +2,14 @@
   RewriteEngine On
   RewriteBase /
 
+  # ─── Remove old PWA files: return 410 Gone ───
+  RewriteRule ^sw\.js$ - [G,L]
+  RewriteRule ^workbox-.*\.js$ - [G,L]
+  RewriteRule ^manifest\.webmanifest$ - [G,L]
+  RewriteRule ^pwa-.*\.png$ - [G,L]
+  RewriteRule ^maskable-icon-.*\.png$ - [G,L]
+  RewriteRule ^apple-touch-icon\.png$ - [G,L]
+
   # SPA fallback — redirect all non-file requests to index.html
   RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
@@ -35,6 +43,13 @@
   Header set X-XSS-Protection "1; mode=block"
   Header set Referrer-Policy "strict-origin-when-cross-origin"
   Header set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+
+  # ─── Force no-cache for HTML so old service worker is replaced ───
+  <FilesMatch "\.(html)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
 </IfModule>
 
 # Gzip compression
