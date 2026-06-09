@@ -12,7 +12,8 @@ import FloatingElements from './components/FloatingElements'
 import ErrorBoundary from './components/ErrorBoundary'
 import CookieConsent from './components/CookieConsent'
 import AgeVerification from './components/AgeVerification'
-import { MentionsLegales, PolitiqueConfidentialite, JouerResponsable, CGU } from './pages/LegalPages'
+import PwaInstallPrompt from './components/PwaInstallPrompt'
+import { LoginPage, RegisterPage, ProfilePage } from './pages/AuthPages'
 
 // Lazy-loaded 3D Scene (desktop only, with fallback)
 const Scene3D = lazy(() => import('./components/Scene3D'))
@@ -126,6 +127,9 @@ export default function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/blog" element={<BlogPage />} />
               <Route path="/blog/:slug" element={<BlogArticlePage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/register" element={<RegisterPage />} />
+              <Route path="/profile" element={<ProfilePage />} />
               <Route path="/mentions-legales" element={<MentionsLegales />} />
               <Route path="/politique-confidentialite" element={<PolitiqueConfidentialite />} />
               <Route path="/jouer-responsable" element={<JouerResponsable />} />
@@ -141,6 +145,9 @@ export default function App() {
 
         {/* Cookie Consent Banner (RGPD) */}
         <CookieConsent />
+
+        {/* PWA Install Prompt */}
+        <PwaInstallPrompt />
       </div>
     </ErrorBoundary>
   )
