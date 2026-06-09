@@ -20,6 +20,13 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: 'true'
+
+      - name: Run scraper (generate latest predictions with real dates)
+        run: node scripts/scraper.js
+        env:
+          API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
 
       - name: Build project
         run: npm run build
@@ -32,3 +39,11 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
           dangerous-clean-slate: true
+
+      - name: Commit and push updated prediction data
+        run: |
+          git config --local user.email "bot@bttsbet.online"
+          git config --local user.name "BttsBet Bot"
+          git add public/predictions.json public/win-history.json public/predictions-archive/
+          git diff --staged --quiet || git commit -m "chore: update predictions with real dates [skip ci]"
+          git push || echo "Git push skipped"
