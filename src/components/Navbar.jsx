@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { NAV_LINKS, SITE, AFFILIATE } from '../data/constants'
-import { useAuth } from '../contexts/AuthContext'
 
 function scrollToSelector(selector) {
   const el = document.getElementById(selector)
@@ -19,7 +18,6 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const location = useLocation()
   const navigate = useNavigate()
-  const { user, isVip, logout } = useAuth()
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50)
@@ -40,11 +38,6 @@ export default function Navbar() {
       }
     }
     setIsOpen(false)
-  }
-
-  const handleLogout = async () => {
-    await logout()
-    navigate('/')
   }
 
   return (
@@ -100,28 +93,6 @@ export default function Navbar() {
                 </a>
               ))}
 
-              {/* Auth section */}
-              {user ? (
-                <div className="flex items-center gap-3">
-                  <a
-                    href="/profile"
-                    className="flex items-center gap-2 text-sm text-gray-300 hover:text-white transition-colors"
-                  >
-                    <div className={`w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs ${isVip ? 'bg-gold/20 text-gold border border-gold/20' : 'bg-emerald/15 text-emerald border border-emerald/20'}`}>
-                      {user.displayName?.charAt(0)?.toUpperCase() || user.email?.charAt(0)?.toUpperCase() || '?'}
-                    </div>
-                    <span className="hidden lg:inline max-w-[80px] truncate">{user.displayName || 'Profil'}</span>
-                  </a>
-                </div>
-              ) : (
-                <a
-                  href="/login"
-                  className="text-gray-400 hover:text-emerald transition-colors text-sm font-medium cursor-pointer"
-                >
-                  Connexion
-                </a>
-              )}
-
               <a
                 href={AFFILIATE.linebet}
                 rel={AFFILIATE.rel}
@@ -134,20 +105,6 @@ export default function Navbar() {
 
             {/* Mobile Toggle */}
             <div className="flex items-center gap-2 md:hidden">
-              {/* Mobile user avatar */}
-              {user ? (
-                <a href="/profile" className="p-1">
-                  <div className={`w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs ${isVip ? 'bg-gold/20 text-gold' : 'bg-emerald/15 text-emerald'}`}>
-                    {user.displayName?.charAt(0)?.toUpperCase() || '?'}
-                  </div>
-                </a>
-              ) : (
-                <a href="/login" className="p-2 text-gray-400 hover:text-white transition-colors" aria-label="Connexion">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/>
-                  </svg>
-                </a>
-              )}
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="text-gray-300 hover:text-white p-2"
@@ -190,50 +147,6 @@ export default function Navbar() {
                     {link.label}
                   </a>
                 ))}
-
-                {/* Auth links in mobile menu */}
-                {user ? (
-                  <>
-                    <a
-                      href="/profile"
-                      onClick={() => setIsOpen(false)}
-                      className="block text-gray-300 hover:text-emerald transition-colors font-medium py-3 px-3 rounded-lg hover:bg-white/5 cursor-pointer"
-                      role="menuitem"
-                    >
-                      <span className="flex items-center gap-2">
-                        <div className={`w-5 h-5 rounded-full flex items-center justify-center font-bold text-[10px] ${isVip ? 'bg-gold/20 text-gold' : 'bg-emerald/15 text-emerald'}`}>
-                          {user.displayName?.charAt(0)?.toUpperCase() || '?'}
-                        </div>
-                        Mon Profil {isVip ? '(VIP)' : ''}
-                      </span>
-                    </a>
-                    <button
-                      onClick={handleLogout}
-                      className="block w-full text-left text-red-400 hover:text-red-300 transition-colors font-medium py-3 px-3 rounded-lg hover:bg-white/5 cursor-pointer"
-                    >
-                      Déconnexion
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <a
-                      href="/login"
-                      onClick={() => setIsOpen(false)}
-                      className="block text-gray-300 hover:text-emerald transition-colors font-medium py-3 px-3 rounded-lg hover:bg-white/5 cursor-pointer"
-                      role="menuitem"
-                    >
-                      Connexion
-                    </a>
-                    <a
-                      href="/register"
-                      onClick={() => setIsOpen(false)}
-                      className="block text-emerald hover:text-emerald-light transition-colors font-medium py-3 px-3 rounded-lg hover:bg-white/5 cursor-pointer"
-                      role="menuitem"
-                    >
-                      Créer un compte
-                    </a>
-                  </>
-                )}
 
                 <div className="pt-3 space-y-2 border-t border-white/5 mt-2">
                   <a
