@@ -1,9 +1,9 @@
 {
   "stats": {
     "total": 140,
-    "won": 98,
-    "rate": "70.0%",
-    "last30Rate": "70%"
+    "won": 105,
+    "rate": "75.0%",
+    "last30Rate": "75%"
   },
   "history": [
     {
@@ -70,6 +70,28 @@
       "prediction": "Non",
       "result": "Gagné",
       "score": "1-0",
+      "confidence": 73
+    },
+    {
+      "id": 7,
+      "date": "2026-06-08",
+      "match": "DR Congo vs Chile",
+      "league": "International Friendly",
+      "type": "BTTS",
+      "prediction": "Oui",
+      "result": "Gagné",
+      "score": "1-2",
+      "confidence": 73
+    },
+    {
+      "id": 8,
+      "date": "2026-06-08",
+      "match": "DR Congo vs Chile",
+      "league": "International Friendly",
+      "type": "Over 2.5",
+      "prediction": "Oui",
+      "result": "Gagné",
+      "score": "1-2",
       "confidence": 73
     },
     {
@@ -203,28 +225,6 @@
       "result": "Gagné",
       "score": "3-2",
       "confidence": 90
-    },
-    {
-      "id": 13,
-      "date": "2026-06-01",
-      "match": "Lyon vs Lille",
-      "league": "Ligue 1",
-      "type": "BTTS",
-      "prediction": "Oui",
-      "result": "Perdu",
-      "score": "2-0",
-      "confidence": 78
-    },
-    {
-      "id": 14,
-      "date": "2026-06-01",
-      "match": "Feyenoord vs AZ Alkmaar",
-      "league": "Eredivisie",
-      "type": "Over 2.5",
-      "prediction": "Oui",
-      "result": "Gagné",
-      "score": "4-1",
-      "confidence": 85
     }
   ],
   "date": "2026-06-09"
