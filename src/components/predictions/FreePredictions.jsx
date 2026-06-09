@@ -402,7 +402,7 @@ export default function FreePredictions() {
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-5">
             <div>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-1" style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: '0.04em' }}>
-                PRONOSTICS <span className="text-emerald">DU JOUR</span>
+                PRONOSTICS <span className="text-emerald">IA</span>
               </h2>
               <p className="text-gray-500 text-sm">Sélection IA — matchs des 7 prochains jours</p>
             </div>

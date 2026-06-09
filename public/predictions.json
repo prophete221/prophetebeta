@@ -9,7 +9,7 @@
       "prediction": "Oui",
       "confidence": 48,
       "time": "17:00",
-      "matchSemantic": "tan-rwa-in-btts",
+      "matchSemantic": "tanz-rwan-int-btts",
       "source": "poisson",
       "analysis": {
         "bttsProb": 0.56,
@@ -28,87 +28,11 @@
       "prediction": "Oui",
       "confidence": 48,
       "time": "17:00",
-      "matchSemantic": "tan-rwa-in-o25",
+      "matchSemantic": "tanz-rwan-int-o25",
       "source": "poisson",
       "analysis": {
         "bttsProb": 0.56,
         "over25Prob": 0.56,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
-      "match": "Armenia vs Moldova",
-      "league": "International Friendly",
-      "date": "2026-06-09",
-      "type": "BTTS",
-      "prediction": "Oui",
-      "confidence": 47,
-      "time": "16:00",
-      "matchSemantic": "arm-mol-in-btts",
-      "source": "poisson",
-      "analysis": {
-        "bttsProb": 0.52,
-        "over25Prob": 0.53,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
-      "match": "Armenia vs Moldova",
-      "league": "International Friendly",
-      "date": "2026-06-09",
-      "type": "Over 2.5",
-      "prediction": "Oui",
-      "confidence": 47,
-      "time": "16:00",
-      "matchSemantic": "arm-mol-in-o25",
-      "source": "poisson",
-      "analysis": {
-        "bttsProb": 0.52,
-        "over25Prob": 0.53,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
-      "match": "Azerbaijan vs San Marino",
-      "league": "International Friendly",
-      "date": "2026-06-09",
-      "type": "BTTS",
-      "prediction": "Oui",
-      "confidence": 47,
-      "time": "19:00",
-      "matchSemantic": "aze-san-in-btts",
-      "source": "poisson",
-      "analysis": {
-        "bttsProb": 0.53,
-        "over25Prob": 0.54,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
-      "match": "Azerbaijan vs San Marino",
-      "league": "International Friendly",
-      "date": "2026-06-09",
-      "type": "Over 2.5",
-      "prediction": "Oui",
-      "confidence": 47,
-      "time": "19:00",
-      "matchSemantic": "aze-san-in-o25",
-      "source": "poisson",
-      "analysis": {
-        "bttsProb": 0.53,
-        "over25Prob": 0.54,
         "homeLambda": 1.54,
         "awayLambda": 1.08,
         "dataQuality": 0,
@@ -123,7 +47,7 @@
       "prediction": "Oui",
       "confidence": 47,
       "time": "--:--",
-      "matchSemantic": "sau-sen-in-btts",
+      "matchSemantic": "saud-sene-int-btts",
       "source": "poisson",
       "analysis": {
         "bttsProb": 0.51,
@@ -142,7 +66,7 @@
       "prediction": "Oui",
       "confidence": 47,
       "time": "--:--",
-      "matchSemantic": "sau-sen-in-o25",
+      "matchSemantic": "saud-sene-int-o25",
       "source": "poisson",
       "analysis": {
         "bttsProb": 0.51,
@@ -161,7 +85,7 @@
       "prediction": "Oui",
       "confidence": 47,
       "time": "02:00",
-      "matchSemantic": "arg-ice-in-btts",
+      "matchSemantic": "arge-icel-int-btts",
       "source": "poisson",
       "analysis": {
         "bttsProb": 0.51,
@@ -180,7 +104,7 @@
       "prediction": "Oui",
       "confidence": 47,
       "time": "02:00",
-      "matchSemantic": "arg-ice-in-o25",
+      "matchSemantic": "arge-icel-int-o25",
       "source": "poisson",
       "analysis": {
         "bttsProb": 0.51,
@@ -199,7 +123,7 @@
       "prediction": "Oui",
       "confidence": 47,
       "time": "02:00",
-      "matchSemantic": "ira-ven-in-btts",
+      "matchSemantic": "iraq-vene-int-btts",
       "source": "poisson",
       "analysis": {
         "bttsProb": 0.54,
@@ -218,7 +142,7 @@
       "prediction": "Oui",
       "confidence": 47,
       "time": "02:00",
-      "matchSemantic": "ira-ven-in-o25",
+      "matchSemantic": "iraq-vene-int-o25",
       "source": "poisson",
       "analysis": {
         "bttsProb": 0.54,
@@ -237,7 +161,7 @@
       "prediction": "Non",
       "confidence": 47,
       "time": "20:45",
-      "matchSemantic": "por-nig-in-btts",
+      "matchSemantic": "port-nige-int-btts",
       "source": "poisson",
       "analysis": {
         "bttsProb": 0.42,
@@ -256,7 +180,7 @@
       "prediction": "Non",
       "confidence": 47,
       "time": "20:45",
-      "matchSemantic": "por-nig-in-o25",
+      "matchSemantic": "port-nige-int-o25",
       "source": "poisson",
       "analysis": {
         "bttsProb": 0.42,
@@ -275,7 +199,7 @@
       "prediction": "Non",
       "confidence": 47,
       "time": "21:00",
-      "matchSemantic": "eng-cos-in-btts",
+      "matchSemantic": "engl-cost-int-btts",
       "source": "poisson",
       "analysis": {
         "bttsProb": 0.43,
@@ -294,7 +218,7 @@
       "prediction": "Non",
       "confidence": 47,
       "time": "21:00",
-      "matchSemantic": "eng-cos-in-o25",
+      "matchSemantic": "engl-cost-int-o25",
       "source": "poisson",
       "analysis": {
         "bttsProb": 0.43,
@@ -306,234 +230,6 @@
       }
     },
     {
-      "match": "South Korea vs Czech Rep",
-      "league": "International Friendly",
-      "date": "2026-06-09",
-      "type": "BTTS",
-      "prediction": "Oui",
-      "confidence": 47,
-      "time": "03:00",
-      "matchSemantic": "sou-cze-in-btts",
-      "source": "poisson",
-      "analysis": {
-        "bttsProb": 0.51,
-        "over25Prob": 0.52,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
-      "match": "South Korea vs Czech Rep",
-      "league": "International Friendly",
-      "date": "2026-06-09",
-      "type": "Over 2.5",
-      "prediction": "Oui",
-      "confidence": 47,
-      "time": "03:00",
-      "matchSemantic": "sou-cze-in-o25",
-      "source": "poisson",
-      "analysis": {
-        "bttsProb": 0.51,
-        "over25Prob": 0.52,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
-      "match": "Canada vs Bosnia-Hz.",
-      "league": "International Friendly",
-      "date": "2026-06-09",
-      "type": "BTTS",
-      "prediction": "Oui",
-      "confidence": 47,
-      "time": "20:00",
-      "matchSemantic": "can-bos-in-btts",
-      "source": "poisson",
-      "analysis": {
-        "bttsProb": 0.52,
-        "over25Prob": 0.53,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
-      "match": "Canada vs Bosnia-Hz.",
-      "league": "International Friendly",
-      "date": "2026-06-09",
-      "type": "Over 2.5",
-      "prediction": "Oui",
-      "confidence": 47,
-      "time": "20:00",
-      "matchSemantic": "can-bos-in-o25",
-      "source": "poisson",
-      "analysis": {
-        "bttsProb": 0.52,
-        "over25Prob": 0.53,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
-      "match": "Australia vs Turkey",
-      "league": "International Friendly",
-      "date": "2026-06-09",
-      "type": "BTTS",
-      "prediction": "Oui",
-      "confidence": 47,
-      "time": "05:00",
-      "matchSemantic": "aus-tur-in-btts",
-      "source": "poisson",
-      "analysis": {
-        "bttsProb": 0.54,
-        "over25Prob": 0.55,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
-      "match": "Australia vs Turkey",
-      "league": "International Friendly",
-      "date": "2026-06-09",
-      "type": "Over 2.5",
-      "prediction": "Oui",
-      "confidence": 47,
-      "time": "05:00",
-      "matchSemantic": "aus-tur-in-o25",
-      "source": "poisson",
-      "analysis": {
-        "bttsProb": 0.54,
-        "over25Prob": 0.55,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
-      "match": "Germany vs Curacao",
-      "league": "International Friendly",
-      "date": "2026-06-09",
-      "type": "BTTS",
-      "prediction": "Oui",
-      "confidence": 47,
-      "time": "18:00",
-      "matchSemantic": "ger-cur-in-btts",
-      "source": "poisson",
-      "analysis": {
-        "bttsProb": 0.54,
-        "over25Prob": 0.55,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
-      "match": "Germany vs Curacao",
-      "league": "International Friendly",
-      "date": "2026-06-09",
-      "type": "Over 2.5",
-      "prediction": "Oui",
-      "confidence": 47,
-      "time": "18:00",
-      "matchSemantic": "ger-cur-in-o25",
-      "source": "poisson",
-      "analysis": {
-        "bttsProb": 0.54,
-        "over25Prob": 0.55,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
-      "match": "Spain vs Cape Verde Is.",
-      "league": "International Friendly",
-      "date": "2026-06-09",
-      "type": "BTTS",
-      "prediction": "Non",
-      "confidence": 47,
-      "time": "17:00",
-      "matchSemantic": "spa-cap-in-btts",
-      "source": "poisson",
-      "analysis": {
-        "bttsProb": 0.41,
-        "over25Prob": 0.44,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
-      "match": "Spain vs Cape Verde Is.",
-      "league": "International Friendly",
-      "date": "2026-06-09",
-      "type": "Over 2.5",
-      "prediction": "Non",
-      "confidence": 47,
-      "time": "17:00",
-      "matchSemantic": "spa-cap-in-o25",
-      "source": "poisson",
-      "analysis": {
-        "bttsProb": 0.41,
-        "over25Prob": 0.44,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
-      "match": "Belarus vs Burkina Faso",
-      "league": "International Friendly",
-      "date": "2026-06-09",
-      "type": "BTTS",
-      "prediction": "Non",
-      "confidence": 46,
-      "time": "17:30",
-      "matchSemantic": "bel-bur-in-btts",
-      "source": "poisson",
-      "analysis": {
-        "bttsProb": 0.46,
-        "over25Prob": 0.48,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
-      "match": "Belarus vs Burkina Faso",
-      "league": "International Friendly",
-      "date": "2026-06-09",
-      "type": "Over 2.5",
-      "prediction": "Non",
-      "confidence": 46,
-      "time": "17:30",
-      "matchSemantic": "bel-bur-in-o25",
-      "source": "poisson",
-      "analysis": {
-        "bttsProb": 0.46,
-        "over25Prob": 0.48,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
       "match": "Bolivia vs Algeria",
       "league": "International Friendly",
       "date": "2026-06-09",
@@ -541,7 +237,7 @@
       "prediction": "Oui",
       "confidence": 46,
       "time": "01:00",
-      "matchSemantic": "bol-alg-in-btts",
+      "matchSemantic": "boli-alge-int-btts",
       "source": "poisson",
       "analysis": {
         "bttsProb": 0.49,
@@ -560,7 +256,7 @@
       "prediction": "Oui",
       "confidence": 46,
       "time": "01:00",
-      "matchSemantic": "bol-alg-in-o25",
+      "matchSemantic": "boli-alge-int-o25",
       "source": "poisson",
       "analysis": {
         "bttsProb": 0.49,
@@ -572,44 +268,6 @@
       }
     },
     {
-      "match": "USA vs Paraguay",
-      "league": "International Friendly",
-      "date": "2026-06-09",
-      "type": "BTTS",
-      "prediction": "Non",
-      "confidence": 46,
-      "time": "02:00",
-      "matchSemantic": "usa-par-in-btts",
-      "source": "poisson",
-      "analysis": {
-        "bttsProb": 0.45,
-        "over25Prob": 0.48,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
-      "match": "USA vs Paraguay",
-      "league": "International Friendly",
-      "date": "2026-06-09",
-      "type": "Over 2.5",
-      "prediction": "Non",
-      "confidence": 46,
-      "time": "02:00",
-      "matchSemantic": "usa-par-in-o25",
-      "source": "poisson",
-      "analysis": {
-        "bttsProb": 0.45,
-        "over25Prob": 0.48,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
       "match": "Málaga vs Las Palmas",
       "league": "Segunda Division",
       "date": "2026-06-10",
@@ -617,7 +275,7 @@
       "prediction": "Non",
       "confidence": 51,
       "time": "21:00",
-      "matchSemantic": "mla-las-se-btts",
+      "matchSemantic": "mlag-lasp-seg-btts",
       "source": "poisson",
       "analysis": {
         "bttsProb": 0.35,
@@ -636,7 +294,7 @@
       "prediction": "Non",
       "confidence": 51,
       "time": "21:00",
-      "matchSemantic": "mla-las-se-o25",
+      "matchSemantic": "mlag-lasp-seg-o25",
       "source": "poisson",
       "analysis": {
         "bttsProb": 0.35,
@@ -655,7 +313,7 @@
       "prediction": "Non",
       "confidence": 46,
       "time": "21:00",
-      "matchSemantic": "mex-sou-in-btts",
+      "matchSemantic": "mexi-sout-int-btts",
       "source": "poisson",
       "analysis": {
         "bttsProb": 0.47,
@@ -674,7 +332,7 @@
       "prediction": "Oui",
       "confidence": 46,
       "time": "21:00",
-      "matchSemantic": "mex-sou-in-o25",
+      "matchSemantic": "mexi-sout-int-o25",
       "source": "poisson",
       "analysis": {
         "bttsProb": 0.47,
@@ -693,7 +351,7 @@
       "prediction": "Non",
       "confidence": 46,
       "time": "04:00",
-      "matchSemantic": "sou-cze-in-btts",
+      "matchSemantic": "sout-czec-int-btts",
       "source": "poisson",
       "analysis": {
         "bttsProb": 0.45,
@@ -712,7 +370,7 @@
       "prediction": "Non",
       "confidence": 46,
       "time": "04:00",
-      "matchSemantic": "sou-cze-in-o25",
+      "matchSemantic": "sout-czec-int-o25",
       "source": "poisson",
       "analysis": {
         "bttsProb": 0.45,
@@ -731,7 +389,7 @@
       "prediction": "Non",
       "confidence": 46,
       "time": "21:00",
-      "matchSemantic": "can-bos-in-btts",
+      "matchSemantic": "cana-bosn-int-btts",
       "source": "poisson",
       "analysis": {
         "bttsProb": 0.48,
@@ -750,7 +408,7 @@
       "prediction": "Oui",
       "confidence": 46,
       "time": "21:00",
-      "matchSemantic": "can-bos-in-o25",
+      "matchSemantic": "cana-bosn-int-o25",
       "source": "poisson",
       "analysis": {
         "bttsProb": 0.48,
@@ -769,7 +427,7 @@
       "prediction": "Oui",
       "confidence": 47,
       "time": "03:00",
-      "matchSemantic": "uni-par-in-btts",
+      "matchSemantic": "unit-para-int-btts",
       "source": "poisson",
       "analysis": {
         "bttsProb": 0.52,
@@ -788,7 +446,7 @@
       "prediction": "Oui",
       "confidence": 47,
       "time": "03:00",
-      "matchSemantic": "uni-par-in-o25",
+      "matchSemantic": "unit-para-int-o25",
       "source": "poisson",
       "analysis": {
         "bttsProb": 0.52,
@@ -807,7 +465,7 @@
       "prediction": "Oui",
       "confidence": 47,
       "time": "21:00",
-      "matchSemantic": "qat-swi-in-btts",
+      "matchSemantic": "qata-swit-int-btts",
       "source": "poisson",
       "analysis": {
         "bttsProb": 0.54,
@@ -826,7 +484,7 @@
       "prediction": "Oui",
       "confidence": 47,
       "time": "21:00",
-      "matchSemantic": "qat-swi-in-o25",
+      "matchSemantic": "qata-swit-int-o25",
       "source": "poisson",
       "analysis": {
         "bttsProb": 0.54,
@@ -838,14 +496,14 @@
       }
     },
     {
-      "match": "Australia vs Türkiye",
+      "match": "United States vs Türkiye",
       "league": "International Friendly",
       "date": "2026-06-14",
       "type": "BTTS",
       "prediction": "Oui",
       "confidence": 48,
       "time": "06:00",
-      "matchSemantic": "aus-trk-in-btts",
+      "matchSemantic": "unit-trki-int-btts",
       "source": "poisson",
       "analysis": {
         "bttsProb": 0.56,
@@ -857,14 +515,14 @@
       }
     },
     {
-      "match": "Australia vs Türkiye",
+      "match": "United States vs Türkiye",
       "league": "International Friendly",
       "date": "2026-06-14",
       "type": "Over 2.5",
       "prediction": "Oui",
       "confidence": 48,
       "time": "06:00",
-      "matchSemantic": "aus-trk-in-o25",
+      "matchSemantic": "unit-trki-int-o25",
       "source": "poisson",
       "analysis": {
         "bttsProb": 0.56,
@@ -876,14 +534,14 @@
       }
     },
     {
-      "match": "Netherlands vs Japan",
+      "match": "Curaçao vs Japan",
       "league": "International Friendly",
       "date": "2026-06-14",
       "type": "BTTS",
       "prediction": "Non",
       "confidence": 47,
       "time": "22:00",
-      "matchSemantic": "net-jap-in-btts",
+      "matchSemantic": "cura-japa-int-btts",
       "source": "poisson",
       "analysis": {
         "bttsProb": 0.42,
@@ -895,14 +553,14 @@
       }
     },
     {
-      "match": "Netherlands vs Japan",
+      "match": "Curaçao vs Japan",
       "league": "International Friendly",
       "date": "2026-06-14",
       "type": "Over 2.5",
       "prediction": "Non",
       "confidence": 47,
       "time": "22:00",
-      "matchSemantic": "net-jap-in-o25",
+      "matchSemantic": "cura-japa-int-o25",
       "source": "poisson",
       "analysis": {
         "bttsProb": 0.42,
@@ -921,7 +579,7 @@
       "prediction": "Non",
       "confidence": 46,
       "time": "--:--",
-      "matchSemantic": "bra-mor-in-btts",
+      "matchSemantic": "braz-moro-int-btts",
       "source": "poisson",
       "analysis": {
         "bttsProb": 0.48,
@@ -940,11 +598,315 @@
       "prediction": "Oui",
       "confidence": 46,
       "time": "--:--",
-      "matchSemantic": "bra-mor-in-o25",
+      "matchSemantic": "braz-moro-int-o25",
       "source": "poisson",
       "analysis": {
         "bttsProb": 0.48,
         "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Haiti vs Scotland",
+      "league": "International Friendly",
+      "date": "2026-06-14",
+      "type": "BTTS",
+      "prediction": "Oui",
+      "confidence": 46,
+      "time": "03:00",
+      "matchSemantic": "hait-scot-int-btts",
+      "source": "poisson",
+      "analysis": {
+        "bttsProb": 0.5,
+        "over25Prob": 0.52,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Haiti vs Scotland",
+      "league": "International Friendly",
+      "date": "2026-06-14",
+      "type": "Over 2.5",
+      "prediction": "Oui",
+      "confidence": 46,
+      "time": "03:00",
+      "matchSemantic": "hait-scot-int-o25",
+      "source": "poisson",
+      "analysis": {
+        "bttsProb": 0.5,
+        "over25Prob": 0.52,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Germany vs Curaçao",
+      "league": "International Friendly",
+      "date": "2026-06-14",
+      "type": "BTTS",
+      "prediction": "Oui",
+      "confidence": 46,
+      "time": "19:00",
+      "matchSemantic": "germ-cura-int-btts",
+      "source": "poisson",
+      "analysis": {
+        "bttsProb": 0.5,
+        "over25Prob": 0.52,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Germany vs Curaçao",
+      "league": "International Friendly",
+      "date": "2026-06-14",
+      "type": "Over 2.5",
+      "prediction": "Oui",
+      "confidence": 46,
+      "time": "19:00",
+      "matchSemantic": "germ-cura-int-o25",
+      "source": "poisson",
+      "analysis": {
+        "bttsProb": 0.5,
+        "over25Prob": 0.52,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Ivory Coast vs Ecuador",
+      "league": "International Friendly",
+      "date": "2026-06-15",
+      "type": "BTTS",
+      "prediction": "Oui",
+      "confidence": 47,
+      "time": "01:00",
+      "matchSemantic": "ivor-ecua-int-btts",
+      "source": "poisson",
+      "analysis": {
+        "bttsProb": 0.54,
+        "over25Prob": 0.55,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Ivory Coast vs Ecuador",
+      "league": "International Friendly",
+      "date": "2026-06-15",
+      "type": "Over 2.5",
+      "prediction": "Oui",
+      "confidence": 47,
+      "time": "01:00",
+      "matchSemantic": "ivor-ecua-int-o25",
+      "source": "poisson",
+      "analysis": {
+        "bttsProb": 0.54,
+        "over25Prob": 0.55,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Sweden vs Tunisia",
+      "league": "International Friendly",
+      "date": "2026-06-15",
+      "type": "BTTS",
+      "prediction": "Non",
+      "confidence": 47,
+      "time": "04:00",
+      "matchSemantic": "swed-tuni-int-btts",
+      "source": "poisson",
+      "analysis": {
+        "bttsProb": 0.44,
+        "over25Prob": 0.47,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Sweden vs Tunisia",
+      "league": "International Friendly",
+      "date": "2026-06-15",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "confidence": 47,
+      "time": "04:00",
+      "matchSemantic": "swed-tuni-int-o25",
+      "source": "poisson",
+      "analysis": {
+        "bttsProb": 0.44,
+        "over25Prob": 0.47,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Spain vs Cape Verde",
+      "league": "International Friendly",
+      "date": "2026-06-15",
+      "type": "BTTS",
+      "prediction": "Non",
+      "confidence": 46,
+      "time": "18:00",
+      "matchSemantic": "spai-cape-int-btts",
+      "source": "poisson",
+      "analysis": {
+        "bttsProb": 0.47,
+        "over25Prob": 0.49,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Spain vs Cape Verde",
+      "league": "International Friendly",
+      "date": "2026-06-15",
+      "type": "Over 2.5",
+      "prediction": "Oui",
+      "confidence": 46,
+      "time": "18:00",
+      "matchSemantic": "spai-cape-int-o25",
+      "source": "poisson",
+      "analysis": {
+        "bttsProb": 0.47,
+        "over25Prob": 0.49,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Belgium vs Egypt",
+      "league": "International Friendly",
+      "date": "2026-06-15",
+      "type": "BTTS",
+      "prediction": "Non",
+      "confidence": 46,
+      "time": "21:00",
+      "matchSemantic": "belg-egyp-int-btts",
+      "source": "poisson",
+      "analysis": {
+        "bttsProb": 0.46,
+        "over25Prob": 0.48,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Belgium vs Egypt",
+      "league": "International Friendly",
+      "date": "2026-06-15",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "confidence": 46,
+      "time": "21:00",
+      "matchSemantic": "belg-egyp-int-o25",
+      "source": "poisson",
+      "analysis": {
+        "bttsProb": 0.46,
+        "over25Prob": 0.48,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Iran vs New Zealand",
+      "league": "International Friendly",
+      "date": "2026-06-16",
+      "type": "BTTS",
+      "prediction": "Oui",
+      "confidence": 48,
+      "time": "03:00",
+      "matchSemantic": "iran-newz-int-btts",
+      "source": "poisson",
+      "analysis": {
+        "bttsProb": 0.56,
+        "over25Prob": 0.56,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Iran vs New Zealand",
+      "league": "International Friendly",
+      "date": "2026-06-16",
+      "type": "Over 2.5",
+      "prediction": "Oui",
+      "confidence": 48,
+      "time": "03:00",
+      "matchSemantic": "iran-newz-int-o25",
+      "source": "poisson",
+      "analysis": {
+        "bttsProb": 0.56,
+        "over25Prob": 0.56,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Saudi Arabia vs Uruguay",
+      "league": "International Friendly",
+      "date": "2026-06-16",
+      "type": "BTTS",
+      "prediction": "Oui",
+      "confidence": 47,
+      "time": "--:--",
+      "matchSemantic": "saud-urug-int-btts",
+      "source": "poisson",
+      "analysis": {
+        "bttsProb": 0.51,
+        "over25Prob": 0.52,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Saudi Arabia vs Uruguay",
+      "league": "International Friendly",
+      "date": "2026-06-16",
+      "type": "Over 2.5",
+      "prediction": "Oui",
+      "confidence": 47,
+      "time": "--:--",
+      "matchSemantic": "saud-urug-int-o25",
+      "source": "poisson",
+      "analysis": {
+        "bttsProb": 0.51,
+        "over25Prob": 0.52,
         "homeLambda": 1.54,
         "awayLambda": 1.08,
         "dataQuality": 0,
