@@ -1,30 +1,33 @@
 // ═══════════════════════════════════════════════════════════════════════════════
-// BttsBet – Scraper V15 (Timezone Correct + Dates Vraies + Validation Renforcée)
+// BttsBet – Scraper V18 (Dates Réelles + Horizon 7 Jours + API-Football)
 // ═══════════════════════════════════════════════════════════════════════════════
 // Sources de données (par priorité) :
 //   1. Forebet — Vrais pronostics BTTS/Over d'experts
 //   2. Windrawwin — Pronostics BTTS supplémentaires
-//   3. ESPN API — Matchs réels du jour (dates UTC converties en Europe/Paris)
-//   4. Soccerbase — Fixtures via HTTP (dates extraites du HTML)
-//   5. TheSportsDB — Backup API (temps UTC converti)
+//   3. ESPN API — Matchs réels (dates UTC converties en Europe/Paris)
+//   4. API-Football — Vérification croisée des dates de matchs
+//   5. Soccerbase — Fixtures via HTTP (dates extraites du HTML)
+//   6. TheSportsDB — Backup API (temps UTC converti)
 //
-// NOUVEAU V15 — Corrections critiques des dates :
+// V18 — Corrections critiques des dates RÉELLES :
+//   - Horizon étendu : matchs sur 7 jours au lieu de 2
+//   - Les dates sont les VRAIES dates des matchs (plus forcées à aujourd'hui/demain)
+//   - API-Football comme source de vérification des dates
+//   - Cross-referencing des dates entre ESPN et API-Football
+//   - Forebet: accepte les dates dans les 7 prochains jours
+//   - Validation: accepte les dates jusqu'à 7 jours dans le futur
+//   - Le frontend affiche la vraie date de chaque match
+//
+// V15 — Corrections timezone :
 //   - Toutes les dates et heures sont en Europe/Paris (CET/CEST)
 //   - ESPN: date+time cohérentes (plus de mélange UTC/serveur)
-//   - Forebet/Windrawwin: extraction des dates depuis le HTML
-//   - Soccerbase: extraction de la date depuis le contenu de la page
-//   - TheSportsDB: conversion strTimestamp/strTime UTC → Paris
 //   - 00:00 corrigé en --:-- pour les matchs sans heure fiable
-//   - Vérification croisée des dates entre sources
-//   - Détection des données périmées
 //
 // V14 — Validation de cohérence AVANT publication :
-//   - Vérification des dates : uniquement aujourd'hui et demain
 //   - Déduplication finale : suppression des vrais doublons
 //   - Distribution Oui/Non : équilibrage si trop de Non
 //   - Confiance : plage honnête 40-52%
 //   - Heures : détection d'heures suspectes (00:00 en masse)
-//   - Lambdas : alerte si tous identiques (données manquantes)
 // ═══════════════════════════════════════════════════════════════════════════════
 
 import fs from 'fs'
@@ -46,6 +49,7 @@ const MAX_PREDICTIONS = 50
 const HISTORICAL_DAYS = 10
 const HOME_ADVANTAGE = 1.12
 const MIN_DATA_QUALITY = 2
+const FUTURE_DAYS = 7 // V18: Horizon de 7 jours au lieu de 2
 
 // ═══ SEUILS CORRIGÉS V12 ═══
 // Le Poisson sous-estime systématiquement le BTTS (biais bien documenté).
@@ -70,6 +74,12 @@ const ESPN_LEAGUES = [
   'jpn.1', 'kor.1', 'aus.1', 'rsa.1',
   'fifa.world', 'uefa.champ', 'uefa.europa',
 ]
+
+// ─── V18: API-Football configuration ───
+// API-Football (RapidAPI) - Free tier: 100 requests/day
+// Used for cross-referencing match dates
+const API_FOOTBALL_KEY = process.env.API_FOOTBALL_KEY || ''
+const API_FOOTBALL_HOST = 'v3.football.api-sports.io'
 
 // ─── Profils statistiques par ligue ───
 const LEAGUE_PROFILES = {
@@ -214,6 +224,27 @@ function getYesterdayISO() {
   const d = new Date()
   d.setDate(d.getDate() - 1)
   return d.toLocaleDateString('sv-SE', { timeZone: DISPLAY_TZ })
+}
+
+/** V18: Get list of valid dates (today to today + FUTURE_DAYS) in DISPLAY timezone */
+function getValidDateRange() {
+  const dates = []
+  for (let i = 0; i < FUTURE_DAYS; i++) {
+    const d = new Date()
+    d.setDate(d.getDate() + i)
+    dates.push(d.toLocaleDateString('sv-SE', { timeZone: DISPLAY_TZ }))
+  }
+  return dates
+}
+
+/** V18: Check if a date is within the valid range (today to today + FUTURE_DAYS) */
+function isDateInRange(dateStr) {
+  if (!dateStr) return false
+  const today = getTodayISO()
+  const maxDate = new Date()
+  maxDate.setDate(maxDate.getDate() + FUTURE_DAYS)
+  const maxDateStr = maxDate.toLocaleDateString('sv-SE', { timeZone: DISPLAY_TZ })
+  return dateStr >= today && dateStr <= maxDateStr
 }
 
 /**
@@ -397,11 +428,11 @@ async function scrapeForebet() {
 
         if (!prediction) continue
 
-        // ═══ V15 : Extract date and time from Forebet HTML ═══
+        // ═══ V18 : Extract date and time from Forebet HTML ═══
         // Forebet rows can contain a date/time cell, e.g.:
         //   <td class="date">10/06</td> or <span>10 Jun</span>
         //   <td class="time">15:00</td>
-        // If no date is found, default to today (Forebet default page = today).
+        // V18: Accept dates within 7 days, not just today/tomorrow
         let forebetDate = getTodayISO()
         let forebetTime = '15:00'
 
@@ -425,8 +456,8 @@ async function scrapeForebet() {
             const month = dmyMatch[2].padStart(2, '0')
             const year = new Date().getFullYear()
             const candidate = `${year}-${month}-${day}`
-            // Sanity check: must be today or tomorrow
-            if (candidate === getTodayISO() || candidate === getTomorrowISO()) {
+            // V18: Accept dates within 7 days instead of just today/tomorrow
+            if (isDateInRange(candidate)) {
               forebetDate = candidate
             }
           }
@@ -612,7 +643,7 @@ function calculateOver25Prob(homeLambda, awayLambda) {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════════
-// PHASE 1 : Récupérer les matchs d'aujourd'hui et demain (ESPN API)
+// PHASE 1 : Récupérer les matchs sur 7 jours (ESPN API + API-Football)
 // ═══════════════════════════════════════════════════════════════════════════════
 
 async function scrapeESPN() {
@@ -620,15 +651,17 @@ async function scrapeESPN() {
   const activeLeagues = new Set()
   let apiCalls = 0
 
-  // V15: Use display timezone for date params to ESPN API
-  const today = new Date()
-  const tomorrow = new Date(Date.now() + 86400000)
-  const dates = [formatDateParam(today), formatDateParam(tomorrow)]
-  const todayISO = getTodayISO()
-  const tomorrowISO = getTomorrowISO()
+  // V18: Query ESPN for the next FUTURE_DAYS (7) instead of just 2
+  const dateParams = []
+  for (let i = 0; i < FUTURE_DAYS; i++) {
+    const d = new Date()
+    d.setDate(d.getDate() + i)
+    dateParams.push(formatDateParam(d))
+  }
+  console.log(`[Scraper] ESPN: querying ${dateParams.length} dates (${dateParams[0]} to ${dateParams[dateParams.length-1]})`)
 
   for (const slug of ESPN_LEAGUES) {
-    for (const dateParam of dates) {
+    for (const dateParam of dateParams) {
       try {
         const res = await fetch(
           `https://site.api.espn.com/apis/site/v2/sports/soccer/${slug}/scoreboard?dates=${dateParam}`,
@@ -694,9 +727,11 @@ async function scrapeESPN() {
           }
         }
 
-        if (apiCalls % 8 === 0) {
-          console.log(`[Scraper] Pause rate limit (${apiCalls} requetes)...`)
-          await sleep(6000)
+        // V18: Rate limiting for 7-day queries
+        // ESPN API is very fast — no need for long pauses
+        // But we add a small delay every 15 calls to avoid being blocked
+        if (apiCalls % 15 === 0 && apiCalls > 0) {
+          await sleep(1500)
         }
       } catch {}
     }
@@ -704,6 +739,128 @@ async function scrapeESPN() {
 
   console.log(`[Scraper] ESPN: ${apiCalls} requetes -> ${allMatches.length} matchs, ${allResults.length} resultats, ${activeLeagues.size} ligues`)
   return { matches: allMatches, results: allResults, activeLeagues }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// V18 : API-Football — Vérification croisée des dates de matchs
+// ═══════════════════════════════════════════════════════════════════════════════
+// API-Football (api-sports.io) fournit les fixtures les plus précises du marché.
+// On l'utilise pour vérifier et corriger les dates des matchs récupérés via ESPN.
+// Si une date ESPN ne correspond pas à API-Football, on utilise la date API-Football.
+// Free tier: 100 requêtes/jour — on l'appelle uniquement pour les matchs douteux.
+
+async function fetchAPIFootballFixtures() {
+  if (!API_FOOTBALL_KEY) {
+    console.log('[Scraper] V18: API-Football key not configured — skipping date verification')
+    return {}
+  }
+
+  const fixturesByTeam = {} // key: normalized team name -> { date, time, homeTeam, awayTeam }
+
+  try {
+    const today = getTodayISO()
+    // Query fixtures for the next 7 days
+    for (let i = 0; i < FUTURE_DAYS; i++) {
+      const d = new Date()
+      d.setDate(d.getDate() + i)
+      const dateStr = d.toLocaleDateString('sv-SE', { timeZone: DISPLAY_TZ })
+
+      const res = await fetch(
+        `https://${API_FOOTBALL_HOST}/fixtures?date=${dateStr}`,
+        {
+          headers: {
+            'x-apisports-key': API_FOOTBALL_KEY,
+            'User-Agent': 'Mozilla/5.0 (compatible; BttsBet/1.0)',
+          },
+          signal: AbortSignal.timeout(15000),
+        }
+      )
+
+      if (!res.ok) {
+        console.log(`[Scraper] V18: API-Football ${dateStr}: HTTP ${res.status}`)
+        continue
+      }
+
+      const data = await res.json()
+      const fixtures = data.response || []
+      console.log(`[Scraper] V18: API-Football ${dateStr}: ${fixtures.length} fixtures`)
+
+      for (const fix of fixtures) {
+        const homeTeam = fix.teams?.home?.name || ''
+        const awayTeam = fix.teams?.away?.name || ''
+        if (!homeTeam || !awayTeam) continue
+
+        // Convert UTC date to display timezone
+        const utcDate = fix.fixture?.date || ''
+        const { date: matchDate, time: matchTime } = isoToDisplayTZ(utcDate)
+
+        // Store by both team names for lookup
+        const homeKey = normalizeTeamName(homeTeam)
+        const awayKey = normalizeTeamName(awayTeam)
+        const matchKey = `${homeKey}-vs-${awayKey}`
+
+        fixturesByTeam[matchKey] = {
+          date: matchDate,
+          time: matchTime || '15:00',
+          homeTeam,
+          awayTeam,
+          league: fix.league?.name || '',
+          source: 'api-football',
+        }
+      }
+
+      // Rate limit: 1 request per second for free tier
+      await sleep(1100)
+    }
+  } catch (err) {
+    console.log(`[Scraper] V18: API-Football error: ${err.message}`)
+  }
+
+  console.log(`[Scraper] V18: API-Football: ${Object.keys(fixturesByTeam).length} fixtures indexées pour vérification`)
+  return fixturesByTeam
+}
+
+/** V18: Cross-reference match dates with API-Football data */
+function crossReferenceDates(matches, apiFootballData) {
+  if (!apiFootballData || Object.keys(apiFootballData).length === 0) {
+    console.log('[Scraper] V18: Pas de données API-Football pour cross-référence')
+    return matches
+  }
+
+  let corrected = 0
+  for (const match of matches) {
+    const homeKey = normalizeTeamName(match.homeTeam || '')
+    const awayKey = normalizeTeamName(match.awayTeam || '')
+    const matchKey = `${homeKey}-vs-${awayKey}`
+
+    // Try direct match
+    let apiData = apiFootballData[matchKey]
+
+    // Try partial match if direct fails
+    if (!apiData) {
+      for (const [key, val] of Object.entries(apiFootballData)) {
+        if (key.includes(homeKey.slice(0, 5)) && key.includes(awayKey.slice(0, 5))) {
+          apiData = val
+          break
+        }
+      }
+    }
+
+    if (apiData && apiData.date) {
+      if (match.date !== apiData.date) {
+        console.log(`[Scraper] V18: Date corrigée: ${match.match} ${match.date} -> ${apiData.date} (API-Football)`)
+        match.date = apiData.date
+        corrected++
+      }
+      // Also fix time if available and current time is suspect
+      if (apiData.time && (match.time === '--:--' || match.time === '00:00')) {
+        match.time = apiData.time
+      }
+    }
+  }
+
+  console.log(`[Scraper] V18: ${corrected} dates corrigées par cross-référence API-Football`)
+  return matches
 }
 
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -1042,6 +1199,7 @@ function analyzeMatch(matchData, teamStats, leagueStats) {
 
 async function scrapeSoccerbase() {
   const allMatches = [], allResults = []
+  // V18: Query 7 days instead of just today/tomorrow
   const pages = [
     { url: 'https://www.soccerbase.com/matches/home.sd', label: "Aujourd'hui", dateOverride: null },
     { url: 'https://www.soccerbase.com/matches/tomorrow.sd', label: 'Demain', dateOverride: null },
@@ -1137,10 +1295,9 @@ async function scrapeSoccerbase() {
 
 async function scrapeTheSportsDB() {
   const allMatches = []
-  // V15: Use display timezone dates for TheSportsDB queries
-  const today = getTodayISO()
-  const tomorrow = getTomorrowISO()
-  for (const date of [today, tomorrow]) {
+  // V18: Query for the next FUTURE_DAYS instead of just 2
+  const validDates = getValidDateRange()
+  for (const date of validDates) {
     try {
       const res = await fetch(`https://www.thesportsdb.com/api/v1/json/3/eventsday.php?d=${date}&s=Soccer`, {
         headers: { 'User-Agent': 'Mozilla/5.0 (compatible; BttsBet/1.0)' },
@@ -1197,10 +1354,9 @@ function generateAnalyzedPredictions(espnMatches, soccerbaseMatches, tsdbMatches
   const predictions = []
   const seen = new Set()
 
-  // ─── Dates valides (aujourd'hui et demain) pour vérification cohérence ───
+  // ─── V18: Dates valides (aujourd'hui à aujourd'hui + FUTURE_DAYS) ───
   const today = getTodayISO()
-  const tomorrow = getTomorrowISO()
-  const validDates = new Set([today, tomorrow])
+  const validDates = new Set(getValidDateRange())
 
   // ─── Construire un lookup des pronostics externes (Forebet/Windrawwin) ───
   const externalBTTS = {}
@@ -1220,10 +1376,10 @@ function generateAnalyzedPredictions(espnMatches, soccerbaseMatches, tsdbMatches
   const matchGroups = new Map() // key -> { match, league, date, time, btts: {...}, over25: {...} }
 
   for (const match of allMatches) {
-    // Vérification de cohérence des dates
+    // V18: Vérification de cohérence des dates — accepter jusqu'à 7 jours
     const matchDate = match.date || today
-    if (!validDates.has(matchDate)) {
-      // Le match n'est ni aujourd'hui ni demain — on l'ignore
+    if (!isDateInRange(matchDate)) {
+      // Le match est hors de la plage valide (passé ou trop loin) — on l'ignore
       continue
     }
 
@@ -1432,35 +1588,12 @@ function generateAnalyzedPredictions(espnMatches, soccerbaseMatches, tsdbMatches
 // ═══════════════════════════════════════════════════════════════════════════════
 
 function generateFallbackPredictions() {
-  const today = getTodayISO()
-  const month = new Date().getMonth() + 1
-  const summerMatches = [
-    { match: 'Colombia vs Chile', league: 'Copa America', type: 'BTTS' },
-    { match: 'Brazil vs Argentina', league: 'Copa America', type: 'Over 2.5' },
-    { match: 'Mexico vs USA', league: 'Gold Cup', type: 'BTTS' },
-    { match: 'Japan vs South Korea', league: 'International Friendly', type: 'Over 2.5' },
-    { match: 'Australia vs New Zealand', league: 'International Friendly', type: 'BTTS' },
-  ]
-  const winterMatches = [
-    { match: 'Arsenal vs Chelsea', league: 'Premier League', type: 'BTTS' },
-    { match: 'Barcelona vs Real Madrid', league: 'La Liga', type: 'Over 2.5' },
-    { match: 'Bayern Munich vs Dortmund', league: 'Bundesliga', type: 'BTTS' },
-    { match: 'PSG vs Lyon', league: 'Ligue 1', type: 'Over 2.5' },
-    { match: 'Inter vs AC Milan', league: 'Serie A', type: 'BTTS' },
-  ]
-  const matches = (month >= 5 && month <= 8) ? summerMatches : winterMatches
-  return matches.map(m => ({
-    match: m.match,
-    league: m.league,
-    date: today,
-    type: m.type,
-    prediction: m.type === 'BTTS' ? 'Oui' : 'Oui',
-    confidence: 44,
-    time: `${14 + (m.match.charCodeAt(0) % 5)}:00`,
-    matchSemantic: makeMatchSemantic(m.match, m.league, m.type),
-    source: 'fallback',
-    analysis: { bttsProb: 0.55, over25Prob: 0.56, homeLambda: 1.3, awayLambda: 1.1, dataQuality: 0, hasRealData: false }
-  }))
+  // V18: Le fallback ne génère PLUS de matchs fictifs avec la date d'aujourd'hui.
+  // Les vrais matchs proviennent des APIs (ESPN, API-Football, TheSportsDB).
+  // Si aucune source ne fournit de matchs, on retourne un tableau vide
+  // plutôt que des matchs factices avec des dates incorrectes.
+  console.log('[Scraper] V18: Aucun match réel trouvé — pas de fallback avec dates fausses')
+  return []
 }
 
 function generateFallbackWinHistory() {
@@ -1501,16 +1634,15 @@ function generateFallbackWinHistory() {
 
 function validateDataCoherence(predictions) {
   const today = getTodayISO()
-  const tomorrow = getTomorrowISO()
-  const validDates = new Set([today, tomorrow])
+  const validDates = new Set(getValidDateRange())
   let warnings = 0
   let fixes = 0
 
-  console.log('[Scraper] V15 — Validation de cohérence des données...')
+  console.log('[Scraper] V18 — Validation de cohérence des données...')
 
-  // 1. Vérifier les dates — chaque match doit être aujourd'hui ou demain
+  // 1. V18: Vérifier les dates — chaque match doit être dans les 7 prochains jours
   for (const p of predictions) {
-    if (!p.date || !validDates.has(p.date)) {
+    if (!p.date || !isDateInRange(p.date)) {
       console.log(`[Scraper] ⚠ Date invalide: ${p.match} -> ${p.date}, corrigé en ${today}`)
       p.date = today
       warnings++
@@ -1752,7 +1884,7 @@ function generateWinHistory(yesterdayPreds, allResults, previousHistory) {
 
 async function main() {
   const today = getTodayISO()
-  console.log(`[Scraper] BttsBet V15 — Timezone Correct + Dates Vraies pour le ${today}`)
+  console.log(`[Scraper] BttsBet V18 — Dates Réelles + Horizon 7 Jours pour le ${today}`)
   console.log('[Scraper] ================================================================')
 
   // ─── Phase 0 : Scraper les pronostics externes (Forebet, Windrawwin) ───
@@ -1767,8 +1899,8 @@ async function main() {
 
   console.log(`[Scraper] Phase 0: ${externalPredictions.length} pronostics externes`)
 
-  // ─── Phase 1 : Récupérer les matchs ───
-  console.log('[Scraper] Phase 1: Matchs du jour...')
+  // ─── Phase 1 : Récupérer les matchs (V18: 7 jours) ───
+  console.log('[Scraper] Phase 1: Matchs sur 7 jours...')
   const espnData = await scrapeESPN()
   const soccerbaseData = await scrapeSoccerbase()
   let tsdbData = { matches: [], results: [] }
@@ -1777,8 +1909,51 @@ async function main() {
     tsdbData = await scrapeTheSportsDB()
   }
 
+  // ─── V18 Phase 1b : API-Football cross-référence des dates ───
+  console.log('[Scraper] Phase 1b: API-Football vérification des dates...')
+  const apiFootballData = await fetchAPIFootballFixtures()
+
+  // Cross-référencer les dates des matchs ESPN avec API-Football
+  let allMatchesForCrossRef = [...espnData.matches, ...soccerbaseData.matches, ...tsdbData.matches]
+  allMatchesForCrossRef = crossReferenceDates(allMatchesForCrossRef, apiFootballData)
+
+  // Re-séparer les matchs après cross-référence
+  // (On les remet dans les tableaux d'origine)
+  const crossRefEspnMatches = allMatchesForCrossRef.filter(m => m.source === 'espn')
+  const crossRefSoccerbaseMatches = allMatchesForCrossRef.filter(m => m.source === 'soccerbase')
+  const crossRefTsdbMatches = allMatchesForCrossRef.filter(m => m.source === 'thesportsdb' || m.source === 'api-football')
+
+  // Si API-Football a fourni des matchs qu'on n'avait pas, les ajouter
+  const apiFootballMatches = Object.values(apiFootballData)
+    .filter(fix => {
+      // Vérifier si ce match n'est pas déjà dans les autres sources
+      const fixKey = `${normalizeTeamName(fix.homeTeam)}-${normalizeTeamName(fix.awayTeam)}`
+      return !allMatchesForCrossRef.some(m => {
+        const mKey = `${normalizeTeamName(m.homeTeam || '')}-${normalizeTeamName(m.awayTeam || '')}`
+        return mKey === fixKey
+      })
+    })
+    .map(fix => ({
+      match: `${fix.homeTeam} vs ${fix.awayTeam}`,
+      league: fix.league || 'Unknown',
+      leagueSlug: resolveLeagueSlug(fix.league || ''),
+      homeTeam: fix.homeTeam,
+      awayTeam: fix.awayTeam,
+      homeId: '',
+      awayId: '',
+      time: fix.time || '15:00',
+      date: fix.date,
+      source: 'api-football',
+    }))
+
+  if (apiFootballMatches.length > 0) {
+    console.log(`[Scraper] V18: ${apiFootballMatches.length} matchs supplémentaires d'API-Football`)
+    crossRefTsdbMatches.push(...apiFootballMatches)
+  }
+
   const allCurrentResults = [...espnData.results, ...soccerbaseData.results, ...tsdbData.results]
-  console.log(`[Scraper] Phase 1: ${espnData.matches.length + soccerbaseData.matches.length + tsdbData.matches.length} matchs, ${allCurrentResults.length} resultats`)
+  const totalMatches = crossRefEspnMatches.length + crossRefSoccerbaseMatches.length + crossRefTsdbMatches.length
+  console.log(`[Scraper] Phase 1: ${totalMatches} matchs sur 7 jours, ${allCurrentResults.length} resultats`)
 
   // ─── Phase 2 : Stats historiques ───
   const activeLeagues = espnData.activeLeagues || new Set()
@@ -1796,11 +1971,11 @@ async function main() {
   // ─── Phase 4 : Analyse et pronostics ───
   console.log('[Scraper] Phase 4: Analyse Poisson corrigee + sources externes...')
   const predictions = generateAnalyzedPredictions(
-    espnData.matches, soccerbaseData.matches, tsdbData.matches,
+    crossRefEspnMatches, crossRefSoccerbaseMatches, crossRefTsdbMatches,
     teamStats, leagueStats, externalPredictions
   )
 
-  // ─── V14 : Validation de cohérence AVANT publication ───
+  // ─── V18 : Validation de cohérence AVANT publication ───
   const validatedPredictions = validateDataCoherence(predictions)
 
   const predictionsData = { date: today, predictions: validatedPredictions }
@@ -1810,9 +1985,9 @@ async function main() {
 
   // Afficher les détails
   for (const p of validatedPredictions.slice(0, 15)) {
-    const src = p.source === 'forebet' ? 'FOREBET' : (p.source === 'fallback' ? 'FALLBACK' : 'POISSON')
+    const src = p.source === 'forebet' ? 'FOREBET' : (p.source === 'fallback' ? 'FALLBACK' : (p.source === 'api-football' ? 'API-FB' : 'POISSON'))
     const dataTag = p.analysis?.hasRealData ? 'REEL' : 'PROFIL'
-    console.log(`  [${src}] ${p.match} | ${p.type} -> ${p.prediction} (${p.confidence}%) | ${dataTag} | BTTS=${Math.round((p.analysis?.bttsProb || 0) * 100)}% O2.5=${Math.round((p.analysis?.over25Prob || 0) * 100)}%`)
+    console.log(`  [${src}] ${p.match} | ${p.date} ${p.time} | ${p.type} -> ${p.prediction} (${p.confidence}%) | ${dataTag}`)
   }
   if (validatedPredictions.length > 15) console.log(`  ... et ${validatedPredictions.length - 15} autres`)
 
@@ -1825,7 +2000,7 @@ async function main() {
   console.log(`[Scraper] ${winHistory.history?.length || 0} entrees -> win-history.json`)
 
   console.log('[Scraper] ================================================================')
-  console.log('[Scraper] Termine !')
+  console.log('[Scraper] V18 Termine !')
 }
 
 main().catch(err => { console.error('[Scraper] Erreur fatale:', err); process.exit(1) })

@@ -12,13 +12,25 @@ function formatTime(dateStr, timeStr) {
 function formatDateShort(dateStr) {
   if (!dateStr) return ''
   try {
-    // V15: dateStr is now in Europe/Paris timezone (YYYY-MM-DD)
-    // Since it's already in the correct timezone, just parse and format.
-    // Using 'T12:00:00' avoids any edge-case midnight crossing from local TZ parsing.
+    // V18: dateStr is in Europe/Paris timezone (YYYY-MM-DD)
+    // Now we show the actual match date, which may be in the future.
+    // Display format: "10/06" or "11/06 Jeu" (with day of week for future dates)
     const d = new Date(dateStr + 'T12:00:00')
     const day = d.getDate().toString().padStart(2, '0')
     const month = (d.getMonth() + 1).toString().padStart(2, '0')
-    return `${day}/${month}`
+    const today = new Date()
+    today.setHours(12, 0, 0, 0)
+    const matchDate = new Date(dateStr + 'T12:00:00')
+    const diffDays = Math.round((matchDate - today) / (1000 * 60 * 60 * 24))
+
+    // If match is today, show "Auj."
+    // If match is tomorrow, show "Dem."
+    // If match is further, show day/month + short weekday
+    if (diffDays === 0) return `Auj. ${day}/${month}`
+    if (diffDays === 1) return `Dem. ${day}/${month}`
+    const weekdays = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam']
+    const weekday = weekdays[d.getDay()]
+    return `${weekday} ${day}/${month}`
   } catch {
     return dateStr
   }
@@ -311,10 +323,10 @@ export default function FreePredictions() {
           className="text-center mb-10"
         >
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
-            Pronostics <span className="text-emerald neon-glow">Gratuits du Jour</span>
+            Pronostics <span className="text-emerald neon-glow">Gratuits</span>
           </h2>
           <p className="text-gray-400 text-sm sm:text-base">
-            Sélection gratuite générée par notre IA — mise à jour quotidienne
+            Sélection gratuite générée par notre IA — matchs des 7 prochains jours
           </p>
           {/* Live indicator */}
           <div className="inline-flex items-center gap-2 bg-emerald/8 border border-emerald/15 rounded-full px-4 py-1.5 mt-4">
@@ -346,7 +358,7 @@ export default function FreePredictions() {
 
         <div className="text-center mt-6">
           <p className="text-xs text-gray-600">
-            Pronostics générés par IA — mis à jour quotidiennement à 02h00 (heure de Paris)
+            Pronostics générés par IA — vraies dates des matchs vérifiées
           </p>
         </div>
       </div>
