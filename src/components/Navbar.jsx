@@ -79,7 +79,7 @@ export default function Navbar() {
             </a>
 
             {/* Desktop Nav */}
-            <div className="hidden md:flex items-center gap-6">
+            <div className="hidden md:flex items-center gap-8">
               {NAV_LINKS.map((link) => (
                 <a
                   key={link.label}
@@ -92,7 +92,6 @@ export default function Navbar() {
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald transition-all group-hover:w-full" />
                 </a>
               ))}
-
               <a
                 href={AFFILIATE.linebet}
                 rel={AFFILIATE.rel}
@@ -104,23 +103,21 @@ export default function Navbar() {
             </div>
 
             {/* Mobile Toggle */}
-            <div className="flex items-center gap-2 md:hidden">
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="text-gray-300 hover:text-white p-2"
-                aria-label={isOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
-                aria-expanded={isOpen}
-                aria-controls="mobile-menu"
-              >
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  {isOpen ? (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  ) : (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                  )}
-                </svg>
-              </button>
-            </div>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="md:hidden text-gray-300 hover:text-white p-2"
+              aria-label={isOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+              aria-expanded={isOpen}
+              aria-controls="mobile-menu"
+            >
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                {isOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
           </div>
         </div>
 
@@ -147,8 +144,7 @@ export default function Navbar() {
                     {link.label}
                   </a>
                 ))}
-
-                <div className="pt-3 space-y-2 border-t border-white/5 mt-2">
+                <div className="pt-3 space-y-2">
                   <a
                     href={AFFILIATE.linebetDownload}
                     rel={AFFILIATE.rel}
