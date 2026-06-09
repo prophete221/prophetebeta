@@ -9,10 +9,10 @@ function ParticleField({ count = 200 }) {
   const [positions, colors] = useMemo(() => {
     const pos = new Float32Array(count * 3)
     const cols = new Float32Array(count * 3)
-    const neonGreen = new THREE.Color('#38BDF8')
-    const goldColor = new THREE.Color('#FB923C')
-    const neon = new THREE.Color('#38BDF8')
-    const palette = [neonGreen, goldColor, neon]
+    const emeraldColor = new THREE.Color('#00D4AA')
+    const goldColor = new THREE.Color('#F59E0B')
+    const royalColor = new THREE.Color('#2A5CAA')
+    const palette = [emeraldColor, goldColor, royalColor]
     for (let i = 0; i < count; i++) {
       pos[i * 3] = (Math.random() - 0.5) * 25
       pos[i * 3 + 1] = (Math.random() - 0.5) * 25

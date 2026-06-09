@@ -47,37 +47,37 @@ function HomePage() {
       </Helmet>
       {/* Bloc 1 : Hero (promesse + preuve rapide + CTA) */}
       <Hero />
-      <SectionDivider type="wave" color="#0B1020" />
+      <SectionDivider type="wave" color="#0B1120" />
       {/* Bloc 2 : Pronostics Gratuits du Jour (MIS EN AVANT - première section visible) */}
       <FreePredictions />
-      <SectionDivider type="mountain" color="#0B1020" />
+      <SectionDivider type="mountain" color="#0B1120" />
       {/* Bloc 3 : Pronostics Premium (VIP) - après les pronostics gratuits */}
       <LockedCoupons />
-      <SectionDivider type="mountain" color="#0B1020" />
+      <SectionDivider type="mountain" color="#0B1120" />
       {/* Bloc 4 : Historique des gains vérifiés */}
       <WinHistory />
-      <SectionDivider type="curve" flip color="#050816" />
+      <SectionDivider type="curve" flip color="#0B1120" />
       {/* Bloc 5 : Stats clés (précision, matchs analysés, ligues) */}
       <Stats />
-      <SectionDivider type="curve" flip color="#050816" />
+      <SectionDivider type="curve" flip color="#0B1120" />
       {/* Bloc 6 : Bonus Linebet */}
       <PromoBanner />
-      <SectionDivider type="curve" flip color="#050816" />
+      <SectionDivider type="curve" flip color="#0B1120" />
       {/* Bloc 7 : Why Linebet */}
       <WhyLinebet />
-      <SectionDivider type="curve" flip color="#050816" />
+      <SectionDivider type="curve" flip color="#0B1120" />
       {/* Bloc 8 : Social proof (avis) */}
       <Testimonials />
-      <SectionDivider type="wave" color="#0B1020" />
+      <SectionDivider type="wave" color="#0B1120" />
       {/* Bloc 9 : Blog */}
       <BlogSection />
-      <SectionDivider type="curve" flip color="#050816" />
+      <SectionDivider type="curve" flip color="#0B1120" />
       {/* Bloc 10 : SEO content */}
       <SeoBlock />
-      <SectionDivider type="wave" color="#0B1020" />
+      <SectionDivider type="wave" color="#0B1120" />
       {/* Bloc 11 : Comment ça marche */}
       <HowItWorks />
-      <SectionDivider type="curve" flip color="#050816" />
+      <SectionDivider type="curve" flip color="#0B1120" />
       {/* Bloc 12 : FAQ */}
       <FaqAccordion />
     </>
