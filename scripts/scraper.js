@@ -75,6 +75,13 @@ const ESPN_LEAGUES = [
   'fifa.world', 'uefa.champ', 'uefa.europa',
 ]
 
+// V18: Major leagues get full 7-day query, secondary get 3 days
+const MAJOR_LEAGUES = new Set([
+  'eng.1', 'esp.1', 'ger.1', 'ita.1', 'fra.1',
+  'fifa.world', 'uefa.champ', 'uefa.europa',
+  'ned.1', 'por.1', 'bra.1', 'arg.1',
+])
+
 // ─── V18: API-Football configuration ───
 // API-Football (RapidAPI) - Free tier: 100 requests/day
 // Used for cross-referencing match dates
@@ -661,7 +668,11 @@ async function scrapeESPN() {
   console.log(`[Scraper] ESPN: querying ${dateParams.length} dates (${dateParams[0]} to ${dateParams[dateParams.length-1]})`)
 
   for (const slug of ESPN_LEAGUES) {
-    for (const dateParam of dateParams) {
+    // V18: Major leagues get full 7-day range, secondary get 3 days
+    const daysToQuery = MAJOR_LEAGUES.has(slug) ? FUTURE_DAYS : 3
+    const slugDateParams = dateParams.slice(0, daysToQuery)
+
+    for (const dateParam of slugDateParams) {
       try {
         const res = await fetch(
           `https://site.api.espn.com/apis/site/v2/sports/soccer/${slug}/scoreboard?dates=${dateParam}`,
