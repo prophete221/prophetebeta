@@ -358,65 +358,155 @@ function VipModal({ isOpen, onClose }) {
   )
 }
 
+// ─── VIP Teaser Coupon Row ───
+function VipCouponRow({ match, league, time, confidence, index }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: -15 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ delay: 0.15 + index * 0.08, duration: 0.4 }}
+      className="relative flex items-center gap-2.5 sm:gap-3 bg-midnight/50 rounded-lg px-3 py-2 border border-gold/8 hover:border-gold/15 transition-colors group/row"
+    >
+      {/* Time */}
+      <span className="text-[10px] sm:text-xs text-gold/60 font-mono tabular-nums w-10 text-center flex-shrink-0">{time}</span>
+
+      {/* Match name - partially revealed */}
+      <div className="flex-1 min-w-0">
+        <span className="text-gray-300 text-xs sm:text-sm font-medium block truncate">{match}</span>
+        <span className="text-gray-600 text-[10px]">{league}</span>
+      </div>
+
+      {/* Prediction - blurred/locked */}
+      <div className="relative flex items-center gap-1.5 flex-shrink-0">
+        <div className="blur-[4px] select-none">
+          <span className="text-gold text-[10px] sm:text-xs font-bold px-2 py-0.5 bg-gold/10 rounded">
+            BTTS OUI
+          </span>
+        </div>
+        {/* Lock overlay */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-gold/70">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+        </div>
+      </div>
+
+      {/* Confidence bar - partially shown */}
+      <div className="hidden sm:flex items-center gap-1.5 flex-shrink-0 w-20">
+        <div className="flex-1 h-1.5 bg-midnight rounded-full overflow-hidden">
+          <div className="h-full bg-gradient-to-r from-gold/40 to-gold/20 rounded-full" style={{ width: `${confidence}%` }} />
+        </div>
+        <span className="text-[10px] text-gold/40 font-mono blur-[2px] select-none">{confidence}%</span>
+      </div>
+    </motion.div>
+  )
+}
+
 export default function PromoVip() {
   const [ref, isVisible] = useScrollAnimation()
   const [showVipModal, setShowVipModal] = useState(false)
+
+  // Teaser data - real-looking matches that create curiosity
+  const vipMatches = [
+    { match: 'Real Madrid vs Liverpool', league: 'Champions League', time: '21:00', confidence: 87 },
+    { match: 'Arsenal vs Man United', league: 'Premier League', time: '17:30', confidence: 82 },
+    { match: 'Bayern vs Dortmund', league: 'Bundesliga', time: '18:30', confidence: 79 },
+    { match: 'Inter vs AC Milan', league: 'Serie A', time: '20:45', confidence: 84 },
+    { match: 'PSG vs OM', league: 'Ligue 1', time: '21:00', confidence: 76 },
+  ]
 
   return (
     <>
       <section ref={ref} id="vip" className="py-10 sm:py-16 px-4 bg-dark-800/50">
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-            {/* ── VIP Section ── */}
+            {/* ── VIP Coupon Section ── */}
             <motion.div
-              initial={{ opacity: 0, x: -20, scale: 0.97 }}
-              animate={isVisible ? { opacity: 1, x: 0, scale: 1 } : undefined}
-              transition={{ duration: 0.5 }}
-              className="relative rounded-xl border border-gold/15 bg-panel/60 overflow-hidden hover-lift group"
+              initial={{ opacity: 0, y: 20, scale: 0.97 }}
+              animate={isVisible ? { opacity: 1, y: 0, scale: 1 } : undefined}
+              transition={{ duration: 0.6 }}
+              className="relative rounded-xl border border-gold/20 bg-panel/80 overflow-hidden hover-lift group"
             >
-              {/* Gold accent top */}
+              {/* Premium gold accent top */}
               <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-gold via-gold-light to-gold" />
-              {/* Background glow */}
-              <div className="absolute top-0 right-0 w-[200px] h-[200px] bg-gold/3 rounded-full blur-[80px]" />
 
-              <div className="relative p-6 sm:p-8">
-                {/* Lock icon */}
-                <div className="w-12 h-12 bg-gold/10 border border-gold/15 rounded-xl flex items-center justify-center text-gold mb-5">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                  </svg>
+              {/* Animated background glow */}
+              <div className="absolute top-0 right-0 w-[250px] h-[250px] bg-gold/4 rounded-full blur-[100px] animate-pulse-gold" />
+              <div className="absolute bottom-0 left-0 w-[180px] h-[180px] bg-gold/3 rounded-full blur-[80px]" />
+
+              <div className="relative p-5 sm:p-7">
+                {/* Header row */}
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-2.5">
+                    {/* Crown badge */}
+                    <div className="w-10 h-10 bg-gold/10 border border-gold/20 rounded-xl flex items-center justify-center text-gold">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M2 17l4-8 4 4 2-9 4 7 2-3 4 9H2z"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="text-lg sm:text-xl font-extrabold text-white leading-tight" style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: '0.04em' }}>
+                        PRONOSTICS <span className="text-gold animate-pulse-gold">VIP</span>
+                      </h3>
+                      <p className="text-[10px] text-gold/50 font-medium tracking-wide uppercase">Contenu exclusif verrouillé</p>
+                    </div>
+                  </div>
+                  {/* Live badge */}
+                  <div className="flex items-center gap-1.5 bg-gold/10 border border-gold/15 rounded-full px-2.5 py-1">
+                    <div className="w-1.5 h-1.5 bg-gold rounded-full animate-pulse" />
+                    <span className="text-[10px] text-gold font-semibold">LIVE</span>
+                  </div>
                 </div>
 
-                <h3 className="text-xl sm:text-2xl font-extrabold text-white mb-2" style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: '0.04em' }}>
-                  PRONOSTICS <span className="text-gold">VIP</span>
-                </h3>
-                <p className="text-gray-400 text-sm mb-5 leading-relaxed">
-                  Accédez aux pronostics premium : plus de matchs, des marchés exclus, et un suivi personnalisé via WhatsApp.
-                </p>
+                {/* Stats bar */}
+                <div className="flex items-center gap-3 sm:gap-4 mb-4 pb-4 border-b border-gold/8">
+                  <div className="flex items-center gap-1.5">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-gold/60">
+                      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                    </svg>
+                    <span className="text-[11px] text-gray-400"><span className="text-white font-semibold">5</span> matchs</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-gold/60">
+                      <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    <span className="text-[11px] text-gray-400">Aujourd'hui</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-emerald/60">
+                      <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                    <span className="text-[11px] text-gray-400">Taux <span className="text-emerald font-semibold blur-[3px] select-none">92%</span></span>
+                  </div>
+                </div>
 
-                {/* Preview — blurred matches */}
-                <div className="space-y-2 mb-6">
-                  {[
-                    { match: 'Man City vs Chelsea', league: 'Premier League' },
-                    { match: 'Barcelona vs Atletico', league: 'La Liga' },
-                    { match: 'PSG vs Lyon', league: 'Ligue 1' },
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-center gap-3 bg-midnight/40 rounded-lg px-3 py-2.5 border border-edge/30">
-                      <div className="w-1.5 h-1.5 bg-gold/40 rounded-full" />
-                      <span className="text-gray-500 text-xs font-medium flex-1 blur-[3px] group-hover:blur-[2px] select-none">{item.match}</span>
-                      <span className="text-gray-600 text-[10px]">{item.league}</span>
-                    </div>
+                {/* Coupon rows - the main tease */}
+                <div className="space-y-1.5 mb-5">
+                  {vipMatches.map((m, i) => (
+                    <VipCouponRow key={i} {...m} index={i} />
                   ))}
                 </div>
 
-                {/* CTA - Opens modal instead of WhatsApp */}
+                {/* CTA with urgency */}
                 <button
                   onClick={() => setShowVipModal(true)}
-                  className="flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-gold to-gold-dark text-midnight font-bold rounded-xl text-sm hover:shadow-lg hover:shadow-gold/30 transition-all hover:brightness-110 w-full cursor-pointer"
+                  className="relative flex items-center justify-center gap-2 px-6 py-3.5 bg-gradient-to-r from-gold to-gold-dark text-midnight font-bold rounded-xl text-sm hover:shadow-lg hover:shadow-gold/30 transition-all hover:brightness-110 w-full cursor-pointer overflow-hidden group/btn"
                 >
+                  {/* Shimmer effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700" />
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                  Rejoindre le VIP
+                  <span>Débloquer le VIP</span>
                 </button>
+
+                {/* Urgency footer */}
+                <div className="flex items-center justify-center gap-2 mt-3">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-gold/40">
+                    <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                  </svg>
+                  <p className="text-[10px] sm:text-[11px] text-gold/40 font-medium">
+                    Accès limité — <span className="text-gold/60">places restantes aujourd'hui</span>
+                  </p>
+                </div>
               </div>
             </motion.div>
 
