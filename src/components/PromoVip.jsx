@@ -432,6 +432,33 @@ export default function PromoVip() {
   const [showVipModal, setShowVipModal] = useState(false)
   const [vipMatches, setVipMatches] = useState([])
   const [couponDate, setCouponDate] = useState('')
+  const [todayFormatted, setTodayFormatted] = useState('')
+
+  // Auto-updating current date in French format
+  useEffect(() => {
+    const formatDate = () => {
+      const now = new Date()
+      const dayName = now.toLocaleDateString('fr-FR', { weekday: 'long' })
+      const dayNum = now.getDate()
+      const monthName = now.toLocaleDateString('fr-FR', { month: 'long' })
+      const year = now.getFullYear()
+      // Capitalize first letter: "lundi 10 juin 2026" → "Lundi 10 Juin 2026"
+      return `${dayName.charAt(0).toUpperCase() + dayName.slice(1)} ${dayNum} ${monthName.charAt(0).toUpperCase() + monthName.slice(1)} ${year}`
+    }
+    setTodayFormatted(formatDate())
+
+    // Update at midnight
+    const now = new Date()
+    const msUntilMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 1).getTime() - now.getTime()
+    const timeout = setTimeout(() => {
+      setTodayFormatted(formatDate())
+      // Then refresh every 24h
+      const interval = setInterval(() => setTodayFormatted(formatDate()), 24 * 60 * 60 * 1000)
+      return () => clearInterval(interval)
+    }, msUntilMidnight)
+
+    return () => clearTimeout(timeout)
+  }, [])
 
   // Fetch real match data from predictions.json
   useEffect(() => {
@@ -527,7 +554,7 @@ export default function PromoVip() {
 
               <div className="relative p-5 sm:p-7">
                 {/* Header row */}
-                <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-2.5">
                     {/* Crown badge */}
                     <div className="w-10 h-10 bg-gold/10 border border-gold/20 rounded-xl flex items-center justify-center text-gold">
@@ -548,6 +575,16 @@ export default function PromoVip() {
                     <span className="text-[10px] text-gold font-semibold">LIVE</span>
                   </div>
                 </div>
+
+                {/* Today's date - auto-updated */}
+                {todayFormatted && (
+                  <div className="flex items-center gap-2 mb-4 bg-gold/5 border border-gold/10 rounded-lg px-3 py-2">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-gold/60 flex-shrink-0" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    <span className="text-xs text-gold/80 font-semibold tracking-wide">{todayFormatted}</span>
+                  </div>
+                )}
 
                 {/* Stats bar */}
                 <div className="flex items-center gap-3 sm:gap-4 mb-4 pb-4 border-b border-gold/8">
