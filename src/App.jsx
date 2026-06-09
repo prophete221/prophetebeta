@@ -3,14 +3,10 @@ import { Routes, Route } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import { StatsSection as Stats, HowItWorks, WhyLinebet, Testimonials, BlogSection, SeoBlock } from './components/Sections'
-import PromoBanner from './components/PromoBanner'
 import FreePredictions from './components/predictions/FreePredictions'
-import LockedCoupons from './components/predictions/LockedCoupons'
-import FaqAccordion from './components/FaqAccordion'
+import PromoVip from './components/PromoVip'
 import WinHistory from './components/WinHistory'
 import Footer from './components/Footer'
-import SectionDivider from './components/SectionDivider'
 import CursorEffect from './components/CursorEffect'
 import FloatingElements from './components/FloatingElements'
 import ErrorBoundary from './components/ErrorBoundary'
@@ -45,41 +41,14 @@ function HomePage() {
       <Helmet>
         <title>BttsBet – Pronostics BTTS & Over 2,5 | Précision IA ~78%</title>
       </Helmet>
-      {/* Bloc 1 : Hero (promesse + preuve rapide + CTA) */}
+      {/* Zone 1 : Hero — compact, bold, sportif */}
       <Hero />
-      <SectionDivider type="wave" color="#0B1120" />
-      {/* Bloc 2 : Pronostics Gratuits du Jour (MIS EN AVANT - première section visible) */}
+      {/* Zone 2 : Predictions Dashboard — LA star du site */}
       <FreePredictions />
-      <SectionDivider type="mountain" color="#0B1120" />
-      {/* Bloc 3 : Pronostics Premium (VIP) - après les pronostics gratuits */}
-      <LockedCoupons />
-      <SectionDivider type="mountain" color="#0B1120" />
-      {/* Bloc 4 : Historique des gains vérifiés */}
+      {/* Zone 3 : VIP + Promo combiné */}
+      <PromoVip />
+      {/* Zone 4 : Historique des gains */}
       <WinHistory />
-      <SectionDivider type="curve" flip color="#0B1120" />
-      {/* Bloc 5 : Stats clés (précision, matchs analysés, ligues) */}
-      <Stats />
-      <SectionDivider type="curve" flip color="#0B1120" />
-      {/* Bloc 6 : Bonus Linebet */}
-      <PromoBanner />
-      <SectionDivider type="curve" flip color="#0B1120" />
-      {/* Bloc 7 : Why Linebet */}
-      <WhyLinebet />
-      <SectionDivider type="curve" flip color="#0B1120" />
-      {/* Bloc 8 : Social proof (avis) */}
-      <Testimonials />
-      <SectionDivider type="wave" color="#0B1120" />
-      {/* Bloc 9 : Blog */}
-      <BlogSection />
-      <SectionDivider type="curve" flip color="#0B1120" />
-      {/* Bloc 10 : SEO content */}
-      <SeoBlock />
-      <SectionDivider type="wave" color="#0B1120" />
-      {/* Bloc 11 : Comment ça marche */}
-      <HowItWorks />
-      <SectionDivider type="curve" flip color="#0B1120" />
-      {/* Bloc 12 : FAQ */}
-      <FaqAccordion />
     </>
   )
 }

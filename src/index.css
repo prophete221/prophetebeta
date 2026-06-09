@@ -406,6 +406,20 @@ h1, h2, h3, h4, h5, h6 {
   background: linear-gradient(90deg, transparent, #F59E0B, transparent);
 }
 
+/* ─── Scrollbar-none for filter tabs ─── */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─── Tabular numbers for time display ─── */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
 /* ─── Mobile performance ─── */
 @media (max-width: 767px) {
   .card-3d::before { display: none; }

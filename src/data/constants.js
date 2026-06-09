@@ -29,8 +29,8 @@ export const AFFILIATE = {
 export const NAV_LINKS = [
   { label: 'Accueil', href: '/' },
   { label: 'Pronostics', href: '/#free-predictions' },
-  { label: 'VIP', href: '/#vip' },
-  { label: 'Bonus', href: '/#bonus' },
+  { label: 'Résultats', href: '/#win-history' },
+  { label: 'VIP & Bonus', href: '/#vip' },
   { label: 'FAQ', href: '/#faq' },
 ]
 
