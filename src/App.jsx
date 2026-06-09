@@ -14,6 +14,7 @@ import CookieConsent from './components/CookieConsent'
 import AgeVerification from './components/AgeVerification'
 import PwaInstallPrompt from './components/PwaInstallPrompt'
 import { LoginPage, RegisterPage, ProfilePage } from './pages/AuthPages'
+import { MentionsLegales, PolitiqueConfidentialite, JouerResponsable, CGU } from './pages/LegalPages'
 
 // Lazy-loaded 3D Scene (desktop only, with fallback)
 const Scene3D = lazy(() => import('./components/Scene3D'))
