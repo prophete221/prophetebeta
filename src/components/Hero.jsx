@@ -91,7 +91,7 @@ export default function Hero() {
         >
           <div className="flex items-center gap-6 sm:gap-10 bg-panel/60 border border-edge rounded-2xl px-6 py-3.5 sm:px-8 sm:py-4">
             <div className="text-center">
-              <div className="text-xl sm:text-2xl font-extrabold text-emerald">~78%</div>
+              <div className="text-xl sm:text-2xl font-extrabold text-emerald">{SITE.accuracy}</div>
               <div className="text-[10px] sm:text-xs text-gray-500 uppercase tracking-wider">Précision</div>
             </div>
             <div className="w-px h-8 bg-edge" />

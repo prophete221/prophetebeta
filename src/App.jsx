@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import Navbar from './components/Navbar'
@@ -25,7 +25,7 @@ const BlogArticlePage = lazy(() => import('./pages/BlogArticlePage'))
 function PageLoader() {
   return (
     <div className="min-h-screen flex items-center justify-center">
-      <div className="inline-block w-10 h-10 border-3 border-neon/30 border-t-neon rounded-full animate-spin" />
+      <div className="inline-block w-10 h-10 border-[3px] border-emerald/30 border-t-emerald rounded-full animate-spin" />
     </div>
   )
 }
@@ -33,6 +33,26 @@ function PageLoader() {
 // Three.js loading fallback (invisible)
 function Scene3DFallback() {
   return null
+}
+
+// Responsive 3D scene — updates on resize
+function Scene3DWrapper() {
+  const [showScene, setShowScene] = useState(
+    typeof window !== 'undefined' && window.innerWidth >= 1024
+  )
+
+  useEffect(() => {
+    const handleResize = () => setShowScene(window.innerWidth >= 1024)
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  if (!showScene) return null
+  return (
+    <Suspense fallback={<Scene3DFallback />}>
+      <Scene3D />
+    </Suspense>
+  )
 }
 
 function HomePage() {
@@ -55,19 +75,25 @@ function HomePage() {
 
 function NotFoundPage() {
   return (
-    <div className="min-h-screen flex items-center justify-center px-4">
-      <div className="text-center">
-        <h1 className="text-6xl font-black text-white mb-4">404</h1>
-        <p className="text-xl text-gray-400 mb-2">Page non trouvée</p>
-        <p className="text-gray-500 mb-8">La page que vous recherchez n'existe pas ou a été déplacée.</p>
-        <a
-          href="/"
-          className="px-8 py-3 bg-gradient-to-r from-emerald to-gold text-dark-900 font-bold rounded-full hover:shadow-lg hover:shadow-emerald/30 transition-all"
-        >
-          Retour à l'accueil
-        </a>
+    <>
+      <Helmet>
+        <meta name="robots" content="noindex, nofollow" />
+        <title>404 – Page non trouvée | BttsBet</title>
+      </Helmet>
+      <div className="min-h-screen flex items-center justify-center px-4">
+        <div className="text-center">
+          <h1 className="text-6xl font-black text-white mb-4">404</h1>
+          <p className="text-xl text-gray-400 mb-2">Page non trouvée</p>
+          <p className="text-gray-500 mb-8">La page que vous recherchez n'existe pas ou a été déplacée.</p>
+          <a
+            href="/#/"
+            className="px-8 py-3 bg-gradient-to-r from-emerald to-emerald-dark text-midnight font-bold rounded-full hover:shadow-lg hover:shadow-emerald/30 transition-all"
+          >
+            Retour à l'accueil
+          </a>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 
@@ -75,10 +101,16 @@ export default function App() {
   return (
     <ErrorBoundary>
       <div className="min-h-screen bg-dark-900 relative">
-        {/* 3D Background Layer — desktop only for performance */}
-        <Suspense fallback={<Scene3DFallback />}>
-          {typeof window !== 'undefined' && window.innerWidth >= 768 && <Scene3D />}
-        </Suspense>
+        {/* Skip to content — accessibility */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-emerald focus:text-dark-900 focus:font-bold focus:rounded-lg"
+        >
+          Aller au contenu principal
+        </a>
+
+        {/* 3D Background Layer — desktop only, responsive */}
+        <Scene3DWrapper />
 
         {/* Floating Elements Layer */}
         <FloatingElements />
@@ -87,7 +119,7 @@ export default function App() {
         <CursorEffect />
 
         {/* Main Content */}
-        <div className="relative z-10">
+        <div id="main-content" className="relative z-10">
           <Navbar />
           <Suspense fallback={<PageLoader />}>
             <Routes>

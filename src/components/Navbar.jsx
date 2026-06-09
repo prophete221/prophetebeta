@@ -40,16 +40,20 @@ export default function Navbar() {
   return (
     <>
       {/* Navbar */}
-      <nav className={`sticky top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'glass-strong shadow-lg shadow-black/30 depth-3'
-          : 'bg-transparent'
-      }`}>
+      <nav
+        role="navigation"
+        aria-label="Navigation principale"
+        className={`sticky top-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? 'glass-strong shadow-lg shadow-black/30 depth-3'
+            : 'bg-transparent'
+        }`}
+      >
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <a
-              href="/"
+              href="/#/"
               onClick={(e) => {
                 // If already on home, just scroll to top
                 if (window.location.hash === '#/' || window.location.hash === '#' || window.location.hash === '') {
@@ -58,6 +62,7 @@ export default function Navbar() {
                 }
               }}
               className="flex items-center gap-2.5 group"
+              aria-label="BttsBet — Accueil"
             >
               <div className="w-8 h-8 rounded-lg bg-emerald/20 flex items-center justify-center group-hover:bg-emerald/30 transition-colors">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00D4AA" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -88,7 +93,7 @@ export default function Navbar() {
                 href={AFFILIATE.linebet}
                 rel={AFFILIATE.rel}
                 target="_blank"
-                className="px-5 py-2.5 bg-gradient-to-r from-emerald to-emerald-dark text-dark-900 font-bold rounded-lg text-sm hover:shadow-lg hover:shadow-emerald/30 transition-all hover:brightness-110 hover-lift"
+                className="px-5 py-2.5 bg-gradient-to-r from-emerald to-emerald-dark text-midnight font-bold rounded-lg text-sm hover:shadow-lg hover:shadow-emerald/30 transition-all hover:brightness-110 hover-lift"
               >
                 S'inscrire
               </a>
@@ -98,7 +103,9 @@ export default function Navbar() {
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="md:hidden text-gray-300 hover:text-white p-2"
-              aria-label="Menu"
+              aria-label={isOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+              aria-expanded={isOpen}
+              aria-controls="mobile-menu"
             >
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 {isOpen ? (
@@ -115,10 +122,12 @@ export default function Navbar() {
         <AnimatePresence>
           {isOpen && (
             <motion.div
+              id="mobile-menu"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               className="md:hidden glass-strong border-t border-white/5"
+              role="menu"
             >
               <div className="px-4 py-4 space-y-1">
                 {NAV_LINKS.map((link) => (
@@ -127,6 +136,7 @@ export default function Navbar() {
                     href={link.href || '#'}
                     onClick={(e) => handleNavClick(e, link)}
                     className="block text-gray-300 hover:text-emerald transition-colors font-medium py-3 px-3 rounded-lg hover:bg-white/5 cursor-pointer"
+                    role="menuitem"
                   >
                     {link.label}
                   </a>
@@ -144,7 +154,7 @@ export default function Navbar() {
                     href={AFFILIATE.linebet}
                     rel={AFFILIATE.rel}
                     target="_blank"
-                    className="block text-center px-5 py-3 bg-gradient-to-r from-emerald to-emerald-dark text-dark-900 font-bold rounded-lg"
+                    className="block text-center px-5 py-3 bg-gradient-to-r from-emerald to-emerald-dark text-midnight font-bold rounded-lg"
                   >
                     S'inscrire sur Linebet
                   </a>

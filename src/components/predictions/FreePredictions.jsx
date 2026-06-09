@@ -130,6 +130,10 @@ function MatchRow({ match, index, isVisible }) {
       <motion.div
         layout
         onClick={() => setExpanded(!expanded)}
+        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setExpanded(!expanded) } }}
+        role="button"
+        tabIndex={0}
+        aria-expanded={expanded}
         className={`relative rounded-xl border cursor-pointer transition-all duration-300 overflow-hidden ${
           expanded
             ? 'bg-panel border-emerald/25 shadow-lg shadow-emerald/5'
@@ -270,17 +274,36 @@ function MatchRow({ match, index, isVisible }) {
 }
 
 // ─── Date Group Header ───
+const DATE_GROUP_STYLES = {
+  emerald: {
+    line: 'bg-emerald/15',
+    text: 'text-emerald',
+    badge: 'bg-emerald/10 text-emerald',
+  },
+  gold: {
+    line: 'bg-gold/15',
+    text: 'text-gold',
+    badge: 'bg-gold/10 text-gold',
+  },
+  royal: {
+    line: 'bg-royal/15',
+    text: 'text-royal',
+    badge: 'bg-royal/10 text-royal',
+  },
+}
+
 function DateGroupHeader({ label, count, color = 'emerald' }) {
+  const s = DATE_GROUP_STYLES[color] || DATE_GROUP_STYLES.emerald
   return (
     <div className="flex items-center gap-3 mt-6 mb-3 first:mt-0">
-      <div className={`h-px flex-1 bg-${color}/15`} />
-      <div className={`flex items-center gap-2 text-${color}`}>
+      <div className={`h-px flex-1 ${s.line}`} />
+      <div className={`flex items-center gap-2 ${s.text}`}>
         <span className="text-xs font-bold uppercase tracking-widest">{label}</span>
-        <span className={`text-[10px] bg-${color}/10 text-${color} font-bold px-2 py-0.5 rounded-full`}>
+        <span className={`text-[10px] ${s.badge} font-bold px-2 py-0.5 rounded-full`}>
           {count}
         </span>
       </div>
-      <div className={`h-px flex-1 bg-${color}/15`} />
+      <div className={`h-px flex-1 ${s.line}`} />
     </div>
   )
 }
@@ -289,18 +312,24 @@ function DateGroupHeader({ label, count, color = 'emerald' }) {
 export default function FreePredictions() {
   const [predictions, setPredictions] = useState([])
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
   const [activeLeague, setActiveLeague] = useState('all')
   const [ref, isVisible] = useScrollAnimation()
 
   useEffect(() => {
     fetch('/predictions.json')
-      .then((r) => r.json())
+      .then((r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`)
+        return r.json()
+      })
       .then((data) => {
         setPredictions(data.predictions || [])
         setLoading(false)
       })
-      .catch(() => {
+      .catch((err) => {
+        console.error('Failed to load predictions:', err)
         setPredictions([])
+        setError('Impossible de charger les pronostics. Réessayez plus tard.')
         setLoading(false)
       })
   }, [])
@@ -414,10 +443,26 @@ export default function FreePredictions() {
             <div className="inline-block w-10 h-10 border-2 border-emerald/30 border-t-emerald rounded-full animate-spin" />
             <p className="text-gray-500 text-sm mt-4">Chargement des pronostics...</p>
           </div>
+        ) : error ? (
+          <div className="text-center py-16">
+            <div className="glass-3d rounded-2xl p-8 max-w-sm mx-auto">
+              <div className="w-14 h-14 bg-red-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF3D71" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>
+                </svg>
+              </div>
+              <p className="text-red-400 text-sm mb-3">{error}</p>
+              <button onClick={() => window.location.reload()} className="text-xs text-gray-500 underline hover:text-gray-300">Rafraîchir la page</button>
+            </div>
+          </div>
         ) : filteredMatches.length === 0 ? (
           <div className="text-center py-16">
             <div className="glass-3d rounded-2xl p-8 max-w-sm mx-auto">
-              <div className="w-14 h-14 bg-edge rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4">⚽</div>
+              <div className="w-14 h-14 bg-edge rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#64748b" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>
+                </svg>
+              </div>
               <p className="text-gray-400 text-sm">Aucun pronostic disponible. Revenez demain !</p>
             </div>
           </div>

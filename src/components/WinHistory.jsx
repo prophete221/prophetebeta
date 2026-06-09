@@ -11,12 +11,16 @@ export default function WinHistory() {
 
   useEffect(() => {
     fetch('/win-history.json')
-      .then((r) => r.json())
+      .then((r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`)
+        return r.json()
+      })
       .then((data) => {
         setWinData(data)
         setLoading(false)
       })
-      .catch(() => {
+      .catch((err) => {
+        console.error('Failed to load win history:', err)
         setWinData(null)
         setLoading(false)
       })

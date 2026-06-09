@@ -20,7 +20,7 @@ export const AFFILIATE = {
   linebetSocial: [
     'https://vision221.lineorgs.com/',
     'https://linebet.press/vision221',
-    'https://linebetop.com/en?promocode=vision221',
+    'https://linebetop.com/en?promocode=VISION221',
   ],
   rel: 'sponsored nofollow',
 }

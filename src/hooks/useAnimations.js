@@ -64,34 +64,3 @@ export function useMousePosition() {
 
   return { handleMouseMove, handleMouseLeave, tiltStyle }
 }
-
-/**
- * use3DEntrance — Variants framer-motion pour animations d'entrée 3D.
- */
-export function use3DEntrance() {
-  const containerVariants = {
-    hidden: {},
-    visible: { transition: { staggerChildren: 0.06 } },
-  }
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20, scale: 0.97 },
-    visible: {
-      opacity: 1, y: 0, scale: 1,
-      transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] },
-    },
-  }
-  return { containerVariants, itemVariants }
-}
-
-/**
- * use3DScrollEntrance — Props motion pour entrée au scroll.
- */
-export function use3DScrollEntrance(delay = 0) {
-  return {
-    initial: { opacity: 0, y: 20, scale: 0.97 },
-    whileInView: { opacity: 1, y: 0, scale: 1 },
-    viewport: { once: true, margin: '-30px' },
-    transition: { duration: 0.5, delay, ease: [0.25, 0.46, 0.45, 0.94] },
-    style: { transformOrigin: 'center bottom' },
-  }
-}

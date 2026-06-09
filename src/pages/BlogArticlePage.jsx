@@ -117,14 +117,15 @@ export default function BlogArticlePage() {
                 target="_blank"
                 className="px-8 py-3 bg-gradient-to-r from-emerald to-gold text-dark-900 font-bold rounded-full hover:shadow-lg hover:shadow-emerald/30 transition-all"
               >
-                🎁 Réclamer le Bonus
+                Réclamer le Bonus
               </a>
-              <Link
-                to="/#free-predictions"
+              <a
+                href="/#/"
+                onClick={(e) => { e.preventDefault(); window.location.hash = '#/'; setTimeout(() => document.getElementById('free-predictions')?.scrollIntoView({ behavior: 'smooth' }), 300) }}
                 className="px-8 py-3 glass text-emerald font-bold rounded-full hover:bg-emerald/10 transition-all"
               >
-                ⚽ Voir les Pronostics
-              </Link>
+                Voir les Pronostics
+              </a>
             </div>
           </motion.div>
 

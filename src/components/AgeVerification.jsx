@@ -2,13 +2,26 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const STORAGE_KEY = 'bttsbet_age_verified'
+const EXPIRY_HOURS = 24
 
 export default function AgeVerification() {
   const [show, setShow] = useState(false)
 
   useEffect(() => {
-    const verified = localStorage.getItem(STORAGE_KEY)
-    if (!verified) {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY)
+      if (stored) {
+        const data = JSON.parse(stored)
+        // Check if verification has expired
+        const verifiedAt = new Date(data.timestamp)
+        const now = new Date()
+        const hoursSince = (now - verifiedAt) / (1000 * 60 * 60)
+        if (hoursSince < EXPIRY_HOURS && data.verified) {
+          return // Still valid
+        }
+      }
+      setShow(true)
+    } catch {
       setShow(true)
     }
   }, [])
@@ -43,7 +56,10 @@ export default function AgeVerification() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-dark-900/98 backdrop-blur-lg"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-midnight/98 backdrop-blur-lg"
+          role="dialog"
+          aria-label="Vérification d'âge"
+          aria-modal="true"
         >
           <motion.div
             initial={{ scale: 0.9, opacity: 0, y: 20 }}
@@ -53,8 +69,12 @@ export default function AgeVerification() {
             className="glass-3d rounded-2xl p-8 sm:p-10 max-w-md mx-4 text-center"
           >
             {/* Warning Icon */}
-            <div className="w-20 h-20 bg-flame/10 rounded-2xl flex items-center justify-center text-flame mx-auto mb-6">
-              <span className="text-4xl" role="img" aria-label="Avertissement">⚠️</span>
+            <div className="w-20 h-20 bg-gold/10 rounded-2xl flex items-center justify-center text-gold mx-auto mb-6">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                <line x1="12" y1="9" x2="12" y2="13"/>
+                <line x1="12" y1="17" x2="12.01" y2="17"/>
+              </svg>
             </div>
 
             {/* Title */}
@@ -77,7 +97,7 @@ export default function AgeVerification() {
               </button>
               <button
                 onClick={handleConfirm}
-                className="px-6 py-3.5 bg-gradient-to-r from-emerald to-emerald-dark text-dark-900 font-bold rounded-xl hover:shadow-lg hover:shadow-emerald/30 hover:brightness-110 transition-all text-sm"
+                className="px-6 py-3.5 bg-gradient-to-r from-emerald to-emerald-dark text-midnight font-bold rounded-xl hover:shadow-lg hover:shadow-emerald/30 hover:brightness-110 transition-all text-sm"
               >
                 J&apos;ai 18 ans ou plus
               </button>

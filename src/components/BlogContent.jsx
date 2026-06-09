@@ -33,8 +33,8 @@ function renderNode(node, key) {
   const props = { key }
   if (Tag === 'a') {
     const href = node.getAttribute('href') || '#'
-    // Block javascript: protocol to prevent XSS
-    props.href = /^\s*javascript\s*:/i.test(href) ? 'about:blank#' : href
+    // Block dangerous protocols to prevent XSS
+    props.href = /^\s*(javascript|vbscript|data)\s*:/i.test(href) ? 'about:blank#' : href
     props.target = '_blank'
     props.rel = 'noopener noreferrer'
   }
