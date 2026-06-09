@@ -320,6 +320,56 @@ function normalizeTeamName(name) {
     .replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, ' ').trim()
 }
 
+// ─── V20: Mapping nom d'équipe → code pays ISO pour flagcdn.com ───
+// Utilisé pour les équipes nationales : https://flagcdn.com/w40/{code}.png
+const COUNTRY_CODE_MAP = {
+  'argentina': 'ar', 'brazil': 'br', 'germany': 'de', 'france': 'fr',
+  'spain': 'es', 'italy': 'it', 'england': 'gb-eng', 'portugal': 'pt',
+  'netherlands': 'nl', 'belgium': 'be', 'croatia': 'hr', 'morocco': 'ma',
+  'japan': 'jp', 'south korea': 'kr', 'united states': 'us', 'mexico': 'mx',
+  'canada': 'ca', 'costa rica': 'cr', 'saudi arabia': 'sa',
+  'iran': 'ir', 'iraq': 'iq', 'qatar': 'qa', 'uae': 'ae',
+  'uruguay': 'uy', 'paraguay': 'py', 'colombia': 'co', 'ecuador': 'ec',
+  'peru': 'pe', 'venezuela': 've', 'chile': 'cl', 'bolivia': 'bo',
+  'tanzania': 'tz', 'rwanda': 'rw', 'senegal': 'sn', 'nigeria': 'ng',
+  'ivory coast': 'ci', 'ghana': 'gh', 'cameroon': 'cm', 'egypt': 'eg',
+  'tunisia': 'tn', 'algeria': 'dz', 'morocco': 'ma', 'south africa': 'za',
+  'scotland': 'gb-sct', 'wales': 'gb-wls', 'iceland': 'is',
+  'sweden': 'se', 'norway': 'no', 'denmark': 'dk', 'finland': 'fi',
+  'switzerland': 'ch', 'austria': 'at', 'czechia': 'cz', 'czech republic': 'cz',
+  'poland': 'pl', 'romania': 'ro', 'hungary': 'hu', 'serbia': 'rs',
+  'greece': 'gr', 'turkey': 'tr', 'türkiye': 'tr', 'russia': 'ru',
+  'ukraine': 'ua', 'ireland': 'ie', 'bosnia-herzegovina': 'ba',
+  'new zealand': 'nz', 'australia': 'au', 'haiti': 'ht',
+  'cape verde': 'cv', 'curaçao': 'cw', 'suriname': 'sr',
+  'jamaica': 'jm', 'panama': 'pa', 'honduras': 'hn',
+  'guinea': 'gn', 'mali': 'ml', 'burkina faso': 'bf',
+  'dr congo': 'cd', 'gabon': 'ga', 'congo': 'cg',
+  'china': 'cn', 'thailand': 'th', 'vietnam': 'vn', 'india': 'in',
+  'indonesia': 'id', 'malaysia': 'my', 'philippines': 'ph',
+}
+
+/** V20: Resolve a team logo URL from team name */
+function resolveTeamLogo(teamName) {
+  if (!teamName) return ''
+  const normalized = normalizeTeamName(teamName)
+  // Check country code map for national teams (flagcdn.com)
+  const code = COUNTRY_CODE_MAP[normalized]
+  if (code) return `https://flagcdn.com/w40/${code}.png`
+  // Check canonical name
+  const canonical = canonicalTeamName(teamName)
+  const canonicalNorm = normalizeTeamName(canonical)
+  const code2 = COUNTRY_CODE_MAP[canonicalNorm]
+  if (code2) return `https://flagcdn.com/w40/${code2}.png`
+  // Partial match
+  for (const [name, c] of Object.entries(COUNTRY_CODE_MAP)) {
+    if (normalized.includes(name) || name.includes(normalized)) {
+      return `https://flagcdn.com/w40/${c}.png`
+    }
+  }
+  return ''
+}
+
 // ─── Mapping noms d'équipe variants → nom canonique ───
 const TEAM_ALIAS_MAP = {
   'czech rep': 'Czechia', 'czech republic': 'Czechia',
@@ -738,6 +788,9 @@ async function scrapeESPN() {
           const awayTeam = awayComp.team?.displayName || awayComp.team?.shortDisplayName || ''
           const homeId = homeComp.team?.id || ''
           const awayId = awayComp.team?.id || ''
+          // V20: Extract team logos from ESPN API
+          const homeLogo = homeComp.team?.logo || ''
+          const awayLogo = awayComp.team?.logo || ''
           if (!homeTeam || !awayTeam) continue
 
           const matchName = `${homeTeam} vs ${awayTeam}`
@@ -764,13 +817,13 @@ async function scrapeESPN() {
             allResults.push({
               match: matchName, league: leagueName, leagueSlug: slug,
               homeScore: parseInt(homeComp.score) || 0, awayScore: parseInt(awayComp.score) || 0,
-              homeId, awayId, homeTeam, awayTeam,
+              homeId, awayId, homeTeam, awayTeam, homeLogo, awayLogo,
               date: finalDate
             })
           } else if (isScheduled) {
             allMatches.push({
               match: matchName, league: leagueName, leagueSlug: slug,
-              homeTeam, awayTeam, homeId, awayId,
+              homeTeam, awayTeam, homeId, awayId, homeLogo, awayLogo,
               time: finalTime, date: finalDate, source: 'espn'
             })
           }
@@ -855,6 +908,9 @@ async function fetchAPIFootballFixtures() {
           awayTeam,
           league: fix.league?.name || '',
           source: 'api-football',
+          // V20: Extract team logos from API-Football
+          homeLogo: fix.teams?.home?.logo || '',
+          awayLogo: fix.teams?.away?.logo || '',
         }
       }
 
@@ -1478,6 +1534,9 @@ function generateAnalyzedPredictions(espnMatches, soccerbaseMatches, tsdbMatches
       time: match.time || '15:00',
       homeTeam: match.homeTeam,
       awayTeam: match.awayTeam,
+      // V20: Resolve logo URLs (ESPN/API-Football logo > flagcdn.com fallback)
+      homeLogo: match.homeLogo || resolveTeamLogo(match.homeTeam),
+      awayLogo: match.awayLogo || resolveTeamLogo(match.awayTeam),
       btts: {
         prediction: bttsPred,
         confidence: bttsConf,
@@ -1517,6 +1576,8 @@ function generateAnalyzedPredictions(espnMatches, soccerbaseMatches, tsdbMatches
       time: group.time,
       matchSemantic: makeMatchSemantic(group.match, group.league, 'BTTS'),
       source: group.btts.source,
+      homeLogo: group.homeLogo,
+      awayLogo: group.awayLogo,
       analysis: {
         bttsProb: group.analysis.bttsProb,
         over25Prob: group.analysis.over25Prob,
@@ -1538,6 +1599,8 @@ function generateAnalyzedPredictions(espnMatches, soccerbaseMatches, tsdbMatches
       time: group.time,
       matchSemantic: makeMatchSemantic(group.match, group.league, 'Over 2.5'),
       source: group.over25.source,
+      homeLogo: group.homeLogo,
+      awayLogo: group.awayLogo,
       analysis: {
         bttsProb: group.analysis.bttsProb,
         over25Prob: group.analysis.over25Prob,

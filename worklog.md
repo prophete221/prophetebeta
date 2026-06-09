@@ -123,3 +123,35 @@ Stage Summary:
 - predictions.json: 48 unique predictions, no duplicates, proper confidence range
 - win-history.json: coherent stats (66.4% displayed rate), unique IDs, clamped confidences
 - FreePredictions title now consistent with 7-day scope
+
+---
+Task ID: 4
+Agent: Main Agent
+Task: Add real team logos to match displays (V20)
+
+Work Log:
+- Added COUNTRY_CODE_MAP (50+ national teams → ISO country codes) to scraper.js
+- Added resolveTeamLogo() function in scraper for flagcdn.com URL resolution
+- Modified scrapeESPN() to extract team.logo from ESPN API response (homeLogo, awayLogo)
+- Modified fetchAPIFootballFixtures() to extract teams.home.logo and teams.away.logo from API-Football
+- Added homeLogo/awayLogo fields to match group data and final prediction output in generateAnalyzedPredictions()
+- Updated predictions.json with logo URLs for all 48 predictions (46 have logos, 2 club teams without)
+- Added TeamLogo React component to FreePredictions.jsx with:
+  - Image display with lazy loading
+  - Smooth opacity transition on load
+  - Automatic fallback to initials on image error
+  - Multiple size variants (xs, sm, md, lg)
+  - Emerald and Royal color schemes matching team sides
+- Added COUNTRY_CODE_MAP and resolveTeamLogoFrontend() to FreePredictions.jsx as frontend fallback
+  - Works even with old data that doesn't have homeLogo/awayLogo fields
+- Replaced hardcoded initials divs with TeamLogo component in both compact and expanded match views
+- Added MiniTeamLogo component and resolveTeamLogoWH() to WinHistory.jsx
+- Updated groupedPredictions useMemo to pass homeLogo/awayLogo through to match groups
+- Build passes successfully
+
+Stage Summary:
+- Real team logos displayed for all national team matches using flagcdn.com
+- Scraper V20 stores logo URLs in predictions.json for future runs
+- Frontend resolves logos dynamically as fallback for old data
+- Logo display in FreePredictions (compact + expanded views) and WinHistory
+- Club teams (no flag) gracefully fall back to initials display

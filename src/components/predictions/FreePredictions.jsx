@@ -3,6 +3,99 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useScrollAnimation } from '../../hooks/useAnimations'
 import { AFFILIATE } from '../../data/constants'
 
+// ─── V20: Team Logo Component with fallback to initials ───
+function TeamLogo({ src, initials, size = 'sm', color = 'emerald' }) {
+  const [imgError, setImgError] = useState(false)
+  const [imgLoaded, setImgLoaded] = useState(false)
+
+  const sizeClasses = {
+    xs: 'w-5 h-5 text-[8px]',
+    sm: 'w-7 h-7 sm:w-8 sm:h-8 text-[10px] sm:text-xs',
+    md: 'w-10 h-10 sm:w-12 sm:h-12 text-xs sm:text-sm',
+    lg: 'w-12 h-12 text-sm',
+  }
+
+  const colorClasses = {
+    emerald: 'bg-emerald/8 border-emerald/15 text-emerald',
+    royal: 'bg-royal/8 border-royal/15 text-royal',
+  }
+
+  const sizeClass = sizeClasses[size] || sizeClasses.sm
+  const colorClass = colorClasses[color] || colorClasses.emerald
+
+  // If we have a valid logo URL and it hasn't failed, show the image
+  if (src && !imgError) {
+    return (
+      <div className={`${sizeClass} rounded-lg border flex items-center justify-center overflow-hidden relative ${colorClass}`}>
+        <img
+          src={src}
+          alt={initials}
+          className={`w-full h-full object-contain transition-opacity duration-200 ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
+          onError={() => setImgError(true)}
+          onLoad={() => setImgLoaded(true)}
+          loading="lazy"
+        />
+        {/* Show initials while loading */}
+        {!imgLoaded && (
+          <span className="absolute font-bold">{initials}</span>
+        )}
+      </div>
+    )
+  }
+
+  // Fallback to initials
+  return (
+    <div className={`${sizeClass} rounded-lg border flex items-center justify-center ${colorClass}`}>
+      <span className="font-bold">{initials}</span>
+    </div>
+  )
+}
+
+// ─── V20: Frontend logo resolver for national teams (flagcdn.com fallback) ───
+const COUNTRY_CODE_MAP = {
+  'argentina': 'ar', 'brazil': 'br', 'germany': 'de', 'france': 'fr',
+  'spain': 'es', 'italy': 'it', 'england': 'gb-eng', 'portugal': 'pt',
+  'netherlands': 'nl', 'belgium': 'be', 'croatia': 'hr', 'morocco': 'ma',
+  'japan': 'jp', 'south korea': 'kr', 'united states': 'us', 'mexico': 'mx',
+  'canada': 'ca', 'costa rica': 'cr', 'saudi arabia': 'sa',
+  'iran': 'ir', 'iraq': 'iq', 'qatar': 'qa', 'uae': 'ae',
+  'uruguay': 'uy', 'paraguay': 'py', 'colombia': 'co', 'ecuador': 'ec',
+  'peru': 'pe', 'venezuela': 've', 'chile': 'cl', 'bolivia': 'bo',
+  'tanzania': 'tz', 'rwanda': 'rw', 'senegal': 'sn', 'nigeria': 'ng',
+  'ivory coast': 'ci', 'ghana': 'gh', 'cameroon': 'cm', 'egypt': 'eg',
+  'tunisia': 'tn', 'algeria': 'dz', 'south africa': 'za',
+  'scotland': 'gb-sct', 'wales': 'gb-wls', 'iceland': 'is',
+  'sweden': 'se', 'norway': 'no', 'denmark': 'dk', 'finland': 'fi',
+  'switzerland': 'ch', 'austria': 'at', 'czechia': 'cz', 'czech republic': 'cz',
+  'poland': 'pl', 'romania': 'ro', 'hungary': 'hu', 'serbia': 'rs',
+  'greece': 'gr', 'turkey': 'tr', 'türkiye': 'tr', 'russia': 'ru',
+  'ukraine': 'ua', 'ireland': 'ie', 'bosnia-herzegovina': 'ba',
+  'new zealand': 'nz', 'australia': 'au', 'haiti': 'ht',
+  'cape verde': 'cv', 'curaçao': 'cw', 'suriname': 'sr',
+  'jamaica': 'jm', 'panama': 'pa', 'honduras': 'hn',
+  'guinea': 'gn', 'mali': 'ml', 'burkina faso': 'bf',
+  'dr congo': 'cd', 'gabon': 'ga', 'congo': 'cg',
+  'china': 'cn', 'thailand': 'th', 'vietnam': 'vn', 'india': 'in',
+  'indonesia': 'id', 'malaysia': 'my', 'philippines': 'ph',
+}
+
+function resolveTeamLogoFrontend(teamName) {
+  if (!teamName) return ''
+  const normalized = teamName.toLowerCase()
+    .replace(/[àáâãäå]/g, 'a').replace(/[èéêë]/g, 'e').replace(/[ìíîï]/g, 'i')
+    .replace(/[òóôõö]/g, 'o').replace(/[ùúûü]/g, 'u').replace(/ñ/g, 'n')
+    .replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, ' ').trim()
+  // Direct match
+  if (COUNTRY_CODE_MAP[normalized]) return `https://flagcdn.com/w40/${COUNTRY_CODE_MAP[normalized]}.png`
+  // Partial match
+  for (const [name, code] of Object.entries(COUNTRY_CODE_MAP)) {
+    if (normalized.includes(name) || name.includes(normalized)) {
+      return `https://flagcdn.com/w40/${code}.png`
+    }
+  }
+  return ''
+}
+
 function formatDateShort(dateStr) {
   if (!dateStr) return ''
   try {
@@ -120,6 +213,10 @@ function MatchRow({ match, index, isVisible }) {
   const initials1 = team1.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase()
   const initials2 = team2.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase()
 
+  // V20: Extract logo URLs from match data, with frontend fallback
+  const homeLogo = match.homeLogo || resolveTeamLogoFrontend(team1)
+  const awayLogo = match.awayLogo || resolveTeamLogoFrontend(team2)
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 12, scale: 0.98 }}
@@ -164,15 +261,11 @@ function MatchRow({ match, index, isVisible }) {
           {/* Divider */}
           <div className="w-px h-8 bg-edge flex-shrink-0" />
 
-          {/* Team initials face-off — always visible */}
+          {/* Team logos face-off — always visible */}
           <div className="flex-shrink-0 flex items-center gap-1.5">
-            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-emerald/8 border border-emerald/15 flex items-center justify-center text-emerald font-bold text-[10px] sm:text-xs">
-              {initials1}
-            </div>
+            <TeamLogo src={homeLogo} initials={initials1} size="sm" color="emerald" />
             <span className="text-gray-600 text-[10px] font-bold">VS</span>
-            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-royal/8 border border-royal/15 flex items-center justify-center text-royal font-bold text-[10px] sm:text-xs">
-              {initials2}
-            </div>
+            <TeamLogo src={awayLogo} initials={initials2} size="sm" color="royal" />
           </div>
 
           {/* Match info */}
@@ -213,10 +306,8 @@ function MatchRow({ match, index, isVisible }) {
                 {/* Teams face-to-face — larger */}
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex-1 text-center">
-                    <div className="w-12 h-12 rounded-xl bg-emerald/8 border border-emerald/15 flex items-center justify-center text-emerald font-bold text-sm mx-auto mb-1.5">
-                      {initials1}
-                    </div>
-                    <div className="text-white font-semibold text-sm truncate max-w-[110px] sm:max-w-[140px] mx-auto">
+                    <TeamLogo src={homeLogo} initials={initials1} size="lg" color="emerald" />
+                    <div className="text-white font-semibold text-sm truncate max-w-[110px] sm:max-w-[140px] mx-auto mt-1.5">
                       {team1}
                     </div>
                   </div>
@@ -228,10 +319,8 @@ function MatchRow({ match, index, isVisible }) {
                   </div>
 
                   <div className="flex-1 text-center">
-                    <div className="w-12 h-12 rounded-xl bg-royal/8 border border-royal/15 flex items-center justify-center text-royal font-bold text-sm mx-auto mb-1.5">
-                      {initials2}
-                    </div>
-                    <div className="text-white font-semibold text-sm truncate max-w-[110px] sm:max-w-[140px] mx-auto">
+                    <TeamLogo src={awayLogo} initials={initials2} size="lg" color="royal" />
+                    <div className="text-white font-semibold text-sm truncate max-w-[110px] sm:max-w-[140px] mx-auto mt-1.5">
                       {team2}
                     </div>
                   </div>
@@ -345,6 +434,8 @@ export default function FreePredictions() {
           date: p.date,
           time: p.time,
           matchSemantic: p.matchSemantic,
+          homeLogo: p.homeLogo || '',
+          awayLogo: p.awayLogo || '',
           btts: null,
           over25: null,
         }

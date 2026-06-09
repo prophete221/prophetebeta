@@ -3,6 +3,64 @@ import { motion } from 'framer-motion'
 import { useScrollAnimation } from '../hooks/useAnimations'
 import TiltCard from './TiltCard'
 
+// ─── V20: Frontend logo resolver for national teams (flagcdn.com) ───
+const WH_COUNTRY_CODE_MAP = {
+  'argentina': 'ar', 'brazil': 'br', 'germany': 'de', 'france': 'fr',
+  'spain': 'es', 'italy': 'it', 'england': 'gb-eng', 'portugal': 'pt',
+  'netherlands': 'nl', 'belgium': 'be', 'croatia': 'hr', 'morocco': 'ma',
+  'japan': 'jp', 'south korea': 'kr', 'united states': 'us', 'mexico': 'mx',
+  'canada': 'ca', 'costa rica': 'cr', 'saudi arabia': 'sa',
+  'iran': 'ir', 'iraq': 'iq', 'qatar': 'qa', 'uae': 'ae',
+  'uruguay': 'uy', 'paraguay': 'py', 'colombia': 'co', 'ecuador': 'ec',
+  'peru': 'pe', 'venezuela': 've', 'chile': 'cl', 'bolivia': 'bo',
+  'tanzania': 'tz', 'rwanda': 'rw', 'senegal': 'sn', 'nigeria': 'ng',
+  'ivory coast': 'ci', 'ghana': 'gh', 'cameroon': 'cm', 'egypt': 'eg',
+  'tunisia': 'tn', 'algeria': 'dz', 'south africa': 'za',
+  'scotland': 'gb-sct', 'wales': 'gb-wls', 'iceland': 'is',
+  'sweden': 'se', 'norway': 'no', 'denmark': 'dk', 'finland': 'fi',
+  'switzerland': 'ch', 'austria': 'at', 'czechia': 'cz', 'czech republic': 'cz',
+  'poland': 'pl', 'romania': 'ro', 'hungary': 'hu', 'serbia': 'rs',
+  'greece': 'gr', 'turkey': 'tr', 'türkiye': 'tr', 'russia': 'ru',
+  'ukraine': 'ua', 'ireland': 'ie', 'bosnia-herzegovina': 'ba',
+  'new zealand': 'nz', 'australia': 'au', 'haiti': 'ht',
+  'cape verde': 'cv', 'curaçao': 'cw', 'suriname': 'sr',
+  'jamaica': 'jm', 'panama': 'pa', 'honduras': 'hn',
+  'guinea': 'gn', 'mali': 'ml', 'burkina faso': 'bf',
+  'dr congo': 'cd', 'gabon': 'ga', 'congo': 'cg',
+  'china': 'cn', 'thailand': 'th', 'vietnam': 'vn', 'india': 'in',
+  'indonesia': 'id', 'malaysia': 'my', 'philippines': 'ph',
+}
+
+function resolveTeamLogoWH(teamName) {
+  if (!teamName) return ''
+  const normalized = teamName.toLowerCase()
+    .replace(/[àáâãäå]/g, 'a').replace(/[èéêë]/g, 'e').replace(/[ìíîï]/g, 'i')
+    .replace(/[òóôõö]/g, 'o').replace(/[ùúûü]/g, 'u').replace(/ñ/g, 'n')
+    .replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, ' ').trim()
+  if (WH_COUNTRY_CODE_MAP[normalized]) return `https://flagcdn.com/w40/${WH_COUNTRY_CODE_MAP[normalized]}.png`
+  for (const [name, code] of Object.entries(WH_COUNTRY_CODE_MAP)) {
+    if (normalized.includes(name) || name.includes(normalized)) {
+      return `https://flagcdn.com/w40/${code}.png`
+    }
+  }
+  return ''
+}
+
+// V20: Mini team logo with fallback
+function MiniTeamLogo({ src, alt }) {
+  const [err, setErr] = useState(false)
+  if (!src || err) return null
+  return (
+    <img
+      src={src}
+      alt={alt}
+      className="w-5 h-5 rounded object-contain flex-shrink-0"
+      onError={() => setErr(true)}
+      loading="lazy"
+    />
+  )
+}
+
 export default function WinHistory() {
   const [ref, isVisible] = useScrollAnimation()
   const [showAll, setShowAll] = useState(false)
@@ -126,10 +184,14 @@ export default function WinHistory() {
               className="grid grid-cols-1 sm:grid-cols-6 gap-1 sm:gap-3 px-3 py-2.5 border-t border-white/5 hover:bg-emerald/5 transition-colors items-center"
             >
               <div className="text-[10px] text-gray-500 sm:text-xs">{item.date}</div>
-              <div>
-                <div className="text-white font-semibold text-xs sm:text-sm">{item.match}</div>
-                <div className="text-[10px] text-gray-500 sm:hidden">{item.league} • {item.type}</div>
-                <div className="text-[10px] text-gray-500 hidden sm:block">{item.league}</div>
+              <div className="flex items-center gap-1.5">
+                <MiniTeamLogo src={resolveTeamLogoWH(item.match?.split(' vs ')[0])} alt={item.match?.split(' vs ')[0]} />
+                <div>
+                  <div className="text-white font-semibold text-xs sm:text-sm">{item.match}</div>
+                  <div className="text-[10px] text-gray-500 sm:hidden">{item.league} • {item.type}</div>
+                  <div className="text-[10px] text-gray-500 hidden sm:block">{item.league}</div>
+                </div>
+                <MiniTeamLogo src={resolveTeamLogoWH(item.match?.split(' vs ')[1])} alt={item.match?.split(' vs ')[1]} />
               </div>
               <div className="hidden sm:block">
                 <span className={`text-[10px] font-semibold px-1.5 py-0.5 rounded-full ${

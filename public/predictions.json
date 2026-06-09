@@ -18,7 +18,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/tz.png",
+      "awayLogo": "https://flagcdn.com/w40/rw.png"
     },
     {
       "match": "Tanzania vs Rwanda",
@@ -37,7 +39,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/tz.png",
+      "awayLogo": "https://flagcdn.com/w40/rw.png"
     },
     {
       "match": "Saudi Arabia vs Senegal",
@@ -56,7 +60,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/sa.png",
+      "awayLogo": "https://flagcdn.com/w40/sn.png"
     },
     {
       "match": "Saudi Arabia vs Senegal",
@@ -75,7 +81,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/sa.png",
+      "awayLogo": "https://flagcdn.com/w40/sn.png"
     },
     {
       "match": "Argentina vs Iceland",
@@ -94,7 +102,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/ar.png",
+      "awayLogo": "https://flagcdn.com/w40/is.png"
     },
     {
       "match": "Argentina vs Iceland",
@@ -113,7 +123,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/ar.png",
+      "awayLogo": "https://flagcdn.com/w40/is.png"
     },
     {
       "match": "Iraq vs Venezuela",
@@ -132,7 +144,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/iq.png",
+      "awayLogo": "https://flagcdn.com/w40/ve.png"
     },
     {
       "match": "Iraq vs Venezuela",
@@ -151,7 +165,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/iq.png",
+      "awayLogo": "https://flagcdn.com/w40/ve.png"
     },
     {
       "match": "Portugal vs Nigeria",
@@ -170,7 +186,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/pt.png",
+      "awayLogo": "https://flagcdn.com/w40/ng.png"
     },
     {
       "match": "Portugal vs Nigeria",
@@ -189,7 +207,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/pt.png",
+      "awayLogo": "https://flagcdn.com/w40/ng.png"
     },
     {
       "match": "England vs Costa Rica",
@@ -208,7 +228,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/gb-eng.png",
+      "awayLogo": "https://flagcdn.com/w40/cr.png"
     },
     {
       "match": "England vs Costa Rica",
@@ -227,7 +249,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/gb-eng.png",
+      "awayLogo": "https://flagcdn.com/w40/cr.png"
     },
     {
       "match": "Bolivia vs Algeria",
@@ -246,7 +270,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/bo.png",
+      "awayLogo": "https://flagcdn.com/w40/dz.png"
     },
     {
       "match": "Bolivia vs Algeria",
@@ -265,7 +291,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/bo.png",
+      "awayLogo": "https://flagcdn.com/w40/dz.png"
     },
     {
       "match": "Málaga vs Las Palmas",
@@ -284,7 +312,9 @@
         "awayLambda": 0.3,
         "dataQuality": 4,
         "hasRealData": true
-      }
+      },
+      "homeLogo": "",
+      "awayLogo": ""
     },
     {
       "match": "Málaga vs Las Palmas",
@@ -303,7 +333,9 @@
         "awayLambda": 0.3,
         "dataQuality": 4,
         "hasRealData": true
-      }
+      },
+      "homeLogo": "",
+      "awayLogo": ""
     },
     {
       "match": "Mexico vs South Africa",
@@ -322,7 +354,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/mx.png",
+      "awayLogo": "https://flagcdn.com/w40/za.png"
     },
     {
       "match": "Mexico vs South Africa",
@@ -341,7 +375,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/mx.png",
+      "awayLogo": "https://flagcdn.com/w40/za.png"
     },
     {
       "match": "South Korea vs Czechia",
@@ -360,7 +396,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/kr.png",
+      "awayLogo": "https://flagcdn.com/w40/cz.png"
     },
     {
       "match": "South Korea vs Czechia",
@@ -379,7 +417,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/kr.png",
+      "awayLogo": "https://flagcdn.com/w40/cz.png"
     },
     {
       "match": "Canada vs Bosnia-Herzegovina",
@@ -398,7 +438,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/ca.png",
+      "awayLogo": "https://flagcdn.com/w40/ba.png"
     },
     {
       "match": "Canada vs Bosnia-Herzegovina",
@@ -417,7 +459,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/ca.png",
+      "awayLogo": "https://flagcdn.com/w40/ba.png"
     },
     {
       "match": "United States vs Paraguay",
@@ -436,7 +480,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/us.png",
+      "awayLogo": "https://flagcdn.com/w40/py.png"
     },
     {
       "match": "United States vs Paraguay",
@@ -455,7 +501,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/us.png",
+      "awayLogo": "https://flagcdn.com/w40/py.png"
     },
     {
       "match": "Qatar vs Switzerland",
@@ -474,7 +522,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/qa.png",
+      "awayLogo": "https://flagcdn.com/w40/ch.png"
     },
     {
       "match": "Qatar vs Switzerland",
@@ -493,7 +543,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/qa.png",
+      "awayLogo": "https://flagcdn.com/w40/ch.png"
     },
     {
       "match": "United States vs Türkiye",
@@ -512,7 +564,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/us.png",
+      "awayLogo": "https://flagcdn.com/w40/tr.png"
     },
     {
       "match": "United States vs Türkiye",
@@ -531,7 +585,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/us.png",
+      "awayLogo": "https://flagcdn.com/w40/tr.png"
     },
     {
       "match": "Curaçao vs Japan",
@@ -550,7 +606,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/cw.png",
+      "awayLogo": "https://flagcdn.com/w40/jp.png"
     },
     {
       "match": "Curaçao vs Japan",
@@ -569,7 +627,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/cw.png",
+      "awayLogo": "https://flagcdn.com/w40/jp.png"
     },
     {
       "match": "Brazil vs Morocco",
@@ -588,7 +648,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/br.png",
+      "awayLogo": "https://flagcdn.com/w40/ma.png"
     },
     {
       "match": "Brazil vs Morocco",
@@ -607,7 +669,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/br.png",
+      "awayLogo": "https://flagcdn.com/w40/ma.png"
     },
     {
       "match": "Haiti vs Scotland",
@@ -626,7 +690,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/ht.png",
+      "awayLogo": "https://flagcdn.com/w40/gb-sct.png"
     },
     {
       "match": "Haiti vs Scotland",
@@ -645,7 +711,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/ht.png",
+      "awayLogo": "https://flagcdn.com/w40/gb-sct.png"
     },
     {
       "match": "Germany vs Curaçao",
@@ -664,7 +732,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/de.png",
+      "awayLogo": "https://flagcdn.com/w40/cw.png"
     },
     {
       "match": "Germany vs Curaçao",
@@ -683,7 +753,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/de.png",
+      "awayLogo": "https://flagcdn.com/w40/cw.png"
     },
     {
       "match": "Ivory Coast vs Ecuador",
@@ -702,7 +774,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/ci.png",
+      "awayLogo": "https://flagcdn.com/w40/ec.png"
     },
     {
       "match": "Ivory Coast vs Ecuador",
@@ -721,7 +795,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/ci.png",
+      "awayLogo": "https://flagcdn.com/w40/ec.png"
     },
     {
       "match": "Sweden vs Tunisia",
@@ -740,7 +816,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/se.png",
+      "awayLogo": "https://flagcdn.com/w40/tn.png"
     },
     {
       "match": "Sweden vs Tunisia",
@@ -759,7 +837,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/se.png",
+      "awayLogo": "https://flagcdn.com/w40/tn.png"
     },
     {
       "match": "Spain vs Cape Verde",
@@ -778,7 +858,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/es.png",
+      "awayLogo": "https://flagcdn.com/w40/cv.png"
     },
     {
       "match": "Spain vs Cape Verde",
@@ -797,7 +879,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/es.png",
+      "awayLogo": "https://flagcdn.com/w40/cv.png"
     },
     {
       "match": "Belgium vs Egypt",
@@ -816,7 +900,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/be.png",
+      "awayLogo": "https://flagcdn.com/w40/eg.png"
     },
     {
       "match": "Belgium vs Egypt",
@@ -835,7 +921,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/be.png",
+      "awayLogo": "https://flagcdn.com/w40/eg.png"
     },
     {
       "match": "Iran vs New Zealand",
@@ -854,7 +942,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/ir.png",
+      "awayLogo": "https://flagcdn.com/w40/nz.png"
     },
     {
       "match": "Iran vs New Zealand",
@@ -873,7 +963,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/ir.png",
+      "awayLogo": "https://flagcdn.com/w40/nz.png"
     },
     {
       "match": "Saudi Arabia vs Uruguay",
@@ -892,7 +984,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/sa.png",
+      "awayLogo": "https://flagcdn.com/w40/uy.png"
     },
     {
       "match": "Saudi Arabia vs Uruguay",
@@ -911,7 +1005,9 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      }
+      },
+      "homeLogo": "https://flagcdn.com/w40/sa.png",
+      "awayLogo": "https://flagcdn.com/w40/uy.png"
     }
   ]
 }
