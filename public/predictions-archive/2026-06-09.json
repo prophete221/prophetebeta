@@ -534,44 +534,6 @@
       }
     },
     {
-      "match": "Hungary vs Kazakhstan",
-      "league": "International Friendly",
-      "date": "2026-06-09",
-      "type": "BTTS",
-      "prediction": "Non",
-      "confidence": 46,
-      "time": "18:00",
-      "matchSemantic": "hun-kaz-in-btts",
-      "source": "poisson",
-      "analysis": {
-        "bttsProb": 0.46,
-        "over25Prob": 0.48,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
-      "match": "Hungary vs Kazakhstan",
-      "league": "International Friendly",
-      "date": "2026-06-09",
-      "type": "Over 2.5",
-      "prediction": "Non",
-      "confidence": 46,
-      "time": "18:00",
-      "matchSemantic": "hun-kaz-in-o25",
-      "source": "poisson",
-      "analysis": {
-        "bttsProb": 0.46,
-        "over25Prob": 0.48,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
       "match": "Bolivia vs Algeria",
       "league": "International Friendly",
       "date": "2026-06-09",
@@ -945,6 +907,44 @@
       "analysis": {
         "bttsProb": 0.42,
         "over25Prob": 0.45,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Brazil vs Morocco",
+      "league": "International Friendly",
+      "date": "2026-06-14",
+      "type": "BTTS",
+      "prediction": "Non",
+      "confidence": 46,
+      "time": "--:--",
+      "matchSemantic": "bra-mor-in-btts",
+      "source": "poisson",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Brazil vs Morocco",
+      "league": "International Friendly",
+      "date": "2026-06-14",
+      "type": "Over 2.5",
+      "prediction": "Oui",
+      "confidence": 46,
+      "time": "--:--",
+      "matchSemantic": "bra-mor-in-o25",
+      "source": "poisson",
+      "analysis": {
+        "bttsProb": 0.48,
+        "over25Prob": 0.5,
         "homeLambda": 1.54,
         "awayLambda": 1.08,
         "dataQuality": 0,
