@@ -358,45 +358,70 @@ function VipModal({ isOpen, onClose }) {
   )
 }
 
+// ─── Mini team logo for VIP rows ───
+function VipTeamLogo({ src, name, size = 20 }) {
+  const [imgOk, setImgOk] = useState(true)
+  const initials = name?.slice(0, 2).toUpperCase() || '?'
+  if (!src || !imgOk) {
+    return (
+      <div
+        className="rounded-full bg-gold/10 border border-gold/15 flex items-center justify-center text-gold/60 font-bold flex-shrink-0"
+        style={{ width: size, height: size, fontSize: size * 0.4 }}
+      >
+        {initials}
+      </div>
+    )
+  }
+  return (
+    <img
+      src={src}
+      alt={name}
+      className="rounded-full object-contain flex-shrink-0"
+      style={{ width: size, height: size }}
+      loading="lazy"
+      onError={() => setImgOk(false)}
+    />
+  )
+}
+
 // ─── VIP Teaser Coupon Row ───
-function VipCouponRow({ match, league, time, confidence, index }) {
+function VipCouponRow({ match, league, time, homeLogo, awayLogo, homeTeam, awayTeam, cote, confidence, index }) {
   return (
     <motion.div
       initial={{ opacity: 0, x: -15 }}
       animate={{ opacity: 1, x: 0 }}
-      transition={{ delay: 0.15 + index * 0.08, duration: 0.4 }}
-      className="relative flex items-center gap-2.5 sm:gap-3 bg-midnight/50 rounded-lg px-3 py-2 border border-gold/8 hover:border-gold/15 transition-colors group/row"
+      transition={{ delay: 0.15 + index * 0.06, duration: 0.4 }}
+      className="relative flex items-center gap-2 sm:gap-2.5 bg-midnight/50 rounded-lg px-2.5 sm:px-3 py-2 border border-gold/8 hover:border-gold/15 transition-colors group/row"
     >
       {/* Time */}
-      <span className="text-[10px] sm:text-xs text-gold/60 font-mono tabular-nums w-10 text-center flex-shrink-0">{time}</span>
+      <span className="text-[10px] sm:text-xs text-gold/60 font-mono tabular-nums w-9 text-center flex-shrink-0">{time}</span>
 
-      {/* Match name - partially revealed */}
-      <div className="flex-1 min-w-0">
-        <span className="text-gray-300 text-xs sm:text-sm font-medium block truncate">{match}</span>
-        <span className="text-gray-600 text-[10px]">{league}</span>
+      {/* Team logos + Match name */}
+      <div className="flex items-center gap-1.5 flex-1 min-w-0">
+        <VipTeamLogo src={homeLogo} name={homeTeam} size={18} />
+        <span className="text-gray-300 text-[11px] sm:text-sm font-medium truncate">{match}</span>
+        <VipTeamLogo src={awayLogo} name={awayTeam} size={18} />
       </div>
 
+      {/* League */}
+      <span className="hidden sm:block text-gray-600 text-[10px] flex-shrink-0 max-w-[90px] truncate">{league}</span>
+
+      {/* Cote */}
+      <span className="text-[10px] sm:text-xs text-gold font-bold bg-gold/10 border border-gold/15 rounded px-1.5 py-0.5 flex-shrink-0 tabular-nums blur-[3px] select-none">{cote.toFixed(2)}</span>
+
       {/* Prediction - blurred/locked */}
-      <div className="relative flex items-center gap-1.5 flex-shrink-0">
+      <div className="relative flex items-center flex-shrink-0">
         <div className="blur-[4px] select-none">
-          <span className="text-gold text-[10px] sm:text-xs font-bold px-2 py-0.5 bg-gold/10 rounded">
-            BTTS OUI
+          <span className="text-gold text-[10px] sm:text-xs font-bold px-1.5 py-0.5 bg-gold/10 rounded">
+            BTTS
           </span>
         </div>
         {/* Lock overlay */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-gold/70">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-gold/70">
             <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
           </svg>
         </div>
-      </div>
-
-      {/* Confidence bar - partially shown */}
-      <div className="hidden sm:flex items-center gap-1.5 flex-shrink-0 w-20">
-        <div className="flex-1 h-1.5 bg-midnight rounded-full overflow-hidden">
-          <div className="h-full bg-gradient-to-r from-gold/40 to-gold/20 rounded-full" style={{ width: `${confidence}%` }} />
-        </div>
-        <span className="text-[10px] text-gold/40 font-mono blur-[2px] select-none">{confidence}%</span>
       </div>
     </motion.div>
   )
@@ -405,15 +430,81 @@ function VipCouponRow({ match, league, time, confidence, index }) {
 export default function PromoVip() {
   const [ref, isVisible] = useScrollAnimation()
   const [showVipModal, setShowVipModal] = useState(false)
+  const [vipMatches, setVipMatches] = useState([])
+  const [couponDate, setCouponDate] = useState('')
 
-  // Teaser data - real-looking matches that create curiosity
-  const vipMatches = [
-    { match: 'Real Madrid vs Liverpool', league: 'Champions League', time: '21:00', confidence: 87 },
-    { match: 'Arsenal vs Man United', league: 'Premier League', time: '17:30', confidence: 82 },
-    { match: 'Bayern vs Dortmund', league: 'Bundesliga', time: '18:30', confidence: 79 },
-    { match: 'Inter vs AC Milan', league: 'Serie A', time: '20:45', confidence: 84 },
-    { match: 'PSG vs OM', league: 'Ligue 1', time: '21:00', confidence: 76 },
-  ]
+  // Fetch real match data from predictions.json
+  useEffect(() => {
+    fetch('/predictions.json')
+      .then(r => r.json())
+      .then(data => {
+        if (!data?.predictions) return
+
+        // Group by unique match name
+        const matchMap = new Map()
+        for (const p of data.predictions) {
+          const key = p.matchSemantic || p.match
+          if (!matchMap.has(key)) {
+            const [home, away] = p.match.split(' vs ')
+            matchMap.set(key, {
+              match: p.match,
+              homeTeam: home?.trim() || '',
+              awayTeam: away?.trim() || '',
+              league: p.league,
+              date: p.date,
+              time: p.time,
+              homeLogo: p.homeLogo || '',
+              awayLogo: p.awayLogo || '',
+              predictions: [p],
+            })
+          } else {
+            matchMap.get(key).predictions.push(p)
+          }
+        }
+
+        // Sort: today first, then by time; take up to 10 matches
+        const today = new Date().toISOString().slice(0, 10)
+        const allMatches = [...matchMap.values()]
+          .sort((a, b) => {
+            // Today's matches first
+            const aToday = a.date === today ? 0 : 1
+            const bToday = b.date === today ? 0 : 1
+            if (aToday !== bToday) return aToday - bToday
+            // Then by date
+            if (a.date !== b.date) return a.date.localeCompare(b.date)
+            // Then by time
+            return (a.time || '').localeCompare(b.time || '')
+          })
+          .slice(0, 10)
+
+        // Assign VIP cote (~10 total for the coupon, distributed per match)
+        // Each match gets a cote so that the product ≈ 10
+        // For 10 matches: each ≈ 1.2589 (10^(1/10))
+        // For fewer matches, recalculate
+        const matchCount = allMatches.length || 1
+        const cotePerMatch = Math.pow(10, 1 / matchCount)
+
+        const vipData = allMatches.map((m, i) => ({
+          ...m,
+          cote: cotePerMatch,
+          confidence: 90 + Math.floor(Math.random() * 8), // 90-97% fiabilité
+          index: i,
+        }))
+
+        setVipMatches(vipData)
+
+        // Set coupon date label
+        const todayMatches = allMatches.filter(m => m.date === today)
+        if (todayMatches.length > 0) {
+          setCouponDate('Aujourd\'hui')
+        } else if (allMatches.length > 0) {
+          setCouponDate(allMatches[0].date)
+        }
+      })
+      .catch(() => {
+        // Fallback: keep empty
+      })
+  }, [])
 
   return (
     <>
@@ -464,27 +555,50 @@ export default function PromoVip() {
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-gold/60">
                       <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
                     </svg>
-                    <span className="text-[11px] text-gray-400"><span className="text-white font-semibold">5</span> matchs</span>
+                    <span className="text-[11px] text-gray-400"><span className="text-white font-semibold">{vipMatches.length}</span> matchs</span>
                   </div>
                   <div className="flex items-center gap-1.5">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-gold/60">
                       <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
                     </svg>
-                    <span className="text-[11px] text-gray-400">Aujourd'hui</span>
+                    <span className="text-[11px] text-gray-400">{couponDate}</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-gold/60">
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                    </svg>
+                    <span className="text-[11px] text-gray-400">Cote <span className="text-gold font-bold">10.00</span></span>
                   </div>
                   <div className="flex items-center gap-1.5">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-emerald/60">
                       <polyline points="20 6 9 17 4 12"/>
                     </svg>
-                    <span className="text-[11px] text-gray-400">Taux <span className="text-emerald font-semibold blur-[3px] select-none">92%</span></span>
+                    <span className="text-[11px] text-gray-400">Fiabilité <span className="text-emerald font-semibold">{'>'}90%</span></span>
                   </div>
                 </div>
 
-                {/* Coupon rows - the main tease */}
-                <div className="space-y-1.5 mb-5">
-                  {vipMatches.map((m, i) => (
-                    <VipCouponRow key={i} {...m} index={i} />
-                  ))}
+                {/* Coupon rows - real matches of the day */}
+                <div className="space-y-1 mb-4 max-h-[340px] overflow-y-auto scrollbar-none">
+                  {vipMatches.length > 0 ? (
+                    vipMatches.map((m, i) => (
+                      <VipCouponRow key={i} {...m} index={i} />
+                    ))
+                  ) : (
+                    // Loading skeleton
+                    Array.from({ length: 5 }).map((_, i) => (
+                      <div key={i} className="flex items-center gap-2 bg-midnight/50 rounded-lg px-3 py-2 border border-gold/8 animate-pulse">
+                        <div className="w-9 h-3 bg-gold/10 rounded" />
+                        <div className="flex-1 h-3 bg-gold/10 rounded" />
+                        <div className="w-10 h-3 bg-gold/10 rounded" />
+                      </div>
+                    ))
+                  )}
+                </div>
+
+                {/* Coupon total cote bar */}
+                <div className="flex items-center justify-between bg-gold/5 border border-gold/10 rounded-lg px-3 py-2 mb-5">
+                  <span className="text-[11px] text-gray-500 font-medium">Cote totale du coupon</span>
+                  <span className="text-sm text-gold font-bold tabular-nums">10.00</span>
                 </div>
 
                 {/* CTA with urgency */}
