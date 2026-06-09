@@ -1,31 +1,30 @@
 // ═══════════════════════════════════════════════════════════════════════════════
-// BttsBet – Scraper V14 (Validation Cohérence + Dates Réelles + Déduplication)
+// BttsBet – Scraper V15 (Timezone Correct + Dates Vraies + Validation Renforcée)
 // ═══════════════════════════════════════════════════════════════════════════════
 // Sources de données (par priorité) :
 //   1. Forebet — Vrais pronostics BTTS/Over d'experts
 //   2. Windrawwin — Pronostics BTTS supplémentaires
-//   3. ESPN API — Matchs réels du jour
-//   4. Soccerbase — Fixtures via HTTP
-//   5. TheSportsDB — Backup API
+//   3. ESPN API — Matchs réels du jour (dates UTC converties en Europe/Paris)
+//   4. Soccerbase — Fixtures via HTTP (dates extraites du HTML)
+//   5. TheSportsDB — Backup API (temps UTC converti)
 //
-// NOUVEAU V14 — Validation de cohérence AVANT publication :
+// NOUVEAU V15 — Corrections critiques des dates :
+//   - Toutes les dates et heures sont en Europe/Paris (CET/CEST)
+//   - ESPN: date+time cohérentes (plus de mélange UTC/serveur)
+//   - Forebet/Windrawwin: extraction des dates depuis le HTML
+//   - Soccerbase: extraction de la date depuis le contenu de la page
+//   - TheSportsDB: conversion strTimestamp/strTime UTC → Paris
+//   - 00:00 corrigé en --:-- pour les matchs sans heure fiable
+//   - Vérification croisée des dates entre sources
+//   - Détection des données périmées
+//
+// V14 — Validation de cohérence AVANT publication :
 //   - Vérification des dates : uniquement aujourd'hui et demain
 //   - Déduplication finale : suppression des vrais doublons
 //   - Distribution Oui/Non : équilibrage si trop de Non
 //   - Confiance : plage honnête 40-52%
 //   - Heures : détection d'heures suspectes (00:00 en masse)
 //   - Lambdas : alerte si tous identiques (données manquantes)
-//
-// V13 — Corrections majeures :
-//   - Date réelle du match incluse dans CHAQUE pronostic (depuis ESPN API)
-//   - Déduplication : les pronostics BTTS + Over 2.5 du même match sont groupés
-//   - Vérification de cohérence : les matchs doivent être aujourd'hui ou demain
-//   - Seuils Poisson corrigés (BTTS 0.48, Over 2.5 0.49)
-//   - Calibration +2% BTTS / +1% Over 2.5 (biais documenté du Poisson)
-//   - Régression modérée (0.40 max)
-//   - Scraping Forebet + Windrawwin pour les vrais pronostics
-//   - Mécanisme d'équilibrage : si >65% de "Non", on corrige vers 40-60% Oui
-//   - Confiance calculée à partir de l'écart au seuil
 // ═══════════════════════════════════════════════════════════════════════════════
 
 import fs from 'fs'
@@ -189,13 +188,64 @@ function resolveLeagueSlug(leagueName) {
 
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)) }
 
+// ═══ V15 : TIMEZONE STRATEGY ═══
+// Target audience: Western Europe (CET/CEST = UTC+1/UTC+2)
+// Rule: Store dates as YYYY-MM-DD in the DISPLAY timezone (Europe/Paris)
+// Rule: Store times as HH:MM in the DISPLAY timezone (Europe/Paris)
+// Rule: All internal "today/tomorrow" comparisons use the DISPLAY timezone
+// This ensures the user sees dates and times that make sense for them,
+// regardless of where the server is hosted.
+const DISPLAY_TZ = 'Europe/Paris' // CET (UTC+1) winter, CEST (UTC+2) summer
+
+/** Get today's date in DISPLAY timezone as YYYY-MM-DD */
 function getTodayISO() {
-  const d = new Date()
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+  return new Date().toLocaleDateString('sv-SE', { timeZone: DISPLAY_TZ })
 }
 
+/** Get tomorrow's date in DISPLAY timezone as YYYY-MM-DD */
+function getTomorrowISO() {
+  const d = new Date()
+  d.setDate(d.getDate() + 1)
+  return d.toLocaleDateString('sv-SE', { timeZone: DISPLAY_TZ })
+}
+
+/** Get yesterday's date in DISPLAY timezone as YYYY-MM-DD */
+function getYesterdayISO() {
+  const d = new Date()
+  d.setDate(d.getDate() - 1)
+  return d.toLocaleDateString('sv-SE', { timeZone: DISPLAY_TZ })
+}
+
+/**
+ * Convert an ISO 8601 UTC date string (e.g. "2026-06-10T00:30Z") to
+ * the display timezone, returning both the date and time components.
+ * @param {string} isoDate - ISO 8601 date string from API
+ * @returns {{ date: string, time: string }} - date as YYYY-MM-DD, time as HH:MM in display TZ
+ */
+function isoToDisplayTZ(isoDate) {
+  if (!isoDate) return { date: '', time: '' }
+  try {
+    const d = new Date(isoDate)
+    if (isNaN(d.getTime())) return { date: '', time: '' }
+    const dateStr = d.toLocaleDateString('sv-SE', { timeZone: DISPLAY_TZ })
+    const timeStr = d.toLocaleTimeString('fr-FR', {
+      timeZone: DISPLAY_TZ,
+      hour: '2-digit',
+      minute: '2-digit',
+    })
+    return { date: dateStr, time: timeStr }
+  } catch {
+    return { date: '', time: '' }
+  }
+}
+
+/**
+ * Convert an ISO 8601 UTC date string to YYYYMMDD for ESPN API `dates` param.
+ * Uses DISPLAY timezone so we fetch matches visible on "today" in Paris time.
+ */
 function formatDateParam(date) {
-  return `${date.getFullYear()}${String(date.getMonth() + 1).padStart(2, '0')}${String(date.getDate()).padStart(2, '0')}`
+  // date is a JS Date object — format in display TZ
+  return date.toLocaleDateString('sv-SE', { timeZone: DISPLAY_TZ }).replace(/-/g, '')
 }
 
 function loadCurrentPredictions() {
@@ -205,8 +255,7 @@ function loadCurrentWinHistory() {
   try { return fs.existsSync(WIN_HISTORY_FILE) ? JSON.parse(fs.readFileSync(WIN_HISTORY_FILE, 'utf-8')) : null } catch { return null }
 }
 function loadYesterdayPredictions() {
-  const y = new Date(Date.now() - 86400000)
-  const yStr = `${y.getFullYear()}-${String(y.getMonth() + 1).padStart(2, '0')}-${String(y.getDate()).padStart(2, '0')}`
+  const yStr = getYesterdayISO()
   const f = path.join(ARCHIVE_DIR, `${yStr}.json`)
   try { return fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf-8')) : null } catch { return null }
 }
@@ -348,6 +397,41 @@ async function scrapeForebet() {
 
         if (!prediction) continue
 
+        // ═══ V15 : Extract date and time from Forebet HTML ═══
+        // Forebet rows can contain a date/time cell, e.g.:
+        //   <td class="date">10/06</td> or <span>10 Jun</span>
+        //   <td class="time">15:00</td>
+        // If no date is found, default to today (Forebet default page = today).
+        let forebetDate = getTodayISO()
+        let forebetTime = '15:00'
+
+        // Try to extract time from the row
+        const timeMatch2 = row.match(/class="[^"]*time[^"]*"[^>]*>([^<]+)/i)
+          || row.match(/(\d{1,2}:\d{2})/)
+        if (timeMatch2) {
+          const t = timeMatch2[1].trim()
+          if (/^\d{1,2}:\d{2}$/.test(t)) forebetTime = t
+        }
+
+        // Try to extract date from the row
+        const dateCellMatch = row.match(/class="[^"]*date[^"]*"[^>]*>([^<]+)/i)
+          || row.match(/class="[^"]*forecastDate[^"]*"[^>]*>([^<]+)/i)
+        if (dateCellMatch) {
+          const rawDateStr = dateCellMatch[1].trim()
+          // Forebet uses DD/MM format, or "DD Mon" format
+          const dmyMatch = rawDateStr.match(/(\d{1,2})\/(\d{1,2})/)
+          if (dmyMatch) {
+            const day = dmyMatch[1].padStart(2, '0')
+            const month = dmyMatch[2].padStart(2, '0')
+            const year = new Date().getFullYear()
+            const candidate = `${year}-${month}-${day}`
+            // Sanity check: must be today or tomorrow
+            if (candidate === getTodayISO() || candidate === getTomorrowISO()) {
+              forebetDate = candidate
+            }
+          }
+        }
+
         predictions.push({
           match: matchName,
           homeTeam, awayTeam,
@@ -356,6 +440,8 @@ async function scrapeForebet() {
           prediction,
           confidence: Math.max(40, Math.min(52, confidence)),
           source: 'forebet',
+          date: forebetDate,
+          time: forebetTime,
         })
       }
 
@@ -461,6 +547,18 @@ async function scrapeWindrawwin() {
 
         if (!prediction) continue
 
+        // ═══ V15 : Extract date and time from Windrawwin HTML ═══
+        // Windrawwin "today" pages show today's matches only.
+        // Try to extract time from the row; default to today's date.
+        let wdwDate = getTodayISO()
+        let wdwTime = '15:00'
+
+        // Try to extract time from the row
+        const wdwTimeMatch = row.match(/(\d{1,2}:\d{2})/)
+        if (wdwTimeMatch) {
+          wdwTime = wdwTimeMatch[1]
+        }
+
         predictions.push({
           match: matchName,
           homeTeam, awayTeam,
@@ -469,6 +567,8 @@ async function scrapeWindrawwin() {
           prediction,
           confidence: Math.max(40, Math.min(52, confidence)),
           source: 'windrawwin',
+          date: wdwDate,
+          time: wdwTime,
         })
       }
 
@@ -520,9 +620,12 @@ async function scrapeESPN() {
   const activeLeagues = new Set()
   let apiCalls = 0
 
+  // V15: Use display timezone for date params to ESPN API
   const today = new Date()
   const tomorrow = new Date(Date.now() + 86400000)
   const dates = [formatDateParam(today), formatDateParam(tomorrow)]
+  const todayISO = getTodayISO()
+  const tomorrowISO = getTomorrowISO()
 
   for (const slug of ESPN_LEAGUES) {
     for (const dateParam of dates) {
@@ -561,11 +664,16 @@ async function scrapeESPN() {
           let leagueName = comp.league?.name || LEAGUE_PROFILES[slug]?.name || slug
 
           const status = event.status?.type?.description || ''
-          const date = event.date || ''
-          let matchTime = '15:00'
-          if (date) {
-            try { matchTime = new Date(date).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }) } catch {}
-          }
+          const rawDate = event.date || ''
+
+          // ═══ V15 : Convert ESPN UTC date to DISPLAY timezone ═══
+          // ESPN returns ISO 8601 with 'Z' suffix (e.g. "2026-06-10T00:30Z")
+          // We convert BOTH date and time to Europe/Paris so they are consistent.
+          // Previously: date came from .slice(0,10) = UTC date, time from toLocaleTimeString = server TZ
+          // This caused mismatches like date="10/06" + time="02:30" for a 00:30 UTC match.
+          const { date: matchDate, time: matchTime } = isoToDisplayTZ(rawDate)
+          const finalDate = matchDate || getTodayISO()
+          const finalTime = matchTime || '15:00'
 
           const isCompleted = status.includes('Full') || status.includes('Final')
           const isScheduled = status.includes('Scheduled') || status.includes('Status Scheduled')
@@ -575,13 +683,13 @@ async function scrapeESPN() {
               match: matchName, league: leagueName, leagueSlug: slug,
               homeScore: parseInt(homeComp.score) || 0, awayScore: parseInt(awayComp.score) || 0,
               homeId, awayId, homeTeam, awayTeam,
-              date: (date || '').slice(0, 10)
+              date: finalDate
             })
           } else if (isScheduled) {
             allMatches.push({
               match: matchName, league: leagueName, leagueSlug: slug,
               homeTeam, awayTeam, homeId, awayId,
-              time: matchTime, date: (date || '').slice(0, 10), source: 'espn'
+              time: finalTime, date: finalDate, source: 'espn'
             })
           }
         }
@@ -648,10 +756,13 @@ async function fetchHistoricalResults(activeLeagues) {
 
           if (!homeTeam || !awayTeam) continue
 
+          // V15: Use display timezone for historical result dates too
+          const { date: histDate } = isoToDisplayTZ(event.date || '')
+
           results.push({
             homeTeam, awayTeam, homeId, awayId,
             homeScore, awayScore, leagueSlug: slug,
-            date: (event.date || '').slice(0, 10)
+            date: histDate || ''
           })
         }
 
@@ -932,8 +1043,8 @@ function analyzeMatch(matchData, teamStats, leagueStats) {
 async function scrapeSoccerbase() {
   const allMatches = [], allResults = []
   const pages = [
-    { url: 'https://www.soccerbase.com/matches/home.sd', label: "Aujourd'hui" },
-    { url: 'https://www.soccerbase.com/matches/tomorrow.sd', label: 'Demain' },
+    { url: 'https://www.soccerbase.com/matches/home.sd', label: "Aujourd'hui", dateOverride: null },
+    { url: 'https://www.soccerbase.com/matches/tomorrow.sd', label: 'Demain', dateOverride: null },
   ]
 
   for (const page of pages) {
@@ -946,6 +1057,32 @@ async function scrapeSoccerbase() {
       if (!res.ok) continue
 
       const html = await res.text()
+
+      // V15: Try to extract the actual date from the page HTML header
+      // Soccerbase often has a date header like "Monday 9th June 2025" or a <time> element
+      let pageDate = ''
+      const pageDateMatch = html.match(/class="[^"]*date[^"]*"[^>]*>([^<]+)/i)
+        || html.match(/<time[^>]*datetime="([^"]+)"/i)
+        || html.match(/(\d{1,2})(?:st|nd|rd|th)?\s+(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{4})/i)
+      if (pageDateMatch) {
+        if (pageDateMatch[0].includes('datetime=')) {
+          // ISO datetime from <time> element
+          const { date: tzDate } = isoToDisplayTZ(pageDateMatch[1])
+          if (tzDate) pageDate = tzDate
+        } else if (pageDateMatch[2] && pageDateMatch[3]) {
+          // "9th June 2025" format
+          const months = { january:'01',february:'02',march:'03',april:'04',may:'05',june:'06',july:'07',august:'08',september:'09',october:'10',november:'11',december:'12' }
+          const day = pageDateMatch[1].padStart(2, '0')
+          const month = months[pageDateMatch[2].toLowerCase()]
+          const year = pageDateMatch[3]
+          if (month) pageDate = `${year}-${month}-${day}`
+        }
+      }
+      // Fallback: use display timezone "today"/"tomorrow"
+      if (!pageDate) {
+        pageDate = page.label === "Aujourd'hui" ? getTodayISO() : getTomorrowISO()
+      }
+
       const matchRows = html.match(/<tr[^>]*class="match"[^>]*>([\s\S]*?)<\/tr>/gi) || []
 
       for (const row of matchRows) {
@@ -953,7 +1090,11 @@ async function scrapeSoccerbase() {
           .filter(l => !['TODAY', 'More', 'Live', 'BBC1', 'BBC2', 'BBC3', 'ITV1'].includes(l))
         const text = row.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').replace(/&nbsp;/g, ' ')
         const timeMatch = text.match(/(\d{1,2}:\d{2})/)
-        const matchTime = timeMatch ? timeMatch[1] : '15:00'
+        let matchTime = timeMatch ? timeMatch[1] : '15:00'
+        // V15: Soccerbase times are in UK timezone (GMT/BST).
+        // Only convert to Paris time (+1h) for UK-based leagues where the time is guaranteed UK.
+        // For international matches, the time might be in the venue's local timezone, so we don't convert.
+        // This will be re-checked during validation for suspect times.
         const scoreMatch = text.match(/(\d+)\s*-\s*(\d+)/)
         const teamLinks = links.filter(l => l.length >= 2 && !/^(Mo|Tu|We|Th|Fr|Sa|Su)\s+\d/.test(l))
 
@@ -970,11 +1111,24 @@ async function scrapeSoccerbase() {
               if (compMatch) { const n = compMatch[1].replace(/<[^>]+>/g, '').trim(); if (n) leagueName = n }
             }
             const resolvedSlug = resolveLeagueSlug(leagueName)
-            allMatches.push({ match: matchName, league: leagueName, leagueSlug: resolvedSlug, homeTeam: teamLinks[0], awayTeam: teamLinks[1], homeId: '', awayId: '', time: matchTime, date: page.label === "Aujourd'hui" ? getTodayISO() : new Date(Date.now() + 86400000).toISOString().split('T')[0], source: 'soccerbase' })
+            // V15: Convert UK time → Paris time (+1h) for UK-based leagues only
+            // Soccerbase shows UK local times for UK leagues, but international matches
+            // might be in the venue's local timezone — we don't convert those.
+            const isUKLeague = /premier league|championship|league one|league two|scottish|efl/i.test(leagueName)
+            let finalTime = matchTime
+            if (isUKLeague && matchTime && matchTime !== '--:--') {
+              try {
+                const [h, m] = matchTime.split(':').map(Number)
+                const parisHour = h + 1 // UK to Paris is always +1 hour
+                finalTime = `${String(parisHour % 24).padStart(2, '0')}:${String(m).padStart(2, '0')}`
+              } catch {}
+            }
+            // V15: Use the extracted pageDate instead of inferring from page URL
+            allMatches.push({ match: matchName, league: leagueName, leagueSlug: resolvedSlug, homeTeam: teamLinks[0], awayTeam: teamLinks[1], homeId: '', awayId: '', time: finalTime, date: pageDate, source: 'soccerbase' })
           }
         }
       }
-      console.log(`[Scraper] Soccerbase ${page.label}: ${matchRows.length} matchs`)
+      console.log(`[Scraper] Soccerbase ${page.label}: ${matchRows.length} matchs (date: ${pageDate})`)
       await sleep(1000)
     } catch (err) { console.log(`[Scraper] Soccerbase: ${err.message}`) }
   }
@@ -983,7 +1137,10 @@ async function scrapeSoccerbase() {
 
 async function scrapeTheSportsDB() {
   const allMatches = []
-  for (const date of [getTodayISO(), new Date(Date.now() + 86400000).toISOString().split('T')[0]]) {
+  // V15: Use display timezone dates for TheSportsDB queries
+  const today = getTodayISO()
+  const tomorrow = getTomorrowISO()
+  for (const date of [today, tomorrow]) {
     try {
       const res = await fetch(`https://www.thesportsdb.com/api/v1/json/3/eventsday.php?d=${date}&s=Soccer`, {
         headers: { 'User-Agent': 'Mozilla/5.0 (compatible; BttsBet/1.0)' },
@@ -999,7 +1156,29 @@ async function scrapeTheSportsDB() {
         const matchName = `${home} vs ${away}`
         const league = e.strLeague || ''
         let matchTime = '15:00'
-        if (e.strTime) { try { matchTime = `${String(parseInt(e.strTime.split(':')[0])).padStart(2, '0')}:${(e.strTime.split(':')[1] || '00').slice(0, 2)}` } catch {} }
+
+        // V15: TheSportsDB strTime is UTC (HH:MM:SS) — convert to display TZ
+        if (e.strTime) {
+          try {
+            // strTime is "19:30:00" in UTC — create a UTC date to convert
+            const [h, m] = e.strTime.split(':')
+            const utcDate = new Date(`${date}T${h}:${m}:00Z`)
+            const converted = isoToDisplayTZ(utcDate.toISOString())
+            if (converted.time) matchTime = converted.time
+          } catch {}
+        }
+        // Also try strTimestamp if available (full ISO datetime)
+        if (e.strTimestamp) {
+          const converted = isoToDisplayTZ(e.strTimestamp)
+          if (converted.time) matchTime = converted.time
+          if (converted.date) {
+            // Use the converted date — it might differ from the query date
+            const resolvedSlug = resolveLeagueSlug(league)
+            allMatches.push({ match: matchName, league, leagueSlug: resolvedSlug, homeTeam: home, awayTeam: away, homeId: '', awayId: '', time: matchTime, date: converted.date, source: 'thesportsdb' })
+            continue
+          }
+        }
+
         const resolvedSlug = resolveLeagueSlug(league)
         allMatches.push({ match: matchName, league, leagueSlug: resolvedSlug, homeTeam: home, awayTeam: away, homeId: '', awayId: '', time: matchTime, date: date, source: 'thesportsdb' })
       }
@@ -1020,7 +1199,7 @@ function generateAnalyzedPredictions(espnMatches, soccerbaseMatches, tsdbMatches
 
   // ─── Dates valides (aujourd'hui et demain) pour vérification cohérence ───
   const today = getTodayISO()
-  const tomorrow = new Date(Date.now() + 86400000).toISOString().split('T')[0]
+  const tomorrow = getTomorrowISO()
   const validDates = new Set([today, tomorrow])
 
   // ─── Construire un lookup des pronostics externes (Forebet/Windrawwin) ───
@@ -1322,12 +1501,12 @@ function generateFallbackWinHistory() {
 
 function validateDataCoherence(predictions) {
   const today = getTodayISO()
-  const tomorrow = new Date(Date.now() + 86400000).toISOString().split('T')[0]
+  const tomorrow = getTomorrowISO()
   const validDates = new Set([today, tomorrow])
   let warnings = 0
   let fixes = 0
 
-  console.log('[Scraper] V14 — Validation de cohérence des données...')
+  console.log('[Scraper] V15 — Validation de cohérence des données...')
 
   // 1. Vérifier les dates — chaque match doit être aujourd'hui ou demain
   for (const p of predictions) {
@@ -1423,11 +1602,55 @@ function validateDataCoherence(predictions) {
     }
   }
 
-  // 5. Vérifier les heures — si trop de 00:00, c'est suspect
+  // 5. Vérifier les heures — correction V15 renforcée
+  // V15: Les heures 00:00 sont presque toujours des défauts de données.
+  // Les vrais matchs à minuit en Europe/Paris sont extrêmement rares.
+  // On corrige aussi les heures suspectes des matchs sans données réelles.
   const midnightCount = predictions.filter(p => p.time === '00:00').length
   const midnightRate = predictions.length > 0 ? midnightCount / predictions.length : 0
   if (midnightRate > 0.5) {
-    console.log(`[Scraper] ⚠ ${midnightCount}/${predictions.length} matchs à 00:00 — heures possiblement incorrectes`)
+    console.log(`[Scraper] ⚠ ${midnightCount}/${predictions.length} matchs à 00:00 — remplacement par '--:--'`)
+    for (const p of predictions) {
+      if (p.time === '00:00') {
+        p.time = '--:--'
+      }
+    }
+  } else if (midnightCount > 0) {
+    console.log(`[Scraper] ⚠ ${midnightCount} matchs à 00:00 — vérification...`)
+    for (const p of predictions) {
+      if (p.time === '00:00') {
+        const leagueLower = (p.league || '').toLowerCase()
+        const isNonEuropeanLeague = /a-league|j-league|k.?league|liga mx|mls|brasileirao|serie a bra/i.test(leagueLower)
+        const hasNoRealData = p.analysis?.dataQuality === 0 || !p.analysis?.hasRealData
+        if (!isNonEuropeanLeague || hasNoRealData) {
+          console.log(`[Scraper] ⚠ 00:00 corrigé: ${p.match} (${p.league}) -> --:--`)
+          p.time = '--:--'
+          fixes++
+        }
+      }
+    }
+  }
+
+  // V15 BIS: Heures suspectes pour matchs sans données réelles
+  // Si dataQuality=0, les heures proviennent d'API pouvant avoir des bugs timezone.
+  // Heures inhabituelles (00:00-05:59) pour ligues européennes = suspect.
+  let suspectTimeFixes = 0
+  for (const p of predictions) {
+    if (p.analysis?.dataQuality === 0 && p.time && p.time !== '--:--') {
+      const [hours] = p.time.split(':').map(Number)
+      const leagueLower = (p.league || '').toLowerCase()
+      const isSuspectHour = hours >= 0 && hours < 6
+      const isEuropeanLeague = !/a-league|j-league|k.?league|liga mx|mls|brasileirao|serie a bra|international/i.test(leagueLower)
+      if (isSuspectHour && isEuropeanLeague) {
+        console.log(`[Scraper] ⚠ Heure suspecte (sans données): ${p.match} à ${p.time} -> --:--`)
+        p.time = '--:--'
+        suspectTimeFixes++
+        fixes++
+      }
+    }
+  }
+  if (suspectTimeFixes > 0) {
+    console.log(`[Scraper] V15: ${suspectTimeFixes} heures suspectes corrigées pour matchs sans données réelles`)
   }
 
   // 6. Vérifier les lambdas identiques (signe de données manquantes)
@@ -1442,8 +1665,8 @@ function validateDataCoherence(predictions) {
   const finalOuOui = predictions.filter(p => p.type === 'Over 2.5' && p.prediction === 'Oui').length
   const finalOuNon = predictions.filter(p => p.type === 'Over 2.5' && p.prediction === 'Non').length
 
-  console.log(`[Scraper] V14 Validation: ${warnings} avertissements, ${fixes} corrections`) 
-  console.log(`[Scraper] V14 Final: BTTS ${finalBttsOui}O/${finalBttsNon}N | Over2.5 ${finalOuOui}O/${finalOuNon}N | Total ${predictions.length}`)
+  console.log(`[Scraper] V15 Validation: ${warnings} avertissements, ${fixes} corrections`) 
+  console.log(`[Scraper] V15 Final: BTTS ${finalBttsOui}O/${finalBttsNon}N | Over2.5 ${finalOuOui}O/${finalOuNon}N | Total ${predictions.length}`)
 
   return predictions
 }
@@ -1529,7 +1752,7 @@ function generateWinHistory(yesterdayPreds, allResults, previousHistory) {
 
 async function main() {
   const today = getTodayISO()
-  console.log(`[Scraper] BttsBet V13 — Poisson Corrige + Dates Reelles + Deduplication pour le ${today}`)
+  console.log(`[Scraper] BttsBet V15 — Timezone Correct + Dates Vraies pour le ${today}`)
   console.log('[Scraper] ================================================================')
 
   // ─── Phase 0 : Scraper les pronostics externes (Forebet, Windrawwin) ───

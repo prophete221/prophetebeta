@@ -8,7 +8,7 @@
       "type": "BTTS",
       "prediction": "Oui",
       "confidence": 50,
-      "time": "19:00",
+      "time": "21:00",
       "matchSemantic": "alm-cas-se-btts",
       "source": "poisson",
       "analysis": {
@@ -27,7 +27,7 @@
       "type": "Over 2.5",
       "prediction": "Non",
       "confidence": 50,
-      "time": "19:00",
+      "time": "21:00",
       "matchSemantic": "alm-cas-se-o25",
       "source": "poisson",
       "analysis": {
@@ -236,7 +236,7 @@
       "type": "BTTS",
       "prediction": "Oui",
       "confidence": 47,
-      "time": "00:00",
+      "time": "--:--",
       "matchSemantic": "sau-sen-in-btts",
       "source": "poisson",
       "analysis": {
@@ -255,7 +255,7 @@
       "type": "Over 2.5",
       "prediction": "Oui",
       "confidence": 47,
-      "time": "00:00",
+      "time": "--:--",
       "matchSemantic": "sau-sen-in-o25",
       "source": "poisson",
       "analysis": {
@@ -654,7 +654,7 @@
       "type": "BTTS",
       "prediction": "Oui",
       "confidence": 47,
-      "time": "00:00",
+      "time": "--:--",
       "matchSemantic": "ivo-ecu-in-btts",
       "source": "poisson",
       "analysis": {
@@ -673,7 +673,7 @@
       "type": "Over 2.5",
       "prediction": "Oui",
       "confidence": 47,
-      "time": "00:00",
+      "time": "--:--",
       "matchSemantic": "ivo-ecu-in-o25",
       "source": "poisson",
       "analysis": {

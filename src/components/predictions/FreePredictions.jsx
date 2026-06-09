@@ -12,7 +12,10 @@ function formatTime(dateStr, timeStr) {
 function formatDateShort(dateStr) {
   if (!dateStr) return ''
   try {
-    const d = new Date(dateStr + 'T00:00:00')
+    // V15: dateStr is now in Europe/Paris timezone (YYYY-MM-DD)
+    // Since it's already in the correct timezone, just parse and format.
+    // Using 'T12:00:00' avoids any edge-case midnight crossing from local TZ parsing.
+    const d = new Date(dateStr + 'T12:00:00')
     const day = d.getDate().toString().padStart(2, '0')
     const month = (d.getMonth() + 1).toString().padStart(2, '0')
     return `${day}/${month}`
@@ -343,7 +346,7 @@ export default function FreePredictions() {
 
         <div className="text-center mt-6">
           <p className="text-xs text-gray-600">
-            Pronostics générés par IA — mis à jour quotidiennement à 00h00 UTC
+            Pronostics générés par IA — mis à jour quotidiennement à 02h00 (heure de Paris)
           </p>
         </div>
       </div>
