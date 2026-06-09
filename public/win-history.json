@@ -1,9 +1,9 @@
 {
   "stats": {
     "total": 140,
-    "won": 105,
-    "rate": "75.0%",
-    "last30Rate": "75%"
+    "won": 98,
+    "rate": "70.0%",
+    "last30Rate": "70%"
   },
   "history": [
     {
@@ -31,6 +31,17 @@
     {
       "id": 3,
       "date": "2026-06-08",
+      "match": "Russia vs Trinidad",
+      "league": "International Friendly",
+      "type": "BTTS",
+      "prediction": "Non",
+      "result": "Gagné",
+      "score": "3-0",
+      "confidence": 74
+    },
+    {
+      "id": 4,
+      "date": "2026-06-08",
       "match": "Peru vs Spain",
       "league": "International Friendly",
       "type": "Over 2.5",
@@ -40,7 +51,7 @@
       "confidence": 73
     },
     {
-      "id": 4,
+      "id": 5,
       "date": "2026-06-08",
       "match": "China vs Thailand",
       "league": "International Friendly",
@@ -51,7 +62,7 @@
       "confidence": 73
     },
     {
-      "id": 5,
+      "id": 6,
       "date": "2026-06-08",
       "match": "China vs Thailand",
       "league": "International Friendly",
@@ -62,7 +73,7 @@
       "confidence": 73
     },
     {
-      "id": 6,
+      "id": 7,
       "date": "2026-06-08",
       "match": "Indonesia vs Mozambique",
       "league": "International Friendly",
@@ -73,7 +84,7 @@
       "confidence": 73
     },
     {
-      "id": 7,
+      "id": 8,
       "date": "2026-06-08",
       "match": "DR Congo vs Chile",
       "league": "International Friendly",
@@ -84,7 +95,7 @@
       "confidence": 73
     },
     {
-      "id": 8,
+      "id": 9,
       "date": "2026-06-08",
       "match": "DR Congo vs Chile",
       "league": "International Friendly",
@@ -92,6 +103,17 @@
       "prediction": "Oui",
       "result": "Gagné",
       "score": "1-2",
+      "confidence": 73
+    },
+    {
+      "id": 10,
+      "date": "2026-06-08",
+      "match": "Russia vs Trinidad",
+      "league": "International Friendly",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "result": "Perdu",
+      "score": "3-0",
       "confidence": 73
     },
     {
@@ -203,28 +225,6 @@
       "result": "Perdu",
       "score": "1-0",
       "confidence": 82
-    },
-    {
-      "id": 11,
-      "date": "2026-06-02",
-      "match": "Tottenham vs Man City",
-      "league": "Premier League",
-      "type": "BTTS",
-      "prediction": "Oui",
-      "result": "Gagné",
-      "score": "2-1",
-      "confidence": 83
-    },
-    {
-      "id": 12,
-      "date": "2026-06-02",
-      "match": "Leverkusen vs Leipzig",
-      "league": "Bundesliga",
-      "type": "Over 2.5",
-      "prediction": "Oui",
-      "result": "Gagné",
-      "score": "3-2",
-      "confidence": 90
     }
   ],
   "date": "2026-06-09"

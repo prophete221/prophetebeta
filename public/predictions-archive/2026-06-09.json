@@ -2,44 +2,6 @@
   "date": "2026-06-09",
   "predictions": [
     {
-      "match": "Almería vs Castellón",
-      "league": "Segunda Division",
-      "date": "2026-06-09",
-      "type": "BTTS",
-      "prediction": "Oui",
-      "confidence": 50,
-      "time": "21:00",
-      "matchSemantic": "alm-cas-se-btts",
-      "source": "poisson",
-      "analysis": {
-        "bttsProb": 0.54,
-        "over25Prob": 0.3,
-        "homeLambda": 1.23,
-        "awayLambda": 0.77,
-        "dataQuality": 4,
-        "hasRealData": true
-      }
-    },
-    {
-      "match": "Almería vs Castellón",
-      "league": "Segunda Division",
-      "date": "2026-06-09",
-      "type": "Over 2.5",
-      "prediction": "Non",
-      "confidence": 50,
-      "time": "21:00",
-      "matchSemantic": "alm-cas-se-o25",
-      "source": "poisson",
-      "analysis": {
-        "bttsProb": 0.54,
-        "over25Prob": 0.3,
-        "homeLambda": 1.23,
-        "awayLambda": 0.77,
-        "dataQuality": 4,
-        "hasRealData": true
-      }
-    },
-    {
       "match": "Tanzania vs Rwanda",
       "league": "International Friendly",
       "date": "2026-06-09",
@@ -109,44 +71,6 @@
       "analysis": {
         "bttsProb": 0.52,
         "over25Prob": 0.53,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
-      "match": "Russia vs Trinidad",
-      "league": "International Friendly",
-      "date": "2026-06-09",
-      "type": "BTTS",
-      "prediction": "Non",
-      "confidence": 47,
-      "time": "18:00",
-      "matchSemantic": "rus-tri-in-btts",
-      "source": "poisson",
-      "analysis": {
-        "bttsProb": 0.41,
-        "over25Prob": 0.44,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
-      "match": "Russia vs Trinidad",
-      "league": "International Friendly",
-      "date": "2026-06-09",
-      "type": "Over 2.5",
-      "prediction": "Non",
-      "confidence": 47,
-      "time": "18:00",
-      "matchSemantic": "rus-tri-in-o25",
-      "source": "poisson",
-      "analysis": {
-        "bttsProb": 0.41,
-        "over25Prob": 0.44,
         "homeLambda": 1.54,
         "awayLambda": 1.08,
         "dataQuality": 0,
@@ -945,6 +869,82 @@
       "analysis": {
         "bttsProb": 0.54,
         "over25Prob": 0.55,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Australia vs Türkiye",
+      "league": "International Friendly",
+      "date": "2026-06-14",
+      "type": "BTTS",
+      "prediction": "Oui",
+      "confidence": 48,
+      "time": "06:00",
+      "matchSemantic": "aus-trk-in-btts",
+      "source": "poisson",
+      "analysis": {
+        "bttsProb": 0.56,
+        "over25Prob": 0.56,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Australia vs Türkiye",
+      "league": "International Friendly",
+      "date": "2026-06-14",
+      "type": "Over 2.5",
+      "prediction": "Oui",
+      "confidence": 48,
+      "time": "06:00",
+      "matchSemantic": "aus-trk-in-o25",
+      "source": "poisson",
+      "analysis": {
+        "bttsProb": 0.56,
+        "over25Prob": 0.56,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Netherlands vs Japan",
+      "league": "International Friendly",
+      "date": "2026-06-14",
+      "type": "BTTS",
+      "prediction": "Non",
+      "confidence": 47,
+      "time": "22:00",
+      "matchSemantic": "net-jap-in-btts",
+      "source": "poisson",
+      "analysis": {
+        "bttsProb": 0.42,
+        "over25Prob": 0.45,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Netherlands vs Japan",
+      "league": "International Friendly",
+      "date": "2026-06-14",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "confidence": 47,
+      "time": "22:00",
+      "matchSemantic": "net-jap-in-o25",
+      "source": "poisson",
+      "analysis": {
+        "bttsProb": 0.42,
+        "over25Prob": 0.45,
         "homeLambda": 1.54,
         "awayLambda": 1.08,
         "dataQuality": 0,
