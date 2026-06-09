@@ -1,11 +1,33 @@
 {
   "stats": {
-    "total": 15247,
-    "won": 11893,
-    "rate": "78.0%",
-    "last30Rate": "85%"
+    "total": 140,
+    "won": 105,
+    "rate": "75.0%",
+    "last30Rate": "75%"
   },
   "history": [
+    {
+      "id": 1,
+      "date": "2026-06-08",
+      "match": "Peru vs Spain",
+      "league": "International Friendly",
+      "type": "BTTS",
+      "prediction": "Non",
+      "result": "Perdu",
+      "score": "1-3",
+      "confidence": 74
+    },
+    {
+      "id": 2,
+      "date": "2026-06-08",
+      "match": "Peru vs Spain",
+      "league": "International Friendly",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "result": "Perdu",
+      "score": "1-3",
+      "confidence": 73
+    },
     {
       "id": 1,
       "date": "2026-06-07",
@@ -203,29 +225,7 @@
       "result": "Gagné",
       "score": "1-0",
       "confidence": 73
-    },
-    {
-      "id": 19,
-      "date": "2026-05-29",
-      "match": "Marseille vs Monaco",
-      "league": "Ligue 1",
-      "type": "BTTS",
-      "prediction": "Oui",
-      "result": "Gagné",
-      "score": "2-2",
-      "confidence": 86
-    },
-    {
-      "id": 20,
-      "date": "2026-05-29",
-      "match": "Villarreal vs Real Betis",
-      "league": "La Liga",
-      "type": "Over 2.5",
-      "prediction": "Non",
-      "result": "Gagné",
-      "score": "0-1",
-      "confidence": 69
     }
   ],
-  "date": "2026-06-08"
+  "date": "2026-06-09"
 }
