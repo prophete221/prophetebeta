@@ -98,9 +98,9 @@ export default function Footer() {
               <h4 className="text-white font-bold text-xs uppercase tracking-wider mb-3">Navigation</h4>
               <ul className="space-y-1.5 text-xs">
                 <li><a href="/" className="text-gray-500 hover:text-emerald transition-colors">Accueil</a></li>
-                <li><a href="/#free-predictions" className="text-gray-500 hover:text-emerald transition-colors">Pronostics</a></li>
-                <li><a href="/#vip" className="text-gray-500 hover:text-emerald transition-colors">VIP</a></li>
-                <li><a href="/#faq" className="text-gray-500 hover:text-emerald transition-colors">FAQ</a></li>
+                <li><a href="#" onClick={(e) => { e.preventDefault(); document.getElementById('free-predictions')?.scrollIntoView({ behavior: 'smooth' }) }} className="text-gray-500 hover:text-emerald transition-colors">Pronostics</a></li>
+                <li><a href="#" onClick={(e) => { e.preventDefault(); document.getElementById('vip')?.scrollIntoView({ behavior: 'smooth' }) }} className="text-gray-500 hover:text-emerald transition-colors">VIP</a></li>
+                <li><a href="#" onClick={(e) => { e.preventDefault(); document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' }) }} className="text-gray-500 hover:text-emerald transition-colors">FAQ</a></li>
               </ul>
             </div>
 

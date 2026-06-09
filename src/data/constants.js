@@ -26,12 +26,13 @@ export const AFFILIATE = {
 }
 
 // ─── Navigation ───
+// HashRouter note: anchor links use scrollTarget (element ID) instead of href
 export const NAV_LINKS = [
   { label: 'Accueil', href: '/' },
-  { label: 'Pronostics', href: '/#free-predictions' },
-  { label: 'Résultats', href: '/#win-history' },
-  { label: 'VIP & Bonus', href: '/#vip' },
-  { label: 'FAQ', href: '/#faq' },
+  { label: 'Pronostics', scrollTarget: 'free-predictions' },
+  { label: 'Résultats', scrollTarget: 'win-history' },
+  { label: 'VIP & Bonus', scrollTarget: 'vip' },
+  { label: 'FAQ', scrollTarget: 'faq' },
 ]
 
 // ─── How It Works ───

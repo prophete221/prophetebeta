@@ -2,6 +2,17 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { NAV_LINKS, SITE, AFFILIATE } from '../data/constants'
 
+function scrollToSelector(selector) {
+  const el = document.getElementById(selector)
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    // Offset for sticky navbar
+    setTimeout(() => {
+      window.scrollBy({ top: -64, behavior: 'smooth' })
+    }, 400)
+  }
+}
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
@@ -11,6 +22,20 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  const handleNavClick = (e, link) => {
+    if (link.scrollTarget) {
+      e.preventDefault()
+      // If not on home page, navigate there first
+      if (window.location.hash !== '#/' && window.location.hash !== '#' && window.location.hash !== '') {
+        window.location.hash = '#/'
+        setTimeout(() => scrollToSelector(link.scrollTarget), 300)
+      } else {
+        scrollToSelector(link.scrollTarget)
+      }
+    }
+    setIsOpen(false)
+  }
 
   return (
     <>
@@ -23,7 +48,17 @@ export default function Navbar() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <a href="/" className="flex items-center gap-2.5 group">
+            <a
+              href="/"
+              onClick={(e) => {
+                // If already on home, just scroll to top
+                if (window.location.hash === '#/' || window.location.hash === '#' || window.location.hash === '') {
+                  e.preventDefault()
+                  window.scrollTo({ top: 0, behavior: 'smooth' })
+                }
+              }}
+              className="flex items-center gap-2.5 group"
+            >
               <div className="w-8 h-8 rounded-lg bg-emerald/20 flex items-center justify-center group-hover:bg-emerald/30 transition-colors">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00D4AA" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <circle cx="12" cy="12" r="10"/>
@@ -41,8 +76,9 @@ export default function Navbar() {
               {NAV_LINKS.map((link) => (
                 <a
                   key={link.label}
-                  href={link.href}
-                  className="text-gray-400 hover:text-emerald transition-colors text-sm font-medium relative group"
+                  href={link.href || '#'}
+                  onClick={(e) => handleNavClick(e, link)}
+                  className="text-gray-400 hover:text-emerald transition-colors text-sm font-medium relative group cursor-pointer"
                 >
                   {link.label}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald transition-all group-hover:w-full" />
@@ -88,9 +124,9 @@ export default function Navbar() {
                 {NAV_LINKS.map((link) => (
                   <a
                     key={link.label}
-                    href={link.href}
-                    onClick={() => setIsOpen(false)}
-                    className="block text-gray-300 hover:text-emerald transition-colors font-medium py-3 px-3 rounded-lg hover:bg-white/5"
+                    href={link.href || '#'}
+                    onClick={(e) => handleNavClick(e, link)}
+                    className="block text-gray-300 hover:text-emerald transition-colors font-medium py-3 px-3 rounded-lg hover:bg-white/5 cursor-pointer"
                   >
                     {link.label}
                   </a>

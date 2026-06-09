@@ -60,12 +60,18 @@ export default function Hero() {
           transition={{ duration: 0.4, delay: 0.3 }}
           className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-10"
         >
-          <a
-            href="/#free-predictions"
+          <button
+            onClick={() => {
+              const el = document.getElementById('free-predictions')
+              if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                setTimeout(() => window.scrollBy({ top: -64, behavior: 'smooth' }), 400)
+              }
+            }}
             className="px-8 py-3.5 bg-gradient-to-r from-emerald to-emerald-dark text-dark-900 font-bold rounded-xl text-base hover:shadow-lg hover:shadow-emerald/30 btn-emerald transition-all hover:brightness-110 hover-lift"
           >
             Pronostics du jour
-          </a>
+          </button>
           <a
             href={AFFILIATE.linebet}
             rel={AFFILIATE.rel}
