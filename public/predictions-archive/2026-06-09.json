@@ -11,6 +11,8 @@
       "time": "17:00",
       "matchSemantic": "tanz-rwan-int-btts",
       "source": "poisson",
+      "homeLogo": "https://flagcdn.com/w40/tz.png",
+      "awayLogo": "https://flagcdn.com/w40/rw.png",
       "analysis": {
         "bttsProb": 0.56,
         "over25Prob": 0.56,
@@ -30,6 +32,8 @@
       "time": "17:00",
       "matchSemantic": "tanz-rwan-int-o25",
       "source": "poisson",
+      "homeLogo": "https://flagcdn.com/w40/tz.png",
+      "awayLogo": "https://flagcdn.com/w40/rw.png",
       "analysis": {
         "bttsProb": 0.56,
         "over25Prob": 0.56,
@@ -49,6 +53,8 @@
       "time": "--:--",
       "matchSemantic": "saud-sene-int-btts",
       "source": "poisson",
+      "homeLogo": "https://flagcdn.com/w40/sa.png",
+      "awayLogo": "https://flagcdn.com/w40/sn.png",
       "analysis": {
         "bttsProb": 0.51,
         "over25Prob": 0.52,
@@ -68,6 +74,8 @@
       "time": "--:--",
       "matchSemantic": "saud-sene-int-o25",
       "source": "poisson",
+      "homeLogo": "https://flagcdn.com/w40/sa.png",
+      "awayLogo": "https://flagcdn.com/w40/sn.png",
       "analysis": {
         "bttsProb": 0.51,
         "over25Prob": 0.52,
@@ -87,6 +95,8 @@
       "time": "02:00",
       "matchSemantic": "arge-icel-int-btts",
       "source": "poisson",
+      "homeLogo": "https://flagcdn.com/w40/ar.png",
+      "awayLogo": "https://flagcdn.com/w40/is.png",
       "analysis": {
         "bttsProb": 0.51,
         "over25Prob": 0.52,
@@ -106,6 +116,8 @@
       "time": "02:00",
       "matchSemantic": "arge-icel-int-o25",
       "source": "poisson",
+      "homeLogo": "https://flagcdn.com/w40/ar.png",
+      "awayLogo": "https://flagcdn.com/w40/is.png",
       "analysis": {
         "bttsProb": 0.51,
         "over25Prob": 0.52,
@@ -125,6 +137,8 @@
       "time": "02:00",
       "matchSemantic": "iraq-vene-int-btts",
       "source": "poisson",
+      "homeLogo": "https://flagcdn.com/w40/iq.png",
+      "awayLogo": "https://flagcdn.com/w40/ve.png",
       "analysis": {
         "bttsProb": 0.54,
         "over25Prob": 0.55,
@@ -144,6 +158,8 @@
       "time": "02:00",
       "matchSemantic": "iraq-vene-int-o25",
       "source": "poisson",
+      "homeLogo": "https://flagcdn.com/w40/iq.png",
+      "awayLogo": "https://flagcdn.com/w40/ve.png",
       "analysis": {
         "bttsProb": 0.54,
         "over25Prob": 0.55,
@@ -163,6 +179,8 @@
       "time": "20:45",
       "matchSemantic": "port-nige-int-btts",
       "source": "poisson",
+      "homeLogo": "https://flagcdn.com/w40/pt.png",
+      "awayLogo": "https://flagcdn.com/w40/ng.png",
       "analysis": {
         "bttsProb": 0.42,
         "over25Prob": 0.45,
@@ -182,6 +200,8 @@
       "time": "20:45",
       "matchSemantic": "port-nige-int-o25",
       "source": "poisson",
+      "homeLogo": "https://flagcdn.com/w40/pt.png",
+      "awayLogo": "https://flagcdn.com/w40/ng.png",
       "analysis": {
         "bttsProb": 0.42,
         "over25Prob": 0.45,
@@ -201,6 +221,8 @@
       "time": "21:00",
       "matchSemantic": "engl-cost-int-btts",
       "source": "poisson",
+      "homeLogo": "https://flagcdn.com/w40/gb-eng.png",
+      "awayLogo": "https://flagcdn.com/w40/cr.png",
       "analysis": {
         "bttsProb": 0.43,
         "over25Prob": 0.46,
@@ -220,6 +242,8 @@
       "time": "21:00",
       "matchSemantic": "engl-cost-int-o25",
       "source": "poisson",
+      "homeLogo": "https://flagcdn.com/w40/gb-eng.png",
+      "awayLogo": "https://flagcdn.com/w40/cr.png",
       "analysis": {
         "bttsProb": 0.43,
         "over25Prob": 0.46,
@@ -239,6 +263,8 @@
       "time": "01:00",
       "matchSemantic": "boli-alge-int-btts",
       "source": "poisson",
+      "homeLogo": "https://flagcdn.com/w40/bo.png",
+      "awayLogo": "https://flagcdn.com/w40/dz.png",
       "analysis": {
         "bttsProb": 0.49,
         "over25Prob": 0.51,
@@ -258,6 +284,8 @@
       "time": "01:00",
       "matchSemantic": "boli-alge-int-o25",
       "source": "poisson",
+      "homeLogo": "https://flagcdn.com/w40/bo.png",
+      "awayLogo": "https://flagcdn.com/w40/dz.png",
       "analysis": {
         "bttsProb": 0.49,
         "over25Prob": 0.51,
@@ -277,10 +305,12 @@
       "time": "21:00",
       "matchSemantic": "mlag-lasp-seg-btts",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/99.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/98.png",
       "analysis": {
-        "bttsProb": 0.35,
-        "over25Prob": 0.3,
-        "homeLambda": 1.65,
+        "bttsProb": 0.36,
+        "over25Prob": 0.31,
+        "homeLambda": 1.6,
         "awayLambda": 0.3,
         "dataQuality": 4,
         "hasRealData": true
@@ -296,10 +326,12 @@
       "time": "21:00",
       "matchSemantic": "mlag-lasp-seg-o25",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/99.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/98.png",
       "analysis": {
-        "bttsProb": 0.35,
-        "over25Prob": 0.3,
-        "homeLambda": 1.65,
+        "bttsProb": 0.36,
+        "over25Prob": 0.31,
+        "homeLambda": 1.6,
         "awayLambda": 0.3,
         "dataQuality": 4,
         "hasRealData": true
@@ -315,6 +347,8 @@
       "time": "21:00",
       "matchSemantic": "mexi-sout-int-btts",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/mex.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/rsa.png",
       "analysis": {
         "bttsProb": 0.47,
         "over25Prob": 0.49,
@@ -334,6 +368,8 @@
       "time": "21:00",
       "matchSemantic": "mexi-sout-int-o25",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/mex.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/rsa.png",
       "analysis": {
         "bttsProb": 0.47,
         "over25Prob": 0.49,
@@ -353,6 +389,8 @@
       "time": "04:00",
       "matchSemantic": "sout-czec-int-btts",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/kors.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/cze.png",
       "analysis": {
         "bttsProb": 0.45,
         "over25Prob": 0.48,
@@ -372,6 +410,8 @@
       "time": "04:00",
       "matchSemantic": "sout-czec-int-o25",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/kors.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/cze.png",
       "analysis": {
         "bttsProb": 0.45,
         "over25Prob": 0.48,
@@ -391,6 +431,8 @@
       "time": "21:00",
       "matchSemantic": "cana-bosn-int-btts",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/can.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bih.png",
       "analysis": {
         "bttsProb": 0.48,
         "over25Prob": 0.5,
@@ -410,6 +452,8 @@
       "time": "21:00",
       "matchSemantic": "cana-bosn-int-o25",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/can.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bih.png",
       "analysis": {
         "bttsProb": 0.48,
         "over25Prob": 0.5,
@@ -429,6 +473,8 @@
       "time": "03:00",
       "matchSemantic": "unit-para-int-btts",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/par.png",
       "analysis": {
         "bttsProb": 0.52,
         "over25Prob": 0.53,
@@ -448,6 +494,8 @@
       "time": "03:00",
       "matchSemantic": "unit-para-int-o25",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/par.png",
       "analysis": {
         "bttsProb": 0.52,
         "over25Prob": 0.53,
@@ -467,6 +515,8 @@
       "time": "21:00",
       "matchSemantic": "qata-swit-int-btts",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/qat.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png",
       "analysis": {
         "bttsProb": 0.54,
         "over25Prob": 0.55,
@@ -486,6 +536,8 @@
       "time": "21:00",
       "matchSemantic": "qata-swit-int-o25",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/qat.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png",
       "analysis": {
         "bttsProb": 0.54,
         "over25Prob": 0.55,
@@ -505,6 +557,8 @@
       "time": "06:00",
       "matchSemantic": "unit-trki-int-btts",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/aus.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/tur.png",
       "analysis": {
         "bttsProb": 0.56,
         "over25Prob": 0.56,
@@ -524,6 +578,8 @@
       "time": "06:00",
       "matchSemantic": "unit-trki-int-o25",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/aus.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/tur.png",
       "analysis": {
         "bttsProb": 0.56,
         "over25Prob": 0.56,
@@ -543,6 +599,8 @@
       "time": "22:00",
       "matchSemantic": "cura-japa-int-btts",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/jpn.png",
       "analysis": {
         "bttsProb": 0.42,
         "over25Prob": 0.45,
@@ -562,6 +620,8 @@
       "time": "22:00",
       "matchSemantic": "cura-japa-int-o25",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/jpn.png",
       "analysis": {
         "bttsProb": 0.42,
         "over25Prob": 0.45,
@@ -581,6 +641,8 @@
       "time": "--:--",
       "matchSemantic": "braz-moro-int-btts",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/mar.png",
       "analysis": {
         "bttsProb": 0.48,
         "over25Prob": 0.5,
@@ -600,6 +662,8 @@
       "time": "--:--",
       "matchSemantic": "braz-moro-int-o25",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/mar.png",
       "analysis": {
         "bttsProb": 0.48,
         "over25Prob": 0.5,
@@ -619,6 +683,8 @@
       "time": "03:00",
       "matchSemantic": "hait-scot-int-btts",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/hai.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sco.png",
       "analysis": {
         "bttsProb": 0.5,
         "over25Prob": 0.52,
@@ -638,6 +704,8 @@
       "time": "03:00",
       "matchSemantic": "hait-scot-int-o25",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/hai.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sco.png",
       "analysis": {
         "bttsProb": 0.5,
         "over25Prob": 0.52,
@@ -657,6 +725,8 @@
       "time": "19:00",
       "matchSemantic": "germ-cura-int-btts",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/11678.png",
       "analysis": {
         "bttsProb": 0.5,
         "over25Prob": 0.52,
@@ -676,6 +746,8 @@
       "time": "19:00",
       "matchSemantic": "germ-cura-int-o25",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/11678.png",
       "analysis": {
         "bttsProb": 0.5,
         "over25Prob": 0.52,
@@ -695,6 +767,8 @@
       "time": "01:00",
       "matchSemantic": "ivor-ecua-int-btts",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/civ.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ecu.png",
       "analysis": {
         "bttsProb": 0.54,
         "over25Prob": 0.55,
@@ -714,6 +788,8 @@
       "time": "01:00",
       "matchSemantic": "ivor-ecua-int-o25",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/civ.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ecu.png",
       "analysis": {
         "bttsProb": 0.54,
         "over25Prob": 0.55,
@@ -733,6 +809,8 @@
       "time": "04:00",
       "matchSemantic": "swed-tuni-int-btts",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/tun.png",
       "analysis": {
         "bttsProb": 0.44,
         "over25Prob": 0.47,
@@ -752,6 +830,8 @@
       "time": "04:00",
       "matchSemantic": "swed-tuni-int-o25",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/tun.png",
       "analysis": {
         "bttsProb": 0.44,
         "over25Prob": 0.47,
@@ -771,6 +851,8 @@
       "time": "18:00",
       "matchSemantic": "spai-cape-int-btts",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/cpv.png",
       "analysis": {
         "bttsProb": 0.47,
         "over25Prob": 0.49,
@@ -790,6 +872,8 @@
       "time": "18:00",
       "matchSemantic": "spai-cape-int-o25",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/cpv.png",
       "analysis": {
         "bttsProb": 0.47,
         "over25Prob": 0.49,
@@ -809,6 +893,8 @@
       "time": "21:00",
       "matchSemantic": "belg-egyp-int-btts",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bel.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/egy.png",
       "analysis": {
         "bttsProb": 0.46,
         "over25Prob": 0.48,
@@ -828,6 +914,8 @@
       "time": "21:00",
       "matchSemantic": "belg-egyp-int-o25",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bel.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/egy.png",
       "analysis": {
         "bttsProb": 0.46,
         "over25Prob": 0.48,
@@ -847,6 +935,8 @@
       "time": "03:00",
       "matchSemantic": "iran-newz-int-btts",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/irn.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/nzl.png",
       "analysis": {
         "bttsProb": 0.56,
         "over25Prob": 0.56,
@@ -866,6 +956,8 @@
       "time": "03:00",
       "matchSemantic": "iran-newz-int-o25",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/irn.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/nzl.png",
       "analysis": {
         "bttsProb": 0.56,
         "over25Prob": 0.56,
@@ -885,6 +977,8 @@
       "time": "--:--",
       "matchSemantic": "saud-urug-int-btts",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ksa.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/uru.png",
       "analysis": {
         "bttsProb": 0.51,
         "over25Prob": 0.52,
@@ -904,6 +998,8 @@
       "time": "--:--",
       "matchSemantic": "saud-urug-int-o25",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ksa.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/uru.png",
       "analysis": {
         "bttsProb": 0.51,
         "over25Prob": 0.52,

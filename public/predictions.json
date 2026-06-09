@@ -11,6 +11,8 @@
       "time": "17:00",
       "matchSemantic": "tanz-rwan-int-btts",
       "source": "poisson",
+      "homeLogo": "https://flagcdn.com/w40/tz.png",
+      "awayLogo": "https://flagcdn.com/w40/rw.png",
       "analysis": {
         "bttsProb": 0.56,
         "over25Prob": 0.56,
@@ -18,9 +20,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/tz.png",
-      "awayLogo": "https://flagcdn.com/w40/rw.png"
+      }
     },
     {
       "match": "Tanzania vs Rwanda",
@@ -32,6 +32,8 @@
       "time": "17:00",
       "matchSemantic": "tanz-rwan-int-o25",
       "source": "poisson",
+      "homeLogo": "https://flagcdn.com/w40/tz.png",
+      "awayLogo": "https://flagcdn.com/w40/rw.png",
       "analysis": {
         "bttsProb": 0.56,
         "over25Prob": 0.56,
@@ -39,9 +41,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/tz.png",
-      "awayLogo": "https://flagcdn.com/w40/rw.png"
+      }
     },
     {
       "match": "Saudi Arabia vs Senegal",
@@ -53,6 +53,8 @@
       "time": "--:--",
       "matchSemantic": "saud-sene-int-btts",
       "source": "poisson",
+      "homeLogo": "https://flagcdn.com/w40/sa.png",
+      "awayLogo": "https://flagcdn.com/w40/sn.png",
       "analysis": {
         "bttsProb": 0.51,
         "over25Prob": 0.52,
@@ -60,9 +62,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/sa.png",
-      "awayLogo": "https://flagcdn.com/w40/sn.png"
+      }
     },
     {
       "match": "Saudi Arabia vs Senegal",
@@ -74,6 +74,8 @@
       "time": "--:--",
       "matchSemantic": "saud-sene-int-o25",
       "source": "poisson",
+      "homeLogo": "https://flagcdn.com/w40/sa.png",
+      "awayLogo": "https://flagcdn.com/w40/sn.png",
       "analysis": {
         "bttsProb": 0.51,
         "over25Prob": 0.52,
@@ -81,9 +83,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/sa.png",
-      "awayLogo": "https://flagcdn.com/w40/sn.png"
+      }
     },
     {
       "match": "Argentina vs Iceland",
@@ -95,6 +95,8 @@
       "time": "02:00",
       "matchSemantic": "arge-icel-int-btts",
       "source": "poisson",
+      "homeLogo": "https://flagcdn.com/w40/ar.png",
+      "awayLogo": "https://flagcdn.com/w40/is.png",
       "analysis": {
         "bttsProb": 0.51,
         "over25Prob": 0.52,
@@ -102,9 +104,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/ar.png",
-      "awayLogo": "https://flagcdn.com/w40/is.png"
+      }
     },
     {
       "match": "Argentina vs Iceland",
@@ -116,6 +116,8 @@
       "time": "02:00",
       "matchSemantic": "arge-icel-int-o25",
       "source": "poisson",
+      "homeLogo": "https://flagcdn.com/w40/ar.png",
+      "awayLogo": "https://flagcdn.com/w40/is.png",
       "analysis": {
         "bttsProb": 0.51,
         "over25Prob": 0.52,
@@ -123,9 +125,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/ar.png",
-      "awayLogo": "https://flagcdn.com/w40/is.png"
+      }
     },
     {
       "match": "Iraq vs Venezuela",
@@ -137,6 +137,8 @@
       "time": "02:00",
       "matchSemantic": "iraq-vene-int-btts",
       "source": "poisson",
+      "homeLogo": "https://flagcdn.com/w40/iq.png",
+      "awayLogo": "https://flagcdn.com/w40/ve.png",
       "analysis": {
         "bttsProb": 0.54,
         "over25Prob": 0.55,
@@ -144,9 +146,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/iq.png",
-      "awayLogo": "https://flagcdn.com/w40/ve.png"
+      }
     },
     {
       "match": "Iraq vs Venezuela",
@@ -158,6 +158,8 @@
       "time": "02:00",
       "matchSemantic": "iraq-vene-int-o25",
       "source": "poisson",
+      "homeLogo": "https://flagcdn.com/w40/iq.png",
+      "awayLogo": "https://flagcdn.com/w40/ve.png",
       "analysis": {
         "bttsProb": 0.54,
         "over25Prob": 0.55,
@@ -165,9 +167,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/iq.png",
-      "awayLogo": "https://flagcdn.com/w40/ve.png"
+      }
     },
     {
       "match": "Portugal vs Nigeria",
@@ -179,6 +179,8 @@
       "time": "20:45",
       "matchSemantic": "port-nige-int-btts",
       "source": "poisson",
+      "homeLogo": "https://flagcdn.com/w40/pt.png",
+      "awayLogo": "https://flagcdn.com/w40/ng.png",
       "analysis": {
         "bttsProb": 0.42,
         "over25Prob": 0.45,
@@ -186,9 +188,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/pt.png",
-      "awayLogo": "https://flagcdn.com/w40/ng.png"
+      }
     },
     {
       "match": "Portugal vs Nigeria",
@@ -200,6 +200,8 @@
       "time": "20:45",
       "matchSemantic": "port-nige-int-o25",
       "source": "poisson",
+      "homeLogo": "https://flagcdn.com/w40/pt.png",
+      "awayLogo": "https://flagcdn.com/w40/ng.png",
       "analysis": {
         "bttsProb": 0.42,
         "over25Prob": 0.45,
@@ -207,9 +209,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/pt.png",
-      "awayLogo": "https://flagcdn.com/w40/ng.png"
+      }
     },
     {
       "match": "England vs Costa Rica",
@@ -221,6 +221,8 @@
       "time": "21:00",
       "matchSemantic": "engl-cost-int-btts",
       "source": "poisson",
+      "homeLogo": "https://flagcdn.com/w40/gb-eng.png",
+      "awayLogo": "https://flagcdn.com/w40/cr.png",
       "analysis": {
         "bttsProb": 0.43,
         "over25Prob": 0.46,
@@ -228,9 +230,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/gb-eng.png",
-      "awayLogo": "https://flagcdn.com/w40/cr.png"
+      }
     },
     {
       "match": "England vs Costa Rica",
@@ -242,6 +242,8 @@
       "time": "21:00",
       "matchSemantic": "engl-cost-int-o25",
       "source": "poisson",
+      "homeLogo": "https://flagcdn.com/w40/gb-eng.png",
+      "awayLogo": "https://flagcdn.com/w40/cr.png",
       "analysis": {
         "bttsProb": 0.43,
         "over25Prob": 0.46,
@@ -249,9 +251,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/gb-eng.png",
-      "awayLogo": "https://flagcdn.com/w40/cr.png"
+      }
     },
     {
       "match": "Bolivia vs Algeria",
@@ -263,6 +263,8 @@
       "time": "01:00",
       "matchSemantic": "boli-alge-int-btts",
       "source": "poisson",
+      "homeLogo": "https://flagcdn.com/w40/bo.png",
+      "awayLogo": "https://flagcdn.com/w40/dz.png",
       "analysis": {
         "bttsProb": 0.49,
         "over25Prob": 0.51,
@@ -270,9 +272,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/bo.png",
-      "awayLogo": "https://flagcdn.com/w40/dz.png"
+      }
     },
     {
       "match": "Bolivia vs Algeria",
@@ -284,6 +284,8 @@
       "time": "01:00",
       "matchSemantic": "boli-alge-int-o25",
       "source": "poisson",
+      "homeLogo": "https://flagcdn.com/w40/bo.png",
+      "awayLogo": "https://flagcdn.com/w40/dz.png",
       "analysis": {
         "bttsProb": 0.49,
         "over25Prob": 0.51,
@@ -291,9 +293,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/bo.png",
-      "awayLogo": "https://flagcdn.com/w40/dz.png"
+      }
     },
     {
       "match": "Málaga vs Las Palmas",
@@ -305,16 +305,16 @@
       "time": "21:00",
       "matchSemantic": "mlag-lasp-seg-btts",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/99.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/98.png",
       "analysis": {
-        "bttsProb": 0.35,
-        "over25Prob": 0.3,
-        "homeLambda": 1.65,
+        "bttsProb": 0.36,
+        "over25Prob": 0.31,
+        "homeLambda": 1.6,
         "awayLambda": 0.3,
         "dataQuality": 4,
         "hasRealData": true
-      },
-      "homeLogo": "",
-      "awayLogo": ""
+      }
     },
     {
       "match": "Málaga vs Las Palmas",
@@ -326,16 +326,16 @@
       "time": "21:00",
       "matchSemantic": "mlag-lasp-seg-o25",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/99.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/98.png",
       "analysis": {
-        "bttsProb": 0.35,
-        "over25Prob": 0.3,
-        "homeLambda": 1.65,
+        "bttsProb": 0.36,
+        "over25Prob": 0.31,
+        "homeLambda": 1.6,
         "awayLambda": 0.3,
         "dataQuality": 4,
         "hasRealData": true
-      },
-      "homeLogo": "",
-      "awayLogo": ""
+      }
     },
     {
       "match": "Mexico vs South Africa",
@@ -347,6 +347,8 @@
       "time": "21:00",
       "matchSemantic": "mexi-sout-int-btts",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/mex.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/rsa.png",
       "analysis": {
         "bttsProb": 0.47,
         "over25Prob": 0.49,
@@ -354,9 +356,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/mx.png",
-      "awayLogo": "https://flagcdn.com/w40/za.png"
+      }
     },
     {
       "match": "Mexico vs South Africa",
@@ -368,6 +368,8 @@
       "time": "21:00",
       "matchSemantic": "mexi-sout-int-o25",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/mex.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/rsa.png",
       "analysis": {
         "bttsProb": 0.47,
         "over25Prob": 0.49,
@@ -375,9 +377,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/mx.png",
-      "awayLogo": "https://flagcdn.com/w40/za.png"
+      }
     },
     {
       "match": "South Korea vs Czechia",
@@ -389,6 +389,8 @@
       "time": "04:00",
       "matchSemantic": "sout-czec-int-btts",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/kors.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/cze.png",
       "analysis": {
         "bttsProb": 0.45,
         "over25Prob": 0.48,
@@ -396,9 +398,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/kr.png",
-      "awayLogo": "https://flagcdn.com/w40/cz.png"
+      }
     },
     {
       "match": "South Korea vs Czechia",
@@ -410,6 +410,8 @@
       "time": "04:00",
       "matchSemantic": "sout-czec-int-o25",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/kors.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/cze.png",
       "analysis": {
         "bttsProb": 0.45,
         "over25Prob": 0.48,
@@ -417,9 +419,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/kr.png",
-      "awayLogo": "https://flagcdn.com/w40/cz.png"
+      }
     },
     {
       "match": "Canada vs Bosnia-Herzegovina",
@@ -431,6 +431,8 @@
       "time": "21:00",
       "matchSemantic": "cana-bosn-int-btts",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/can.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bih.png",
       "analysis": {
         "bttsProb": 0.48,
         "over25Prob": 0.5,
@@ -438,9 +440,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/ca.png",
-      "awayLogo": "https://flagcdn.com/w40/ba.png"
+      }
     },
     {
       "match": "Canada vs Bosnia-Herzegovina",
@@ -452,6 +452,8 @@
       "time": "21:00",
       "matchSemantic": "cana-bosn-int-o25",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/can.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bih.png",
       "analysis": {
         "bttsProb": 0.48,
         "over25Prob": 0.5,
@@ -459,9 +461,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/ca.png",
-      "awayLogo": "https://flagcdn.com/w40/ba.png"
+      }
     },
     {
       "match": "United States vs Paraguay",
@@ -473,6 +473,8 @@
       "time": "03:00",
       "matchSemantic": "unit-para-int-btts",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/par.png",
       "analysis": {
         "bttsProb": 0.52,
         "over25Prob": 0.53,
@@ -480,9 +482,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/us.png",
-      "awayLogo": "https://flagcdn.com/w40/py.png"
+      }
     },
     {
       "match": "United States vs Paraguay",
@@ -494,6 +494,8 @@
       "time": "03:00",
       "matchSemantic": "unit-para-int-o25",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/par.png",
       "analysis": {
         "bttsProb": 0.52,
         "over25Prob": 0.53,
@@ -501,9 +503,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/us.png",
-      "awayLogo": "https://flagcdn.com/w40/py.png"
+      }
     },
     {
       "match": "Qatar vs Switzerland",
@@ -515,6 +515,8 @@
       "time": "21:00",
       "matchSemantic": "qata-swit-int-btts",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/qat.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png",
       "analysis": {
         "bttsProb": 0.54,
         "over25Prob": 0.55,
@@ -522,9 +524,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/qa.png",
-      "awayLogo": "https://flagcdn.com/w40/ch.png"
+      }
     },
     {
       "match": "Qatar vs Switzerland",
@@ -536,6 +536,8 @@
       "time": "21:00",
       "matchSemantic": "qata-swit-int-o25",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/qat.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png",
       "analysis": {
         "bttsProb": 0.54,
         "over25Prob": 0.55,
@@ -543,9 +545,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/qa.png",
-      "awayLogo": "https://flagcdn.com/w40/ch.png"
+      }
     },
     {
       "match": "United States vs Türkiye",
@@ -557,6 +557,8 @@
       "time": "06:00",
       "matchSemantic": "unit-trki-int-btts",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/aus.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/tur.png",
       "analysis": {
         "bttsProb": 0.56,
         "over25Prob": 0.56,
@@ -564,9 +566,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/us.png",
-      "awayLogo": "https://flagcdn.com/w40/tr.png"
+      }
     },
     {
       "match": "United States vs Türkiye",
@@ -578,6 +578,8 @@
       "time": "06:00",
       "matchSemantic": "unit-trki-int-o25",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/aus.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/tur.png",
       "analysis": {
         "bttsProb": 0.56,
         "over25Prob": 0.56,
@@ -585,9 +587,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/us.png",
-      "awayLogo": "https://flagcdn.com/w40/tr.png"
+      }
     },
     {
       "match": "Curaçao vs Japan",
@@ -599,6 +599,8 @@
       "time": "22:00",
       "matchSemantic": "cura-japa-int-btts",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/jpn.png",
       "analysis": {
         "bttsProb": 0.42,
         "over25Prob": 0.45,
@@ -606,9 +608,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/cw.png",
-      "awayLogo": "https://flagcdn.com/w40/jp.png"
+      }
     },
     {
       "match": "Curaçao vs Japan",
@@ -620,6 +620,8 @@
       "time": "22:00",
       "matchSemantic": "cura-japa-int-o25",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/jpn.png",
       "analysis": {
         "bttsProb": 0.42,
         "over25Prob": 0.45,
@@ -627,9 +629,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/cw.png",
-      "awayLogo": "https://flagcdn.com/w40/jp.png"
+      }
     },
     {
       "match": "Brazil vs Morocco",
@@ -641,6 +641,8 @@
       "time": "--:--",
       "matchSemantic": "braz-moro-int-btts",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/mar.png",
       "analysis": {
         "bttsProb": 0.48,
         "over25Prob": 0.5,
@@ -648,9 +650,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/br.png",
-      "awayLogo": "https://flagcdn.com/w40/ma.png"
+      }
     },
     {
       "match": "Brazil vs Morocco",
@@ -662,6 +662,8 @@
       "time": "--:--",
       "matchSemantic": "braz-moro-int-o25",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/mar.png",
       "analysis": {
         "bttsProb": 0.48,
         "over25Prob": 0.5,
@@ -669,9 +671,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/br.png",
-      "awayLogo": "https://flagcdn.com/w40/ma.png"
+      }
     },
     {
       "match": "Haiti vs Scotland",
@@ -683,6 +683,8 @@
       "time": "03:00",
       "matchSemantic": "hait-scot-int-btts",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/hai.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sco.png",
       "analysis": {
         "bttsProb": 0.5,
         "over25Prob": 0.52,
@@ -690,9 +692,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/ht.png",
-      "awayLogo": "https://flagcdn.com/w40/gb-sct.png"
+      }
     },
     {
       "match": "Haiti vs Scotland",
@@ -704,6 +704,8 @@
       "time": "03:00",
       "matchSemantic": "hait-scot-int-o25",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/hai.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sco.png",
       "analysis": {
         "bttsProb": 0.5,
         "over25Prob": 0.52,
@@ -711,9 +713,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/ht.png",
-      "awayLogo": "https://flagcdn.com/w40/gb-sct.png"
+      }
     },
     {
       "match": "Germany vs Curaçao",
@@ -725,6 +725,8 @@
       "time": "19:00",
       "matchSemantic": "germ-cura-int-btts",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/11678.png",
       "analysis": {
         "bttsProb": 0.5,
         "over25Prob": 0.52,
@@ -732,9 +734,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/de.png",
-      "awayLogo": "https://flagcdn.com/w40/cw.png"
+      }
     },
     {
       "match": "Germany vs Curaçao",
@@ -746,6 +746,8 @@
       "time": "19:00",
       "matchSemantic": "germ-cura-int-o25",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/11678.png",
       "analysis": {
         "bttsProb": 0.5,
         "over25Prob": 0.52,
@@ -753,9 +755,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/de.png",
-      "awayLogo": "https://flagcdn.com/w40/cw.png"
+      }
     },
     {
       "match": "Ivory Coast vs Ecuador",
@@ -767,6 +767,8 @@
       "time": "01:00",
       "matchSemantic": "ivor-ecua-int-btts",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/civ.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ecu.png",
       "analysis": {
         "bttsProb": 0.54,
         "over25Prob": 0.55,
@@ -774,9 +776,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/ci.png",
-      "awayLogo": "https://flagcdn.com/w40/ec.png"
+      }
     },
     {
       "match": "Ivory Coast vs Ecuador",
@@ -788,6 +788,8 @@
       "time": "01:00",
       "matchSemantic": "ivor-ecua-int-o25",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/civ.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ecu.png",
       "analysis": {
         "bttsProb": 0.54,
         "over25Prob": 0.55,
@@ -795,9 +797,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/ci.png",
-      "awayLogo": "https://flagcdn.com/w40/ec.png"
+      }
     },
     {
       "match": "Sweden vs Tunisia",
@@ -809,6 +809,8 @@
       "time": "04:00",
       "matchSemantic": "swed-tuni-int-btts",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/tun.png",
       "analysis": {
         "bttsProb": 0.44,
         "over25Prob": 0.47,
@@ -816,9 +818,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/se.png",
-      "awayLogo": "https://flagcdn.com/w40/tn.png"
+      }
     },
     {
       "match": "Sweden vs Tunisia",
@@ -830,6 +830,8 @@
       "time": "04:00",
       "matchSemantic": "swed-tuni-int-o25",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/tun.png",
       "analysis": {
         "bttsProb": 0.44,
         "over25Prob": 0.47,
@@ -837,9 +839,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/se.png",
-      "awayLogo": "https://flagcdn.com/w40/tn.png"
+      }
     },
     {
       "match": "Spain vs Cape Verde",
@@ -851,6 +851,8 @@
       "time": "18:00",
       "matchSemantic": "spai-cape-int-btts",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/cpv.png",
       "analysis": {
         "bttsProb": 0.47,
         "over25Prob": 0.49,
@@ -858,9 +860,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/es.png",
-      "awayLogo": "https://flagcdn.com/w40/cv.png"
+      }
     },
     {
       "match": "Spain vs Cape Verde",
@@ -872,6 +872,8 @@
       "time": "18:00",
       "matchSemantic": "spai-cape-int-o25",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/cpv.png",
       "analysis": {
         "bttsProb": 0.47,
         "over25Prob": 0.49,
@@ -879,9 +881,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/es.png",
-      "awayLogo": "https://flagcdn.com/w40/cv.png"
+      }
     },
     {
       "match": "Belgium vs Egypt",
@@ -893,6 +893,8 @@
       "time": "21:00",
       "matchSemantic": "belg-egyp-int-btts",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bel.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/egy.png",
       "analysis": {
         "bttsProb": 0.46,
         "over25Prob": 0.48,
@@ -900,9 +902,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/be.png",
-      "awayLogo": "https://flagcdn.com/w40/eg.png"
+      }
     },
     {
       "match": "Belgium vs Egypt",
@@ -914,6 +914,8 @@
       "time": "21:00",
       "matchSemantic": "belg-egyp-int-o25",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bel.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/egy.png",
       "analysis": {
         "bttsProb": 0.46,
         "over25Prob": 0.48,
@@ -921,9 +923,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/be.png",
-      "awayLogo": "https://flagcdn.com/w40/eg.png"
+      }
     },
     {
       "match": "Iran vs New Zealand",
@@ -935,6 +935,8 @@
       "time": "03:00",
       "matchSemantic": "iran-newz-int-btts",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/irn.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/nzl.png",
       "analysis": {
         "bttsProb": 0.56,
         "over25Prob": 0.56,
@@ -942,9 +944,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/ir.png",
-      "awayLogo": "https://flagcdn.com/w40/nz.png"
+      }
     },
     {
       "match": "Iran vs New Zealand",
@@ -956,6 +956,8 @@
       "time": "03:00",
       "matchSemantic": "iran-newz-int-o25",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/irn.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/nzl.png",
       "analysis": {
         "bttsProb": 0.56,
         "over25Prob": 0.56,
@@ -963,9 +965,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/ir.png",
-      "awayLogo": "https://flagcdn.com/w40/nz.png"
+      }
     },
     {
       "match": "Saudi Arabia vs Uruguay",
@@ -977,6 +977,8 @@
       "time": "--:--",
       "matchSemantic": "saud-urug-int-btts",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ksa.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/uru.png",
       "analysis": {
         "bttsProb": 0.51,
         "over25Prob": 0.52,
@@ -984,9 +986,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/sa.png",
-      "awayLogo": "https://flagcdn.com/w40/uy.png"
+      }
     },
     {
       "match": "Saudi Arabia vs Uruguay",
@@ -998,6 +998,8 @@
       "time": "--:--",
       "matchSemantic": "saud-urug-int-o25",
       "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ksa.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/uru.png",
       "analysis": {
         "bttsProb": 0.51,
         "over25Prob": 0.52,
@@ -1005,9 +1007,7 @@
         "awayLambda": 1.08,
         "dataQuality": 0,
         "hasRealData": false
-      },
-      "homeLogo": "https://flagcdn.com/w40/sa.png",
-      "awayLogo": "https://flagcdn.com/w40/uy.png"
+      }
     }
   ]
 }
