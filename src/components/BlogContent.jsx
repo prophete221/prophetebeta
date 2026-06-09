@@ -29,10 +29,12 @@ function renderNode(node, key) {
 
   const Tag = node.tagName.toLowerCase()
 
-  // Safe attribute extraction
+  // Safe attribute extraction with XSS protection
   const props = { key }
   if (Tag === 'a') {
-    props.href = node.getAttribute('href') || '#'
+    const href = node.getAttribute('href') || '#'
+    // Block javascript: protocol to prevent XSS
+    props.href = /^\s*javascript\s*:/i.test(href) ? 'about:blank#' : href
     props.target = '_blank'
     props.rel = 'noopener noreferrer'
   }

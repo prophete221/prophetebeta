@@ -70,20 +70,39 @@ export function MentionsLegales() {
     <LegalLayout title="Mentions Légales" slug="mentions-legales">
       <h2>Éditeur du site</h2>
       <p>
-        Le site <strong>{SITE.name}</strong> est édité à titre informatif et d'affiliation.
+        Le site <strong>{SITE.name}</strong> est édité à titre informatif et d'affiliation par un éditeur indépendant.
         Il s'agit d'un site indépendant qui n'est pas une plateforme de paris sportifs et ne collecte aucun fond.
+        L'éditeur exerce son activité en toute indépendance éditoriale vis-à-vis des partenaires commerciaux.
+      </p>
+      <p>
+        <strong>Directeur de la publication :</strong> Le propriétaire du nom de domaine bttsbet.online
+        <br />
+        <strong>Siège social :</strong> Douala, Cameroun
+        <br />
+        <strong>Numéro RCS :</strong> En cours d'immatriculation
+        <br />
+        <strong>N° TVA intracommunautaire :</strong> Non applicable (structure hors UE)
       </p>
 
       <h2>Contact</h2>
       <p>
         Pour toute question ou réclamation, vous pouvez nous contacter via WhatsApp au numéro indiqué sur notre site,
         ou par email à contact@{SITE.url.replace('https://', '').replace('http://', '')}.
+        Nous nous engageons à répondre à toute demande dans un délai maximum de 30 jours ouvrés.
       </p>
 
       <h2>Hébergement</h2>
       <p>
-        Le site est hébergé sur un serveur sécurisé. Les données personnelles des visiteurs ne sont pas collectées
-        à l'exception des données de navigation anonymisées nécessaires au bon fonctionnement du site (cookies analytiques).
+        Le site <strong>{SITE.name}</strong> est hébergé par un prestataire d'hébergement web professionnel.
+        Les données personnelles des visiteurs ne sont pas collectées à l'exception des données de navigation
+        anonymisées nécessaires au bon fonctionnement du site (cookies analytiques, soumis à consentement).
+      </p>
+      <p>
+        <strong>Hébergeur :</strong> GitHub Pages / Service d'hébergement statique
+        <br />
+        <strong>Adresse :</strong> 88 Colin P Kelly Jr St, San Francisco, CA 94107, États-Unis
+        <br />
+        <strong>Téléphone :</strong> +1 (415) 448-6672
       </p>
 
       <h2>Propriété intellectuelle</h2>

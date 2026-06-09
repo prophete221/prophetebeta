@@ -140,12 +140,10 @@ export default function WinHistory() {
               <div className="text-xs text-gray-300 font-mono">{item.score}</div>
               <div className="text-right">
                 <span className={`font-bold text-xs ${
-                  item.result === 'Gagné' ? 'text-emerald' : 'text-red-400'
+                  item.result === 'Gagné' ? 'text-emerald' : 
+                  item.result === 'Perdu' ? 'text-red-400' : 'text-gray-500'
                 }`}>
-                  {item.result}
-                </span>
-                <span className="text-[10px] text-gray-500 ml-1 hidden sm:inline">
-                  {item.confidence}%
+                  {item.result === 'Gagné' ? 'Gagné' : item.result === 'Perdu' ? 'Perdu' : 'En attente'}
                 </span>
               </div>
             </motion.div>

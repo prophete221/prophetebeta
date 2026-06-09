@@ -106,21 +106,16 @@ export default function FreePredictions() {
         ) : (
           <div className="space-y-3">
             {/* Table Header (desktop) */}
-            <div className="hidden sm:grid grid-cols-12 gap-3 px-5 text-gray-500 text-xs font-semibold uppercase tracking-wider">
-              <span className="col-span-3">Match</span>
+            <div className="hidden sm:grid grid-cols-11 gap-3 px-5 text-gray-500 text-xs font-semibold uppercase tracking-wider">
+              <span className="col-span-4">Match</span>
               <span className="col-span-2">Compétition</span>
               <span className="col-span-2">BTTS</span>
               <span className="col-span-2">Over 2.5</span>
-              <span className="col-span-1">Confiance</span>
-              <span className="col-span-2 text-right">Date / Heure</span>
+              <span className="col-span-3 text-right">Date / Heure</span>
             </div>
 
             {/* Prediction Cards — une seule carte par match */}
             {matchList.map((m, i) => {
-              const maxConf = Math.max(
-                m.btts?.confidence || 0,
-                m.over25?.confidence || 0
-              )
               return (
                 <motion.div
                   key={i}
@@ -132,11 +127,10 @@ export default function FreePredictions() {
                   <TiltCard maxTilt={4}>
                     <div
                       className="card card-3d p-4 sm:p-5"
-                      data-confidence={maxConf}
                     >
                       {/* Desktop Layout */}
-                      <div className="hidden sm:grid grid-cols-12 gap-3 items-center">
-                        <div className="col-span-3">
+                      <div className="hidden sm:grid grid-cols-11 gap-3 items-center">
+                        <div className="col-span-4">
                           <div className="text-white font-semibold text-sm" data-match-semantic={m.matchSemantic}>
                             {m.match}
                           </div>
@@ -166,18 +160,7 @@ export default function FreePredictions() {
                             <span className="text-gray-600 text-xs">—</span>
                           )}
                         </div>
-                        <div className="col-span-1">
-                          <div className="flex items-center gap-1.5">
-                            <div className="w-12 h-1.5 bg-dark-600 rounded-full overflow-hidden">
-                              <div
-                                className="h-full bg-gradient-to-r from-emerald to-gold rounded-full"
-                                style={{ width: `${maxConf}%` }}
-                              />
-                            </div>
-                            <span className="text-xs text-gray-500">{maxConf}%</span>
-                          </div>
-                        </div>
-                        <div className="col-span-2 text-right">
+                        <div className="col-span-3 text-right">
                           <span className="text-gray-400 text-xs font-medium">
                             {m.date ? formatFullDate(m.date) : ''}
                           </span>
@@ -226,15 +209,6 @@ export default function FreePredictions() {
                                 O2.5 : {m.over25.prediction}
                               </span>
                             )}
-                          </div>
-                          <div className="flex items-center gap-1.5">
-                            <div className="w-10 h-1.5 bg-dark-600 rounded-full overflow-hidden">
-                              <div
-                                className="h-full bg-gradient-to-r from-emerald to-gold rounded-full"
-                                style={{ width: `${maxConf}%` }}
-                              />
-                            </div>
-                            <span className="text-xs text-gray-500">{maxConf}%</span>
                           </div>
                         </div>
                       </div>

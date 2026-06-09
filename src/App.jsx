@@ -13,6 +13,9 @@ import Footer from './components/Footer'
 import SectionDivider from './components/SectionDivider'
 import CursorEffect from './components/CursorEffect'
 import FloatingElements from './components/FloatingElements'
+import ErrorBoundary from './components/ErrorBoundary'
+import CookieConsent from './components/CookieConsent'
+import AgeVerification from './components/AgeVerification'
 import { MentionsLegales, PolitiqueConfidentialite, JouerResponsable, CGU } from './pages/LegalPages'
 
 // Lazy-loaded 3D Scene (desktop only, with fallback)
@@ -101,35 +104,43 @@ function NotFoundPage() {
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-dark-900 relative">
-      {/* 3D Background Layer */}
-      <Suspense fallback={<Scene3DFallback />}>
-        <Scene3D />
-      </Suspense>
-
-      {/* Floating Elements Layer */}
-      <FloatingElements />
-
-      {/* Cursor Glow Effect */}
-      <CursorEffect />
-
-      {/* Main Content */}
-      <div className="relative z-10">
-        <Navbar />
-        <Suspense fallback={<PageLoader />}>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/blog" element={<BlogPage />} />
-            <Route path="/blog/:slug" element={<BlogArticlePage />} />
-            <Route path="/mentions-legales" element={<MentionsLegales />} />
-            <Route path="/politique-confidentialite" element={<PolitiqueConfidentialite />} />
-            <Route path="/jouer-responsable" element={<JouerResponsable />} />
-            <Route path="/cgu" element={<CGU />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
+    <ErrorBoundary>
+      <div className="min-h-screen bg-dark-900 relative">
+        {/* 3D Background Layer — desktop only for performance */}
+        <Suspense fallback={<Scene3DFallback />}>
+          {typeof window !== 'undefined' && window.innerWidth >= 768 && <Scene3D />}
         </Suspense>
-        <Footer />
+
+        {/* Floating Elements Layer */}
+        <FloatingElements />
+
+        {/* Cursor Glow Effect */}
+        <CursorEffect />
+
+        {/* Main Content */}
+        <div className="relative z-10">
+          <Navbar />
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/blog" element={<BlogPage />} />
+              <Route path="/blog/:slug" element={<BlogArticlePage />} />
+              <Route path="/mentions-legales" element={<MentionsLegales />} />
+              <Route path="/politique-confidentialite" element={<PolitiqueConfidentialite />} />
+              <Route path="/jouer-responsable" element={<JouerResponsable />} />
+              <Route path="/cgu" element={<CGU />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </Suspense>
+          <Footer />
+        </div>
+
+        {/* Age Verification Modal (18+) */}
+        <AgeVerification />
+
+        {/* Cookie Consent Banner (RGPD) */}
+        <CookieConsent />
       </div>
-    </div>
+    </ErrorBoundary>
   )
 }

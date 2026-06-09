@@ -1,5 +1,9 @@
+node_modules/
+dist/
+.env
 node_modules/minimalcss/node_modules/puppeteer/.local-chromium/
 node_modules/**/puppeteer/.local-chromium/
 *.zip
 node_modules/**/puppeteer/
 node_modules/**/.local-chromium/
+node_modules/\ndist/\ndownload/\n.env\ncoupon221/\npronostic-cdm2026/\npronostic-cdm2026-site/\nprophetebeta/\n*.pyc\n.DS_Store\n.cache/

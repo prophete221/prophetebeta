@@ -12,7 +12,7 @@
 //   - Vérification des dates : uniquement aujourd'hui et demain
 //   - Déduplication finale : suppression des vrais doublons
 //   - Distribution Oui/Non : équilibrage si trop de Non
-//   - Confiance : plage raisonnable 60-95%
+//   - Confiance : plage honnête 40-52%
 //   - Heures : détection d'heures suspectes (00:00 en masse)
 //   - Lambdas : alerte si tous identiques (données manquantes)
 //
@@ -137,7 +137,7 @@ const LEAGUE_NAME_MAP = {
   'pro league': 'bel.1', 'jupiler pro league': 'bel.1',
   'super league': 'swi.1', 'swiss super league': 'swi.1',
   'austrian bundesliga': 'aut.1',
-  'superliga': 'den.1', 'danish superliga': 'den.1',
+  'superliga denmark': 'den.1', 'danish superliga': 'den.1',
   'eliteserien': 'nor.1', 'norwegian eliteserien': 'nor.1',
   'allsvenskan': 'swe.1', 'swedish allsvenskan': 'swe.1',
   'ekstraklasa': 'pol.1',
@@ -354,7 +354,7 @@ async function scrapeForebet() {
           league: league || 'Unknown',
           type,
           prediction,
-          confidence: Math.max(62, Math.min(95, confidence)),
+          confidence: Math.max(40, Math.min(52, confidence)),
           source: 'forebet',
         })
       }
@@ -467,7 +467,7 @@ async function scrapeWindrawwin() {
           league: '',
           type,
           prediction,
-          confidence: Math.max(62, Math.min(95, confidence)),
+          confidence: Math.max(40, Math.min(52, confidence)),
           source: 'windrawwin',
         })
       }
@@ -893,25 +893,23 @@ function analyzeMatch(matchData, teamStats, leagueStats) {
   const over25Prediction = over25Prob > OVER25_THRESHOLD ? 'Oui' : 'Non'
 
   // ─── Score de confiance ───
-  // V12 : confiance basée sur l'écart au seuil (pas au 0.50)
+  // V18 : Fiabilité honnête — plage 40-52%
   const hasLeagueProfile = LEAGUE_PROFILES[leagueSlug] !== undefined
-  let baseConfidence = hasLeagueProfile ? 72 : 66
+  let baseConfidence = hasLeagueProfile ? 44 : 40
 
-  const dataQualityBonus = Math.min(12, dataQuality * 1.5)
+  const dataQualityBonus = Math.min(3, dataQuality * 0.4)
 
-  // V12 : signal basé sur l'écart au seuil corrigé
+  // V18 : signal basé sur l'écart au seuil corrigé
   const bttsSignalFromThreshold = Math.abs(bttsProb - BTTS_THRESHOLD)
   const over25SignalFromThreshold = Math.abs(over25Prob - OVER25_THRESHOLD)
-  const signalBonus = Math.min(12, (bttsSignalFromThreshold + over25SignalFromThreshold) * 24)
+  const signalBonus = Math.min(5, (bttsSignalFromThreshold + over25SignalFromThreshold) * 10)
 
-  const realDataBonus = dataQuality >= MIN_DATA_QUALITY ? 5 : 0
+  const leagueBonus = hasLeagueProfile ? 2 : 0
 
-  const bttsConfidence = Math.max(62, Math.min(95, Math.round(
-    baseConfidence + dataQualityBonus + Math.min(12, bttsSignalFromThreshold * 24) + realDataBonus
-  )))
-  const over25Confidence = Math.max(62, Math.min(95, Math.round(
-    baseConfidence + dataQualityBonus + Math.min(12, over25SignalFromThreshold * 24) + realDataBonus
-  )))
+  const confidence = Math.max(40, Math.min(52, baseConfidence + dataQualityBonus + signalBonus + leagueBonus))
+
+  const bttsConfidence = Math.round(confidence)
+  const over25Confidence = Math.round(confidence)
 
   return {
     bttsProb,
@@ -1070,7 +1068,7 @@ function generateAnalyzedPredictions(espnMatches, soccerbaseMatches, tsdbMatches
       bttsConf = Math.round((extBTTS.confidence + analysis.bttsConfidence) / 2)
       bttsSource = 'forebet'
     }
-    bttsConf = Math.max(60, Math.min(95, bttsConf))
+    bttsConf = Math.max(40, Math.min(52, bttsConf))
 
     // ─── Pronostic Over 2.5 ───
     let ouPred = analysis.over25Prediction
@@ -1082,7 +1080,7 @@ function generateAnalyzedPredictions(espnMatches, soccerbaseMatches, tsdbMatches
       ouConf = Math.round((extOver25.confidence + analysis.over25Confidence) / 2)
       ouSource = 'forebet'
     }
-    ouConf = Math.max(60, Math.min(95, ouConf))
+    ouConf = Math.max(40, Math.min(52, ouConf))
 
     matchGroups.set(dedupKey, {
       match: match.match,
@@ -1205,7 +1203,7 @@ function generateAnalyzedPredictions(espnMatches, soccerbaseMatches, tsdbMatches
       for (let i = 0; i < Math.min(needed, nonPreds.length); i++) {
         nonPreds[i].prediction = 'Oui'
         // Ajuster la confiance : un pronostic renversé est moins confiant
-        nonPreds[i].confidence = Math.max(60, nonPreds[i].confidence - 5)
+        nonPreds[i].confidence = Math.max(40, nonPreds[i].confidence - 5)
       }
     }
   }
@@ -1230,7 +1228,7 @@ function generateAnalyzedPredictions(espnMatches, soccerbaseMatches, tsdbMatches
 
       for (let i = 0; i < Math.min(needed, nonPreds.length); i++) {
         nonPreds[i].prediction = 'Oui'
-        nonPreds[i].confidence = Math.max(60, nonPreds[i].confidence - 5)
+        nonPreds[i].confidence = Math.max(40, nonPreds[i].confidence - 5)
       }
     }
   }
@@ -1278,7 +1276,7 @@ function generateFallbackPredictions() {
     date: today,
     type: m.type,
     prediction: m.type === 'BTTS' ? 'Oui' : 'Oui',
-    confidence: 72,
+    confidence: 44,
     time: `${14 + (m.match.charCodeAt(0) % 5)}:00`,
     matchSemantic: makeMatchSemantic(m.match, m.league, m.type),
     source: 'fallback',
@@ -1289,20 +1287,20 @@ function generateFallbackPredictions() {
 function generateFallbackWinHistory() {
   const today = new Date()
   const entries = [
-    { match: 'Real Madrid vs Barcelona', league: 'La Liga', type: 'BTTS', score: '2-1', conf: 89 },
-    { match: 'Liverpool vs Arsenal', league: 'Premier League', type: 'Over 2.5', score: '3-2', conf: 92 },
-    { match: 'PSG vs Marseille', league: 'Ligue 1', type: 'BTTS', score: '1-1', conf: 85 },
-    { match: 'Bayern vs Dortmund', league: 'Bundesliga', type: 'Over 2.5', score: '4-1', conf: 91 },
-    { match: 'Inter vs AC Milan', league: 'Serie A', type: 'BTTS', score: '2-2', conf: 87 },
-    { match: 'Ajax vs PSV', league: 'Eredivisie', type: 'Over 2.5', score: '3-1', conf: 88 },
-    { match: 'Benfica vs Porto', league: 'Primeira Liga', type: 'BTTS', score: '1-2', conf: 84 },
-    { match: 'Atletico vs Sevilla', league: 'La Liga', type: 'BTTS', score: '2-0', conf: 76 },
-    { match: 'Napoli vs Roma', league: 'Serie A', type: 'Over 2.5', score: '3-1', conf: 86 },
-    { match: 'Celtic vs Rangers', league: 'Scottish Premiership', type: 'Over 2.5', score: '2-1', conf: 82 },
+    { match: 'Real Madrid vs Barcelona', league: 'La Liga', type: 'BTTS', score: '2-1', conf: 48 },
+    { match: 'Liverpool vs Arsenal', league: 'Premier League', type: 'Over 2.5', score: '3-2', conf: 50 },
+    { match: 'PSG vs Marseille', league: 'Ligue 1', type: 'BTTS', score: '1-1', conf: 46 },
+    { match: 'Bayern vs Dortmund', league: 'Bundesliga', type: 'Over 2.5', score: '4-1', conf: 49 },
+    { match: 'Inter vs AC Milan', league: 'Serie A', type: 'BTTS', score: '2-2', conf: 47 },
+    { match: 'Ajax vs PSV', league: 'Eredivisie', type: 'Over 2.5', score: '3-1', conf: 48 },
+    { match: 'Benfica vs Porto', league: 'Primeira Liga', type: 'BTTS', score: '1-2', conf: 45 },
+    { match: 'Atletico vs Sevilla', league: 'La Liga', type: 'BTTS', score: '2-0', conf: 42 },
+    { match: 'Napoli vs Roma', league: 'Serie A', type: 'Over 2.5', score: '3-1', conf: 47 },
+    { match: 'Celtic vs Rangers', league: 'Scottish Premiership', type: 'Over 2.5', score: '2-1', conf: 44 },
   ]
   const history = entries.map((m, i) => {
     const d = new Date(today); d.setDate(d.getDate() - Math.floor(i / 2) - 1)
-    return { id: i + 1, date: d.toISOString().split('T')[0], match: m.match, league: m.league, type: m.type, prediction: m.conf > 75 ? 'Oui' : 'Non', result: 'Gagné', score: m.score, confidence: m.conf }
+    return { id: i + 1, date: d.toISOString().split('T')[0], match: m.match, league: m.league, type: m.type, prediction: m.conf > 42 ? 'Oui' : 'Non', result: 'Gagné', score: m.score, confidence: m.conf }
   })
   const total = 142
   const won = 111
@@ -1319,7 +1317,7 @@ function generateFallbackWinHistory() {
 //   2. Dates réelles et correctes (aujourd'hui ou demain uniquement)
 //   3. Heures réalistes (pas 00:00 pour tous les matchs)
 //   4. Distribution Oui/Non réaliste (pas >70% de Non)
-//   5. Confiance dans une plage raisonnable (60-95%)
+//   5. Confiance dans une plage honnête (40-52%)
 //   6. Les lambdas ne sont pas tous identiques (signe de données manquantes)
 
 function validateDataCoherence(predictions) {
@@ -1390,7 +1388,7 @@ function validateDataCoherence(predictions) {
       const nonPreds = bttsPreds.filter(p => p.prediction === 'Non').sort((a, b) => a.confidence - b.confidence)
       for (let i = 0; i < Math.min(needed, nonPreds.length); i++) {
         nonPreds[i].prediction = 'Oui'
-        nonPreds[i].confidence = Math.max(60, nonPreds[i].confidence - 3)
+        nonPreds[i].confidence = Math.max(40, nonPreds[i].confidence - 3)
         fixes++
       }
     }
@@ -1405,22 +1403,22 @@ function validateDataCoherence(predictions) {
       const nonPreds = over25Preds.filter(p => p.prediction === 'Non').sort((a, b) => a.confidence - b.confidence)
       for (let i = 0; i < Math.min(needed, nonPreds.length); i++) {
         nonPreds[i].prediction = 'Oui'
-        nonPreds[i].confidence = Math.max(60, nonPreds[i].confidence - 3)
+        nonPreds[i].confidence = Math.max(40, nonPreds[i].confidence - 3)
         fixes++
       }
     }
   }
 
-  // 4. Vérifier que les confiances sont dans une plage raisonnable
+  // 4. Vérifier que les confiances sont dans une plage honnête (40-52%)
   for (const p of predictions) {
-    if (p.confidence < 60) {
-      console.log(`[Scraper] ⚠ Confiance trop basse: ${p.match} -> ${p.confidence}%, corrigé à 62%`)
-      p.confidence = 62
+    if (p.confidence < 40) {
+      console.log(`[Scraper] ⚠ Confiance trop basse: ${p.match} -> ${p.confidence}%, corrigé à 40%`)
+      p.confidence = 40
       fixes++
     }
-    if (p.confidence > 95) {
-      console.log(`[Scraper] ⚠ Confiance trop haute: ${p.match} -> ${p.confidence}%, corrigé à 95%`)
-      p.confidence = 95
+    if (p.confidence > 52) {
+      console.log(`[Scraper] ⚠ Confiance trop haute: ${p.match} -> ${p.confidence}%, corrigé à 52%`)
+      p.confidence = 52
       fixes++
     }
   }

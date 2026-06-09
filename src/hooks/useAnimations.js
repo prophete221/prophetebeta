@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from 'react'
+import { useEffect, useRef, useState, useCallback } from 'react'
 
 /**
  * useScrollAnimation — IntersectionObserver pour animations au scroll.
@@ -8,7 +8,7 @@ const visibleElements = new WeakSet()
 
 export function useScrollAnimation(threshold = 0.1) {
   const ref = useRef(null)
-  const isVisibleRef = useRef(false)
+  const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
     const el = ref.current
@@ -16,7 +16,7 @@ export function useScrollAnimation(threshold = 0.1) {
 
     // Déjà visible (scroll ancien)
     if (visibleElements.has(el)) {
-      isVisibleRef.current = true
+      setIsVisible(true)
       el.classList.add('is-visible')
       return
     }
@@ -26,6 +26,7 @@ export function useScrollAnimation(threshold = 0.1) {
         if (entry.isIntersecting) {
           visibleElements.add(el)
           el.classList.add('is-visible')
+          setIsVisible(true)
           observer.unobserve(el)
         }
       },
@@ -35,7 +36,7 @@ export function useScrollAnimation(threshold = 0.1) {
     return () => observer.disconnect()
   }, [threshold])
 
-  return [ref, true] // Toujours "visible" pour framer-motion (qui fait ses propres anims)
+  return [ref, isVisible]
 }
 
 /**
