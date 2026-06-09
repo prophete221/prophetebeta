@@ -2,15 +2,6 @@
   RewriteEngine On
   RewriteBase /
 
-  # ─── Remove old PWA files: return 410 Gone ───
-  RewriteRule ^workbox-.*\.js$ - [G,L]
-  RewriteRule ^manifest\.webmanifest$ - [G,L]
-  RewriteRule ^pwa-.*\.png$ - [G,L]
-  RewriteRule ^maskable-icon-.*\.png$ - [G,L]
-  RewriteRule ^apple-touch-icon\.png$ - [G,L]
-
-  # NOTE: sw.js is NOT blocked — we serve a self-unregistering SW instead
-
   # SPA fallback — redirect all non-file requests to index.html
   RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
@@ -21,47 +12,21 @@
 # Cache static assets
 <IfModule mod_expires.c>
   ExpiresActive On
-  # CSS/JS — 1 year with hash
   ExpiresByType text/css "access plus 1 year"
   ExpiresByType application/javascript "access plus 1 year"
-
-  # SW must not be cached — always serve latest
-  ExpiresByType application/javascript "access plus 0 seconds" env=no_cache_js
-
-  # Images — 1 year
   ExpiresByType image/png "access plus 1 year"
   ExpiresByType image/svg+xml "access plus 1 year"
   ExpiresByType image/webp "access plus 1 year"
-
-  # JSON data — no cache (changes daily)
   ExpiresByType application/json "access plus 0 seconds"
-
-  # HTML — no cache (always fresh)
   ExpiresByType text/html "access plus 0 seconds"
 </IfModule>
 
-# Force no-cache for sw.js and HTML
+# Security headers
 <IfModule mod_headers.c>
   Header set X-Content-Type-Options "nosniff"
   Header set X-Frame-Options "SAMEORIGIN"
   Header set X-XSS-Protection "1; mode=block"
   Header set Referrer-Policy "strict-origin-when-cross-origin"
-  Header set Permissions-Policy "camera=(), microphone=(), geolocation=()"
-
-  # sw.js must never be cached
-  <FilesMatch "^sw\.js$">
-    Header set Cache-Control "no-cache, no-store, must-revalidate"
-    Header set Pragma "no-cache"
-    Header set Expires "0"
-    Header set Content-Type "application/javascript"
-  </FilesMatch>
-
-  # HTML must never be cached
-  <FilesMatch "\.(html)$">
-    Header set Cache-Control "no-cache, no-store, must-revalidate"
-    Header set Pragma "no-cache"
-    Header set Expires "0"
-  </FilesMatch>
 </IfModule>
 
 # Gzip compression
