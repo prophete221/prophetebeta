@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useMemo } from 'react'
 import { motion } from 'framer-motion'
-import { useScrollAnimation } from '@/hooks/useAnimations'
 import TiltCard from './TiltCard'
 import { resolveTeamLogo } from '@/lib/teamLogos'
 import { SITE } from '@/lib/constants'
@@ -28,19 +27,24 @@ interface HistoryItem {
 }
 
 export default function WinHistory() {
-  const [ref, isVisible] = useScrollAnimation()
   const [showAll, setShowAll] = useState(false)
   const [winData, setWinData] = useState<{ stats: { total: number; won: number; last30Rate: string }; history: HistoryItem[] } | null>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch('/win-history.json')
+    // Cache-bust to ensure fresh data after deployments
+    const url = `/win-history.json?t=${Date.now()}`
+    fetch(url)
       .then((r) => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`)
         return r.json()
       })
       .then((data) => {
-        setWinData(data)
+        if (data && data.history && data.history.length > 0) {
+          setWinData(data)
+        } else {
+          setWinData(null)
+        }
         setLoading(false)
       })
       .catch(() => {
@@ -68,18 +72,24 @@ export default function WinHistory() {
   }
 
   if (!winData || !winData.history || winData.history.length === 0 || !displayStats) {
-    return null
+    return (
+      <section id="win-history" className="py-10 px-4 bg-dark-800/50">
+        <div className="max-w-5xl mx-auto text-center">
+          <p className="text-gray-500 text-sm">Aucun historique disponible pour le moment.</p>
+        </div>
+      </section>
+    )
   }
 
   const { history } = winData
   const displayedHistory = showAll ? history : history.slice(0, 5)
 
   return (
-    <section ref={ref} id="win-history" className="py-10 px-4 bg-dark-800/50">
+    <section id="win-history" className="py-10 px-4 bg-dark-800/50">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20, rotateX: 6 }}
-          animate={isVisible ? { opacity: 1, y: 0, rotateX: 0 } : {}}
+          animate={{ opacity: 1, y: 0, rotateX: 0 }}
           transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
           style={{ transformOrigin: 'center bottom' }}
           className="text-center mb-6"
@@ -92,7 +102,7 @@ export default function WinHistory() {
 
         <motion.div
           initial={{ opacity: 0, y: 15, scale: 0.95 }}
-          animate={isVisible ? { opacity: 1, y: 0, scale: 1 } : {}}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.4, delay: 0.1 }}
           className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6"
         >
@@ -113,7 +123,7 @@ export default function WinHistory() {
 
         <motion.div
           initial={{ opacity: 0, y: 15 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.2 }}
           className="glass-3d rounded-xl overflow-hidden"
         >
@@ -125,7 +135,7 @@ export default function WinHistory() {
             <motion.div
               key={item.id || i}
               initial={{ opacity: 0, x: -10 }}
-              animate={isVisible ? { opacity: 1, x: 0 } : {}}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.3, delay: 0.3 + i * 0.05 }}
               className="grid grid-cols-1 sm:grid-cols-6 gap-1 sm:gap-3 px-3 py-2.5 border-t border-white/5 hover:bg-emerald/5 transition-colors items-center"
             >
@@ -163,7 +173,7 @@ export default function WinHistory() {
           </div>
         )}
 
-        <motion.div initial={{ opacity: 0 }} animate={isVisible ? { opacity: 1 } : {}} transition={{ duration: 0.3, delay: 0.6 }} className="text-center mt-4">
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3, delay: 0.6 }} className="text-center mt-4">
           <div className="inline-flex items-center gap-1.5 rounded-full px-3 py-1">
             <span className="w-1.5 h-1.5 bg-emerald rounded-full animate-pulse" />
             <span className="text-[10px] text-gray-500">Résultats vérifiés par l&apos;IA — mis à jour quotidiennement</span>
