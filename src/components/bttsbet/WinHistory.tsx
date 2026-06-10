@@ -57,8 +57,7 @@ export default function WinHistory() {
     if (!winData || !winData.stats) return null
     const { stats } = winData
     const total = stats.total || 0
-    const won = stats.won || 0
-    return { total, won, rate: SITE.historyRate, last30Rate: `${SITE.last30Rate}` }
+    return { total, rate: SITE.historyRate, last30Rate: `${SITE.last30Rate}` }
   }, [winData])
 
   if (loading) {
@@ -106,11 +105,10 @@ export default function WinHistory() {
           initial={{ opacity: 0, y: 15, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.4, delay: 0.1 }}
-          className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6"
+          className="grid grid-cols-3 gap-3 mb-6"
         >
           {[
             { value: displayStats.total.toLocaleString('fr-FR'), label: 'Analysés', color: 'text-white' },
-            { value: displayStats.won.toLocaleString('fr-FR'), label: 'Gagnants', color: 'text-emerald' },
             { value: displayStats.rate, label: 'Réussite', color: 'text-emerald' },
             { value: displayStats.last30Rate, label: '30 jours', color: 'text-gold' },
           ].map((item, i) => (
