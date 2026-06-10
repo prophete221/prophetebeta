@@ -220,7 +220,6 @@ function generateFifaMatches(seed: number, count: number) {
     const r1 = seededRandom(seed + i * 7)
     const r2 = seededRandom(seed + i * 13 + 3)
     const r3 = seededRandom(seed + i * 19 + 7)
-    const r4 = seededRandom(seed + i * 23 + 11)
 
     const homeIdx = Math.floor(r1 * FIFA_TEAMS.length)
     let awayIdx = Math.floor(r2 * FIFA_TEAMS.length)
@@ -230,14 +229,7 @@ function generateFifaMatches(seed: number, count: number) {
     const away = FIFA_TEAMS[awayIdx]
     const league = FIFA_LEAGUES[Math.floor(r3 * FIFA_LEAGUES.length)]
 
-    // Time slots
-    const hours = [14, 15, 16, 17, 18, 19, 20, 21]
-    const mins = [0, 15, 30, 45]
-    const h = hours[Math.floor(r4 * hours.length)]
-    const m = mins[Math.floor(r3 * mins.length)]
-    const time = `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`
-
-    matches.push({ home, away, league, time })
+    matches.push({ home, away, league })
   }
   return matches
 }
@@ -246,7 +238,12 @@ function generateFifaMatches(seed: number, count: number) {
 
 export default function FifaLinebet() {
   const [showFifaModal, setShowFifaModal] = useState(false)
-  const [fifaMatches, setFifaMatches] = useState<Array<{ home: string; away: string; league: string; time: string; cote: number }>>([])
+  const couponRef = useRef<HTMLDivElement>(null)
+
+  const scrollToCoupon = () => {
+    couponRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  }
+  const [fifaMatches, setFifaMatches] = useState<Array<{ home: string; away: string; league: string; cote: number }>>([])
   const [couponCote, setCouponCote] = useState(0)
   const [nextUpdate, setNextUpdate] = useState(300) // 5 min countdown
 
@@ -313,7 +310,13 @@ export default function FifaLinebet() {
             <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-2" style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: '0.04em' }}>
               FAILLE <span className="text-purple-400">FIFA LINEBET</span>
             </h2>
-            <p className="text-gray-500 text-sm max-w-lg mx-auto">Algorithme exclusif détectant les failles de cotes FIFA sur Linebet — Mise à jour toutes les 5 minutes</p>
+            <p className="text-gray-500 text-sm max-w-lg mx-auto mb-4">Algorithme exclusif détectant les failles de cotes FIFA sur Linebet — Mise à jour toutes les 5 minutes</p>
+            <button onClick={scrollToCoupon}
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold rounded-xl text-sm hover:shadow-lg hover:shadow-purple-500/30 transition-all hover:brightness-110 cursor-pointer">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L1 12h3v9h6v-6h4v6h6v-9h3L12 2z"/></svg>
+              Voir le Coupon FIFA
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
           </motion.div>
 
           {/* SEO Content — visible text for search engines targeting "faille fifa linebet" queries */}
@@ -333,7 +336,7 @@ export default function FifaLinebet() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
             {/* FIFA Coupon */}
-            <motion.div initial={{ opacity: 0, y: 20, scale: 0.97 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: 0.6 }}
+            <motion.div ref={couponRef} initial={{ opacity: 0, y: 20, scale: 0.97 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: 0.6 }}
               className="relative rounded-xl border border-purple-500/20 bg-panel/80 overflow-hidden hover-lift">
               <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-purple-600 via-pink-500 to-purple-600" />
               <div className="absolute top-0 right-0 w-[250px] h-[250px] bg-purple-500/4 rounded-full blur-[100px] animate-pulse" />
