@@ -6,6 +6,7 @@ import {
   FreePredictions,
   PromoVip,
   WinHistory,
+  FifaLinebet,
   Footer,
   CookieConsent,
   AgeVerification,
@@ -37,6 +38,7 @@ export default function Home() {
         <FreePredictions />
         <PromoVip />
         <WinHistory />
+        <FifaLinebet />
         <Footer />
       </main>
 
