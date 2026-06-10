@@ -7,6 +7,7 @@ on:
     paths-ignore:
       - 'public/predictions.json'
       - 'public/win-history.json'
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -43,3 +44,17 @@ jobs:
           git add public/predictions.json public/win-history.json public/predictions-archive/
           git diff --staged --quiet || git commit -m "chore: update predictions with real dates [skip ci]"
           git push || echo "Git push skipped"
+
+      - name: Deploy to server via SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          port: ${{ secrets.SERVER_PORT || 22 }}
+          script: |
+            cd ${{ secrets.SERVER_PATH }}
+            git pull origin main
+            npm ci --legacy-peer-deps
+            PUPPETEER_SKIP_DOWNLOAD=true npm run build
+            pm2 restart bttsbet || (pm2 start npm --name bttsbet -- start && pm2 save)
