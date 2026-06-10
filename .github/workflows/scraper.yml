@@ -40,17 +40,8 @@ jobs:
           echo "=== win-history.json ==="
           cat public/win-history.json
 
-      - name: Build project
+      - name: Build Next.js project
         run: npm run build
-
-      - name: Deploy to FTP
-        uses: SamKirkland/FTP-Deploy-Action@4.3.3
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./dist/
-          dangerous-clean-slate: true
 
       - name: Commit and push updated data
         run: |
@@ -58,4 +49,4 @@ jobs:
           git config --local user.name "BttsBet Bot"
           git add public/predictions.json public/win-history.json public/predictions-archive/
           git diff --staged --quiet || git commit -m "chore: update daily predictions & win history [skip ci]"
-          git push || echo "⚠️ Git push failed — data already deployed via FTP"
+          git push || echo "⚠️ Git push failed — data already deployed"

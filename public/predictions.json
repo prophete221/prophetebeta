@@ -44,174 +44,6 @@
       }
     },
     {
-      "match": "Tanzania vs Rwanda",
-      "league": "International Friendly",
-      "date": "2026-06-10",
-      "type": "BTTS",
-      "prediction": "Oui",
-      "confidence": 48,
-      "time": "17:00",
-      "matchSemantic": "tanz-rwan-int-btts",
-      "source": "poisson",
-      "homeLogo": "https://flagcdn.com/w40/tz.png",
-      "awayLogo": "https://flagcdn.com/w40/rw.png",
-      "analysis": {
-        "bttsProb": 0.56,
-        "over25Prob": 0.56,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
-      "match": "Tanzania vs Rwanda",
-      "league": "International Friendly",
-      "date": "2026-06-10",
-      "type": "Over 2.5",
-      "prediction": "Oui",
-      "confidence": 48,
-      "time": "17:00",
-      "matchSemantic": "tanz-rwan-int-o25",
-      "source": "poisson",
-      "homeLogo": "https://flagcdn.com/w40/tz.png",
-      "awayLogo": "https://flagcdn.com/w40/rw.png",
-      "analysis": {
-        "bttsProb": 0.56,
-        "over25Prob": 0.56,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
-      "match": "Saudi Arabia vs Senegal",
-      "league": "International Friendly",
-      "date": "2026-06-10",
-      "type": "BTTS",
-      "prediction": "Oui",
-      "confidence": 47,
-      "time": "--:--",
-      "matchSemantic": "saud-sene-int-btts",
-      "source": "poisson",
-      "homeLogo": "https://flagcdn.com/w40/sa.png",
-      "awayLogo": "https://flagcdn.com/w40/sn.png",
-      "analysis": {
-        "bttsProb": 0.51,
-        "over25Prob": 0.52,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
-      "match": "Saudi Arabia vs Senegal",
-      "league": "International Friendly",
-      "date": "2026-06-10",
-      "type": "Over 2.5",
-      "prediction": "Oui",
-      "confidence": 47,
-      "time": "--:--",
-      "matchSemantic": "saud-sene-int-o25",
-      "source": "poisson",
-      "homeLogo": "https://flagcdn.com/w40/sa.png",
-      "awayLogo": "https://flagcdn.com/w40/sn.png",
-      "analysis": {
-        "bttsProb": 0.51,
-        "over25Prob": 0.52,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
-      "match": "Argentina vs Iceland",
-      "league": "International Friendly",
-      "date": "2026-06-10",
-      "type": "BTTS",
-      "prediction": "Oui",
-      "confidence": 47,
-      "time": "02:00",
-      "matchSemantic": "arge-icel-int-btts",
-      "source": "poisson",
-      "homeLogo": "https://flagcdn.com/w40/ar.png",
-      "awayLogo": "https://flagcdn.com/w40/is.png",
-      "analysis": {
-        "bttsProb": 0.51,
-        "over25Prob": 0.52,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
-      "match": "Argentina vs Iceland",
-      "league": "International Friendly",
-      "date": "2026-06-10",
-      "type": "Over 2.5",
-      "prediction": "Oui",
-      "confidence": 47,
-      "time": "02:00",
-      "matchSemantic": "arge-icel-int-o25",
-      "source": "poisson",
-      "homeLogo": "https://flagcdn.com/w40/ar.png",
-      "awayLogo": "https://flagcdn.com/w40/is.png",
-      "analysis": {
-        "bttsProb": 0.51,
-        "over25Prob": 0.52,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
-      "match": "Iraq vs Venezuela",
-      "league": "International Friendly",
-      "date": "2026-06-10",
-      "type": "BTTS",
-      "prediction": "Oui",
-      "confidence": 47,
-      "time": "02:00",
-      "matchSemantic": "iraq-vene-int-btts",
-      "source": "poisson",
-      "homeLogo": "https://flagcdn.com/w40/iq.png",
-      "awayLogo": "https://flagcdn.com/w40/ve.png",
-      "analysis": {
-        "bttsProb": 0.54,
-        "over25Prob": 0.55,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
-      "match": "Iraq vs Venezuela",
-      "league": "International Friendly",
-      "date": "2026-06-10",
-      "type": "Over 2.5",
-      "prediction": "Oui",
-      "confidence": 47,
-      "time": "02:00",
-      "matchSemantic": "iraq-vene-int-o25",
-      "source": "poisson",
-      "homeLogo": "https://flagcdn.com/w40/iq.png",
-      "awayLogo": "https://flagcdn.com/w40/ve.png",
-      "analysis": {
-        "bttsProb": 0.54,
-        "over25Prob": 0.55,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
       "match": "Portugal vs Nigeria",
       "league": "International Friendly",
       "date": "2026-06-10",
@@ -1045,6 +877,132 @@
       "analysis": {
         "bttsProb": 0.51,
         "over25Prob": 0.52,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "France vs Senegal",
+      "league": "International Friendly",
+      "date": "2026-06-16",
+      "type": "BTTS",
+      "prediction": "Non",
+      "confidence": 47,
+      "time": "21:00",
+      "matchSemantic": "fran-sene-int-btts",
+      "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sen.png",
+      "analysis": {
+        "bttsProb": 0.42,
+        "over25Prob": 0.45,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "France vs Senegal",
+      "league": "International Friendly",
+      "date": "2026-06-16",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "confidence": 47,
+      "time": "21:00",
+      "matchSemantic": "fran-sene-int-o25",
+      "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sen.png",
+      "analysis": {
+        "bttsProb": 0.42,
+        "over25Prob": 0.45,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Argentina vs Algeria",
+      "league": "International Friendly",
+      "date": "2026-06-17",
+      "type": "BTTS",
+      "prediction": "Oui",
+      "confidence": 48,
+      "time": "03:00",
+      "matchSemantic": "arge-alge-int-btts",
+      "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/alg.png",
+      "analysis": {
+        "bttsProb": 0.56,
+        "over25Prob": 0.56,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Argentina vs Algeria",
+      "league": "International Friendly",
+      "date": "2026-06-17",
+      "type": "Over 2.5",
+      "prediction": "Oui",
+      "confidence": 48,
+      "time": "03:00",
+      "matchSemantic": "arge-alge-int-o25",
+      "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/alg.png",
+      "analysis": {
+        "bttsProb": 0.56,
+        "over25Prob": 0.56,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Iraq vs Norway",
+      "league": "International Friendly",
+      "date": "2026-06-17",
+      "type": "BTTS",
+      "prediction": "Non",
+      "confidence": 47,
+      "time": "--:--",
+      "matchSemantic": "iraq-norw-int-btts",
+      "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/irq.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png",
+      "analysis": {
+        "bttsProb": 0.4,
+        "over25Prob": 0.44,
+        "homeLambda": 1.54,
+        "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Iraq vs Norway",
+      "league": "International Friendly",
+      "date": "2026-06-17",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "confidence": 47,
+      "time": "--:--",
+      "matchSemantic": "iraq-norw-int-o25",
+      "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/irq.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png",
+      "analysis": {
+        "bttsProb": 0.4,
+        "over25Prob": 0.44,
         "homeLambda": 1.54,
         "awayLambda": 1.08,
         "dataQuality": 0,

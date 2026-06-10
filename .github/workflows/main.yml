@@ -1,9 +1,12 @@
-name: Deploy to FTP
+name: Build & Deploy
 
 on:
   push:
     branches:
       - main
+    paths-ignore:
+      - 'public/predictions.json'
+      - 'public/win-history.json'
 
 jobs:
   deploy:
@@ -17,7 +20,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: Install dependencies
         run: npm install
@@ -29,17 +32,8 @@ jobs:
         env:
           API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
 
-      - name: Build project
+      - name: Build Next.js project
         run: npm run build
-
-      - name: Deploy to FTP
-        uses: SamKirkland/FTP-Deploy-Action@4.3.3
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./dist/
-          dangerous-clean-slate: true
 
       - name: Commit and push updated prediction data
         run: |
