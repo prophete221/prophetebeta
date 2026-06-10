@@ -82,7 +82,9 @@ export default function WinHistory() {
   }
 
   const { history } = winData
-  const displayedHistory = showAll ? history : history.slice(0, 5)
+  // N'afficher que les matchs gagnés
+  const wonHistory = history.filter((item) => item.result === 'Gagné')
+  const displayedHistory = showAll ? wonHistory : wonHistory.slice(0, 5)
 
   return (
     <section id="win-history" className="py-10 px-4 bg-dark-800/50">
@@ -95,9 +97,9 @@ export default function WinHistory() {
           className="text-center mb-6"
         >
           <h2 className="text-xl sm:text-2xl font-bold text-white mb-2">
-            Historique des <span className="text-emerald neon-glow">Résultats</span>
+            Derniers <span className="text-emerald neon-glow">Pronostics Gagnants</span>
           </h2>
-          <p className="text-gray-500 text-sm">Résultats vérifiés par notre IA</p>
+          <p className="text-gray-500 text-sm">Sélections validées par les résultats réels</p>
         </motion.div>
 
         <motion.div
@@ -127,8 +129,8 @@ export default function WinHistory() {
           transition={{ duration: 0.4, delay: 0.2 }}
           className="glass-3d rounded-xl overflow-hidden"
         >
-          <div className="hidden sm:grid grid-cols-6 gap-3 px-3 py-2 bg-white/5 text-gray-500 text-[10px] font-semibold uppercase tracking-wider border-b border-emerald/10">
-            <span>Date</span><span>Match</span><span>Type</span><span>Pronostic</span><span>Score</span><span className="text-right">Résultat</span>
+          <div className="hidden sm:grid grid-cols-5 gap-3 px-3 py-2 bg-white/5 text-gray-500 text-[10px] font-semibold uppercase tracking-wider border-b border-emerald/10">
+            <span>Date</span><span>Match</span><span>Type</span><span>Pronostic</span><span>Score</span>
           </div>
 
           {displayedHistory.map((item, i) => (
@@ -137,7 +139,7 @@ export default function WinHistory() {
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.3, delay: 0.3 + i * 0.05 }}
-              className="grid grid-cols-1 sm:grid-cols-6 gap-1 sm:gap-3 px-3 py-2.5 border-t border-white/5 hover:bg-emerald/5 transition-colors items-center"
+              className="grid grid-cols-1 sm:grid-cols-5 gap-1 sm:gap-3 px-3 py-2.5 border-t border-emerald/10 hover:bg-emerald/5 transition-colors items-center"
             >
               <div className="text-[10px] text-gray-500 sm:text-xs">{item.date}</div>
               <div className="flex items-center gap-1.5">
@@ -156,16 +158,11 @@ export default function WinHistory() {
               </div>
               <div className="text-xs text-white font-semibold">{item.prediction}</div>
               <div className="text-xs text-gray-300 font-mono">{item.score}</div>
-              <div className="text-right">
-                <span className={`font-bold text-xs ${item.result === 'Gagné' ? 'text-emerald' : item.result === 'Perdu' ? 'text-red-400' : 'text-gray-500'}`}>
-                  {item.result === 'Gagné' ? 'Gagné' : item.result === 'Perdu' ? 'Perdu' : 'En attente'}
-                </span>
-              </div>
             </motion.div>
           ))}
         </motion.div>
 
-        {history.length > 5 && (
+        {wonHistory.length > 5 && (
           <div className="text-center mt-4">
             <button onClick={() => setShowAll(!showAll)} className="px-4 py-1.5 glass-3d text-emerald text-xs font-semibold rounded-full hover:bg-emerald/10 transition-all hover-lift">
               {showAll ? 'Voir moins ↑' : 'Voir plus ↓'}
