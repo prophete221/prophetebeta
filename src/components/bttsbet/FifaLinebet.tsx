@@ -386,7 +386,6 @@ export default function FifaLinebet() {
                   {fifaMatches.map((m, i) => (
                     <motion.div key={i} initial={{ opacity: 0, x: -15 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.15 + i * 0.06, duration: 0.4 }}
                       className="relative flex items-center gap-2 sm:gap-2.5 bg-midnight/50 rounded-lg px-2.5 sm:px-3 py-2 border border-purple-500/8 hover:border-purple-500/15 transition-colors">
-                      <span className="text-[10px] sm:text-xs text-purple-400/60 font-mono tabular-nums w-9 text-center flex-shrink-0">{m.time}</span>
                       <div className="flex items-center gap-1.5 flex-1 min-w-0 relative">
                         <div className="blur-[4px] select-none flex items-center gap-1.5">
                           <FifaTeamLogo src={resolveTeamLogo(m.home)} name={m.home} size={18} />
