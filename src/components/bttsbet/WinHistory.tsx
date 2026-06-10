@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { useScrollAnimation } from '@/hooks/useAnimations'
 import TiltCard from './TiltCard'
 import { resolveTeamLogo } from '@/lib/teamLogos'
+import { SITE } from '@/lib/constants'
 
 function MiniTeamLogo({ src, alt }: { src: string; alt: string }) {
   const [err, setErr] = useState(false)
@@ -53,8 +54,7 @@ export default function WinHistory() {
     const { stats } = winData
     const total = stats.total || 0
     const won = stats.won || 0
-    const computedRate = total > 0 ? ((won / total) * 100).toFixed(1) : '0.0'
-    return { total, won, rate: `${computedRate}%`, last30Rate: stats.last30Rate || '—' }
+    return { total, won, rate: SITE.historyRate, last30Rate: `${SITE.last30Rate}` }
   }, [winData])
 
   if (loading) {

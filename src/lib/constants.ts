@@ -10,6 +10,8 @@ export const SITE = {
   accuracy: '~87%',
   whatsapp: 'https://wa.me/15406704172',
   vipAccuracy: '~89%',
+  historyRate: '88.3%',
+  last30Rate: '91%',
 }
 
 export const AFFILIATE = {
