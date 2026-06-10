@@ -69,15 +69,26 @@ export default function Navbar() {
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
             {NAV_LINKS.map((link) => (
-              <a
-                key={link.label}
-                href={link.href || '/'}
-                onClick={(e) => handleNavClick(e, link)}
-                className="text-gray-400 hover:text-emerald transition-colors text-sm font-medium relative group cursor-pointer"
-              >
-                {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald transition-all group-hover:w-full" />
-              </a>
+              link.highlight ? (
+                <a
+                  key={link.label}
+                  href={link.href || '/'}
+                  onClick={(e) => handleNavClick(e, link)}
+                  className="px-4 py-1.5 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold rounded-lg text-sm hover:shadow-lg hover:shadow-purple-500/30 transition-all hover:brightness-110 cursor-pointer"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <a
+                  key={link.label}
+                  href={link.href || '/'}
+                  onClick={(e) => handleNavClick(e, link)}
+                  className="text-gray-400 hover:text-emerald transition-colors text-sm font-medium relative group cursor-pointer"
+                >
+                  {link.label}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald transition-all group-hover:w-full" />
+                </a>
+              )
             ))}
             <a
               href={AFFILIATE.linebet}
@@ -121,15 +132,27 @@ export default function Navbar() {
           >
             <div className="px-4 py-4 space-y-1">
               {NAV_LINKS.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href || '/'}
-                  onClick={(e) => handleNavClick(e, link)}
-                  className="block text-gray-300 hover:text-emerald transition-colors font-medium py-3 px-3 rounded-lg hover:bg-white/5 cursor-pointer"
-                  role="menuitem"
-                >
-                  {link.label}
-                </a>
+                link.highlight ? (
+                  <a
+                    key={link.label}
+                    href={link.href || '/'}
+                    onClick={(e) => handleNavClick(e, link)}
+                    className="block text-center py-3 px-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold rounded-lg cursor-pointer"
+                    role="menuitem"
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <a
+                    key={link.label}
+                    href={link.href || '/'}
+                    onClick={(e) => handleNavClick(e, link)}
+                    className="block text-gray-300 hover:text-emerald transition-colors font-medium py-3 px-3 rounded-lg hover:bg-white/5 cursor-pointer"
+                    role="menuitem"
+                  >
+                    {link.label}
+                  </a>
+                )
               ))}
               <div className="pt-3 space-y-2">
                 <a

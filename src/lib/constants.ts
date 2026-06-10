@@ -29,6 +29,7 @@ export const NAV_LINKS = [
   { label: 'Accueil', href: '/' },
   { label: 'Pronostics', scrollTarget: 'free-predictions' },
   { label: 'Résultats', scrollTarget: 'win-history' },
+  { label: 'FIFA', scrollTarget: 'fifa-linebet', highlight: true },
   { label: 'VIP & Bonus', scrollTarget: 'vip' },
   { label: 'FAQ', scrollTarget: 'faq' },
 ]
