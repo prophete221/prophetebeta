@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { SITE, AFFILIATE } from '@/lib/constants'
 import { useScrollAnimation } from '@/hooks/useAnimations'
@@ -280,12 +280,23 @@ const FEATURE_ICONS = {
   secure: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>,
 }
 
+// Generate a deterministic daily cote between 15 and 30 based on the date
+function getDailyCote(): number {
+  const today = new Date()
+  const seed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate()
+  // Simple deterministic pseudo-random from seed
+  const x = Math.sin(seed * 9301 + 49297) * 233280
+  const fraction = x - Math.floor(x)
+  return Math.round((15 + fraction * 15) * 100) / 100 // between 15.00 and 30.00
+}
+
 export default function PromoVip() {
   const [ref, isVisible] = useScrollAnimation()
   const [showVipModal, setShowVipModal] = useState(false)
   const [vipMatches, setVipMatches] = useState<Array<Record<string, unknown>>>([])
   const [couponDate, setCouponDate] = useState('')
   const [todayFormatted, setTodayFormatted] = useState('')
+  const dailyCote = useMemo(() => getDailyCote(), [])
 
   useEffect(() => {
     const formatDate = () => {
@@ -328,7 +339,7 @@ export default function PromoVip() {
           })
           .slice(0, 10)
         const matchCount = allMatches.length || 1
-        const cotePerMatch = Math.pow(10, 1 / matchCount)
+        const cotePerMatch = Math.pow(dailyCote, 1 / matchCount)
         const vipData = allMatches.map((m: Record<string, unknown>, i: number) => ({ ...m, cote: cotePerMatch, confidence: 92 + (i % 6), index: i }))
         setVipMatches(vipData)
         const todayMatches = allMatches.filter((m: Record<string, string>) => m.date === today)
@@ -389,7 +400,7 @@ export default function PromoVip() {
                   </div>
                   <div className="flex items-center gap-1.5">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-gold/60"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-                    <span className="text-[11px] text-gray-400">Cote <span className="text-gold font-bold">10.00</span></span>
+                    <span className="text-[11px] text-gray-400">Cote <span className="text-gold font-bold">{dailyCote.toFixed(2)}</span></span>
                   </div>
                   <div className="flex items-center gap-1.5">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-gold/60"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
@@ -415,7 +426,7 @@ export default function PromoVip() {
 
                 <div className="flex items-center justify-between bg-gold/5 border border-gold/10 rounded-lg px-3 py-2 mb-5">
                   <span className="text-[11px] text-gray-500 font-medium">Cote totale du coupon</span>
-                  <span className="text-sm text-gold font-bold tabular-nums">10.00</span>
+                  <span className="text-sm text-gold font-bold tabular-nums">{dailyCote.toFixed(2)}</span>
                 </div>
 
                 <button onClick={() => setShowVipModal(true)}
