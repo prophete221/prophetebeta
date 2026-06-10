@@ -316,6 +316,21 @@ export default function FifaLinebet() {
             <p className="text-gray-500 text-sm max-w-lg mx-auto">Algorithme exclusif détectant les failles de cotes FIFA sur Linebet — Mise à jour toutes les 5 minutes</p>
           </motion.div>
 
+          {/* SEO Content — visible text for search engines targeting "faille fifa linebet" queries */}
+          <div className="max-w-5xl mx-auto mb-6 px-2">
+            <div className="glass-3d rounded-xl p-4 sm:p-5 border border-purple-500/10">
+              <h3 className="text-sm sm:text-base font-bold text-white mb-2" style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: '0.03em' }}>
+                Faille FIFA Linebet : Comment exploiter les cotes FIFA en 2026
+              </h3>
+              <p className="text-gray-400 text-xs sm:text-sm leading-relaxed mb-2">
+                La <strong className="text-purple-400">faille FIFA Linebet</strong> est une opportunité unique détectée par notre algorithme IA qui analyse en temps réel les écarts de cotes sur les matchs FIFA de Linebet. Notre système de scan automatique identifie les failles de cotes FIFA toutes les 5 minutes, vous permettant d&apos;accéder à des coupons FIFA avec des cotes entre 10 et 15 et une fiabilité de 98%. Que vous cherchiez une faille FIFA sur Linebet, un coupon FIFA gratuit, ou comment exploiter les failles de cotes FIFA, BttsBet vous offre l&apos;outil le plus avancé du marché.
+              </p>
+              <p className="text-gray-500 text-xs leading-relaxed">
+                Keywords : faille fifa linebet, faille fifa, coupon fifa linebet, faille cote fifa, bot fifa linebet, astuce fifa linebet, faille jeux fifa, hack fifa linebet 2026, coupon fifa gagnant, faille pari fifa
+              </p>
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
             {/* FIFA Coupon */}
             <motion.div initial={{ opacity: 0, y: 20, scale: 0.97 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: 0.6 }}
@@ -372,12 +387,19 @@ export default function FifaLinebet() {
                     <motion.div key={i} initial={{ opacity: 0, x: -15 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.15 + i * 0.06, duration: 0.4 }}
                       className="relative flex items-center gap-2 sm:gap-2.5 bg-midnight/50 rounded-lg px-2.5 sm:px-3 py-2 border border-purple-500/8 hover:border-purple-500/15 transition-colors">
                       <span className="text-[10px] sm:text-xs text-purple-400/60 font-mono tabular-nums w-9 text-center flex-shrink-0">{m.time}</span>
-                      <div className="flex items-center gap-1.5 flex-1 min-w-0">
-                        <FifaTeamLogo src={resolveTeamLogo(m.home)} name={m.home} size={18} />
-                        <span className="text-gray-300 text-[11px] sm:text-sm font-medium truncate">{m.home} vs {m.away}</span>
-                        <FifaTeamLogo src={resolveTeamLogo(m.away)} name={m.away} size={18} />
+                      <div className="flex items-center gap-1.5 flex-1 min-w-0 relative">
+                        <div className="blur-[4px] select-none flex items-center gap-1.5">
+                          <FifaTeamLogo src={resolveTeamLogo(m.home)} name={m.home} size={18} />
+                          <span className="text-gray-300 text-[11px] sm:text-sm font-medium truncate">{m.home} vs {m.away}</span>
+                          <FifaTeamLogo src={resolveTeamLogo(m.away)} name={m.away} size={18} />
+                        </div>
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-purple-400/70">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                          </svg>
+                        </div>
                       </div>
-                      <span className="hidden sm:block text-gray-600 text-[10px] flex-shrink-0 max-w-[90px] truncate">{m.league}</span>
+                      <span className="hidden sm:block text-gray-600 text-[10px] flex-shrink-0 max-w-[90px] truncate blur-[3px] select-none">{m.league}</span>
                       <span className="text-[10px] sm:text-xs text-purple-400 font-bold bg-purple-500/10 border border-purple-500/15 rounded px-1.5 py-0.5 flex-shrink-0 tabular-nums blur-[3px] select-none">{m.cote.toFixed(2)}</span>
                       <div className="relative flex items-center flex-shrink-0">
                         <div className="blur-[4px] select-none">

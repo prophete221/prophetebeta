@@ -17,25 +17,25 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://bttsbet.online"),
-  title: "BttsBet – Pronostics BTTS & Over 2,5 | Précision IA ~87%",
-  description: "Pronostics football BTTS & Over 2,5 générés par intelligence artificielle. ~87% de précision sur 15 000+ pronostics analysés. Code promo VISION221 pour un bonus exclusif sur Linebet.",
-  keywords: ["BTTS", "Over 2.5", "pronostics football", "IA", "intelligence artificielle", "paris sportifs", "Linebet", "VISION221", "BttsBet"],
+  title: "BttsBet – Pronostics BTTS & Over 2,5 | Faille FIFA Linebet | Précision IA ~87%",
+  description: "Pronostics football BTTS & Over 2,5 générés par IA. ~87% de précision. Faille FIFA Linebet détectée automatiquement — cotes 10-15, fiabilité 98%. Code promo VISION221 pour bonus exclusif sur Linebet.",
+  keywords: ["BTTS", "Over 2.5", "pronostics football", "IA", "intelligence artificielle", "paris sportifs", "Linebet", "VISION221", "BttsBet", "faille fifa linebet", "faille FIFA", "coupon fifa linebet", "faille cote fifa", "bot fifa linebet", "astuce fifa linebet", "faille jeux fifa", "hack fifa linebet 2026", "coupon fifa gagnant", "faille pari fifa"],
   authors: [{ name: "BttsBet" }],
   icons: {
     icon: "/favicon.svg",
   },
   openGraph: {
-    title: "BttsBet – Pronostics BTTS & Over 2,5 | Précision IA ~87%",
-    description: "Pronostics football BTTS & Over 2,5 générés par IA. ~87% de précision. Code promo VISION221.",
+    title: "BttsBet – Pronostics BTTS & Over 2,5 | Faille FIFA Linebet",
+    description: "Pronostics IA BTTS & Over 2,5. ~87% précision. Faille FIFA Linebet auto — cotes 10-15, 98% fiabilité. Code VISION221.",
     url: "https://bttsbet.online",
     siteName: "BttsBet",
     type: "website",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "BttsBet" }],
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "BttsBet – Faille FIFA Linebet" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "BttsBet – Pronostics BTTS & Over 2,5",
-    description: "Pronostics IA BTTS & Over 2,5. ~87% précision. Code VISION221.",
+    title: "BttsBet – Pronostics BTTS & Over 2,5 | Faille FIFA Linebet",
+    description: "Pronostics IA BTTS & Over 2,5. Faille FIFA Linebet — cotes 10-15, 98% fiabilité. Code VISION221.",
     images: ["/og-image.png"],
   },
 };
