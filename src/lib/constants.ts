@@ -9,6 +9,7 @@ export const SITE = {
   promoCode: 'VISION221',
   accuracy: '~87%',
   whatsapp: 'https://wa.me/15406704172',
+  vipAccuracy: '~89%',
 }
 
 export const AFFILIATE = {

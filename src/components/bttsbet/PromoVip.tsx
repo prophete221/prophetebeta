@@ -391,6 +391,10 @@ export default function PromoVip() {
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-gold/60"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
                     <span className="text-[11px] text-gray-400">Cote <span className="text-gold font-bold">10.00</span></span>
                   </div>
+                  <div className="flex items-center gap-1.5">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-gold/60"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    <span className="text-[11px] text-gray-400">Précision <span className="text-gold font-bold">{SITE.vipAccuracy}</span></span>
+                  </div>
                 </div>
 
                 <div className="space-y-1 mb-4 max-h-[340px] overflow-y-auto scrollbar-none">
