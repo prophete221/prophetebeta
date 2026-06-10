@@ -358,7 +358,7 @@ export default function PromoVip() {
                     </div>
                     <div>
                       <h3 className="text-lg sm:text-xl font-extrabold text-white leading-tight" style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: '0.04em' }}>
-                        PRONOSTICS <span className="text-gold animate-pulse-gold">VIP</span>
+                        PRONOSTICS <span className="text-gold animate-pulse-gold">EXPERTS</span>
                       </h3>
                       <p className="text-[10px] text-gold/50 font-medium tracking-wide uppercase">Contenu exclusif verrouillé</p>
                     </div>
