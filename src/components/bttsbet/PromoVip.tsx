@@ -252,7 +252,7 @@ function VipCouponRow({ match, league, time, homeLogo, awayLogo, homeTeam, awayT
     <motion.div initial={{ opacity: 0, x: -15 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.15 + index * 0.06, duration: 0.4 }}
       className="relative flex items-center gap-2 sm:gap-2.5 bg-midnight/50 rounded-lg px-2.5 sm:px-3 py-2 border border-gold/8 hover:border-gold/15 transition-colors">
       <span className="text-[10px] sm:text-xs text-gold/60 font-mono tabular-nums w-9 text-center flex-shrink-0">{time}</span>
-      <div className="flex items-center gap-1.5 flex-1 min-w-0">
+      <div className="flex items-center gap-1.5 flex-1 min-w-0 blur-[4px] select-none">
         <VipTeamLogo src={homeLogo} name={homeTeam} size={18} />
         <span className="text-white text-[11px] sm:text-sm font-semibold truncate">{homeTeam}</span>
         <span className="text-gray-500 text-[10px] font-bold flex-shrink-0">vs</span>
