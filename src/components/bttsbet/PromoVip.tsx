@@ -254,7 +254,9 @@ function VipCouponRow({ match, league, time, homeLogo, awayLogo, homeTeam, awayT
       <span className="text-[10px] sm:text-xs text-gold/60 font-mono tabular-nums w-9 text-center flex-shrink-0">{time}</span>
       <div className="flex items-center gap-1.5 flex-1 min-w-0">
         <VipTeamLogo src={homeLogo} name={homeTeam} size={18} />
-        <span className="text-gray-300 text-[11px] sm:text-sm font-medium truncate">{match}</span>
+        <span className="text-white text-[11px] sm:text-sm font-semibold truncate">{homeTeam}</span>
+        <span className="text-gray-500 text-[10px] font-bold flex-shrink-0">vs</span>
+        <span className="text-white text-[11px] sm:text-sm font-semibold truncate">{awayTeam}</span>
         <VipTeamLogo src={awayLogo} name={awayTeam} size={18} />
       </div>
       <span className="hidden sm:block text-gray-600 text-[10px] flex-shrink-0 max-w-[90px] truncate">{league}</span>
