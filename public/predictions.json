@@ -1,90 +1,6 @@
 {
-  "date": "2026-06-11",
+  "date": "2026-06-12",
   "predictions": [
-    {
-      "match": "Mexico vs South Africa",
-      "league": "International Friendly",
-      "date": "2026-06-11",
-      "type": "BTTS",
-      "prediction": "Non",
-      "confidence": 46,
-      "time": "21:00",
-      "matchSemantic": "mexi-sout-int-btts",
-      "source": "poisson",
-      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/mex.png",
-      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/rsa.png",
-      "analysis": {
-        "bttsProb": 0.47,
-        "over25Prob": 0.49,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
-      "match": "Mexico vs South Africa",
-      "league": "International Friendly",
-      "date": "2026-06-11",
-      "type": "Over 2.5",
-      "prediction": "Oui",
-      "confidence": 46,
-      "time": "21:00",
-      "matchSemantic": "mexi-sout-int-o25",
-      "source": "poisson",
-      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/mex.png",
-      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/rsa.png",
-      "analysis": {
-        "bttsProb": 0.47,
-        "over25Prob": 0.49,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
-      "match": "South Korea vs Czechia",
-      "league": "International Friendly",
-      "date": "2026-06-12",
-      "type": "BTTS",
-      "prediction": "Non",
-      "confidence": 46,
-      "time": "04:00",
-      "matchSemantic": "sout-czec-int-btts",
-      "source": "poisson",
-      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/kors.png",
-      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/cze.png",
-      "analysis": {
-        "bttsProb": 0.45,
-        "over25Prob": 0.48,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
-      "match": "South Korea vs Czechia",
-      "league": "International Friendly",
-      "date": "2026-06-12",
-      "type": "Over 2.5",
-      "prediction": "Non",
-      "confidence": 46,
-      "time": "04:00",
-      "matchSemantic": "sout-czec-int-o25",
-      "source": "poisson",
-      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/kors.png",
-      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/cze.png",
-      "analysis": {
-        "bttsProb": 0.45,
-        "over25Prob": 0.48,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
     {
       "match": "Canada vs Bosnia-Herzegovina",
       "league": "International Friendly",
@@ -380,6 +296,48 @@
       }
     },
     {
+      "match": "Málaga vs Almería",
+      "league": "Segunda Division",
+      "date": "2026-06-14",
+      "type": "BTTS",
+      "prediction": "Oui",
+      "confidence": 49,
+      "time": "21:00",
+      "matchSemantic": "mlag-alme-seg-btts",
+      "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/99.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/6832.png",
+      "analysis": {
+        "bttsProb": 0.56,
+        "over25Prob": 0.43,
+        "homeLambda": 1.52,
+        "awayLambda": 0.9,
+        "dataQuality": 4,
+        "hasRealData": true
+      }
+    },
+    {
+      "match": "Málaga vs Almería",
+      "league": "Segunda Division",
+      "date": "2026-06-14",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "confidence": 49,
+      "time": "21:00",
+      "matchSemantic": "mlag-alme-seg-o25",
+      "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/99.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/6832.png",
+      "analysis": {
+        "bttsProb": 0.56,
+        "over25Prob": 0.43,
+        "homeLambda": 1.52,
+        "awayLambda": 0.9,
+        "dataQuality": 4,
+        "hasRealData": true
+      }
+    },
+    {
       "match": "United States vs Türkiye",
       "league": "International Friendly",
       "date": "2026-06-14",
@@ -464,6 +422,48 @@
       }
     },
     {
+      "match": "Universidad Católica vs Universidad de Concepción",
+      "league": "Primera Division (CHI)",
+      "date": "2026-06-14",
+      "type": "BTTS",
+      "prediction": "Oui",
+      "confidence": 47,
+      "time": "23:30",
+      "matchSemantic": "univ-univ-pri-btts",
+      "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/885.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/5362.png",
+      "analysis": {
+        "bttsProb": 0.52,
+        "over25Prob": 0.53,
+        "homeLambda": 1.52,
+        "awayLambda": 1.06,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Universidad Católica vs Universidad de Concepción",
+      "league": "Primera Division (CHI)",
+      "date": "2026-06-14",
+      "type": "Over 2.5",
+      "prediction": "Oui",
+      "confidence": 47,
+      "time": "23:30",
+      "matchSemantic": "univ-univ-pri-o25",
+      "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/885.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/5362.png",
+      "analysis": {
+        "bttsProb": 0.52,
+        "over25Prob": 0.53,
+        "homeLambda": 1.52,
+        "awayLambda": 1.06,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
       "match": "Curaçao vs Japan",
       "league": "International Friendly",
       "date": "2026-06-14",
@@ -501,6 +501,90 @@
         "over25Prob": 0.45,
         "homeLambda": 1.54,
         "awayLambda": 1.08,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Deportes Concepcion vs Deportes Limache",
+      "league": "Primera Division (CHI)",
+      "date": "2026-06-14",
+      "type": "BTTS",
+      "prediction": "Non",
+      "confidence": 46,
+      "time": "18:30",
+      "matchSemantic": "depo-depo-pri-btts",
+      "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/8110.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/19195.png",
+      "analysis": {
+        "bttsProb": 0.46,
+        "over25Prob": 0.49,
+        "homeLambda": 1.52,
+        "awayLambda": 1.06,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Deportes Concepcion vs Deportes Limache",
+      "league": "Primera Division (CHI)",
+      "date": "2026-06-14",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "confidence": 46,
+      "time": "18:30",
+      "matchSemantic": "depo-depo-pri-o25",
+      "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/8110.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/19195.png",
+      "analysis": {
+        "bttsProb": 0.46,
+        "over25Prob": 0.49,
+        "homeLambda": 1.52,
+        "awayLambda": 1.06,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Unión La Calera vs Universidad de Chile",
+      "league": "Primera Division (CHI)",
+      "date": "2026-06-14",
+      "type": "BTTS",
+      "prediction": "Oui",
+      "confidence": 46,
+      "time": "21:00",
+      "matchSemantic": "unin-univ-pri-btts",
+      "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/10144.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/4139.png",
+      "analysis": {
+        "bttsProb": 0.49,
+        "over25Prob": 0.51,
+        "homeLambda": 1.52,
+        "awayLambda": 1.06,
+        "dataQuality": 0,
+        "hasRealData": false
+      }
+    },
+    {
+      "match": "Unión La Calera vs Universidad de Chile",
+      "league": "Primera Division (CHI)",
+      "date": "2026-06-14",
+      "type": "Over 2.5",
+      "prediction": "Oui",
+      "confidence": 46,
+      "time": "21:00",
+      "matchSemantic": "unin-univ-pri-o25",
+      "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/10144.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/4139.png",
+      "analysis": {
+        "bttsProb": 0.49,
+        "over25Prob": 0.51,
+        "homeLambda": 1.52,
+        "awayLambda": 1.06,
         "dataQuality": 0,
         "hasRealData": false
       }
@@ -961,90 +1045,6 @@
       "analysis": {
         "bttsProb": 0.56,
         "over25Prob": 0.56,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
-      "match": "Iraq vs Norway",
-      "league": "International Friendly",
-      "date": "2026-06-17",
-      "type": "BTTS",
-      "prediction": "Non",
-      "confidence": 47,
-      "time": "--:--",
-      "matchSemantic": "iraq-norw-int-btts",
-      "source": "poisson",
-      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/irq.png",
-      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png",
-      "analysis": {
-        "bttsProb": 0.4,
-        "over25Prob": 0.44,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
-      "match": "Iraq vs Norway",
-      "league": "International Friendly",
-      "date": "2026-06-17",
-      "type": "Over 2.5",
-      "prediction": "Non",
-      "confidence": 47,
-      "time": "--:--",
-      "matchSemantic": "iraq-norw-int-o25",
-      "source": "poisson",
-      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/irq.png",
-      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png",
-      "analysis": {
-        "bttsProb": 0.4,
-        "over25Prob": 0.44,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
-      "match": "Portugal vs DR Congo",
-      "league": "International Friendly",
-      "date": "2026-06-17",
-      "type": "BTTS",
-      "prediction": "Non",
-      "confidence": 47,
-      "time": "19:00",
-      "matchSemantic": "port-drco-int-btts",
-      "source": "poisson",
-      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/por.png",
-      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/rdc.png",
-      "analysis": {
-        "bttsProb": 0.4,
-        "over25Prob": 0.44,
-        "homeLambda": 1.54,
-        "awayLambda": 1.08,
-        "dataQuality": 0,
-        "hasRealData": false
-      }
-    },
-    {
-      "match": "Portugal vs DR Congo",
-      "league": "International Friendly",
-      "date": "2026-06-17",
-      "type": "Over 2.5",
-      "prediction": "Non",
-      "confidence": 47,
-      "time": "19:00",
-      "matchSemantic": "port-drco-int-o25",
-      "source": "poisson",
-      "homeLogo": "https://a.espncdn.com/i/teamlogos/countries/500/por.png",
-      "awayLogo": "https://a.espncdn.com/i/teamlogos/countries/500/rdc.png",
-      "analysis": {
-        "bttsProb": 0.4,
-        "over25Prob": 0.44,
         "homeLambda": 1.54,
         "awayLambda": 1.08,
         "dataQuality": 0,
