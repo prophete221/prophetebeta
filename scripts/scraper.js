@@ -745,18 +745,20 @@ async function scrapeESPN() {
   let apiCalls = 0
 
   // V18: Query ESPN for the next FUTURE_DAYS (7) instead of just 2
+  // V22: Also query YESTERDAY to fetch completed match results for win history
   const dateParams = []
+  const yesterdayParam = formatDateParam(new Date(Date.now() - 86400000))
   for (let i = 0; i < FUTURE_DAYS; i++) {
     const d = new Date()
     d.setDate(d.getDate() + i)
     dateParams.push(formatDateParam(d))
   }
-  console.log(`[Scraper] ESPN: querying ${dateParams.length} dates (${dateParams[0]} to ${dateParams[dateParams.length-1]})`)
+  console.log(`[Scraper] ESPN: querying ${dateParams.length} dates (${dateParams[0]} to ${dateParams[dateParams.length-1]}) + yesterday (${yesterdayParam})`)
 
   for (const slug of ESPN_LEAGUES) {
     // V18: Major leagues get full 7-day range, secondary get 3 days
     const daysToQuery = MAJOR_LEAGUES.has(slug) ? FUTURE_DAYS : 3
-    const slugDateParams = dateParams.slice(0, daysToQuery)
+    const slugDateParams = [yesterdayParam, ...dateParams.slice(0, daysToQuery)]
 
     for (const dateParam of slugDateParams) {
       try {
