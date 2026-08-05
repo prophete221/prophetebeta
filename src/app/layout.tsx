@@ -24,24 +24,24 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bttsbet.online"),
+  metadataBase: new URL("https://bttspredict.com"),
   title: {
-    default: "BttsBet — Pronostics IA Football ~52% | Code Promo VISION221",
-    template: "%s | BttsBet",
+    default: "BttsPredict — Pronostics Football BTTS & Over 2.5 | Code Promo VISION221",
+    template: "%s | BttsPredict",
   },
-  description: "Code promo Linebet Sénégal VISION221 — Bonus 90 000 XOF (150$). Pronostics BTTS & Over 2.5 générés par IA (précision historique ~52%). Dépôt Wave, Orange Money, Free Money.",
+  description: "Code promo Linebet Sénégal VISION221 — Bonus 90 000 XOF (150$). Pronostics BTTS & Over 2.5 validés par notre équipe d'analystes (précision historique ~52%). Dépôt Wave, Orange Money, Free Money.",
   keywords: [
-    "BTTS", "Over 2.5", "pronostics football", "IA", "intelligence artificielle",
-    "paris sportifs", "VISION221", "BttsBet",
+    "BTTS", "Over 2.5", "pronostics football", "analystes", "experts football",
+    "paris sportifs", "VISION221", "BttsPredict",
     "value bets FIFA", "pronostic FIFA esport", "statistiques Aviator",
     "bonus paris sportifs",
     "pronostics gratuits", "pronostics Sénégal", "Wave paris sportifs",
   ],
-  authors: [{ name: "BttsBet" }],
-  creator: "BttsBet",
-  publisher: "BttsBet",
+  authors: [{ name: "BttsPredict" }],
+  creator: "BttsPredict",
+  publisher: "BttsPredict",
   alternates: {
-    canonical: "https://bttsbet.online/",
+    canonical: "https://bttspredict.com/",
   },
   other: {
     'geo.region': 'SN',
@@ -72,18 +72,18 @@ export const metadata: Metadata = {
   },
   manifest: "/manifest.json",
   openGraph: {
-    title: "BttsBet — Pronostics IA Football ~52% | Code Promo VISION221",
-    description: "Code promo Linebet Sénégal VISION221 — Bonus 90 000 XOF. Pronostics IA BTTS & Over 2.5 (précision historique ~52%). Dépôt Wave, Orange Money.",
-    url: "https://bttsbet.online",
-    siteName: "BttsBet",
+    title: "BttsPredict — Pronostics Football BTTS & Over 2.5 | Code Promo VISION221",
+    description: "Code promo Linebet Sénégal VISION221 — Bonus 90 000 XOF. Pronostics BTTS & Over 2.5 validés par nos analystes (précision historique ~52%). Dépôt Wave, Orange Money.",
+    url: "https://bttspredict.com",
+    siteName: "BttsPredict",
     type: "website",
     locale: "fr_FR",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "BttsBet — Pronostics IA Football | Value Bets FIFA | Statistiques Aviator | Code VISION221" }],
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "BttsPredict — Pronostics Football BTTS & Over 2.5 | Code VISION221" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "BttsBet — Pronostics IA Football ~52% | Code Promo VISION221",
-    description: "Pronostics IA football ~87% (historique). Code VISION221 = Bonus 90 000 XOF sur Linebet. Dépôt Wave, Orange Money au Sénégal.",
+    title: "BttsPredict — Pronostics Football BTTS & Over 2.5 | Code Promo VISION221",
+    description: "Pronostics football BTTS & Over 2.5 validés par nos analystes (précision historique ~52%). Code VISION221 = Bonus 90 000 XOF sur Linebet. Dépôt Wave, Orange Money au Sénégal.",
     images: ["/og-image.png"],
   },
   category: "sports",
@@ -112,13 +112,13 @@ export default function RootLayout({
         {/* Apple mobile web app — standalone feel */}
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="apple-mobile-web-app-title" content="BttsBet" />
+        <meta name="apple-mobile-web-app-title" content="BttsPredict" />
         {/* Service worker cleanup + cache busting — force users to see latest version */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
               (function(){
-                var VERSION = 'v32-cro-credibility-quantum-v16-linebet-compliance-2026-07-30';
+                var VERSION = 'v33-search-console-dataset-license-neon-tabbar-2026-08-05';
                 try {
                   // 1. Unregister all service workers
                   if('serviceWorker' in navigator){
