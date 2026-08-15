@@ -8,29 +8,29 @@
   "history": [
     {
       "id": 1,
-      "date": "2026-08-14",
-      "match": "Tokyo Verdy 1969 vs Kashiwa Reysol",
+      "date": "2026-08-15",
+      "match": "Kashima Antlers vs Nagoya Grampus",
       "league": "Japanese J.League",
       "type": "Over 2.5",
-      "prediction": "Non",
+      "prediction": "Oui",
       "result": "Gagné",
-      "score": "0-1",
+      "score": "4-2",
       "confidence": 52
     },
     {
       "id": 2,
-      "date": "2026-08-14",
-      "match": "Tokyo Verdy 1969 vs Kashiwa Reysol",
+      "date": "2026-08-15",
+      "match": "Kashima Antlers vs Nagoya Grampus",
       "league": "Japanese J.League",
       "type": "BTTS",
-      "prediction": "Non",
+      "prediction": "Oui",
       "result": "Gagné",
-      "score": "0-1",
-      "confidence": 52
+      "score": "3-1",
+      "confidence": 48
     },
     {
       "id": 3,
-      "date": "2026-08-13",
+      "date": "2026-08-14",
       "match": "Tokyo Verdy 1969 vs Kashiwa Reysol",
       "league": "Japanese J.League",
       "type": "Over 2.5",
@@ -41,7 +41,7 @@
     },
     {
       "id": 4,
-      "date": "2026-08-13",
+      "date": "2026-08-14",
       "match": "Tokyo Verdy 1969 vs Kashiwa Reysol",
       "league": "Japanese J.League",
       "type": "BTTS",
@@ -52,6 +52,28 @@
     },
     {
       "id": 5,
+      "date": "2026-08-13",
+      "match": "Tokyo Verdy 1969 vs Kashiwa Reysol",
+      "league": "Japanese J.League",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "result": "Gagné",
+      "score": "0-1",
+      "confidence": 52
+    },
+    {
+      "id": 6,
+      "date": "2026-08-13",
+      "match": "Tokyo Verdy 1969 vs Kashiwa Reysol",
+      "league": "Japanese J.League",
+      "type": "BTTS",
+      "prediction": "Non",
+      "result": "Gagné",
+      "score": "0-1",
+      "confidence": 52
+    },
+    {
+      "id": 7,
       "date": "2026-08-12",
       "match": "AmaZulu vs Orlando Pirates",
       "league": "South African Premiership",
@@ -62,7 +84,7 @@
       "confidence": 45
     },
     {
-      "id": 6,
+      "id": 8,
       "date": "2026-08-12",
       "match": "AmaZulu vs Orlando Pirates",
       "league": "South African Premiership",
@@ -73,7 +95,7 @@
       "confidence": 47
     },
     {
-      "id": 7,
+      "id": 9,
       "date": "2026-08-11",
       "match": "Chippa United vs Richards Bay FC",
       "league": "South African Premiership",
@@ -84,7 +106,7 @@
       "confidence": 46
     },
     {
-      "id": 8,
+      "id": 10,
       "date": "2026-08-11",
       "match": "Chippa United vs Richards Bay FC",
       "league": "South African Premiership",
@@ -95,7 +117,7 @@
       "confidence": 42
     },
     {
-      "id": 9,
+      "id": 11,
       "date": "2026-08-10",
       "match": "Fakel Voronezh vs Akhmat Grozny",
       "league": "Russian Premier League",
@@ -106,7 +128,7 @@
       "confidence": 43
     },
     {
-      "id": 10,
+      "id": 12,
       "date": "2026-08-10",
       "match": "Fakel Voronezh vs Akhmat Grozny",
       "league": "Russian Premier League",
@@ -117,7 +139,7 @@
       "confidence": 49
     },
     {
-      "id": 11,
+      "id": 13,
       "date": "2026-08-09",
       "match": "Tokyo Verdy 1969 vs Kawasaki Frontale",
       "league": "Japanese J.League",
@@ -128,7 +150,7 @@
       "confidence": 52
     },
     {
-      "id": 12,
+      "id": 14,
       "date": "2026-08-09",
       "match": "Tokyo Verdy 1969 vs Kawasaki Frontale",
       "league": "Japanese J.League",
@@ -139,7 +161,7 @@
       "confidence": 50
     },
     {
-      "id": 13,
+      "id": 15,
       "date": "2026-08-08",
       "match": "Avispa Fukuoka vs Vissel Kobe",
       "league": "Japanese J.League",
@@ -150,7 +172,7 @@
       "confidence": 49
     },
     {
-      "id": 14,
+      "id": 16,
       "date": "2026-08-08",
       "match": "Avispa Fukuoka vs Vissel Kobe",
       "league": "Japanese J.League",
@@ -161,7 +183,7 @@
       "confidence": 52
     },
     {
-      "id": 15,
+      "id": 17,
       "date": "2026-08-07",
       "match": "Yokohama F. Marinos vs Kashima Antlers",
       "league": "Japanese J.League",
@@ -172,7 +194,7 @@
       "confidence": 52
     },
     {
-      "id": 16,
+      "id": 18,
       "date": "2026-08-07",
       "match": "Yokohama F. Marinos vs Kashima Antlers",
       "league": "Japanese J.League",
@@ -183,7 +205,7 @@
       "confidence": 49
     },
     {
-      "id": 17,
+      "id": 19,
       "date": "2026-08-06",
       "match": "Rayo Zuliano vs Anzoátegui FC",
       "league": "Venezuelan Primera División",
@@ -194,7 +216,7 @@
       "confidence": 42
     },
     {
-      "id": 18,
+      "id": 20,
       "date": "2026-08-06",
       "match": "Rayo Zuliano vs Anzoátegui FC",
       "league": "Venezuelan Primera División",
@@ -205,7 +227,7 @@
       "confidence": 49
     },
     {
-      "id": 19,
+      "id": 21,
       "date": "2026-08-05",
       "match": "Boca Juniors vs Estudiantes de La Plata",
       "league": "Argentine Liga Profesional de Fútbol",
@@ -216,7 +238,7 @@
       "confidence": 49
     },
     {
-      "id": 20,
+      "id": 22,
       "date": "2026-08-05",
       "match": "Boca Juniors vs Estudiantes de La Plata",
       "league": "Argentine Liga Profesional de Fútbol",
@@ -227,7 +249,7 @@
       "confidence": 44
     },
     {
-      "id": 21,
+      "id": 23,
       "date": "2026-08-04",
       "match": "Carabobo vs Trujillanos",
       "league": "Venezuelan Primera División",
@@ -238,7 +260,7 @@
       "confidence": 46
     },
     {
-      "id": 22,
+      "id": 24,
       "date": "2026-08-04",
       "match": "Carabobo vs Trujillanos",
       "league": "Venezuelan Primera División",
@@ -249,7 +271,7 @@
       "confidence": 43
     },
     {
-      "id": 23,
+      "id": 25,
       "date": "2026-08-03",
       "match": "Odense Boldklub vs Sønderjyske Fodbold",
       "league": "Danish Superliga",
@@ -260,7 +282,7 @@
       "confidence": 52
     },
     {
-      "id": 24,
+      "id": 26,
       "date": "2026-08-03",
       "match": "Odense Boldklub vs Sønderjyske Fodbold",
       "league": "Danish Superliga",
@@ -271,7 +293,7 @@
       "confidence": 52
     },
     {
-      "id": 25,
+      "id": 27,
       "date": "2026-08-02",
       "match": "FC Midtjylland vs AC Horsens",
       "league": "Danish Superliga",
@@ -282,7 +304,7 @@
       "confidence": 52
     },
     {
-      "id": 26,
+      "id": 28,
       "date": "2026-08-02",
       "match": "FC Midtjylland vs AC Horsens",
       "league": "Danish Superliga",
@@ -293,7 +315,7 @@
       "confidence": 51
     },
     {
-      "id": 27,
+      "id": 29,
       "date": "2026-08-01",
       "match": "Akron Tolyatti vs Rubin Kazan",
       "league": "Russian Premier League",
@@ -304,7 +326,7 @@
       "confidence": 45
     },
     {
-      "id": 28,
+      "id": 30,
       "date": "2026-08-01",
       "match": "Akron Tolyatti vs Rubin Kazan",
       "league": "Russian Premier League",
@@ -315,7 +337,7 @@
       "confidence": 47
     },
     {
-      "id": 29,
+      "id": 31,
       "date": "2026-07-31",
       "match": "Vålerenga vs Hamarkameratene",
       "league": "Norwegian Eliteserien",
@@ -326,7 +348,7 @@
       "confidence": 52
     },
     {
-      "id": 30,
+      "id": 32,
       "date": "2026-07-31",
       "match": "Vålerenga vs Hamarkameratene",
       "league": "Norwegian Eliteserien",
@@ -337,7 +359,7 @@
       "confidence": 52
     },
     {
-      "id": 31,
+      "id": 33,
       "date": "2026-07-30",
       "match": "Sportivo San Lorenzo vs Guaraní",
       "league": "Paraguayan Primera División",
@@ -348,7 +370,7 @@
       "confidence": 41
     },
     {
-      "id": 32,
+      "id": 34,
       "date": "2026-07-30",
       "match": "Sportivo San Lorenzo vs Guaraní",
       "league": "Paraguayan Primera División",
@@ -359,7 +381,7 @@
       "confidence": 46
     },
     {
-      "id": 33,
+      "id": 35,
       "date": "2026-07-29",
       "match": "Sportivo Luqueño vs Sportivo Trinidense",
       "league": "Primera Division (PAR)",
@@ -370,7 +392,7 @@
       "confidence": 50
     },
     {
-      "id": 34,
+      "id": 36,
       "date": "2026-07-29",
       "match": "Sportivo Luqueño vs Sportivo Trinidense",
       "league": "Primera Division (PAR)",
@@ -381,7 +403,7 @@
       "confidence": 50
     },
     {
-      "id": 35,
+      "id": 37,
       "date": "2026-07-28",
       "match": "Rubio Ñú vs Sportivo Ameliano",
       "league": "Paraguayan Primera División",
@@ -392,7 +414,7 @@
       "confidence": 42
     },
     {
-      "id": 36,
+      "id": 38,
       "date": "2026-07-28",
       "match": "Rubio Ñú vs Sportivo Ameliano",
       "league": "Paraguayan Primera División",
@@ -403,7 +425,7 @@
       "confidence": 48
     },
     {
-      "id": 37,
+      "id": 39,
       "date": "2026-07-27",
       "match": "Randers FC vs Silkeborg IF",
       "league": "Danish Superliga",
@@ -414,7 +436,7 @@
       "confidence": 52
     },
     {
-      "id": 38,
+      "id": 40,
       "date": "2026-07-27",
       "match": "Randers FC vs Silkeborg IF",
       "league": "Danish Superliga",
@@ -425,7 +447,7 @@
       "confidence": 52
     },
     {
-      "id": 39,
+      "id": 41,
       "date": "2026-07-26",
       "match": "Sarpsborg FK vs Hamarkameratene",
       "league": "Eliteserien",
@@ -436,7 +458,7 @@
       "confidence": 52
     },
     {
-      "id": 40,
+      "id": 42,
       "date": "2026-07-26",
       "match": "Sarpsborg FK vs Hamarkameratene",
       "league": "Eliteserien",
@@ -447,7 +469,7 @@
       "confidence": 52
     },
     {
-      "id": 41,
+      "id": 43,
       "date": "2026-07-25",
       "match": "Sportivo Ameliano vs Nacional Asunción",
       "league": "Primera Division (PAR)",
@@ -458,7 +480,7 @@
       "confidence": 48
     },
     {
-      "id": 42,
+      "id": 44,
       "date": "2026-07-25",
       "match": "Sportivo Ameliano vs Nacional Asunción",
       "league": "Primera Division (PAR)",
@@ -469,7 +491,7 @@
       "confidence": 48
     },
     {
-      "id": 43,
+      "id": 45,
       "date": "2026-07-24",
       "match": "Kristiansund BK vs IK Start",
       "league": "Eliteserien",
@@ -480,7 +502,7 @@
       "confidence": 51
     },
     {
-      "id": 44,
+      "id": 46,
       "date": "2026-07-24",
       "match": "Kristiansund BK vs IK Start",
       "league": "Eliteserien",
@@ -491,40 +513,40 @@
       "confidence": 51
     },
     {
-      "id": 45,
-      "date": "2026-07-23",
-      "match": "Leones vs Guayaquil City FC",
-      "league": "Serie A (ECU)",
-      "type": "Over 2.5",
-      "prediction": "Non",
-      "result": "Gagné",
-      "score": "0-1",
-      "confidence": 52
-    },
-    {
-      "id": 46,
-      "date": "2026-07-23",
-      "match": "Leones vs Guayaquil City FC",
-      "league": "Serie A (ECU)",
-      "type": "BTTS",
-      "prediction": "Non",
-      "result": "Gagné",
-      "score": "0-1",
-      "confidence": 52
-    },
-    {
       "id": 47,
-      "date": "2026-07-22",
-      "match": "GAIS vs Nordsjaelland",
-      "league": "International Friendly",
+      "date": "2026-07-23",
+      "match": "Leones vs Guayaquil City FC",
+      "league": "Serie A (ECU)",
       "type": "Over 2.5",
       "prediction": "Non",
       "result": "Gagné",
-      "score": "0-0",
-      "confidence": 50
+      "score": "0-1",
+      "confidence": 52
     },
     {
       "id": 48,
+      "date": "2026-07-23",
+      "match": "Leones vs Guayaquil City FC",
+      "league": "Serie A (ECU)",
+      "type": "BTTS",
+      "prediction": "Non",
+      "result": "Gagné",
+      "score": "0-1",
+      "confidence": 52
+    },
+    {
+      "id": 49,
+      "date": "2026-07-22",
+      "match": "GAIS vs Nordsjaelland",
+      "league": "International Friendly",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "result": "Gagné",
+      "score": "0-0",
+      "confidence": 50
+    },
+    {
+      "id": 50,
       "date": "2026-07-22",
       "match": "GAIS vs Nordsjaelland",
       "league": "International Friendly",
@@ -535,7 +557,7 @@
       "confidence": 50
     },
     {
-      "id": 49,
+      "id": 51,
       "date": "2026-07-21",
       "match": "Libertad (Ecuador) vs Delfín",
       "league": "Serie A (ECU)",
@@ -546,7 +568,7 @@
       "confidence": 52
     },
     {
-      "id": 50,
+      "id": 52,
       "date": "2026-07-21",
       "match": "Libertad (Ecuador) vs Delfín",
       "league": "Serie A (ECU)",
@@ -557,7 +579,7 @@
       "confidence": 52
     },
     {
-      "id": 51,
+      "id": 53,
       "date": "2026-07-20",
       "match": "Tromso vs Hradec Kralove",
       "league": "International Friendly",
@@ -568,7 +590,7 @@
       "confidence": 51
     },
     {
-      "id": 52,
+      "id": 54,
       "date": "2026-07-20",
       "match": "Tromso vs Hradec Kralove",
       "league": "International Friendly",
@@ -579,42 +601,20 @@
       "confidence": 51
     },
     {
-      "id": 53,
-      "date": "2026-07-19",
-      "match": "Técnico Universitario vs Aucas",
-      "league": "Serie A (ECU)",
-      "type": "Over 2.5",
-      "prediction": "Non",
-      "result": "Gagné",
-      "score": "0-0",
-      "confidence": 52
-    },
-    {
-      "id": 54,
-      "date": "2026-07-19",
-      "match": "Técnico Universitario vs Aucas",
-      "league": "Serie A (ECU)",
-      "type": "BTTS",
-      "prediction": "Non",
-      "result": "Gagné",
-      "score": "0-0",
-      "confidence": 52
-    },
-    {
       "id": 55,
-      "date": "2026-07-18",
-      "match": "Deportivo Cuenca vs Universidad Católica (Quito)",
+      "date": "2026-07-19",
+      "match": "Técnico Universitario vs Aucas",
       "league": "Serie A (ECU)",
       "type": "Over 2.5",
       "prediction": "Non",
       "result": "Gagné",
-      "score": "1-1",
+      "score": "0-0",
       "confidence": 52
     },
     {
       "id": 56,
-      "date": "2026-07-18",
-      "match": "Deportivo Cuenca vs Universidad Católica (Quito)",
+      "date": "2026-07-19",
+      "match": "Técnico Universitario vs Aucas",
       "league": "Serie A (ECU)",
       "type": "BTTS",
       "prediction": "Non",
@@ -624,30 +624,8 @@
     },
     {
       "id": 57,
-      "date": "2026-07-17",
-      "match": "Albion FC vs Juventud",
-      "league": "Primera Division (URU)",
-      "type": "Over 2.5",
-      "prediction": "Non",
-      "result": "Gagné",
-      "score": "0-0",
-      "confidence": 50
-    },
-    {
-      "id": 58,
-      "date": "2026-07-17",
-      "match": "Albion FC vs Juventud",
-      "league": "Primera Division (URU)",
-      "type": "BTTS",
-      "prediction": "Oui",
-      "result": "Gagné",
-      "score": "1-3",
-      "confidence": 50
-    },
-    {
-      "id": 59,
-      "date": "2026-07-16",
-      "match": "Aucas vs Independiente del Valle",
+      "date": "2026-07-18",
+      "match": "Deportivo Cuenca vs Universidad Católica (Quito)",
       "league": "Serie A (ECU)",
       "type": "Over 2.5",
       "prediction": "Non",
@@ -656,16 +634,38 @@
       "confidence": 52
     },
     {
-      "id": 60,
-      "date": "2026-07-16",
-      "match": "Aucas vs Independiente del Valle",
+      "id": 58,
+      "date": "2026-07-18",
+      "match": "Deportivo Cuenca vs Universidad Católica (Quito)",
       "league": "Serie A (ECU)",
       "type": "BTTS",
       "prediction": "Non",
       "result": "Gagné",
       "score": "0-0",
       "confidence": 52
+    },
+    {
+      "id": 59,
+      "date": "2026-07-17",
+      "match": "Albion FC vs Juventud",
+      "league": "Primera Division (URU)",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "result": "Gagné",
+      "score": "0-0",
+      "confidence": 50
+    },
+    {
+      "id": 60,
+      "date": "2026-07-17",
+      "match": "Albion FC vs Juventud",
+      "league": "Primera Division (URU)",
+      "type": "BTTS",
+      "prediction": "Oui",
+      "result": "Gagné",
+      "score": "1-3",
+      "confidence": 50
     }
   ],
-  "date": "2026-08-15"
+  "date": "2026-08-16"
 }
