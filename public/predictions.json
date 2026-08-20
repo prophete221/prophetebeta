@@ -590,6 +590,48 @@
       }
     },
     {
+      "match": "Albion FC vs Boston River",
+      "league": "Liga AUF Uruguaya",
+      "date": "2026-08-21",
+      "type": "BTTS",
+      "prediction": "Non",
+      "confidence": 49,
+      "time": "20:30",
+      "matchSemantic": "albf-bosr-uru-btts",
+      "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/21403.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/9999.png",
+      "analysis": {
+        "bttsProb": 0.49171925665382976,
+        "over25Prob": 0.42095631614046436,
+        "homeLambda": 1.2187338240000005,
+        "awayLambda": 1.1076912,
+        "dataQuality": 4,
+        "hasRealData": true
+      }
+    },
+    {
+      "match": "Albion FC vs Boston River",
+      "league": "Liga AUF Uruguaya",
+      "date": "2026-08-21",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "confidence": 42,
+      "time": "20:30",
+      "matchSemantic": "albf-bosr-uru-o25",
+      "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/21403.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/9999.png",
+      "analysis": {
+        "bttsProb": 0.49171925665382976,
+        "over25Prob": 0.42095631614046436,
+        "homeLambda": 1.2187338240000005,
+        "awayLambda": 1.1076912,
+        "dataQuality": 4,
+        "hasRealData": true
+      }
+    },
+    {
       "match": "Marseille vs Strasbourg",
       "league": "French Ligue 1",
       "date": "2026-08-21",
@@ -795,48 +837,6 @@
         "over25Prob": 0.5273678781957146,
         "homeLambda": 1.5702086400000004,
         "awayLambda": 1.174932,
-        "dataQuality": 4,
-        "hasRealData": true
-      }
-    },
-    {
-      "match": "Albion FC vs Boston River",
-      "league": "Liga AUF Uruguaya",
-      "date": "2026-08-21",
-      "type": "BTTS",
-      "prediction": "Non",
-      "confidence": 49,
-      "time": "21:00",
-      "matchSemantic": "albf-bosr-uru-btts",
-      "source": "poisson",
-      "homeLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/21403.png",
-      "awayLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/9999.png",
-      "analysis": {
-        "bttsProb": 0.49171925665382976,
-        "over25Prob": 0.42095631614046436,
-        "homeLambda": 1.2187338240000005,
-        "awayLambda": 1.1076912,
-        "dataQuality": 4,
-        "hasRealData": true
-      }
-    },
-    {
-      "match": "Albion FC vs Boston River",
-      "league": "Liga AUF Uruguaya",
-      "date": "2026-08-21",
-      "type": "Over 2.5",
-      "prediction": "Non",
-      "confidence": 42,
-      "time": "21:00",
-      "matchSemantic": "albf-bosr-uru-o25",
-      "source": "poisson",
-      "homeLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/21403.png",
-      "awayLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/9999.png",
-      "analysis": {
-        "bttsProb": 0.49171925665382976,
-        "over25Prob": 0.42095631614046436,
-        "homeLambda": 1.2187338240000005,
-        "awayLambda": 1.1076912,
         "dataQuality": 4,
         "hasRealData": true
       }
