@@ -2,48 +2,6 @@
   "date": "2026-08-21",
   "predictions": [
     {
-      "match": "Rayo Vallecano vs Alavés",
-      "league": "Spanish LALIGA",
-      "date": "2026-08-20",
-      "type": "BTTS",
-      "prediction": "Oui",
-      "confidence": 52,
-      "time": "21:00",
-      "matchSemantic": "rayv-ala-esp-btts",
-      "source": "poisson",
-      "homeLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/101.png",
-      "awayLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/96.png",
-      "analysis": {
-        "bttsProb": 0.5501825297247172,
-        "over25Prob": 0.5307009250917907,
-        "homeLambda": 1.7215968000000004,
-        "awayLambda": 1.03734,
-        "dataQuality": 4,
-        "hasRealData": true
-      }
-    },
-    {
-      "match": "Rayo Vallecano vs Alavés",
-      "league": "Spanish LALIGA",
-      "date": "2026-08-20",
-      "type": "Over 2.5",
-      "prediction": "Oui",
-      "confidence": 52,
-      "time": "21:00",
-      "matchSemantic": "rayv-ala-esp-o25",
-      "source": "poisson",
-      "homeLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/101.png",
-      "awayLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/96.png",
-      "analysis": {
-        "bttsProb": 0.5501825297247172,
-        "over25Prob": 0.5307009250917907,
-        "homeLambda": 1.7215968000000004,
-        "awayLambda": 1.03734,
-        "dataQuality": 4,
-        "hasRealData": true
-      }
-    },
-    {
       "match": "Kashiwa Reysol vs V-Varen Nagasaki",
       "league": "Japanese J.League",
       "date": "2026-08-21",
@@ -531,7 +489,7 @@
       "league": "Italian Serie B",
       "date": "2026-08-21",
       "type": "Over 2.5",
-      "prediction": "Non",
+      "prediction": "Oui",
       "confidence": 51,
       "time": "20:30",
       "matchSemantic": "vic-cat-ita-o25",
@@ -636,7 +594,7 @@
       "league": "French Ligue 1",
       "date": "2026-08-21",
       "type": "BTTS",
-      "prediction": "Non",
+      "prediction": "Oui",
       "confidence": 50,
       "time": "20:45",
       "matchSemantic": "mar-str-fra-btts",
@@ -1047,6 +1005,48 @@
         "over25Prob": 0.42601299613600935,
         "homeLambda": 1.2898448640000006,
         "awayLambda": 1.0557432,
+        "dataQuality": 4,
+        "hasRealData": true
+      }
+    },
+    {
+      "match": "Caracas FC vs Carabobo",
+      "league": "Venezuelan Primera División",
+      "date": "2026-08-22",
+      "type": "BTTS",
+      "prediction": "Non",
+      "confidence": 48,
+      "time": "01:00",
+      "matchSemantic": "carf-car-ven-btts",
+      "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/4811.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/6037.png",
+      "analysis": {
+        "bttsProb": 0.4843645540926879,
+        "over25Prob": 0.411898688662604,
+        "homeLambda": 1.0918279680000005,
+        "awayLambda": 1.2003984,
+        "dataQuality": 4,
+        "hasRealData": true
+      }
+    },
+    {
+      "match": "Caracas FC vs Carabobo",
+      "league": "Venezuelan Primera División",
+      "date": "2026-08-22",
+      "type": "Over 2.5",
+      "prediction": "Non",
+      "confidence": 41,
+      "time": "01:00",
+      "matchSemantic": "carf-car-ven-o25",
+      "source": "poisson",
+      "homeLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/4811.png",
+      "awayLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/6037.png",
+      "analysis": {
+        "bttsProb": 0.4843645540926879,
+        "over25Prob": 0.411898688662604,
+        "homeLambda": 1.0918279680000005,
+        "awayLambda": 1.2003984,
         "dataQuality": 4,
         "hasRealData": true
       }
