@@ -13,11 +13,7 @@ const steps = [
 
 const fadeUp = {
   hidden: { opacity: 0, y: 32 },
-  show: (i = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.55, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] as const },
-  }),
+  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: 'easeOut' as const } },
 }
 
 function LinebetLink({ children, className = '' }: { children: React.ReactNode; className?: string }) {
@@ -42,7 +38,7 @@ export default function LinebetLanding() {
       <section ref={heroRef} className="linebet-hero" aria-labelledby="hero-title">
         <div className="linebet-grid-overlay" aria-hidden="true" />
         <motion.div style={{ y: heroY, opacity: heroOpacity }} className="mx-auto grid max-w-6xl gap-10 px-5 pb-14 pt-12 sm:px-8 sm:pb-20 sm:pt-16 lg:grid-cols-[1.05fr_.95fr] lg:items-center lg:gap-14">
-          <motion.div initial="hidden" animate="show" variants={fadeUp} custom={0}>
+          <motion.div initial="hidden" animate="show" variants={fadeUp}>
             <div className="linebet-kicker"><span className="linebet-status-dot" /> PLATEFORME PREMIUM · LINEBET AFRIQUE</div>
             <h1 id="hero-title" className="mt-4 max-w-3xl text-4xl font-black leading-[.96] tracking-[-.055em] text-white sm:text-5xl lg:text-6xl">
               Meilleur code promo Linebet Afrique : <span className="linebet-gradient-text">VISION221</span>
@@ -61,7 +57,7 @@ export default function LinebetLanding() {
             </div>
           </motion.div>
 
-          <motion.div id="code" initial="hidden" animate="show" variants={fadeUp} custom={1} className="linebet-code-card">
+          <motion.div id="code" initial="hidden" animate="show" variants={fadeUp} className="linebet-code-card">
             <div className="flex items-start justify-between gap-4">
               <div>
                 <p className="linebet-mini-label">CODES PLATEFORME</p>
@@ -134,7 +130,6 @@ export default function LinebetLanding() {
               whileInView="show"
               viewport={{ once: true, margin: '-40px' }}
               variants={fadeUp}
-              custom={i}
             >
               <span className="linebet-step-number">{step.number}</span>
               <h3 className="mt-6 text-lg font-extrabold text-white">{step.title}</h3>
@@ -231,7 +226,6 @@ export default function LinebetLanding() {
                 whileInView="show"
                 viewport={{ once: true, margin: '-20px' }}
                 variants={fadeUp}
-                custom={i * 0.5}
               >
                 <summary>{item.q}<span aria-hidden="true">+</span></summary>
                 <p>{item.a}</p>
