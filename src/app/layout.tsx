@@ -8,8 +8,8 @@ const jetbrainsMono = JetBrains_Mono({ variable: '--font-mono', subsets: ['latin
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://bttsbet.online'),
-  title: { default: 'Code promo Linebet Afrique VISION221 | BttsBet', template: '%s | BttsBet' },
-  description: 'Guide indépendant du code promo Linebet Afrique VISION221 : inscription, utilisation du code et conditions à vérifier selon votre pays.',
+  title: { default: 'Meilleur code promo Linebet Afrique : VISION221 | BttsBet', template: '%s | BttsBet' },
+  description: 'Découvrez notre sélection du code promo Linebet Afrique VISION221 : inscription, utilisation du code et conditions à vérifier selon votre pays.',
   keywords: ['code promo Linebet', 'code promo Linebet Afrique', 'VISION221', 'inscription Linebet', 'bonus Linebet', 'Linebet Sénégal', 'Linebet Cameroun', 'Linebet Côte d’Ivoire', 'code promo 888starz', '888starz btts221'],
   authors: [{ name: 'BttsBet' }],
   creator: 'BttsBet',

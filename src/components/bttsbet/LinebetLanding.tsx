@@ -57,17 +57,11 @@ export default function LinebetLanding() {
           </motion.div>
 
           <motion.div id="code" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .08, duration: .5 }} className="linebet-code-card">
-            <div className="flex items-start justify-between gap-5">
-              <div><p className="linebet-mini-label">CODE PARTENAIRE</p><h2 className="mt-2 text-2xl font-black tracking-tight text-white sm:text-3xl">Votre point de départ</h2></div>
-              <span className="linebet-secure-badge">Vérifier</span>
-            </div>
-            <div className="mt-8 rounded-2xl border border-[#19d66b]/25 bg-[#031b0d]/80 px-4 py-5 text-center shadow-[inset_0_1px_0_rgba(255,255,255,.07)] sm:px-6">
-              <p className="text-[10px] font-bold uppercase tracking-[.22em] text-[#7f938b]">Code Linebet Afrique</p>
-              <div className="mt-2 text-4xl font-black tracking-[.18em] text-[#35f17f] sm:text-5xl"><CopyableCode code={SITE.promoCode} displayClassName="text-[#35f17f]" /></div>
-              <p className="mt-3 text-xs leading-5 text-[#8fa19b]">Touchez le code pour le copier. Son acceptation et ses conditions sont déterminées par Linebet.</p>
-            </div>
+            <div className="flex items-start justify-between gap-5"><div><p className="linebet-mini-label">CODES PROMO OFFICIELLEMENT PRÉSENTÉS</p><h2 className="mt-2 text-2xl font-black tracking-tight text-white sm:text-3xl">Copiez. Cliquez. Vérifiez.</h2></div><span className="linebet-secure-badge">18+</span></div>
+            <div className="mt-7 rounded-2xl border border-[#19d66b]/25 bg-[#031b0d]/80 px-4 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,.07)] sm:px-5"><div className="flex items-center justify-between gap-3"><div><p className="text-[10px] font-black uppercase tracking-[.18em] text-[#7f938b]">Choix principal · Linebet Afrique</p><p className="mt-2 text-xs text-[#8fa19b]">Meilleur code promo Linebet Afrique à découvrir sur BttsBet</p></div><div className="text-xl font-black tracking-[.12em] text-[#35f17f]"><CopyableCode code={SITE.promoCode} displayClassName="text-[#35f17f]" /></div></div></div>
+            <div className="mt-3 rounded-2xl border border-[#f5a3bd]/25 bg-[#260e19]/50 px-4 py-4 sm:px-5"><div className="flex items-center justify-between gap-3"><div><p className="text-[10px] font-black uppercase tracking-[.18em] text-[#b98898]">Alternative · 888starz</p><p className="mt-2 text-xs text-[#c3abb2]">Code promo 888starz à vérifier</p></div><div className="text-xl font-black tracking-[.12em] text-[#ffd4df]"><CopyableCode code="btts221" displayClassName="text-[#ffd4df]" /></div></div></div>
             <LinebetLink className="mt-5 w-full">S’inscrire avec VISION221</LinebetLink>
-            <p className="mt-4 text-center text-[11px] leading-5 text-[#6f7d79]">Lien d’affiliation rémunéré · BttsBet n’est pas Linebet</p>
+            <p className="mt-4 text-center text-[11px] leading-5 text-[#6f7d79]">Touchez « Copier », puis vérifiez les conditions directement chez le partenaire.</p>
           </motion.div>
         </div>
       </section>
@@ -79,6 +73,8 @@ export default function LinebetLanding() {
           <div><span className="linebet-trust-icon">03</span><strong>Conditions transparentes</strong><p>Les règles finales appartiennent à Linebet.</p></div>
         </div>
       </section>
+
+      <section id="applications" className="mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-16" aria-labelledby="apps-title"><div className="linebet-apps-panel"><div className="max-w-2xl"><p className="linebet-kicker">ACCÈS MOBILE</p><h2 id="apps-title" className="mt-3 text-3xl font-black tracking-[-.04em] text-white sm:text-4xl">Téléchargez l’application de votre choix.</h2><p className="mt-3 text-sm leading-6 text-[#94a49e]">Utilisez le bouton correspondant à votre partenaire. Le téléchargement et la disponibilité de l’application peuvent varier selon le pays, le système et la boutique utilisée.</p></div><div className="mt-7 grid gap-3 sm:grid-cols-2"><a href={AFFILIATE.linebetDownload} target="_blank" rel={AFFILIATE.rel} className="linebet-app-card linebet-app-linebet"><div className="flex items-center gap-3"><span className="linebet-app-icon"><img src="/logos/linebet-icon.svg" alt="" className="h-7 w-7 rounded object-contain" /></span><div><p className="text-xs font-black uppercase tracking-[.15em] text-[#7f938b]">Application</p><h3 className="mt-1 text-lg font-extrabold text-white">Télécharger Linebet</h3></div></div><div className="mt-5 flex items-center justify-between gap-3"><span className="inline-flex items-center gap-2 text-sm font-bold text-[#35f17f]"><img src="/logos/android.svg" alt="" className="h-4 w-4" /> Accéder au téléchargement</span><span aria-hidden="true" className="text-[#35f17f]">↗</span></div></a><a href={AFFILIATE.star888Download} target="_blank" rel={AFFILIATE.rel} className="linebet-app-card linebet-app-888"><div className="flex items-center gap-3"><span className="linebet-app-icon"><img src="/logos/888starz-icon.svg" alt="" className="h-7 w-7 object-contain" /></span><div><p className="text-xs font-black uppercase tracking-[.15em] text-[#b98898]">Application</p><h3 className="mt-1 text-lg font-extrabold text-white">Télécharger 888starz</h3></div></div><div className="mt-5 flex items-center justify-between gap-3"><span className="inline-flex items-center gap-2 text-sm font-bold text-[#ffd4df]"><img src="/logos/android.svg" alt="" className="h-4 w-4" /> Accéder au téléchargement</span><span aria-hidden="true" className="text-[#ffd4df]">↗</span></div></a></div></div></section>
 
       <section id="comment-ca-marche" className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24" aria-labelledby="steps-title">
         <div className="max-w-2xl"><p className="linebet-kicker">UN PARCOURS SANS DÉTOUR</p><h2 id="steps-title" className="mt-3 text-3xl font-black tracking-[-.04em] text-white sm:text-5xl">Comment utiliser le code promo Linebet ?</h2><p className="mt-4 text-base leading-7 text-[#94a49e]">Nous séparons ce qui dépend de notre guide de ce qui doit être confirmé par le partenaire.</p></div>
