@@ -1,6 +1,7 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
+  ErrorDocument 404 /404.html
 
   # Disable automatic trailing slash redirect (causes 403 on directory without index.html)
   DirectorySlash Off
@@ -18,11 +19,7 @@
   RewriteCond %{REQUEST_FILENAME}/../%{REQUEST_URI}.html -f
   RewriteRule ^(.+)/$ /$1.html [L]
 
-  # 4) SPA fallback — anything else goes to index.html
-  RewriteRule ^index\.html$ - [L]
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . /index.html [L]
+  # 4) No SPA fallback: unknown clean URLs must remain HTTP 404.
 </IfModule>
 
 # Cache static assets
