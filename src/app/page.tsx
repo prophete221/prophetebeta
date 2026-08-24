@@ -4,22 +4,22 @@ import { CookieConsent, Footer, Navbar } from '@/components/bttsbet'
 import LinebetLanding from '@/components/bttsbet/LinebetLanding'
 
 export const metadata: Metadata = {
-  title: 'Meilleur code promo Linebet Afrique : VISION221 | BttsBet',
-  description: 'Découvrez notre sélection du code promo Linebet Afrique VISION221 : inscription, utilisation du code, vérification des conditions et accès au lien partenaire.',
+  title: 'Meilleur code promo Linebet Afrique 2026 : VISION221 + Freebets | BttsBet',
+  description: 'VISION221 — le meilleur code promo Linebet Afrique. Freebets réguliers, inscription rapide, parcours premium. Copiez le code et activez votre offre maintenant.',
   alternates: { canonical: 'https://bttsbet.online/' },
   openGraph: {
-    title: 'Meilleur code promo Linebet Afrique : VISION221',
-    description: 'Le guide BttsBet pour comprendre et utiliser le code partenaire Linebet VISION221, avec conditions à vérifier selon votre pays.',
+    title: 'Meilleur code promo Linebet Afrique : VISION221 + Freebets',
+    description: 'Le code VISION221 est le code partenaire Linebet n°1 en Afrique. Freebets, inscription claire et accès direct au parcours officiel.',
     url: 'https://bttsbet.online/',
     siteName: 'BttsBet',
     type: 'website',
     locale: 'fr_FR',
-    images: [{ url: '/og-linebet.svg', width: 1200, height: 630, alt: 'Code promo Linebet Afrique VISION221' }],
+    images: [{ url: '/og-linebet.svg', width: 1200, height: 630, alt: 'Meilleur code promo Linebet Afrique VISION221' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Meilleur code promo Linebet Afrique : VISION221',
-    description: 'Guide d’inscription et conditions à vérifier pour le code partenaire Linebet VISION221.',
+    description: 'Freebets réguliers + code VISION221. Activez votre offre Linebet en quelques clics.',
     images: ['/og-linebet.svg'],
   },
 }
@@ -41,9 +41,17 @@ const jsonLd = {
       name: SITE.name,
       url: SITE.url,
       logo: `${SITE.url}/favicon.svg`,
-      description: 'Site indépendant d’information et d’affiliation consacré au code partenaire Linebet VISION221.',
+      description: 'Plateforme premium du meilleur code promo Linebet Afrique VISION221 et freebets.',
       areaServed: 'Africa',
-      knowsAbout: ['code promo Linebet', 'inscription Linebet', 'Linebet Afrique', 'code promo 888starz', '888starz btts221'],
+      knowsAbout: [
+        'meilleur code promo Linebet Afrique',
+        'VISION221',
+        'freebet Linebet',
+        'code promo Linebet',
+        'inscription Linebet',
+        'code promo 888starz',
+        'btts221',
+      ],
     },
     {
       '@type': 'FAQPage',
