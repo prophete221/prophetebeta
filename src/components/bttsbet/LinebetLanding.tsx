@@ -18,7 +18,7 @@ function LinebetLink({ children, className = '' }: { children: React.ReactNode; 
       rel={AFFILIATE.rel}
       className={`inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-b from-[#31ef80] to-[#19d66b] px-5 py-3.5 text-sm font-extrabold text-[#031b0d] shadow-[0_12px_32px_rgba(25,214,107,.25)] transition duration-200 hover:-translate-y-0.5 hover:from-[#4aff95] hover:to-[#31ef80] active:scale-[.98] ${className}`}
     >
-      <img src="/logos/linebet-icon.svg" alt="" className="h-5 w-5 rounded object-contain" />
+      <img src="/logos/linebet-icon.png" alt="" className="h-5 w-5 rounded object-contain" />
       {children}
       <span aria-hidden="true">↗</span>
     </a>
@@ -114,7 +114,7 @@ export default function LinebetLanding() {
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
             <a href={AFFILIATE.linebetDownload} target="_blank" rel={AFFILIATE.rel} className="linebet-app-card linebet-app-linebet">
               <div className="flex items-center gap-3">
-                <span className="linebet-app-icon"><img src="/logos/linebet-icon.svg" alt="" className="h-7 w-7 rounded object-contain" /></span>
+                <span className="linebet-app-icon"><img src="/logos/linebet-icon.png" alt="" className="h-7 w-7 rounded object-contain" /></span>
                 <div>
                   <p className="text-xs font-black uppercase tracking-[.12em] text-[#7f938b]">App</p>
                   <h3 className="mt-0.5 text-lg font-extrabold text-white">Linebet</h3>
@@ -127,7 +127,7 @@ export default function LinebetLanding() {
             </a>
             <a href={AFFILIATE.star888Download} target="_blank" rel={AFFILIATE.rel} className="linebet-app-card linebet-app-888">
               <div className="flex items-center gap-3">
-                <span className="linebet-app-icon"><img src="/logos/888starz-icon.svg" alt="" className="h-7 w-7 object-contain" /></span>
+                <span className="linebet-app-icon"><img src="/logos/888starz-icon.png" alt="" className="h-7 w-7 object-contain" /></span>
                 <div>
                   <p className="text-xs font-black uppercase tracking-[.12em] text-[#b98898]">App</p>
                   <h3 className="mt-0.5 text-lg font-extrabold text-white">888starz</h3>
@@ -146,7 +146,7 @@ export default function LinebetLanding() {
         <div className="linebet-secondary-card">
           <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-3">
-              <span className="linebet-partner-logo"><img src="/logos/888starz-icon.svg" alt="" className="h-8 w-8 object-contain" /></span>
+              <span className="linebet-partner-logo"><img src="/logos/888starz-icon.png" alt="" className="h-8 w-8 object-contain" /></span>
               <div>
                 <p className="linebet-kicker" style={{ color: '#ffd4df' }}>888STARZ</p>
                 <h2 className="mt-0.5 text-xl font-black text-white">Code <span className="text-[#f5a3bd]">btts221</span></h2>
