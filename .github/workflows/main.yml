@@ -38,16 +38,6 @@ jobs:
         env:
           PUPPETEER_SKIP_DOWNLOAD: 'true'
 
-      - name: Update predictions (fresh data on every push)
-        timeout-minutes: 5
-        run: node scripts/quick-update-predictions.mjs
-
-
-      - name: Update win history
-        timeout-minutes: 3
-        run: node scripts/update-win-history.mjs
-
-
       - name: Build Next.js static export
         run: npm run build
 
@@ -68,15 +58,8 @@ jobs:
           cp public/.htaccess out/.htaccess
           cp public/robots.txt out/robots.txt
           cp public/sitemap.xml out/sitemap.xml
-
-      - name: Commit and push updated data
-        if: github.event_name != 'pull_request'
-        run: |
-          git config --local user.email "bot@bttsbet.online"
-          git config --local user.name "BttsBet Bot"
-          git add public/predictions.json public/win-history.json public/predictions-archive/
-          git diff --staged --quiet || git commit -m "chore: auto-update data [skip ci]"
-          git push || echo "No changes to push"
+          test -s public/googlecbd8cccd08774ec4.html
+          test -s out/googlecbd8cccd08774ec4.html
 
       - name: Deploy to server via FTP
         if: github.event_name != 'pull_request'

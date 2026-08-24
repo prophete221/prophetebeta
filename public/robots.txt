@@ -1,37 +1,6 @@
-# ═══════════════════════════════════════════════════════════
-# BttsBet – robots.txt
-# Autorise tous les robots d'indexation (Google, Bing, IA, etc.)
-# ═══════════════════════════════════════════════════════════
-
+# BttsBet — accès des robots
 User-agent: *
 Allow: /
-Allow: /assets/
-Disallow: /api/
+Disallow: /404.html
 
-# Sitemap
 Sitemap: https://bttsbet.online/sitemap.xml
-
-# ─── IA Crawlers (ChatGPT, Perplexity, Claude, etc.) ───
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: GPTBot
-Allow: /
-
-User-agent: CCBot
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: Bytespider
-Allow: /
-
-User-agent: FacebookBot
-Allow: /
-
-User-agent: Applebot
-Allow: /

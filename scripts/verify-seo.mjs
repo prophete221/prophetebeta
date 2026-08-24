@@ -11,7 +11,7 @@ async function walk(dir) {
   for (const entry of entries) {
     const path = join(dir, entry.name)
     if (entry.isDirectory()) files.push(...await walk(path))
-    else if (entry.name.endsWith('.html') && !['200.html', '404.html', '_not-found.html'].includes(entry.name)) files.push(path)
+    else if (entry.name.endsWith('.html') && !['200.html', '404.html', '_not-found.html', 'googlecbd8cccd08774ec4.html'].includes(entry.name)) files.push(path)
   }
   return files
 }
