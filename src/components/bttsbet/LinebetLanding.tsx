@@ -45,24 +45,24 @@ export default function LinebetLanding() {
               Meilleur code promo Linebet Afrique ? <span className="linebet-gradient-text">Commencez par VISION221.</span>
             </h1>
             <p className="mt-6 max-w-xl text-base leading-7 text-[#aab8b4] sm:text-lg">
-              Copiez <strong className="text-white">VISION221</strong>, ouvrez Linebet et vérifiez l’offre disponible dans votre pays. Un parcours simple, clair et sans détour.
+              Copiez <strong className="text-white">VISION221</strong>, ouvrez Linebet et commencez votre inscription en quelques secondes. Le parcours est simple, clair et sans détour.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
               <LinebetLink>Utiliser VISION221</LinebetLink>
               <span className="inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/[.04] px-5 py-3.5 text-sm font-bold text-white transition hover:border-[#19d66b]/40 hover:bg-white/[.07]"><CopyableCode code={SITE.promoCode} displayClassName="text-white" /></span>
             </div>
             <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-xs text-[#71817d]">
-              <span>18+ uniquement</span><span>•</span><span>Site indépendant</span><span>•</span><span>Conditions à vérifier</span>
+              <span>18+ uniquement</span><span>•</span><span>Partenaire Linebet</span><span>•</span><span>Parcours rapide</span>
             </div>
           </motion.div>
 
           <motion.div id="code" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .08, duration: .5 }} className="linebet-code-card">
             <div className="flex items-start justify-between gap-4"><div><p className="linebet-mini-label">CODES PARTENAIRES</p><h2 className="mt-2 text-2xl font-black tracking-tight text-white sm:text-3xl">Un code. Un clic.</h2></div><span className="linebet-secure-badge">18+</span></div>
             <div className="mt-6 space-y-2.5">
-              <div className="linebet-code-row linebet-code-row-primary"><div><p className="linebet-code-name">Linebet Afrique</p><p className="linebet-code-note">Notre code recommandé</p></div><div className="linebet-code-value"><CopyableCode code={SITE.promoCode} displayClassName="text-[#35f17f]" /></div></div>
-              <div className="linebet-code-row linebet-code-row-secondary"><div><p className="linebet-code-name">888starz</p><p className="linebet-code-note">Code à vérifier chez le partenaire</p></div><div className="linebet-code-value"><CopyableCode code="btts221" displayClassName="text-[#ffd4df]" /></div></div>
+              <div className="linebet-code-row linebet-code-row-primary"><div><p className="linebet-code-name">Linebet Afrique</p><p className="linebet-code-note">Meilleur code promo Linebet Afrique</p></div><div className="linebet-code-value"><CopyableCode code={SITE.promoCode} displayClassName="text-[#35f17f]" /></div></div>
+              <div className="linebet-code-row linebet-code-row-secondary"><div><p className="linebet-code-name">888starz</p><p className="linebet-code-note">Code promo 888starz</p></div><div className="linebet-code-value"><CopyableCode code="btts221" displayClassName="text-[#ffd4df]" /></div></div>
             </div>
-            <LinebetLink className="mt-4 w-full">S’inscrire avec VISION221</LinebetLink>
+            <LinebetLink className="mt-4 w-full">Activer VISION221</LinebetLink>
             <p className="mt-3 text-center text-[11px] leading-5 text-[#6f7d79]">Copiez le code, puis vérifiez les conditions chez le partenaire.</p>
           </motion.div>
         </div>
