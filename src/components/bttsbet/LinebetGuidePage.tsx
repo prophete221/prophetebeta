@@ -58,7 +58,7 @@ function LinebetLink({ children, className = '' }: { children: React.ReactNode; 
       rel={AFFILIATE.rel}
       className={`inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-b from-[#31ef80] to-[#19d66b] px-5 py-3.5 text-sm font-extrabold text-[#031b0d] shadow-[0_12px_32px_rgba(25,214,107,.25)] transition hover:-translate-y-0.5 hover:from-[#4aff95] hover:to-[#31ef80] active:scale-[.98] ${className}`}
     >
-      <img src="/logos/linebet-icon.svg" alt="" className="h-5 w-5 rounded object-contain" />
+      <img src="/logos/linebet-icon.png" alt="" className="h-5 w-5 rounded object-contain" />
       {children}
       <span aria-hidden="true">↗</span>
     </a>
