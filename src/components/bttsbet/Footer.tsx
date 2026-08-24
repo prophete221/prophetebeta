@@ -22,7 +22,7 @@ export default function Footer() {
           rel={AFFILIATE.rel}
           className="flex min-h-11 flex-1 items-center justify-center gap-2 rounded-xl bg-gradient-to-b from-[#31ef80] to-[#19d66b] px-3 text-xs font-extrabold text-[#031b0d] shadow-[0_6px_20px_rgba(25,214,107,.25)]"
         >
-          <img src="/logos/linebet-icon.svg" alt="" className="h-4 w-4 rounded" />
+          <img src="/logos/linebet-icon.png" alt="" className="h-4 w-4 rounded" />
           Ouvrir Linebet
           <span aria-hidden="true">↗</span>
         </a>
