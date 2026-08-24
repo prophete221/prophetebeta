@@ -28,7 +28,7 @@ export default function Navbar() {
           </span>
           <span className="truncate text-base font-black tracking-tight text-white">
             {SITE.name}
-            <span className="text-[#35f17f]">/PREMIUM</span>
+            <span className="text-[#4ade80]">/PREMIUM</span>
           </span>
         </a>
 
@@ -39,14 +39,14 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-2">
-          <div className="hidden rounded-xl border border-[#35f17f]/25 bg-[#35f17f]/[.08] px-3 py-1.5 text-xs font-black text-[#35f17f] shadow-[0_0_20px_rgba(53,241,127,.12)] sm:block">
-            <CopyableCode code={SITE.promoCode} displayClassName="text-[#35f17f]" />
+          <div className="hidden rounded-xl border border-[#4ade80]/25 bg-[#4ade80]/[.08] px-3 py-1.5 text-xs font-black text-[#4ade80] shadow-[0_0_20px_rgba(53,241,127,.12)] sm:block">
+            <CopyableCode code={SITE.promoCode} displayClassName="text-[#4ade80]" />
           </div>
           <a
             href={AFFILIATE.linebet}
             target="_blank"
             rel={AFFILIATE.rel}
-            className="hidden items-center gap-2 rounded-xl bg-gradient-to-b from-[#31ef80] to-[#19d66b] px-4 py-2.5 text-xs font-extrabold text-[#031b0d] shadow-[0_8px_24px_rgba(25,214,107,.28)] transition hover:from-[#4aff95] hover:to-[#31ef80] active:scale-[.98] sm:inline-flex"
+            className="hidden items-center gap-2 rounded-xl bg-gradient-to-b from-[#4ade80] to-[#22c55e] px-4 py-2.5 text-xs font-extrabold text-[#052e16] shadow-[0_8px_24px_rgba(25,214,107,.28)] transition hover:from-[#4aff95] hover:to-[#4ade80] active:scale-[.98] sm:inline-flex"
           >
             <img src="/logos/linebet-icon.png" alt="" className="h-4 w-4 rounded" />
             Ouvrir Linebet
@@ -79,16 +79,16 @@ export default function Navbar() {
               </a>
             ))}
             <div className="mt-4 border-t border-white/10 pt-4">
-              <div className="mb-3 flex items-center justify-between rounded-xl border border-[#35f17f]/25 bg-[#35f17f]/[.08] px-4 py-3.5 text-sm">
+              <div className="mb-3 flex items-center justify-between rounded-xl border border-[#4ade80]/25 bg-[#4ade80]/[.08] px-4 py-3.5 text-sm">
                 <span className="text-[#91a09b]">Code premium</span>
-                <CopyableCode code={SITE.promoCode} displayClassName="text-[#35f17f]" />
+                <CopyableCode code={SITE.promoCode} displayClassName="text-[#4ade80]" />
               </div>
               <a
                 href={AFFILIATE.linebet}
                 target="_blank"
                 rel={AFFILIATE.rel}
                 onClick={() => setOpen(false)}
-                className="flex min-h-12 items-center justify-center gap-2 rounded-xl bg-gradient-to-b from-[#31ef80] to-[#19d66b] px-4 py-3.5 text-sm font-extrabold text-[#031b0d] shadow-[0_8px_24px_rgba(25,214,107,.3)]"
+                className="flex min-h-12 items-center justify-center gap-2 rounded-xl bg-gradient-to-b from-[#4ade80] to-[#22c55e] px-4 py-3.5 text-sm font-extrabold text-[#052e16] shadow-[0_8px_24px_rgba(25,214,107,.3)]"
               >
                 <img src="/logos/linebet-icon.png" alt="" className="h-5 w-5 rounded" />
                 S’inscrire sur Linebet
