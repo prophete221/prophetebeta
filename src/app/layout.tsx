@@ -8,7 +8,7 @@ const jetbrainsMono = JetBrains_Mono({ variable: '--font-mono', subsets: ['latin
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://bttsbet.online'),
-  title: { default: 'Meilleur code promo Linebet Afrique : VISION221 + Freebets | BttsBet', template: '%s | BttsBet' },
+  title: { default: 'Meilleur code promo Linebet Afrique : VISION221 | BttsBet', template: '%s | BttsBet' },
   description: 'VISION221 — le meilleur code promo Linebet Afrique. Freebets réguliers, inscription rapide et parcours premium. Activez votre offre maintenant.',
   keywords: [
     'meilleur code promo Linebet Afrique',
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   icons: { icon: '/favicon.svg', apple: '/icon-192.png' },
   manifest: '/manifest.json',
   openGraph: {
-    title: 'Meilleur code promo Linebet Afrique : VISION221 + Freebets',
+    title: 'Meilleur code promo Linebet Afrique : VISION221',
     description: 'Le code VISION221 est le code partenaire Linebet n°1 en Afrique. Freebets réguliers et inscription claire.',
     url: 'https://bttsbet.online',
     siteName: 'BttsBet',
