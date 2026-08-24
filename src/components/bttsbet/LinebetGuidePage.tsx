@@ -56,7 +56,7 @@ function LinebetLink({ children, className = '' }: { children: React.ReactNode; 
       href={AFFILIATE.linebet}
       target="_blank"
       rel={AFFILIATE.rel}
-      className={`inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-b from-[#31ef80] to-[#19d66b] px-5 py-3.5 text-sm font-extrabold text-[#031b0d] shadow-[0_12px_32px_rgba(25,214,107,.25)] transition hover:-translate-y-0.5 hover:from-[#4aff95] hover:to-[#31ef80] active:scale-[.98] ${className}`}
+      className={`inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-b from-[#4ade80] to-[#22c55e] px-5 py-3.5 text-sm font-extrabold text-[#052e16] shadow-[0_12px_32px_rgba(25,214,107,.25)] transition hover:-translate-y-0.5 hover:from-[#4aff95] hover:to-[#4ade80] active:scale-[.98] ${className}`}
     >
       <img src="/logos/linebet-icon.png" alt="" className="h-5 w-5 rounded object-contain" />
       {children}
@@ -89,8 +89,8 @@ export default function LinebetGuidePage({ variant }: { variant: GuideVariant })
             <p className="mt-5 max-w-2xl text-base leading-7 text-[#aab8b4] sm:text-lg">{c.intro}</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
               <LinebetLink>Utiliser VISION221</LinebetLink>
-              <div className="inline-flex items-center justify-center gap-3 rounded-xl border border-[#35f17f]/25 bg-[#35f17f]/[.08] px-5 py-3.5 text-sm font-bold text-[#35f17f]">
-                <CopyableCode code={SITE.promoCode} displayClassName="text-[#35f17f]" />
+              <div className="inline-flex items-center justify-center gap-3 rounded-xl border border-[#4ade80]/25 bg-[#4ade80]/[.08] px-5 py-3.5 text-sm font-bold text-[#4ade80]">
+                <CopyableCode code={SITE.promoCode} displayClassName="text-[#4ade80]" />
               </div>
             </div>
           </div>
@@ -112,7 +112,7 @@ export default function LinebetGuidePage({ variant }: { variant: GuideVariant })
           <div className="linebet-final-cta text-center">
             <p className="linebet-kicker">PRÊT ?</p>
             <h2 className="mt-3 text-3xl font-black tracking-[-.04em] text-white sm:text-4xl">
-              Activez <span className="text-[#35f17f]">VISION221</span>
+              Activez <span className="text-[#4ade80]">VISION221</span>
             </h2>
             <p className="mx-auto mt-4 max-w-lg text-sm leading-6 text-[#9aa9a4]">
               Copiez le code, ouvrez Linebet, saisissez-le et vérifiez freebets + conditions.
