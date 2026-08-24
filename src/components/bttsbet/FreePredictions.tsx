@@ -460,9 +460,17 @@ export default function FreePredictions() {
 
   return (
     <section ref={ref} id="free-predictions" className="section-pad" style={{ paddingTop: 0, paddingBottom: 'clamp(2rem, 5vw, 4rem)' }}>
-      {/* H2 for SEO (hidden visually) */}
+      {/* Accessible SEO heading + visible product heading */}
       <h2 className="sr-only">Pronostics IA du jour — BTTS et Over 2.5 gratuits</h2>
       <div className="max-w-6xl mx-auto">
+        <div className="feed-heading">
+          <div>
+            <span className="feed-heading__eyebrow">FEED DU JOUR · AFRICA/DAKAR</span>
+            <h3>Les matchs à consulter maintenant.</h3>
+            <p>Filtrez par date, marché ou compétition. Chaque carte affiche uniquement les données présentes dans le feed.</p>
+          </div>
+          <span className="feed-heading__count">{loading ? 'Chargement' : `${stats.total} matchs`}</span>
+        </div>
         {/* Ultra-compact filters — single horizontal scroll bar */}
         <motion.div
           variants={staggerContainer}
@@ -575,7 +583,7 @@ export default function FreePredictions() {
         )}
 
         <p className="text-center text-[11px] text-gray-600 mt-6">
-          Pronostics générés par IA — modèles Poisson calibrés sur 50 000+ matchs. Aucune garantie future.
+          Estimations statistiques publiées avec leur date et leur heure. Aucun résultat futur n’est garanti.
         </p>
       </div>
     </section>

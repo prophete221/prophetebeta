@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { SITE, AFFILIATE, LEGAL, FAQ_ITEMS, ANDROID_LOGO, TESTIMONIALS, SOCIAL_PROOF, PAYMENT_METHODS, LONASE } from '@/lib/constants'
+import { SITE, AFFILIATE, LEGAL, FAQ_ITEMS, ANDROID_LOGO, SOCIAL_PROOF, PAYMENT_METHODS, LONASE } from '@/lib/constants'
 import { useScrollAnimation } from '@/hooks/useAnimations'
 import { staggerContainer, staggerChildFadeUp, subtleHover, fadeInUp } from '@/lib/motionPresets'
 
@@ -27,7 +27,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 gap-1.5">
           <a href={AFFILIATE.linebet} rel={AFFILIATE.rel} target="_blank" className="flex items-center justify-center gap-1.5 px-3 py-2.5 min-h-[44px] btn-linebet cta-glow text-[#04150C] text-[11px] font-bold">
             <img src="/logos/linebet-icon.svg" alt="Linebet" className="w-3.5 h-3.5 rounded object-contain flex-shrink-0" loading="lazy"/>
-            Linebet 90K XOF
+            Ouvrir Linebet
           </a>
           <button onClick={() => scrollToSection('vip')} className="flex items-center justify-center gap-1.5 px-3 py-2.5 min-h-[44px] bg-gold/15 border border-gold/30 rounded-lg text-gold text-[11px] font-bold">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
@@ -39,35 +39,13 @@ export default function Footer() {
       {/* Footer */}
       <footer ref={ref} id="faq" className="border-t border-edge/40 pt-10 pb-20 sm:pt-10 sm:pb-8 px-4">
         <div className="max-w-5xl mx-auto">
-          {/* Testimonials — Clean grid */}
-          <div className="mb-6">
-            <div className="text-center mb-3">
-              <span className="text-[10px] font-bold text-success uppercase tracking-[0.15em]">Ils gagnent avec BttsBet</span>
-              <h3 className="text-xl font-extrabold text-white mt-2 tracking-tight">
-                Témoignages <span className="text-success">vérifiés</span>
-              </h3>
-            </div>
-            <motion.div variants={staggerContainer} initial="hidden" animate={isVisible ? 'visible' : 'hidden'} className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              {TESTIMONIALS.slice(0, 3).map((t, i) => (
-                <motion.div key={t.name + t.city} variants={staggerChildFadeUp} whileHover={{ scale: 1.04, transition: { duration: 0.25, ease: [0.4, 0, 0.2, 1] } }} whileTap={{ scale: 0.96, transition: { duration: 0.15 } }} style={{ willChange: 'transform, opacity' }} className="bg-panel border border-edge/40 squircle p-4 transition-colors hover:border-gold/15">
-                  <div className="flex items-center gap-2.5 mb-2.5">
-                    <div className="w-8 h-8 rounded-full bg-gold/8 border border-gold/15 flex items-center justify-center text-gold text-xs font-bold">
-                      {t.name.charAt(0)}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="text-xs text-white font-semibold">{t.name}</div>
-                      <div className="text-[10px] text-gray-600">{t.city}</div>
-                    </div>
-                    <div className="flex gap-0.5">
-                      {Array.from({ length: t.rating }).map((_, j) => (
-                        <svg key={j} width="10" height="10" viewBox="0 0 24 24" fill="#FACC15" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                      ))}
-                    </div>
-                  </div>
-                  <p className="text-[11px] text-gray-400 leading-relaxed italic">&laquo; {t.text} &raquo;</p>
-                </motion.div>
-              ))}
-            </motion.div>
+          {/* Method note — only verifiable product information */}
+          <div className="mb-6 rounded-2xl border border-edge/40 bg-panel/60 p-4 text-center">
+            <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-success">Méthode publique</span>
+            <h3 className="mt-2 text-xl font-extrabold tracking-tight text-white">Des données lisibles, sans promesse de gain.</h3>
+            <p className="mx-auto mt-2 max-w-2xl text-xs leading-relaxed text-gray-400">
+              Les fixtures et estimations sont présentées avec leur date et leur heure. Les informations absentes, les taux et les résultats non vérifiés restent explicitement non publiés.
+            </p>
           </div>
 
           {/* Divider */}

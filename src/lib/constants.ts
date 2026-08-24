@@ -152,7 +152,7 @@ export const URGENCY_MESSAGES = [
 ]
 
 export const LEGAL = {
-  disclaimer: "Les paris sportifs comportent des risques financiers. Ne misez jamais plus que ce que vous pouvez vous permettre de perdre. Les statistiques de précision de notre IA (environ 52%) sont basées sur des données historiques et ne garantissent pas de résultats futurs. BttsBet est un site informatif et d'affiliation : nous ne prenons pas de paris et ne collectons pas de fonds. Les témoignages présentés sur ce site reflètent des expériences individuelles et ne constituent pas une garantie de résultats. Jouez de manière responsable.",
+  disclaimer: "Les paris sportifs comportent des risques financiers. Ne misez jamais plus que ce que vous pouvez vous permettre de perdre. Les estimations de BttsBet sont informatives, ne garantissent aucun résultat et ne remplacent pas votre propre analyse. BttsBet est un site informatif et d'affiliation : nous ne prenons pas de paris et ne collectons pas de fonds. Jouez de manière responsable.",
   responsible: "Si vous ou un proche avez un problème lié aux jeux d'argent, contactez la ligne d'écoute nationale de votre pays. En France : 09-74-75-13-13 (Joueurs Info Service). Au Cameroun : contactez le MINSANT. Au Sénégal : 33 867 22 22. Ressource internationale : https://www.begambleaware.org/",
   copyright: `© ${new Date().getFullYear()} BttsBet. Tous droits réservés.`,
   links: [
