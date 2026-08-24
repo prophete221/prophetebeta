@@ -1525,3 +1525,69 @@ code {
 .linebet-app-card .mt-5 { margin-top: 1rem; }
 @media (min-width: 640px) { .linebet-code-card { padding: 1.35rem; } .linebet-apps-panel { padding: 1.45rem; } }
 @media (max-width: 420px) { .linebet-hero > .mx-auto { gap: 1.7rem; } .linebet-hero h1 { max-width: 10ch; font-size: 2.7rem; } }
+
+/* ════════════════════════════════════════════════════════════════════════════
+   PREMIUM v36 — Platform upgrade (VISION221)
+   ════════════════════════════════════════════════════════════════════════════ */
+.linebet-nav {
+  background: rgba(3, 5, 4, 0.82) !important;
+  border-bottom: 1px solid rgba(53, 241, 127, 0.08) !important;
+}
+.linebet-nav-scrolled {
+  background: rgba(3, 5, 4, 0.96) !important;
+  border-color: rgba(53, 241, 127, 0.18) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45) !important;
+}
+.linebet-brand-mark {
+  border-color: rgba(53, 241, 127, 0.35) !important;
+  background: linear-gradient(145deg, rgba(53, 241, 127, 0.14), rgba(53, 241, 127, 0.04)) !important;
+  box-shadow: 0 0 16px rgba(53, 241, 127, 0.12);
+}
+.linebet-hero {
+  background:
+    radial-gradient(ellipse 80% 60% at 85% 10%, rgba(53, 241, 127, 0.14), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 5% 5%, rgba(0, 224, 255, 0.06), transparent 50%),
+    #050706 !important;
+}
+.linebet-code-card {
+  border: 1px solid rgba(53, 241, 127, 0.28) !important;
+  background: linear-gradient(155deg, rgba(12, 28, 18, 0.98), rgba(5, 12, 8, 0.98)) !important;
+  box-shadow:
+    0 28px 80px rgba(0, 0, 0, 0.45),
+    0 0 60px rgba(53, 241, 127, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07) !important;
+}
+.linebet-code-row-primary {
+  border-color: rgba(53, 241, 127, 0.32) !important;
+  background: linear-gradient(110deg, rgba(22, 68, 40, 0.72), rgba(6, 18, 11, 0.78)) !important;
+  box-shadow: 0 0 24px rgba(53, 241, 127, 0.08);
+}
+.linebet-code-row-secondary {
+  border-color: rgba(245, 163, 189, 0.28) !important;
+}
+.linebet-step-card:hover,
+.linebet-region-card:hover {
+  border-color: rgba(53, 241, 127, 0.35) !important;
+  background: rgba(53, 241, 127, 0.06) !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+}
+.linebet-editorial-card,
+.linebet-final-cta {
+  border-color: rgba(53, 241, 127, 0.22) !important;
+  background: linear-gradient(145deg, rgba(14, 32, 20, 0.9), rgba(6, 12, 9, 0.95)) !important;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.3), 0 0 40px rgba(53, 241, 127, 0.05) !important;
+}
+.linebet-mobile-cta {
+  background: rgba(3, 5, 4, 0.97) !important;
+  border-top: 1px solid rgba(53, 241, 127, 0.22) !important;
+  box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.4) !important;
+}
+.linebet-kicker {
+  letter-spacing: 0.2em !important;
+}
+.linebet-gradient-text {
+  background: linear-gradient(110deg, #ffffff 0%, #35f17f 55%, #19d66b 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+}
