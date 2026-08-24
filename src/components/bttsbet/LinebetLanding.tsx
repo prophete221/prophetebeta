@@ -40,16 +40,16 @@ export default function LinebetLanding() {
         <div className="linebet-grid-overlay" aria-hidden="true" />
         <div className="mx-auto grid max-w-6xl gap-10 px-5 pb-16 pt-12 sm:px-8 sm:pb-24 sm:pt-20 lg:grid-cols-[1.08fr_.92fr] lg:items-center lg:gap-16">
           <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .45 }}>
-            <div className="linebet-kicker"><span className="linebet-status-dot" /> GUIDE PARTENAIRE AFRIQUE · VISION221</div>
+            <div className="linebet-kicker"><span className="linebet-status-dot" /> CODE PARTENAIRE AFRIQUE · LINEBET</div>
             <h1 id="hero-title" className="mt-5 max-w-3xl text-4xl font-black leading-[.98] tracking-[-.055em] text-white sm:text-6xl lg:text-7xl">
-              Le code promo Linebet Afrique <span className="linebet-gradient-text">à connaître.</span>
+              Meilleur code promo Linebet Afrique ? <span className="linebet-gradient-text">Commencez par VISION221.</span>
             </h1>
             <p className="mt-6 max-w-xl text-base leading-7 text-[#aab8b4] sm:text-lg">
-              Retrouvez le code partenaire <strong className="text-white">VISION221</strong>, les étapes d’inscription et les points à vérifier avant toute utilisation de Linebet dans votre pays.
+              Copiez <strong className="text-white">VISION221</strong>, ouvrez Linebet et vérifiez l’offre disponible dans votre pays. Un parcours simple, clair et sans détour.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <LinebetLink>Ouvrir Linebet</LinebetLink>
-              <a href="#code" className="inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/[.04] px-5 py-3.5 text-sm font-bold text-white transition hover:border-[#19d66b]/40 hover:bg-white/[.07]">Voir le code</a>
+              <LinebetLink>Utiliser VISION221</LinebetLink>
+              <span className="inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/[.04] px-5 py-3.5 text-sm font-bold text-white transition hover:border-[#19d66b]/40 hover:bg-white/[.07]"><CopyableCode code={SITE.promoCode} displayClassName="text-white" /></span>
             </div>
             <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-xs text-[#71817d]">
               <span>18+ uniquement</span><span>•</span><span>Site indépendant</span><span>•</span><span>Conditions à vérifier</span>
