@@ -1,51 +1,67 @@
-# BttsBet — Code promo Linebet Afrique
+# BttsBet — Meilleur Code Promo Linebet Afrique
 
-BttsBet est désormais une plateforme éditoriale indépendante consacrée en priorité au code partenaire Linebet Afrique **VISION221**, avec une page séparée pour le code 888starz **btts221**. Le site ne publie plus de matchs, de pronostics, de résultats, de marchés VIP ou de contenus Aviator/FIFA. Son objectif est de présenter clairement les codes, le parcours d’inscription, les boutons de téléchargement et les points à vérifier avant toute utilisation de Linebet ou 888starz.
+**VISION221** est le code promo Linebet n°1 en Afrique.  
+Plateforme premium d’affiliation : codes, freebets réguliers, inscription rapide et parcours clair.
 
-Le domaine public est [bttsbet.online](https://bttsbet.online). Les liens vers Linebet et 888starz sont des liens d’affiliation qualifiés `sponsored nofollow`. BttsBet n’est pas Linebet, ne gère aucun compte, ne collecte aucun dépôt et ne garantit ni bonus, ni éligibilité, ni résultat financier. Les conditions affichées par Linebet dans le pays de l’utilisateur font foi.
+Site live : [bttsbet.online](https://bttsbet.online)
 
-## Stack et fonctionnement
+---
 
-| Technologie | Usage |
+## Codes partenaires officiels
+
+| Plateforme | Code promo | Lien |
+|---|---|---|
+| **Linebet** | **VISION221** | Lien partenaire (inscription + freebets) |
+| **888starz** | **btts221** | Lien partenaire secondaire |
+
+- Code Linebet : **VISION221** (majuscules recommandées)
+- Code 888starz : **btts221** (minuscules)
+- Freebets et promotions régulièrement mis à jour via le lien partenaire
+
+---
+
+## Objectif plateforme
+
+BttsBet est une **plateforme premium** dédiée aux codes promo betting Afrique :
+
+- Mise en avant exclusive de **VISION221** comme meilleur code promo Linebet Afrique
+- Design next-gen (Onyx + Emerald premium)
+- Conversion mobile-first (copy code 1-clic + sticky CTA)
+- Transparence affiliation (`sponsored nofollow`)
+- Pas de promesse de gain garanti — conditions toujours à vérifier chez le bookmaker
+
+---
+
+## Stack
+
+| Techno | Usage |
 |---|---|
-| Next.js 16 | App Router et export statique |
-| React 19 | Interface interactive mobile-first |
-| TypeScript | Pages et composants typés |
-| Tailwind CSS 4 | Styles et responsive design |
-| Framer Motion | Micro-animations sobres, compatibles réduction de mouvement |
-| GitHub Actions | Build, contrôles et déploiement FTP LWS |
+| Next.js 16 | App Router + export statique |
+| React 19 + TypeScript | UI interactive |
+| Tailwind CSS 4 | Design system premium |
+| Framer Motion | Micro-animations |
+| GitHub Actions | Build + deploy FTP LWS |
 
-Le build produit `out/`. L’hébergement de production est assuré par FTP via `.github/workflows/main.yml`. Aucun compte, aucune base de données et aucune API de cotes ne sont nécessaires.
+Build → `out/` → déploiement automatique sur push `main`.
 
-## Routes indexables
+---
+
+## Routes principales
 
 | Route | Rôle |
 |---|---|
-| `/` | Landing premium et CTA Linebet VISION221 |
-| `/code-promo-linebet` | Page pilier du code promo Linebet Afrique |
-| `/code-promo-linebet-senegal` | Variante locale Sénégal |
-| `/linebet-inscription` | Guide d’inscription et de vérification |
-| `/linebet-afrique` | Guide régional Afrique |
-| `/code-promo-888starz` | Guide français du code 888starz btts221 |
-| `/ar/code-promo-888starz` | Guide arabe RTL du code 888starz btts221 |
-| `/jouer-responsable` | Prévention et limites |
-| `/mentions-legales` | Identité et affiliation |
-| `/politique-confidentialite` | Cookies et données techniques |
-| `/cgu` | Conditions générales |
+| `/` | Landing premium VISION221 |
+| `/code-promo-linebet` | Page pilier code promo Linebet Afrique |
+| `/linebet-inscription` | Guide inscription |
+| `/linebet-afrique` | Couverture Afrique |
+| `/code-promo-888starz` | Code btts221 |
+| `/ar/code-promo-888starz` | Version arabe RTL |
+| `/jouer-responsable` | Jeu responsable |
+| Légales | Mentions, confidentialité, CGU |
 
-Les anciennes URLs de matchs, de pronostics, de VIP, de jeux et de blog sont consolidées par redirection 301 vers `/code-promo-linebet` lorsqu’elles sont encore demandées. Les autres chemins inconnus restent de vrais 404. Les règles sont dupliquées dans `public/.htaccess` et `public/_redirects` pour l’hébergement LWS et les environnements compatibles.
+---
 
-## Assets SEO et validation
-
-- `public/sitemap.xml` est généré par `node scripts/generate-sitemap.mjs` et ne contient que les pages réellement publiables.
-- `public/robots.txt` autorise l’exploration générale, exclut la page 404 et déclare le sitemap.
-- `public/og-linebet.svg` remplace l’ancien visuel Open Graph lié aux prédictions.
-- `public/og-888starz.svg` est réservé à la page secondaire du code 888starz btts221.
-- `public/googlecbd8cccd08774ec4.html` est le fichier de validation Google à la racine publique. Son contenu doit rester exactement : `google-site-verification: googlecbd8cccd08774ec4.html`.
-
-La page `/ar/code-promo-888starz` est une version arabe RTL distincte avec `lang="ar"`, `dir="rtl"`, canonical propre et alternates `fr`, `ar` et `x-default` réciproques. La stratégie SEO privilégie une page pilier forte, des guides complémentaires distincts et un maillage interne utile. Elle n’utilise pas de pages pays quasi identiques, de keyword stuffing, de fausses positions ou de promesses « numéro 1 ». Les liens affiliés sont clairement signalés et qualifiés.
-
-## Installation et contrôles
+## Développement
 
 ```bash
 npm ci --legacy-peer-deps
@@ -53,25 +69,16 @@ npm run build
 node scripts/verify-seo.mjs
 npm run lint
 npx tsc --noEmit
-git diff --check
 ```
 
-Le script de sitemap peut être relancé avec :
+Deploy : push sur `main` → workflow GitHub Actions (FTP).
 
-```bash
-node scripts/generate-sitemap.mjs
-```
+---
 
-Le script `verify-seo.mjs` ignore uniquement les fichiers techniques sans métadonnées de page, dont le fichier de validation Google, puis contrôle les titres, descriptions et anciennes marques sur les HTML exportés.
+## Affiliation & responsabilité
 
-## CI/CD
+BttsBet peut percevoir une commission via les liens partenaires.  
+Nous ne sommes ni Linebet ni 888starz. Aucun compte n’est géré ici.  
+18+ uniquement. Les paris comportent des risques. Vérifiez toujours les conditions officielles et la législation de votre pays.
 
-Le workflow `.github/workflows/main.yml` s’exécute sur les pull requests vers `main` pour les validations sans FTP, puis sur les pushes vers `main` pour le build et le déploiement. Il vérifie également la présence du fichier Google dans `public/` et `out/`. Le transfert utilise `SamKirkland/FTP-Deploy-Action@4.3.0`.
-
-Secrets attendus : `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD` et éventuellement `FTP_SERVER_DIR`. Aucun token GitHub ne doit être placé dans le dépôt ou dans un message.
-
-## Transparence éditoriale
-
-Les expressions « meilleur code promo » ou « bonus garanti » ne sont pas utilisées comme des faits non démontrés. BttsBet peut expliquer pourquoi VISION221 est le code principal mis en avant sur son lien partenaire. Le code 888starz btts221 est présenté séparément. Seuls les partenaires concernés peuvent confirmer l’offre, le pays éligible, les moyens de paiement, le dépôt minimum, les conditions de mise et les règles de retrait.
-
-Le jeu d’argent est réservé aux personnes majeures et comporte un risque financier. Consultez la page [Jouer responsable](/jouer-responsable) et la réglementation de votre pays avant toute action.
+**VISION221 — Le code promo Linebet Afrique de référence.**
