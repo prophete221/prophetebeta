@@ -4,12 +4,12 @@ import { CookieConsent, Footer, Navbar } from '@/components/bttsbet'
 import LinebetLanding from '@/components/bttsbet/LinebetLanding'
 
 export const metadata: Metadata = {
-  title: 'Meilleur code promo Linebet Afrique 2026 : VISION221 + Freebets | BttsBet',
-  description: 'VISION221 — le meilleur code promo Linebet Afrique. Freebets réguliers, inscription rapide, parcours premium. Copiez le code et activez votre offre maintenant.',
+  title: 'Meilleur code promo Linebet Afrique : VISION221 | BttsBet',
+  description: 'VISION221 — le meilleur code promo Linebet Afrique. Freebets réguliers, inscription rapide, parcours premium. Copiez le code et activez votre offre.',
   alternates: { canonical: 'https://bttsbet.online/' },
   openGraph: {
-    title: 'Meilleur code promo Linebet Afrique : VISION221 + Freebets',
-    description: 'Le code VISION221 est le code partenaire Linebet n°1 en Afrique. Freebets, inscription claire et accès direct au parcours officiel.',
+    title: 'Meilleur code promo Linebet Afrique : VISION221',
+    description: 'Le code VISION221 est le code partenaire Linebet n°1 en Afrique. Freebets et inscription claire.',
     url: 'https://bttsbet.online/',
     siteName: 'BttsBet',
     type: 'website',
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Meilleur code promo Linebet Afrique : VISION221',
-    description: 'Freebets réguliers + code VISION221. Activez votre offre Linebet en quelques clics.',
+    description: 'Freebets + code VISION221. Activez votre offre Linebet en quelques clics.',
     images: ['/og-linebet.svg'],
   },
 }
