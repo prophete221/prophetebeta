@@ -1,33 +1,14 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 import { SITE, AFFILIATE } from '@/lib/constants'
 import { useScrollAnimation } from '@/hooks/useAnimations'
-import { staggerContainer, staggerChildFadeUp } from '@/lib/motionPresets'
-import { CrownIcon, FloatingParticles } from './AnimatedIcons'
-import PremiumButton, { DownloadButton } from './PremiumButton'
+import PremiumButton from './PremiumButton'
 import CopyableCode from './CopyableCode'
 import VipUnlockModal from './VipUnlockModal'
 
-// ─── Match status filter (excludes finished matches) ─────────────────────
-function getMatchStatus(date: string, time?: string): 'live' | 'upcoming' | 'finished' {
-  if (!date) return 'finished'
-  try {
-    const today = new Date().toISOString().slice(0, 10)
-    if (date < today) return 'finished'
-    if (date > today) return 'upcoming'
-    if (!time || time === '--:--' || !/^\d{2}:\d{2}$/.test(time)) return 'upcoming'
-    const [h, m] = time.split(':').map(Number)
-    const matchTimestamp = Date.parse(`${date}T${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:00Z`)
-    if (!Number.isFinite(matchTimestamp)) return 'upcoming'
-    const diffMs = matchTimestamp - Date.now()
-    const diffHours = diffMs / (1000 * 60 * 60)
-    if (diffMs < 0 && diffHours > -2.5) return 'live'
-    if (diffMs < 0) return 'finished'
-    return 'upcoming'
-  } catch { return 'finished' }
-}
+const DISPLAY_TZ = 'Africa/Dakar'
 
 type VipMatch = {
   match: string
@@ -38,354 +19,164 @@ type VipMatch = {
   time: string
   homeLogo: string
   awayLogo: string
-  index: number
   status: 'live' | 'upcoming'
 }
 
-// ─── Premium VIP match row ───────────────────────────────────────────────
-function VipMatchRow({ m, index }: { m: VipMatch; index: number }) {
-  const isLive = m.status === 'live'
+function todayISO() {
+  return new Date().toLocaleDateString('sv-SE', { timeZone: DISPLAY_TZ })
+}
+
+function getStatus(date: string, time?: string): 'live' | 'upcoming' | 'finished' {
+  const today = todayISO()
+  if (!date || date < today) return 'finished'
+  if (date > today || !time || !/^\d{2}:\d{2}$/.test(time)) return 'upcoming'
+  const timestamp = Date.parse(`${date}T${time}:00Z`)
+  if (!Number.isFinite(timestamp)) return 'upcoming'
+  const delta = timestamp - Date.now()
+  if (delta < 0 && delta > -2.5 * 60 * 60 * 1000) return 'live'
+  return delta < 0 ? 'finished' : 'upcoming'
+}
+
+function formatDay(date: string) {
+  if (date === todayISO()) return "Aujourd’hui"
+  try {
+    return new Intl.DateTimeFormat('fr-FR', { timeZone: DISPLAY_TZ, day: '2-digit', month: 'short' }).format(new Date(`${date}T12:00:00Z`))
+  } catch {
+    return date
+  }
+}
+
+function MatchRow({ match }: { match: VipMatch }) {
+  const teams = (
+    <div className="vip-refresh__teams" aria-label="Match verrouillé">
+      {match.homeLogo ? <img src={match.homeLogo} alt="" loading="lazy" /> : <span className="vip-refresh__team-mark" aria-hidden="true" />}
+      <strong>{match.homeTeam}</strong>
+      <span className="vip-refresh__versus">VS</span>
+      <strong>{match.awayTeam}</strong>
+      {match.awayLogo ? <img src={match.awayLogo} alt="" loading="lazy" /> : <span className="vip-refresh__team-mark" aria-hidden="true" />}
+    </div>
+  )
 
   return (
-    <motion.div
-      initial={{ opacity: 0, x: -8 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ delay: 0.05 * index, duration: 0.3 }}
-      className="relative grid grid-cols-[44px_1fr_56px] items-center gap-2 bg-midnight/40 rounded-lg px-3 py-2 border border-edge/40"
-    >
-      {/* Time / Live indicator */}
-      <div className="flex flex-col items-center">
-        {isLive ? (
-          <motion.div
-            animate={{ opacity: [1, 0.5, 1] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="text-live text-[9px] font-bold uppercase tracking-widest"
-          >
-            <div className="v31-ticker-dot live mb-0.5" />
-            LIVE
-          </motion.div>
-        ) : (
-          <>
-            <span className="text-[10px] text-gold-light/70 font-mono tabular-nums">{m.time}</span>
-            <span className="text-[8px] text-gray-600 uppercase">à venir</span>
-          </>
-        )}
+    <div className="vip-refresh__match">
+      <div className="vip-refresh__match-meta">
+        <span>{match.status === 'live' ? 'LIVE' : match.time}</span>
+        <small>{formatDay(match.date)} · {match.league}</small>
       </div>
-
-      {/* Teams (blurred — locked content) */}
-      <div className="flex items-center gap-1.5 min-w-0 blur-[5px] select-none">
-        {m.homeLogo && (
-          <img src={m.homeLogo} alt="" className="w-4 h-4 object-contain flex-shrink-0 rounded" loading="lazy" />
-        )}
-        <span className="text-white text-[11px] font-semibold truncate">{m.homeTeam}</span>
-        <span className="text-gray-600 text-[9px] flex-shrink-0">vs</span>
-        <span className="text-white text-[11px] font-semibold truncate">{m.awayTeam}</span>
-        {m.awayLogo && (
-          <img src={m.awayLogo} alt="" className="w-4 h-4 object-contain flex-shrink-0 rounded" loading="lazy" />
-        )}
+      <div className="vip-refresh__locked-content">
+        {teams}
+        <span className="vip-refresh__lock" aria-label="Marché verrouillé">⌑</span>
       </div>
-
-      {/* Locked market — no odds are published without a verified odds feed */}
-      <div className="text-right">
-        <span className="text-[10px] text-gold font-bold blur-[3px] select-none">N/D</span>
-        <div className="text-[8px] text-gray-600 uppercase">marché</div>
-      </div>
-    </motion.div>
+    </div>
   )
 }
 
-// ─── Main PromoVip ────────────────────────────────────────────────────────
 export default function PromoVip() {
   const [ref, isVisible] = useScrollAnimation()
   const [showVipModal, setShowVipModal] = useState(false)
   const [vipMatches, setVipMatches] = useState<VipMatch[]>([])
-  const [couponDate, setCouponDate] = useState('Aujourd\'hui')
 
   useEffect(() => {
+    let cancelled = false
     fetch('/predictions.json')
-      .then(r => r.json())
-      .then(data => {
-        if (!data?.predictions) return
-        const matchMap = new Map<string, VipMatch>()
-        for (const p of data.predictions) {
-          // Filter out finished matches — only show live + upcoming
-          const status = getMatchStatus(p.date, p.time)
-          if (status === 'finished') continue
-
-          // FIX BUG 2.2: Use match name as key (matchSemantic includes -btts/-o25 suffix)
-          const key = p.match
-          if (!matchMap.has(key)) {
-            const [home, away] = p.match.split(/\s+vs?\s+/i)
-            matchMap.set(key, {
-              match: p.match,
-              homeTeam: home?.trim() || '',
-              awayTeam: away?.trim() || '',
-              league: p.league,
-              date: p.date,
-              time: p.time || '--:--',
-              homeLogo: p.homeLogo || '',
-              awayLogo: p.awayLogo || '',
-              index: 0,
-              status: status as 'live' | 'upcoming',
-            })
-          }
-        }
-        const today = new Date().toISOString().slice(0, 10)
-        const allMatches = [...matchMap.values()]
-          .sort((a, b) => {
-            // Live first, then by time
-            if (a.status === 'live' && b.status !== 'live') return -1
-            if (b.status === 'live' && a.status !== 'live') return 1
-            const aToday = a.date === today ? 0 : 1
-            const bToday = b.date === today ? 0 : 1
-            if (aToday !== bToday) return aToday - bToday
-            return (a.time || '').localeCompare(b.time || '')
+      .then((response) => response.json())
+      .then((data) => {
+        if (cancelled || !Array.isArray(data?.predictions)) return
+        const unique = new Map<string, VipMatch>()
+        for (const prediction of data.predictions) {
+          const status = getStatus(prediction.date, prediction.time)
+          if (status === 'finished' || unique.has(prediction.match)) continue
+          const [homeTeam, awayTeam] = String(prediction.match || '').split(/\s+vs?\s+/i)
+          unique.set(prediction.match, {
+            match: prediction.match,
+            homeTeam: homeTeam?.trim() || 'Équipe domicile',
+            awayTeam: awayTeam?.trim() || 'Équipe extérieure',
+            league: prediction.league || 'Compétition non précisée',
+            date: prediction.date,
+            time: prediction.time || '--:--',
+            homeLogo: prediction.homeLogo || '',
+            awayLogo: prediction.awayLogo || '',
+            status,
           })
-          .slice(0, 8)
-
-        const vipData = allMatches.map((m, i) => ({ ...m, index: i }))
-        setVipMatches(vipData)
-        const todayMatches = allMatches.filter(m => m.date === today)
-        setCouponDate(todayMatches.length > 0 ? "Aujourd'hui" : allMatches[0]?.date || "Aujourd'hui")
+        }
+        const ordered = [...unique.values()].sort((a, b) => {
+          if (a.status === 'live' && b.status !== 'live') return -1
+          if (b.status === 'live' && a.status !== 'live') return 1
+          return `${a.date}T${a.time}`.localeCompare(`${b.date}T${b.time}`)
+        })
+        setVipMatches(ordered.slice(0, 5))
       })
       .catch(() => {})
+    return () => { cancelled = true }
   }, [])
-
-  const liveCount = vipMatches.filter(m => m.status === 'live').length
 
   return (
     <>
-      <section ref={ref} id="vip" className="section-pad relative overflow-hidden">
-        {/* Background ambient */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-[min(500px,80vw)] h-[400px] bg-gold/[0.04] rounded-full blur-[140px]" />
-          <div className="absolute bottom-1/4 right-1/4 w-[min(400px,70vw)] h-[350px] bg-success/[0.04] rounded-full blur-[120px]" />
-        </div>
-        <FloatingParticles count={10} />
-
-        <div className="max-w-5xl mx-auto relative">
-          {/* Header */}
+      <section ref={ref} id="vip" className="vip-refresh" aria-labelledby="vip-title">
+        <div className="vip-refresh__inner">
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            className="vip-refresh__header"
+            initial={{ opacity: 0, y: 12 }}
             animate={isVisible ? { opacity: 1, y: 0 } : undefined}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-8"
+            transition={{ duration: 0.4 }}
           >
-            <div className="flex justify-center mb-2">
-              <CrownIcon size={48} />
-            </div>
-            <span className="eyebrow">Zone Premium</span>
-            <h2 className="section-title mt-3 mb-3">
-              Pronostics <span className="text-gold">VIP</span> Experts
-            </h2>
-            <p className="section-subtitle max-w-2xl mx-auto">
-              Fixtures du jour affichées à partir du feed public. Les marchés restent verrouillés.
-              Les cotes et le taux de réussite ne sont pas publiés sans source vérifiée.
-            </p>
+            <div className="vip-refresh__eyebrow"><span aria-hidden="true">◆</span> Accès premium</div>
+            <h2 id="vip-title">Le combiné VIP du jour.</h2>
+            <p>Les fixtures sont visibles. Les marchés et sélections restent verrouillés jusqu’à l’activation.</p>
           </motion.div>
 
-          {/* ═══ VIP Coupon Card — Premium design ═══ */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : undefined}
-            transition={{ duration: 0.6 }}
-            className="squircle-xl overflow-hidden"
-          >
-            {/* Top gold accent line */}
-            <div className="h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent" />
-
-            {/* Header with football logo + title */}
-            <div
-              className="relative p-5 sm:p-6 border-b border-edge"
-              style={{
-                background: 'linear-gradient(135deg, rgba(242, 201, 76, 0.08) 0%, transparent 60%)',
-              }}
+          <div className="vip-refresh__layout">
+            <motion.div
+              className="vip-refresh__card"
+              initial={{ opacity: 0, y: 16 }}
+              animate={isVisible ? { opacity: 1, y: 0 } : undefined}
+              transition={{ duration: 0.45, delay: 0.08 }}
             >
-              <div className="flex items-center justify-between gap-3">
-                <div className="flex items-center gap-3 min-w-0">
-                  {/* Big football logo */}
-                  <div className="w-16 h-16 rounded-2xl bg-midnight/60 border border-gold/30 flex items-center justify-center overflow-hidden flex-shrink-0">
-                    <img src="/logos/sport-football.svg" alt="Football" className="w-12 h-12 object-contain" loading="lazy" />
-                  </div>
-                  <div className="min-w-0">
-                    <span className="text-[10px] text-gold-light uppercase tracking-widest font-bold">Combiné VIP du jour</span>
-                    <h3 className="text-xl sm:text-2xl font-bold text-white leading-tight mt-0.5">
-                      Sélections <span className="text-gold">verrouillées</span>
-                    </h3>
-                    <p className="text-[10px] text-gray-500 mt-1 truncate">
-                      Fixtures ESPN · marchés masqués · aucune cote publiée
-                    </p>
-                  </div>
-                </div>
-
-                {/* LIVE badge */}
-                <motion.div
-                  animate={{ opacity: [1, 0.6, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                  className="flex items-center gap-1.5 bg-success/10 border border-success/30 rounded-full px-2.5 py-1"
-                >
-                  <span className="v31-ticker-dot live" />
-                  <span className="text-[10px] live-text">Live</span>
-                </motion.div>
-              </div>
-
-              {/* KPI row — only measured or explicitly unavailable values */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 mt-5">
-                <div className="bg-midnight/40 border border-edge rounded-lg p-2.5 text-center">
-                  <div className="text-base sm:text-lg font-bold text-white tabular-nums">{vipMatches.length || '—'}</div>
-                  <div className="text-[9px] text-gray-500 uppercase tracking-widest font-bold">Fixtures</div>
-                </div>
-                <div className="bg-midnight/40 border border-edge rounded-lg p-2.5 text-center">
-                  <div className="text-base sm:text-lg font-bold text-gold">ESPN</div>
-                  <div className="text-[9px] text-gray-500 uppercase tracking-widest font-bold">Source</div>
-                </div>
-                <div className="bg-midnight/40 border border-edge rounded-lg p-2.5 text-center">
-                  <div className="text-base sm:text-lg font-bold text-success">Masqués</div>
-                  <div className="text-[9px] text-gray-500 uppercase tracking-widest font-bold">Marchés</div>
-                </div>
-                <div className="bg-midnight/40 border border-edge rounded-lg p-2.5 text-center">
-                  <div className="text-base sm:text-lg font-bold text-white">N/D</div>
-                  <div className="text-[9px] text-gray-500 uppercase tracking-widest font-bold">Taux vérifié</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Matches list — locked */}
-            <div className="p-4 sm:p-5 space-y-1.5">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Sélection du jour · {couponDate}</span>
-                {liveCount > 0 && (
-                  <span className="badge badge-cyan text-[9px]">
-                    <span className="v31-ticker-dot live" /> {liveCount} <span className="live-text">live</span>
-                  </span>
-                )}
-              </div>
-
-              {/* Locked matches */}
-              <div className="space-y-1 relative">
-                {vipMatches.length > 0 ? (
-                  vipMatches.map((m, i) => <VipMatchRow key={i} m={m} index={i} />)
-                ) : (
-                  Array.from({ length: 5 }).map((_, i) => (
-                    <div key={i} className="grid grid-cols-[44px_1fr_56px] items-center gap-2 bg-midnight/40 rounded-lg px-3 py-2 border border-edge/40 animate-pulse">
-                      <div className="w-9 h-3 bg-gold/10 rounded" />
-                      <div className="flex-1 h-3 bg-gold/10 rounded" />
-                      <div className="w-10 h-3 bg-gold/10 rounded" />
-                    </div>
-                  ))
-                )}
-
-                {/* Lock overlay */}
-                <div className="absolute inset-0 flex items-center justify-center bg-midnight/30 backdrop-blur-[1px] rounded-lg pointer-events-none">
-                  <motion.div
-                    initial={{ scale: 0.9 }}
-                    animate={{ scale: 1 }}
-                    className="bg-midnight/90 border border-gold/30 rounded-full p-3 flex flex-col items-center gap-1"
-                  >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFB800" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-                      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                    </svg>
-                    <span className="text-[10px] text-gold-light font-bold uppercase tracking-wider">VIP</span>
-                  </motion.div>
-                </div>
-              </div>
-
-              {/* CTA */}
-              <button
-                onClick={() => setShowVipModal(true)}
-                className="w-full flex items-center justify-center gap-2 mt-4 px-4 py-3 btn-gold cta-glow text-[#1A1206] text-sm font-bold rounded-xl"
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-                  <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                </svg>
-                Débloquer le combiné VIP
-              </button>
-              <p className="text-[10px] text-gray-500 text-center mt-2">
-                L’accès est enregistré localement dans ce navigateur après la procédure d’activation.
-              </p>
-            </div>
-          </motion.div>
-
-          {/* ═══ BONUS CARD — Side panel with promo code + bookmakers ═══ */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : undefined}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="squircle-xl overflow-hidden mt-4 sm:mt-6"
-          >
-            <div className="h-[2px] bg-gradient-to-r from-transparent via-success to-transparent" />
-
-            <div className="relative p-5 sm:p-6"
-              style={{
-                background: 'linear-gradient(135deg, rgba(29, 185, 84, 0.06) 0%, transparent 60%)',
-              }}
-            >
-              <div className="grid sm:grid-cols-[1fr_auto] gap-5 items-center">
-                {/* Left — bonus info */}
+              <div className="vip-refresh__card-head">
                 <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-success/15 to-success/5 border border-success/25 rounded-xl flex items-center justify-center text-success">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                        <rect x="3" y="8" width="18" height="4" rx="1" />
-                        <path d="M12 8v13" />
-                        <path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7" />
-                        <path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold text-white">Bonus Exclusif</h3>
-                      <p className="text-[10px] text-success-light uppercase tracking-widest font-bold">Code promo bookmakers</p>
-                    </div>
-                  </div>
-
-                  {/* Promo code big display */}
-                  <div className="bg-midnight/60 border border-edge rounded-xl p-4 mb-4 relative overflow-hidden">
-                    <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
-                    <div className="text-[10px] text-gray-500 uppercase tracking-widest font-bold mb-1">Code promo exclusif</div>
-                    <div className="text-2xl font-black tracking-[0.2em] promo-code-shimmer">{SITE.promoCode}</div>
-                    <div className="text-[10px] text-gray-500 mt-1">Conditions, dépôt et disponibilité du bonus à vérifier auprès du partenaire</div>
-                  </div>
+                  <span className="vip-refresh__label">SÉLECTIONS DU JOUR</span>
+                  <h3>Combiné VIP <span>· {formatDay(todayISO())}</span></h3>
                 </div>
-
-                {/* Right — bookmaker CTAs */}
-                <div className="space-y-2 min-w-[260px]">
-                  <PremiumButton variant="linebet" href={AFFILIATE.linebet} fullWidth size="md">
-                    Ouvrir Linebet →
-                  </PremiumButton>
-                  <PremiumButton variant="star888" href={AFFILIATE.star888} fullWidth size="md">
-                    Ouvrir 888starz →
-                  </PremiumButton>
-
-                  {/* Download APK buttons */}
-                  <div className="grid grid-cols-2 gap-2 pt-1">
-                    <DownloadButton href={AFFILIATE.linebetDownload} size="sm" fullWidth>
-                      APK Linebet
-                    </DownloadButton>
-                    <DownloadButton href={AFFILIATE.star888Download} size="sm" fullWidth>
-                      APK 888starz
-                    </DownloadButton>
-                  </div>
-                </div>
+                <span className="vip-refresh__status"><i /> Verrouillé</span>
               </div>
 
-              {/* Features grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-5 pt-5 border-t border-edge">
-                {[
-                  { label: 'Conditions à vérifier', icon: 'ℹ' },
-                  { label: 'Dépôt selon partenaire', icon: '↔' },
-                  { label: 'Lien affilié', icon: '↗' },
-                  { label: 'Jeu responsable', icon: '18+' },
-                ].map((f, i) => (
-                  <div key={i} className="flex items-center gap-2 bg-midnight/40 rounded-lg px-3 py-2 border border-edge">
-                    <span className="text-base">{f.icon}</span>
-                    <span className="text-[11px] text-gray-300 font-medium">{f.label}</span>
-                  </div>
-                ))}
+              <div className="vip-refresh__list">
+                {vipMatches.length > 0 ? vipMatches.map((match) => <MatchRow key={`${match.match}-${match.date}`} match={match} />) : (
+                  <div className="vip-refresh__empty">Les fixtures du jour sont en cours de récupération.</div>
+                )}
               </div>
-            </div>
-          </motion.div>
+
+              <div className="vip-refresh__card-foot">
+                <span>Marché principal masqué</span>
+                <span>Source : fixtures publiques</span>
+              </div>
+              <button type="button" className="vip-refresh__unlock" onClick={() => setShowVipModal(true)}>
+                Débloquer le combiné VIP <span aria-hidden="true">→</span>
+              </button>
+              <p className="vip-refresh__fineprint">L’activation est enregistrée localement dans ce navigateur après la procédure.</p>
+            </motion.div>
+
+            <motion.aside
+              className="vip-refresh__partner"
+              initial={{ opacity: 0, y: 16 }}
+              animate={isVisible ? { opacity: 1, y: 0 } : undefined}
+              transition={{ duration: 0.45, delay: 0.16 }}
+              aria-label="Codes et liens partenaires"
+            >
+              <span className="vip-refresh__label">LIEN PARTENAIRE</span>
+              <h3>Un code, des conditions à vérifier.</h3>
+              <p>Le code est fourni à titre informatif. Les conditions d’offre, de dépôt et d’éligibilité appartiennent au bookmaker.</p>
+              <div className="vip-refresh__code-row">
+                <CopyableCode code={SITE.promoCode} displayClassName="vip-refresh__code" />
+                <span>Copier</span>
+              </div>
+              <div className="vip-refresh__partner-actions">
+                <PremiumButton variant="linebet" href={AFFILIATE.linebet} fullWidth size="sm">Ouvrir Linebet</PremiumButton>
+                <PremiumButton variant="star888" href={AFFILIATE.star888} fullWidth size="sm">Ouvrir 888starz</PremiumButton>
+              </div>
+              <small>18+ · Jouez de manière responsable · Liens affiliés</small>
+            </motion.aside>
+          </div>
         </div>
       </section>
 

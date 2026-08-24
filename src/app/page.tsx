@@ -3,13 +3,9 @@
 import {
   Navbar,
   Hero,
-  LiveTicker,
   HowItWorks,
-  About,
   FreePredictions,
   PromoVip,
-  VipSports,
-  WinHistory,
   Footer,
   CookieConsent,
   ScrollProgressBar,
@@ -137,19 +133,13 @@ export default function Home() {
       {/* Scroll Progress Bar */}
       <ScrollProgressBar />
 
-      {/* Main Content — ordre optimisé pour conversion (CRO brief section 5.11)
-          Hero → Pronostics gratuits → Historique/Preuve → Coupon VIP → Multi-Sports →
-          Value Bets → Aviator → Méthode IA → À propos → Témoignages (Footer) → FAQ (Footer) */}
+      {/* Parcours principal : proposition de valeur → pronostics → VIP → méthode → liens utiles. */}
       <main id="main-content" className="relative z-10">
         <ErrorBoundary><Navbar /></ErrorBoundary>
         <ErrorBoundary><Hero /></ErrorBoundary>
-        <ErrorBoundary><LiveTicker /></ErrorBoundary>
         <ErrorBoundary><FreePredictions /></ErrorBoundary>
-        <ErrorBoundary><WinHistory /></ErrorBoundary>
         <ErrorBoundary><PromoVip /></ErrorBoundary>
-        <ErrorBoundary><VipSports /></ErrorBoundary>
         <ErrorBoundary><HowItWorks /></ErrorBoundary>
-        <ErrorBoundary><About /></ErrorBoundary>
         <ErrorBoundary><Footer /></ErrorBoundary>
       </main>
 
