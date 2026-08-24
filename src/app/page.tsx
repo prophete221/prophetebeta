@@ -4,11 +4,11 @@ import { CookieConsent, Footer, Navbar } from '@/components/bttsbet'
 import LinebetLanding from '@/components/bttsbet/LinebetLanding'
 
 export const metadata: Metadata = {
-  title: 'Code promo Linebet Afrique VISION221 | BttsBet',
-  description: 'Guide clair du code promo Linebet Afrique VISION221 : inscription, utilisation du code, vérification des conditions et accès au lien partenaire.',
+  title: 'Meilleur code promo Linebet Afrique : VISION221 | BttsBet',
+  description: 'Découvrez notre sélection du code promo Linebet Afrique VISION221 : inscription, utilisation du code, vérification des conditions et accès au lien partenaire.',
   alternates: { canonical: 'https://bttsbet.online/' },
   openGraph: {
-    title: 'Code promo Linebet Afrique VISION221',
+    title: 'Meilleur code promo Linebet Afrique : VISION221',
     description: 'Le guide BttsBet pour comprendre et utiliser le code partenaire Linebet VISION221, avec conditions à vérifier selon votre pays.',
     url: 'https://bttsbet.online/',
     siteName: 'BttsBet',
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Code promo Linebet Afrique VISION221',
+    title: 'Meilleur code promo Linebet Afrique : VISION221',
     description: 'Guide d’inscription et conditions à vérifier pour le code partenaire Linebet VISION221.',
     images: ['/og-linebet.svg'],
   },

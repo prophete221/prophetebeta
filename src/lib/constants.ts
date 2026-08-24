@@ -19,6 +19,7 @@ export const NAV_LINKS = [
   { label: 'Inscription', href: '/linebet-inscription' },
   { label: 'Afrique', href: '/linebet-afrique' },
   { label: '888starz', href: '/code-promo-888starz' },
+  { label: 'Applications', href: '/#applications' },
   { label: 'FAQ', href: '/#faq' },
 ] as const
 
