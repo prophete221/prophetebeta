@@ -9,5 +9,82 @@ function reopenCookieSettings() {
 }
 
 export default function Footer() {
-  return <><div className="linebet-mobile-cta sm:hidden"><div className="linebet-mobile-code"><span>Code</span><CopyableCode code={SITE.promoCode} displayClassName="text-[#35f17f]" /></div><a href={AFFILIATE.linebet} target="_blank" rel={AFFILIATE.rel} className="flex min-h-11 flex-1 items-center justify-center gap-2 rounded-lg bg-[#19d66b] px-3 text-xs font-extrabold text-[#031b0d]"><img src="/logos/linebet-icon.svg" alt="" className="h-4 w-4 rounded" /> Ouvrir Linebet <span aria-hidden="true">↗</span></a></div><footer className="border-t border-white/10 bg-[#030504] px-5 pb-10 pt-14 sm:px-8"><div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[1.1fr_.8fr_.9fr]"><div><a href="/" className="text-lg font-black tracking-tight text-white">{SITE.name}<span className="text-[#35f17f]">/LINEBET</span></a><p className="mt-4 max-w-sm text-sm leading-6 text-[#84928d]">Guide indépendant des codes partenaires Linebet Afrique <strong className="text-[#cfe0d8]">VISION221</strong> et 888starz <strong className="text-[#dcb5c1]">btts221</strong>.</p><div className="mt-5 flex flex-wrap items-center gap-3"><div className="rounded-lg border border-[#35f17f]/20 bg-[#35f17f]/[.06] px-3 py-2 text-xs font-black text-[#35f17f]"><CopyableCode code={SITE.promoCode} displayClassName="text-[#35f17f]" /></div><a href={AFFILIATE.linebet} target="_blank" rel={AFFILIATE.rel} className="inline-flex items-center gap-2 text-sm font-bold text-[#35f17f] hover:text-white">Ouvrir Linebet <span aria-hidden="true">↗</span></a></div></div><div><h2 className="text-xs font-extrabold uppercase tracking-[.18em] text-white">Parcours</h2><div className="mt-4 grid gap-3 text-sm text-[#84928d]"><a href="/code-promo-linebet" className="hover:text-[#35f17f]">Meilleur code Linebet Afrique</a><a href="/linebet-inscription" className="hover:text-[#35f17f]">Inscription Linebet</a><a href="/#applications" className="hover:text-[#35f17f]">Télécharger une application</a><a href="/code-promo-888starz" className="hover:text-[#ffd4df]">Code 888starz btts221</a><a href="/ar/code-promo-888starz" className="hover:text-[#ffd4df]">الدليل العربي 888starz</a></div></div><div><h2 className="text-xs font-extrabold uppercase tracking-[.18em] text-white">Confiance</h2><div className="mt-4 grid gap-3 text-sm text-[#84928d]"><a href="/linebet-afrique" className="hover:text-[#35f17f]">Linebet en Afrique</a><a href="/#faq" className="hover:text-[#35f17f]">Questions fréquentes</a><a href="/mentions-legales" className="hover:text-[#35f17f]">Mentions légales</a><a href="/politique-confidentialite" className="hover:text-[#35f17f]">Confidentialité</a><a href="/jouer-responsable" className="hover:text-[#35f17f]">Jouer responsable</a><a href="/cgu" className="hover:text-[#35f17f]">CGU</a><button type="button" onClick={reopenCookieSettings} className="text-left hover:text-[#35f17f]">Paramètres cookies</button></div></div></div><div className="mx-auto mt-12 max-w-6xl border-t border-white/10 pt-6 text-xs leading-6 text-[#66736e]"><p><strong className="text-[#a8b5b0]">Affiliation :</strong> BttsBet peut recevoir une commission si vous utilisez un lien partenaire. Nous ne sommes ni Linebet ni 888starz, ne gérons aucun compte et ne collectons aucun dépôt.</p><p className="mt-2">{LEGAL.disclaimer} {LEGAL.responsible}</p><p className="mt-4 text-[#4e5a55]">{LEGAL.copyright}</p></div></footer></>
+  return (
+    <>
+      <div className="linebet-mobile-cta sm:hidden">
+        <div className="linebet-mobile-code">
+          <span>Code</span>
+          <CopyableCode code={SITE.promoCode} displayClassName="text-[#35f17f]" />
+        </div>
+        <a
+          href={AFFILIATE.linebet}
+          target="_blank"
+          rel={AFFILIATE.rel}
+          className="flex min-h-11 flex-1 items-center justify-center gap-2 rounded-xl bg-gradient-to-b from-[#31ef80] to-[#19d66b] px-3 text-xs font-extrabold text-[#031b0d] shadow-[0_6px_20px_rgba(25,214,107,.25)]"
+        >
+          <img src="/logos/linebet-icon.svg" alt="" className="h-4 w-4 rounded" />
+          Ouvrir Linebet
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+      <footer className="border-t border-white/10 bg-[#030504] px-5 pb-12 pt-16 sm:px-8">
+        <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-[1.2fr_.75fr_.9fr]">
+          <div>
+            <a href="/" className="text-lg font-black tracking-tight text-white">
+              {SITE.name}
+              <span className="text-[#35f17f]">/PREMIUM</span>
+            </a>
+            <p className="mt-4 max-w-sm text-sm leading-6 text-[#84928d]">
+              Plateforme premium du <strong className="text-[#cfe0d8]">meilleur code promo Linebet Afrique VISION221</strong> et freebets. Aussi code 888starz <strong className="text-[#dcb5c1]">btts221</strong>.
+            </p>
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <div className="rounded-xl border border-[#35f17f]/25 bg-[#35f17f]/[.08] px-3.5 py-2.5 text-xs font-black text-[#35f17f] shadow-[0_0_16px_rgba(53,241,127,.1)]">
+                <CopyableCode code={SITE.promoCode} displayClassName="text-[#35f17f]" />
+              </div>
+              <a href={AFFILIATE.linebet} target="_blank" rel={AFFILIATE.rel} className="inline-flex items-center gap-2 text-sm font-bold text-[#35f17f] transition hover:text-white">
+                Ouvrir Linebet <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h2 className="text-[11px] font-extrabold uppercase tracking-[.2em] text-white">Parcours</h2>
+            <div className="mt-5 grid gap-3.5 text-sm text-[#84928d]">
+              <a href="/code-promo-linebet" className="transition hover:text-[#35f17f]">Meilleur code Linebet Afrique</a>
+              <a href="/linebet-inscription" className="transition hover:text-[#35f17f]">Inscription Linebet</a>
+              <a href="/#applications" className="transition hover:text-[#35f17f]">Télécharger une application</a>
+              <a href="/code-promo-888starz" className="transition hover:text-[#ffd4df]">Code 888starz btts221</a>
+              <a href="/ar/code-promo-888starz" className="transition hover:text-[#ffd4df]">الدليل العربي 888starz</a>
+            </div>
+          </div>
+
+          <div>
+            <h2 className="text-[11px] font-extrabold uppercase tracking-[.2em] text-white">Confiance</h2>
+            <div className="mt-5 grid gap-3.5 text-sm text-[#84928d]">
+              <a href="/linebet-afrique" className="transition hover:text-[#35f17f]">Linebet en Afrique</a>
+              <a href="/#faq" className="transition hover:text-[#35f17f]">Questions fréquentes</a>
+              <a href="/mentions-legales" className="transition hover:text-[#35f17f]">Mentions légales</a>
+              <a href="/politique-confidentialite" className="transition hover:text-[#35f17f]">Confidentialité</a>
+              <a href="/jouer-responsable" className="transition hover:text-[#35f17f]">Jouer responsable</a>
+              <a href="/cgu" className="transition hover:text-[#35f17f]">CGU</a>
+              <button type="button" onClick={reopenCookieSettings} className="text-left transition hover:text-[#35f17f]">
+                Paramètres cookies
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className="mx-auto mt-14 max-w-6xl border-t border-white/10 pt-7 text-xs leading-6 text-[#66736e]">
+          <p>
+            <strong className="text-[#a8b5b0]">Affiliation :</strong> BttsBet peut recevoir une commission si vous utilisez un lien partenaire. Nous ne sommes ni Linebet ni 888starz, ne gérons aucun compte et ne collectons aucun dépôt.
+          </p>
+          <p className="mt-2">
+            {LEGAL.disclaimer} {LEGAL.responsible}
+          </p>
+          <p className="mt-5 text-[#4e5a55]">{LEGAL.copyright}</p>
+        </div>
+      </footer>
+    </>
+  )
 }
