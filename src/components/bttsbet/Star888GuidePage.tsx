@@ -38,7 +38,7 @@ export default function Star888GuidePage() {
                 rel={AFFILIATE.rel}
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#f5a3bd] px-5 py-3.5 text-sm font-extrabold text-[#270914] shadow-[0_12px_32px_rgba(245,163,189,.2)] transition hover:bg-[#ffd4df] active:scale-[.98]"
               >
-                <img src="/logos/888starz-icon.svg" alt="" className="h-5 w-5 object-contain" />
+                <img src="/logos/888starz-icon.png" alt="" className="h-5 w-5 object-contain" />
                 Ouvrir 888starz
                 <span aria-hidden="true">↗</span>
               </a>
