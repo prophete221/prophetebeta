@@ -1465,3 +1465,7 @@ code {
 .linebet-mobile-cta { position: fixed; right: 0; bottom: 0; left: 0; z-index: 40; display: flex; gap: .5rem; border-top: 1px solid rgba(53,241,127,.18); background: rgba(5,7,6,.95); padding: .6rem .75rem calc(.6rem + env(safe-area-inset-bottom)); backdrop-filter: blur(16px); }
 @media (min-width: 640px) { .linebet-code-card { padding: 1.75rem; } .linebet-editorial-card, .linebet-final-cta { padding: 2rem; } }
 @media (prefers-reduced-motion: reduce) { .linebet-step-card, .linebet-region-card, .linebet-nav-link { transition: none; } .linebet-step-card:hover, .linebet-region-card:hover { transform: none; } }
+
+.linebet-secondary-card { border: 1px solid rgba(245,163,189,.22); border-radius: 1.2rem; background: linear-gradient(135deg, rgba(50,20,31,.52), rgba(12,13,12,.9)); padding: 1.25rem; box-shadow: 0 18px 55px rgba(0,0,0,.2); }
+.linebet-partner-logo { display: inline-flex; height: 3rem; width: 3rem; align-items: center; justify-content: center; border: 1px solid rgba(245,163,189,.3); border-radius: .85rem; background: rgba(245,163,189,.08); }
+@media (min-width: 640px) { .linebet-secondary-card { padding: 1.75rem; } }

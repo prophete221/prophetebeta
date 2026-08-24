@@ -43,7 +43,7 @@ const jsonLd = {
       logo: `${SITE.url}/favicon.svg`,
       description: 'Site indépendant d’information et d’affiliation consacré au code partenaire Linebet VISION221.',
       areaServed: 'Africa',
-      knowsAbout: ['code promo Linebet', 'inscription Linebet', 'Linebet Afrique'],
+      knowsAbout: ['code promo Linebet', 'inscription Linebet', 'Linebet Afrique', 'code promo 888starz', '888starz btts221'],
     },
     {
       '@type': 'FAQPage',
