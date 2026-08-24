@@ -19,6 +19,9 @@
   RewriteCond %{REQUEST_FILENAME}/../%{REQUEST_URI}.html -f
   RewriteRule ^(.+)/$ /$1.html [L]
 
+  # Preserve the public VIP entry point: VIP is an anchor on the home page in this static app.
+  RewriteRule ^vip/?$ /#vip [R=301,L,NE]
+
   # 4) No SPA fallback: unknown clean URLs must remain HTTP 404.
 </IfModule>
 
