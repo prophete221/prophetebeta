@@ -80,7 +80,7 @@ jobs:
 
       - name: Deploy to server via FTP
         if: github.event_name != 'pull_request'
-        uses: SamKirkland/FTP-Deploy-Action@4.4.0
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
