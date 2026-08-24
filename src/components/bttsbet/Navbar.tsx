@@ -9,7 +9,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20)
+    const handleScroll = () => setScrolled(window.scrollY > 16)
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -24,11 +24,10 @@ export default function Navbar() {
       <nav aria-label="Navigation principale" className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3.5 sm:px-8">
         <a href="/" className="flex min-w-0 items-center gap-2.5" onClick={() => setOpen(false)} aria-label="BttsBet, accueil">
           <span className="linebet-brand-mark">
-            <img src="/logos/linebet-icon.png" alt="" className="h-5 w-5" />
+            <img src="/logos/linebet-icon.png" alt="" className="h-5 w-5 rounded object-cover" />
           </span>
           <span className="truncate text-base font-black tracking-tight text-white">
-            {SITE.name}
-            <span className="text-[#4ade80]">/PREMIUM</span>
+            {SITE.name}<span className="text-[#4ade80]">/PRO</span>
           </span>
         </a>
 
@@ -39,17 +38,12 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-2">
-          <div className="hidden rounded-xl border border-[#4ade80]/25 bg-[#4ade80]/[.08] px-3 py-1.5 text-xs font-black text-[#4ade80] shadow-[0_0_20px_rgba(53,241,127,.12)] sm:block">
+          <div className="hidden rounded-xl border border-[#22c55e]/30 bg-[#22c55e]/[.1] px-3 py-1.5 text-xs font-black text-[#4ade80] shadow-[0_0_20px_rgba(34,197,94,.12)] sm:block">
             <CopyableCode code={SITE.promoCode} displayClassName="text-[#4ade80]" />
           </div>
-          <a
-            href={AFFILIATE.linebet}
-            target="_blank"
-            rel={AFFILIATE.rel}
-            className="hidden items-center gap-2 rounded-xl bg-gradient-to-b from-[#4ade80] to-[#22c55e] px-4 py-2.5 text-xs font-extrabold text-[#052e16] shadow-[0_8px_24px_rgba(25,214,107,.28)] transition hover:from-[#4aff95] hover:to-[#4ade80] active:scale-[.98] sm:inline-flex"
-          >
-            <img src="/logos/linebet-icon.png" alt="" className="h-4 w-4 rounded" />
-            Ouvrir Linebet
+          <a href={AFFILIATE.linebet} target="_blank" rel={AFFILIATE.rel} className="btn-platform btn-platform-green hidden !min-h-10 !px-3.5 !text-xs sm:inline-flex">
+            <img src="/logos/linebet-icon.png" alt="" className="h-4 w-4 rounded object-cover" />
+            Linebet
           </a>
           <button
             type="button"
@@ -57,7 +51,7 @@ export default function Navbar() {
             aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
             aria-expanded={open}
             aria-controls="mobile-menu"
-            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[.03] text-white lg:hidden"
+            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[.04] text-white lg:hidden"
           >
             <span className="sr-only">Menu</span>
             <span aria-hidden="true" className="text-xl leading-none">{open ? '×' : '☰'}</span>
@@ -66,31 +60,20 @@ export default function Navbar() {
       </nav>
 
       {open && (
-        <div id="mobile-menu" className="border-t border-white/10 bg-[#050706]/98 px-5 py-5 shadow-2xl backdrop-blur-2xl lg:hidden">
+        <div id="mobile-menu" className="border-t border-white/10 bg-[#030504]/98 px-5 py-5 shadow-2xl backdrop-blur-2xl lg:hidden">
           <div className="mx-auto max-w-6xl space-y-1">
             {NAV_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="block rounded-xl px-4 py-3.5 text-sm font-semibold text-[#cfdbd6] transition hover:bg-white/[.05] hover:text-white"
-              >
+              <a key={link.href} href={link.href} onClick={() => setOpen(false)} className="block rounded-xl px-4 py-3.5 text-sm font-semibold text-[#cfdbd6] transition hover:bg-white/[.05] hover:text-white">
                 {link.label}
               </a>
             ))}
             <div className="mt-4 border-t border-white/10 pt-4">
-              <div className="mb-3 flex items-center justify-between rounded-xl border border-[#4ade80]/25 bg-[#4ade80]/[.08] px-4 py-3.5 text-sm">
-                <span className="text-[#91a09b]">Code premium</span>
+              <div className="mb-3 flex items-center justify-between rounded-xl border border-[#22c55e]/30 bg-[#22c55e]/[.1] px-4 py-3.5 text-sm">
+                <span className="text-[#91a09b]">Code</span>
                 <CopyableCode code={SITE.promoCode} displayClassName="text-[#4ade80]" />
               </div>
-              <a
-                href={AFFILIATE.linebet}
-                target="_blank"
-                rel={AFFILIATE.rel}
-                onClick={() => setOpen(false)}
-                className="flex min-h-12 items-center justify-center gap-2 rounded-xl bg-gradient-to-b from-[#4ade80] to-[#22c55e] px-4 py-3.5 text-sm font-extrabold text-[#052e16] shadow-[0_8px_24px_rgba(25,214,107,.3)]"
-              >
-                <img src="/logos/linebet-icon.png" alt="" className="h-5 w-5 rounded" />
+              <a href={AFFILIATE.linebet} target="_blank" rel={AFFILIATE.rel} onClick={() => setOpen(false)} className="btn-platform btn-platform-green w-full">
+                <img src="/logos/linebet-icon.png" alt="" className="h-5 w-5 rounded object-cover" />
                 S’inscrire sur Linebet
               </a>
             </div>

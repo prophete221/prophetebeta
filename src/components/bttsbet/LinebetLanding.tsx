@@ -1,6 +1,7 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
 import { AFFILIATE, FAQ_ITEMS, SITE } from '@/lib/constants'
 import CopyableCode from './CopyableCode'
 
@@ -10,15 +11,19 @@ const steps = [
   { number: '03', title: 'Freebets', text: 'Vérifiez l’offre et les conditions Linebet.' },
 ]
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 32 },
+  show: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] },
+  }),
+}
+
 function LinebetLink({ children, className = '' }: { children: React.ReactNode; className?: string }) {
   return (
-    <a
-      href={AFFILIATE.linebet}
-      target="_blank"
-      rel={AFFILIATE.rel}
-      className={`inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-b from-[#4ade80] to-[#22c55e] px-5 py-3.5 text-sm font-extrabold text-[#052e16] shadow-[0_12px_32px_rgba(25,214,107,.25)] transition duration-200 hover:-translate-y-0.5 hover:from-[#4aff95] hover:to-[#4ade80] active:scale-[.98] ${className}`}
-    >
-      <img src="/logos/linebet-icon.png" alt="" className="h-5 w-5 rounded object-contain" />
+    <a href={AFFILIATE.linebet} target="_blank" rel={AFFILIATE.rel} className={`btn-platform btn-platform-green ${className}`}>
+      <img src="/logos/linebet-icon.png" alt="" className="h-5 w-5 rounded object-cover" />
       {children}
       <span aria-hidden="true">↗</span>
     </a>
@@ -26,34 +31,40 @@ function LinebetLink({ children, className = '' }: { children: React.ReactNode; 
 }
 
 export default function LinebetLanding() {
+  const heroRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] })
+  const heroY = useTransform(scrollYProgress, [0, 1], [0, 80])
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.35])
+
   return (
     <div className="linebet-shell">
-      <section className="linebet-hero" aria-labelledby="hero-title">
+      {/* HERO */}
+      <section ref={heroRef} className="linebet-hero" aria-labelledby="hero-title">
         <div className="linebet-grid-overlay" aria-hidden="true" />
-        <div className="mx-auto grid max-w-6xl gap-10 px-5 pb-14 pt-12 sm:px-8 sm:pb-20 sm:pt-16 lg:grid-cols-[1.08fr_.92fr] lg:items-center lg:gap-14">
-          <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .4 }}>
-            <div className="linebet-kicker"><span className="linebet-status-dot" /> CODE PROMO LINEBET AFRIQUE · PREMIUM</div>
+        <motion.div style={{ y: heroY, opacity: heroOpacity }} className="mx-auto grid max-w-6xl gap-10 px-5 pb-14 pt-12 sm:px-8 sm:pb-20 sm:pt-16 lg:grid-cols-[1.05fr_.95fr] lg:items-center lg:gap-14">
+          <motion.div initial="hidden" animate="show" variants={fadeUp} custom={0}>
+            <div className="linebet-kicker"><span className="linebet-status-dot" /> PLATEFORME PREMIUM · LINEBET AFRIQUE</div>
             <h1 id="hero-title" className="mt-4 max-w-3xl text-4xl font-black leading-[.96] tracking-[-.055em] text-white sm:text-5xl lg:text-6xl">
               Meilleur code promo Linebet Afrique : <span className="linebet-gradient-text">VISION221</span>
             </h1>
             <p className="mt-5 max-w-xl text-base leading-7 text-[#aab8b4] sm:text-lg">
-              <strong className="text-white">VISION221</strong> est le meilleur code promo Linebet Afrique. Freebets réguliers. Copiez le code et activez votre offre en quelques secondes.
+              <strong className="text-white">VISION221</strong> — freebets réguliers, inscription rapide. Copiez le code et activez en un clic.
             </p>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
               <LinebetLink>Utiliser VISION221</LinebetLink>
-              <span className="inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/[.04] px-5 py-3.5 text-sm font-bold text-white">
+              <span className="btn-platform btn-platform-ghost">
                 <CopyableCode code={SITE.promoCode} displayClassName="text-white" />
               </span>
             </div>
             <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-xs text-[#71817d]">
-              <span>18+</span><span>·</span><span>Freebets réguliers</span><span>·</span><span>Partenaire Linebet</span>
+              <span>18+</span><span>·</span><span>Freebets</span><span>·</span><span>Partenaire officiel</span>
             </div>
           </motion.div>
 
-          <motion.div id="code" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .06, duration: .45 }} className="linebet-code-card">
+          <motion.div id="code" initial="hidden" animate="show" variants={fadeUp} custom={1} className="linebet-code-card">
             <div className="flex items-start justify-between gap-4">
               <div>
-                <p className="linebet-mini-label">MEILLEUR CODE AFRIQUE</p>
+                <p className="linebet-mini-label">CODES PLATEFORME</p>
                 <h2 className="mt-1.5 text-2xl font-black tracking-tight text-white">Copier · Activer</h2>
               </div>
               <span className="linebet-secure-badge">18+</span>
@@ -62,7 +73,7 @@ export default function LinebetLanding() {
               <div className="linebet-code-row linebet-code-row-primary">
                 <div>
                   <p className="linebet-code-name">Linebet Afrique</p>
-                  <p className="linebet-code-note">Meilleur code promo · Freebets</p>
+                  <p className="linebet-code-note">Meilleur code · Freebets</p>
                 </div>
                 <div className="linebet-code-value">
                   <CopyableCode code={SITE.promoCode} displayClassName="text-[#4ade80]" />
@@ -80,41 +91,74 @@ export default function LinebetLanding() {
             </div>
             <LinebetLink className="mt-4 w-full">Activer VISION221</LinebetLink>
           </motion.div>
-        </div>
+        </motion.div>
       </section>
 
+      {/* TRUST */}
       <section className="linebet-trust-strip" aria-label="Points clés">
         <div className="mx-auto grid max-w-6xl gap-4 px-5 py-5 sm:grid-cols-3 sm:px-8">
-          <div><span className="linebet-trust-icon">01</span><strong>Meilleur code Afrique</strong><p>VISION221 mis en avant.</p></div>
-          <div><span className="linebet-trust-icon">02</span><strong>Freebets réguliers</strong><p>Via le parcours partenaire.</p></div>
-          <div><span className="linebet-trust-icon">03</span><strong>Conditions claires</strong><p>Toujours vérifiées sur Linebet.</p></div>
-        </div>
-      </section>
-
-      <section id="comment-ca-marche" className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-20" aria-labelledby="steps-title">
-        <div className="max-w-xl">
-          <p className="linebet-kicker">3 ÉTAPES</p>
-          <h2 id="steps-title" className="mt-2 text-3xl font-black tracking-[-.04em] text-white sm:text-4xl">Comment activer le meilleur code</h2>
-        </div>
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
-          {steps.map((step) => (
-            <article key={step.number} className="linebet-step-card">
-              <span className="linebet-step-number">{step.number}</span>
-              <h3 className="mt-6 text-lg font-extrabold text-white">{step.title}</h3>
-              <p className="mt-2 text-sm leading-6 text-[#91a09b]">{step.text}</p>
-            </article>
+          {[
+            { n: '01', t: 'Meilleur code Afrique', d: 'VISION221 mis en avant.' },
+            { n: '02', t: 'Freebets réguliers', d: 'Via le parcours partenaire.' },
+            { n: '03', t: 'Conditions claires', d: 'Toujours vérifiées sur Linebet.' },
+          ].map((item) => (
+            <div key={item.n} className="flex gap-3">
+              <span className="linebet-trust-icon">{item.n}</span>
+              <div>
+                <strong>{item.t}</strong>
+                <p>{item.d}</p>
+              </div>
+            </div>
           ))}
         </div>
       </section>
 
+      {/* STEPS — scroll reveal */}
+      <section id="comment-ca-marche" className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-20" aria-labelledby="steps-title">
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-80px' }}
+          variants={fadeUp}
+          className="max-w-xl"
+        >
+          <p className="linebet-kicker">3 ÉTAPES</p>
+          <h2 id="steps-title" className="mt-2 text-3xl font-black tracking-[-.04em] text-white sm:text-4xl">Comment activer le meilleur code</h2>
+        </motion.div>
+        <div className="mt-8 grid gap-4 md:grid-cols-3">
+          {steps.map((step, i) => (
+            <motion.article
+              key={step.number}
+              className="linebet-step-card platform-card-3d"
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: '-40px' }}
+              variants={fadeUp}
+              custom={i}
+            >
+              <span className="linebet-step-number">{step.number}</span>
+              <h3 className="mt-6 text-lg font-extrabold text-white">{step.title}</h3>
+              <p className="mt-2 text-sm leading-6 text-[#91a09b]">{step.text}</p>
+            </motion.article>
+          ))}
+        </div>
+      </section>
+
+      {/* APPS */}
       <section id="applications" className="mx-auto max-w-6xl px-5 pb-14 sm:px-8 sm:pb-20" aria-labelledby="apps-title">
-        <div className="linebet-apps-panel">
+        <motion.div
+          className="linebet-apps-panel"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-60px' }}
+          variants={fadeUp}
+        >
           <p className="linebet-kicker">APPLICATIONS</p>
           <h2 id="apps-title" className="mt-2 text-2xl font-black tracking-[-.03em] text-white sm:text-3xl">Télécharger</h2>
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
-            <a href={AFFILIATE.linebetDownload} target="_blank" rel={AFFILIATE.rel} className="linebet-app-card linebet-app-linebet">
+            <a href={AFFILIATE.linebetDownload} target="_blank" rel={AFFILIATE.rel} className="linebet-app-card linebet-app-linebet platform-card-3d">
               <div className="flex items-center gap-3">
-                <span className="linebet-app-icon"><img src="/logos/linebet-icon.png" alt="" className="h-7 w-7 rounded object-contain" /></span>
+                <span className="linebet-app-icon"><img src="/logos/linebet-icon.png" alt="Linebet" className="h-full w-full object-cover" /></span>
                 <div>
                   <p className="text-xs font-black uppercase tracking-[.12em] text-[#7f938b]">App</p>
                   <h3 className="mt-0.5 text-lg font-extrabold text-white">Linebet</h3>
@@ -125,9 +169,9 @@ export default function LinebetLanding() {
                 <span className="text-[#4ade80]">↗</span>
               </div>
             </a>
-            <a href={AFFILIATE.star888Download} target="_blank" rel={AFFILIATE.rel} className="linebet-app-card linebet-app-888">
+            <a href={AFFILIATE.star888Download} target="_blank" rel={AFFILIATE.rel} className="linebet-app-card linebet-app-888 platform-card-3d platform-card-3d-red">
               <div className="flex items-center gap-3">
-                <span className="linebet-app-icon"><img src="/logos/888starz-icon.png" alt="" className="h-7 w-7 object-contain" /></span>
+                <span className="linebet-app-icon"><img src="/logos/888starz-icon.png" alt="888starz" className="h-full w-full object-cover" /></span>
                 <div>
                   <p className="text-xs font-black uppercase tracking-[.12em] text-[#b98898]">App</p>
                   <h3 className="mt-0.5 text-lg font-extrabold text-white">888starz</h3>
@@ -139,54 +183,79 @@ export default function LinebetLanding() {
               </div>
             </a>
           </div>
-        </div>
+        </motion.div>
       </section>
 
+      {/* 888 */}
       <section id="partenaires" className="mx-auto max-w-6xl px-5 pb-14 sm:px-8 sm:pb-20">
-        <div className="linebet-secondary-card">
+        <motion.div
+          className="linebet-secondary-card platform-card-3d platform-card-3d-red"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-60px' }}
+          variants={fadeUp}
+        >
           <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-3">
-              <span className="linebet-partner-logo"><img src="/logos/888starz-icon.png" alt="" className="h-8 w-8 object-contain" /></span>
+              <span className="linebet-partner-logo"><img src="/logos/888starz-icon.png" alt="888starz" className="h-full w-full object-cover" /></span>
               <div>
-                <p className="linebet-kicker" style={{ color: '#fda4af' }}>888STARZ</p>
+                <p className="linebet-kicker" style={{ color: '#fb7185' }}>888STARZ</p>
                 <h2 className="mt-0.5 text-xl font-black text-white">Code <span className="text-[#fb7185]">btts221</span></h2>
               </div>
             </div>
             <div className="flex flex-wrap items-center gap-3">
-              <div className="rounded-lg border border-[#e11d48]/25 bg-black/20 px-4 py-2">
+              <div className="rounded-xl border border-[#e11d48]/35 bg-black/30 px-4 py-2.5">
                 <CopyableCode code="btts221" displayClassName="text-[#fb7185]" />
               </div>
-              <a href={AFFILIATE.star888} target="_blank" rel={AFFILIATE.rel} className="inline-flex items-center gap-2 rounded-xl border border-[#e11d48]/35 bg-[#e11d48]/10 px-4 py-2.5 text-sm font-extrabold text-[#fb7185] transition hover:bg-[#e11d48]/15">
+              <a href={AFFILIATE.star888} target="_blank" rel={AFFILIATE.rel} className="btn-platform btn-platform-red text-sm !min-h-11 !px-4">
                 Voir 888starz ↗
               </a>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
+      {/* FAQ */}
       <section id="faq" className="linebet-faq-section" aria-labelledby="faq-title">
         <div className="mx-auto max-w-3xl px-5 py-14 sm:px-8 sm:py-20">
-          <p className="linebet-kicker">FAQ</p>
-          <h2 id="faq-title" className="mt-2 text-3xl font-black tracking-[-.04em] text-white sm:text-4xl">Questions</h2>
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}>
+            <p className="linebet-kicker">FAQ</p>
+            <h2 id="faq-title" className="mt-2 text-3xl font-black tracking-[-.04em] text-white sm:text-4xl">Questions</h2>
+          </motion.div>
           <div className="mt-7 space-y-3">
-            {FAQ_ITEMS.map((item) => (
-              <details key={item.q} className="linebet-faq-item">
+            {FAQ_ITEMS.map((item, i) => (
+              <motion.details
+                key={item.q}
+                className="linebet-faq-item"
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, margin: '-20px' }}
+                variants={fadeUp}
+                custom={i * 0.5}
+              >
                 <summary>{item.q}<span aria-hidden="true">+</span></summary>
                 <p>{item.a}</p>
-              </details>
+              </motion.details>
             ))}
           </div>
         </div>
       </section>
 
+      {/* FINAL */}
       <section className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-20">
-        <div className="linebet-final-cta text-center">
+        <motion.div
+          className="linebet-final-cta text-center platform-card-3d"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          variants={fadeUp}
+        >
           <p className="linebet-kicker">PRÊT ?</p>
           <h2 className="mt-2 text-3xl font-black tracking-[-.04em] text-white sm:text-4xl">
             Activez le meilleur code <span className="text-[#4ade80]">VISION221</span>
           </h2>
           <LinebetLink className="mt-6">Accéder à Linebet</LinebetLink>
-        </div>
+        </motion.div>
       </section>
     </div>
   )
