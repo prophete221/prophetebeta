@@ -57,11 +57,13 @@ export default function LinebetLanding() {
           </motion.div>
 
           <motion.div id="code" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .08, duration: .5 }} className="linebet-code-card">
-            <div className="flex items-start justify-between gap-5"><div><p className="linebet-mini-label">CODES PROMO OFFICIELLEMENT PRÉSENTÉS</p><h2 className="mt-2 text-2xl font-black tracking-tight text-white sm:text-3xl">Copiez. Cliquez. Vérifiez.</h2></div><span className="linebet-secure-badge">18+</span></div>
-            <div className="mt-7 rounded-2xl border border-[#19d66b]/25 bg-[#031b0d]/80 px-4 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,.07)] sm:px-5"><div className="flex items-center justify-between gap-3"><div><p className="text-[10px] font-black uppercase tracking-[.18em] text-[#7f938b]">Choix principal · Linebet Afrique</p><p className="mt-2 text-xs text-[#8fa19b]">Meilleur code promo Linebet Afrique à découvrir sur BttsBet</p></div><div className="text-xl font-black tracking-[.12em] text-[#35f17f]"><CopyableCode code={SITE.promoCode} displayClassName="text-[#35f17f]" /></div></div></div>
-            <div className="mt-3 rounded-2xl border border-[#f5a3bd]/25 bg-[#260e19]/50 px-4 py-4 sm:px-5"><div className="flex items-center justify-between gap-3"><div><p className="text-[10px] font-black uppercase tracking-[.18em] text-[#b98898]">Alternative · 888starz</p><p className="mt-2 text-xs text-[#c3abb2]">Code promo 888starz à vérifier</p></div><div className="text-xl font-black tracking-[.12em] text-[#ffd4df]"><CopyableCode code="btts221" displayClassName="text-[#ffd4df]" /></div></div></div>
-            <LinebetLink className="mt-5 w-full">S’inscrire avec VISION221</LinebetLink>
-            <p className="mt-4 text-center text-[11px] leading-5 text-[#6f7d79]">Touchez « Copier », puis vérifiez les conditions directement chez le partenaire.</p>
+            <div className="flex items-start justify-between gap-4"><div><p className="linebet-mini-label">CODES PARTENAIRES</p><h2 className="mt-2 text-2xl font-black tracking-tight text-white sm:text-3xl">Un code. Un clic.</h2></div><span className="linebet-secure-badge">18+</span></div>
+            <div className="mt-6 space-y-2.5">
+              <div className="linebet-code-row linebet-code-row-primary"><div><p className="linebet-code-name">Linebet Afrique</p><p className="linebet-code-note">Notre code recommandé</p></div><div className="linebet-code-value"><CopyableCode code={SITE.promoCode} displayClassName="text-[#35f17f]" /></div></div>
+              <div className="linebet-code-row linebet-code-row-secondary"><div><p className="linebet-code-name">888starz</p><p className="linebet-code-note">Code à vérifier chez le partenaire</p></div><div className="linebet-code-value"><CopyableCode code="btts221" displayClassName="text-[#ffd4df]" /></div></div>
+            </div>
+            <LinebetLink className="mt-4 w-full">S’inscrire avec VISION221</LinebetLink>
+            <p className="mt-3 text-center text-[11px] leading-5 text-[#6f7d79]">Copiez le code, puis vérifiez les conditions chez le partenaire.</p>
           </motion.div>
         </div>
       </section>
