@@ -16,7 +16,7 @@ function LinebetLink({ children, className = '' }: { children: React.ReactNode; 
       href={AFFILIATE.linebet}
       target="_blank"
       rel={AFFILIATE.rel}
-      className={`inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-b from-[#31ef80] to-[#19d66b] px-5 py-3.5 text-sm font-extrabold text-[#031b0d] shadow-[0_12px_32px_rgba(25,214,107,.25)] transition duration-200 hover:-translate-y-0.5 hover:from-[#4aff95] hover:to-[#31ef80] active:scale-[.98] ${className}`}
+      className={`inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-b from-[#4ade80] to-[#22c55e] px-5 py-3.5 text-sm font-extrabold text-[#052e16] shadow-[0_12px_32px_rgba(25,214,107,.25)] transition duration-200 hover:-translate-y-0.5 hover:from-[#4aff95] hover:to-[#4ade80] active:scale-[.98] ${className}`}
     >
       <img src="/logos/linebet-icon.png" alt="" className="h-5 w-5 rounded object-contain" />
       {children}
@@ -65,7 +65,7 @@ export default function LinebetLanding() {
                   <p className="linebet-code-note">Meilleur code promo · Freebets</p>
                 </div>
                 <div className="linebet-code-value">
-                  <CopyableCode code={SITE.promoCode} displayClassName="text-[#35f17f]" />
+                  <CopyableCode code={SITE.promoCode} displayClassName="text-[#4ade80]" />
                 </div>
               </div>
               <div className="linebet-code-row linebet-code-row-secondary">
@@ -74,7 +74,7 @@ export default function LinebetLanding() {
                   <p className="linebet-code-note">Code secondaire</p>
                 </div>
                 <div className="linebet-code-value">
-                  <CopyableCode code="btts221" displayClassName="text-[#ffd4df]" />
+                  <CopyableCode code="btts221" displayClassName="text-[#fb7185]" />
                 </div>
               </div>
             </div>
@@ -121,8 +121,8 @@ export default function LinebetLanding() {
                 </div>
               </div>
               <div className="mt-4 flex items-center justify-between">
-                <span className="text-sm font-bold text-[#35f17f]">Télécharger</span>
-                <span className="text-[#35f17f]">↗</span>
+                <span className="text-sm font-bold text-[#4ade80]">Télécharger</span>
+                <span className="text-[#4ade80]">↗</span>
               </div>
             </a>
             <a href={AFFILIATE.star888Download} target="_blank" rel={AFFILIATE.rel} className="linebet-app-card linebet-app-888">
@@ -134,8 +134,8 @@ export default function LinebetLanding() {
                 </div>
               </div>
               <div className="mt-4 flex items-center justify-between">
-                <span className="text-sm font-bold text-[#ffd4df]">Télécharger</span>
-                <span className="text-[#ffd4df]">↗</span>
+                <span className="text-sm font-bold text-[#fb7185]">Télécharger</span>
+                <span className="text-[#fb7185]">↗</span>
               </div>
             </a>
           </div>
@@ -148,15 +148,15 @@ export default function LinebetLanding() {
             <div className="flex items-center gap-3">
               <span className="linebet-partner-logo"><img src="/logos/888starz-icon.png" alt="" className="h-8 w-8 object-contain" /></span>
               <div>
-                <p className="linebet-kicker" style={{ color: '#ffd4df' }}>888STARZ</p>
-                <h2 className="mt-0.5 text-xl font-black text-white">Code <span className="text-[#f5a3bd]">btts221</span></h2>
+                <p className="linebet-kicker" style={{ color: '#fda4af' }}>888STARZ</p>
+                <h2 className="mt-0.5 text-xl font-black text-white">Code <span className="text-[#fb7185]">btts221</span></h2>
               </div>
             </div>
             <div className="flex flex-wrap items-center gap-3">
-              <div className="rounded-lg border border-[#f5a3bd]/25 bg-black/20 px-4 py-2">
-                <CopyableCode code="btts221" displayClassName="text-[#ffd4df]" />
+              <div className="rounded-lg border border-[#e11d48]/25 bg-black/20 px-4 py-2">
+                <CopyableCode code="btts221" displayClassName="text-[#fb7185]" />
               </div>
-              <a href={AFFILIATE.star888} target="_blank" rel={AFFILIATE.rel} className="inline-flex items-center gap-2 rounded-xl border border-[#f5a3bd]/35 bg-[#f5a3bd]/10 px-4 py-2.5 text-sm font-extrabold text-[#ffd4df] transition hover:bg-[#f5a3bd]/15">
+              <a href={AFFILIATE.star888} target="_blank" rel={AFFILIATE.rel} className="inline-flex items-center gap-2 rounded-xl border border-[#e11d48]/35 bg-[#e11d48]/10 px-4 py-2.5 text-sm font-extrabold text-[#fb7185] transition hover:bg-[#e11d48]/15">
                 Voir 888starz ↗
               </a>
             </div>
@@ -183,7 +183,7 @@ export default function LinebetLanding() {
         <div className="linebet-final-cta text-center">
           <p className="linebet-kicker">PRÊT ?</p>
           <h2 className="mt-2 text-3xl font-black tracking-[-.04em] text-white sm:text-4xl">
-            Activez le meilleur code <span className="text-[#35f17f]">VISION221</span>
+            Activez le meilleur code <span className="text-[#4ade80]">VISION221</span>
           </h2>
           <LinebetLink className="mt-6">Accéder à Linebet</LinebetLink>
         </div>
