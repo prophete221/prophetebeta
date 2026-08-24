@@ -1,125 +1,74 @@
-# BttsBet
+# BttsBet — Code promo Linebet Afrique
 
-BttsBet est une plateforme statique de consultation d’estimations football **BTTS** (Both Teams To Score) et **Over 2,5**. Les pages publiques affichent la date et l’heure des fixtures, la source disponible et les limites connues du modèle. Les paris sportifs comportent un risque financier : **aucune estimation ne constitue une garantie de gain**.
+BttsBet est désormais une plateforme éditoriale indépendante consacrée au code partenaire Linebet Afrique **VISION221**. Le site ne publie plus de matchs, de pronostics, de résultats, de marchés VIP, de contenus Aviator/FIFA ou de pages 888starz. Son objectif est de présenter clairement le code, le parcours d’inscription et les points à vérifier avant toute utilisation de Linebet.
 
-Le domaine public est [bttsbet.online](https://bttsbet.online). Les liens partenaires et le code promotionnel `VISION221` sont présentés comme des informations d’affiliation ; les conditions d’inscription, de dépôt et de bonus doivent être vérifiées directement auprès du partenaire.
+Le domaine public est [bttsbet.online](https://bttsbet.online). Les liens vers Linebet sont des liens d’affiliation qualifiés `sponsored nofollow`. BttsBet n’est pas Linebet, ne gère aucun compte, ne collecte aucun dépôt et ne garantit ni bonus, ni éligibilité, ni résultat financier. Les conditions affichées par Linebet dans le pays de l’utilisateur font foi.
 
-## Stack technique
+## Stack et fonctionnement
 
 | Technologie | Usage |
 |---|---|
 | Next.js 16 | App Router et export statique |
-| React 19 | Interface utilisateur |
-| TypeScript | Composants typés et scripts d’interface |
-| Tailwind CSS 4 | Système de styles |
-| Framer Motion | Animations avec respect de la préférence de mouvement réduit |
-| Node.js | Scripts de génération et de validation des données |
-| ESPN public feed | Fixtures utilisées par le générateur actuel |
-| Prisma / SQLite | Schéma de développement uniquement ; aucun compte n’est actif en production statique |
+| React 19 | Interface interactive mobile-first |
+| TypeScript | Pages et composants typés |
+| Tailwind CSS 4 | Styles et responsive design |
+| Framer Motion | Micro-animations sobres, compatibles réduction de mouvement |
+| GitHub Actions | Build, contrôles et déploiement FTP LWS |
 
-Le build produit le dossier `out/`. L’hébergement de production est assuré par FTP sur LWS via GitHub Actions.
+Le build produit `out/`. L’hébergement de production est assuré par FTP via `.github/workflows/main.yml`. Aucun compte, aucune base de données et aucune API de cotes ne sont nécessaires.
 
-## Structure utile
+## Routes indexables
 
-```text
-src/
-├── app/
-│   ├── page.tsx                         # Accueil et données structurées
-│   ├── layout.tsx                       # Domaine canonique, SEO global et PWA
-│   ├── statistiques/                    # État des statistiques, non indexé sans résultats vérifiés
-│   ├── historique/                      # Consultation de l’historique public
-│   ├── btts-c-est-quoi/                 # Guide explicatif BTTS
-│   ├── code-promo-linebet-senegal/      # Page d’information partenaire
-│   ├── bonus-888starz/                  # Page d’information partenaire
-│   ├── prediction-aviator/              # Route conservée, non indexée
-│   ├── faille-fifa/                     # Route conservée, non indexée
-│   ├── blog/                            # Articles éditoriaux
-│   └── pages légales                    # CGU, mentions, confidentialité, jeu responsable
-├── components/bttsbet/                  # Composants actifs de l’accueil
-├── contexts/AuthContext.jsx             # Auth Firebase uniquement si configurée
-├── lib/constants.ts                     # Domaine, liens et textes centraux
-└── data/constants.js                    # Corpus historique de composants hérités
+| Route | Rôle |
+|---|---|
+| `/` | Landing premium et CTA Linebet VISION221 |
+| `/code-promo-linebet` | Page pilier du code promo Linebet Afrique |
+| `/code-promo-linebet-senegal` | Variante locale Sénégal |
+| `/linebet-inscription` | Guide d’inscription et de vérification |
+| `/linebet-afrique` | Guide régional Afrique |
+| `/jouer-responsable` | Prévention et limites |
+| `/mentions-legales` | Identité et affiliation |
+| `/politique-confidentialite` | Cookies et données techniques |
+| `/cgu` | Conditions générales |
 
-public/
-├── predictions.json                     # Feed public généré
-├── predictions-archive/                 # Archives de prédictions
-├── win-history.json                     # Résultats confirmés uniquement
-├── sitemap.xml                          # Sitemap généré
-├── robots.txt                            # Directives robots
-├── manifest.json                        # Manifest PWA
-├── .htaccess                             # Routage et cache LWS
-└── logos/                               # Logos partenaires et sports
+Les anciennes URLs de matchs, de pronostics, de VIP, de jeux et de blog sont consolidées par redirection 301 vers `/code-promo-linebet` lorsqu’elles sont encore demandées. Les autres chemins inconnus restent de vrais 404. Les règles sont dupliquées dans `public/.htaccess` et `public/_redirects` pour l’hébergement LWS et les environnements compatibles.
 
-scripts/
-├── quick-update-predictions.mjs         # Fixtures ESPN + modèle Poisson
-├── update-win-history.mjs               # Historique réservé aux scores vérifiés
-└── generate-sitemap.mjs                 # Génération du sitemap public
-```
+## Assets SEO et validation
 
-## Installation et commandes
+- `public/sitemap.xml` est généré par `node scripts/generate-sitemap.mjs` et ne contient que les pages réellement publiables.
+- `public/robots.txt` autorise l’exploration générale, exclut la page 404 et déclare le sitemap.
+- `public/og-linebet.svg` remplace l’ancien visuel Open Graph lié aux prédictions.
+- `public/googlecbd8cccd08774ec4.html` est le fichier de validation Google à la racine publique. Son contenu doit rester exactement : `google-site-verification: googlecbd8cccd08774ec4.html`.
+
+La stratégie SEO privilégie une page pilier forte, des guides complémentaires distincts et un maillage interne utile. Elle n’utilise pas de pages pays quasi identiques, de keyword stuffing, de fausses positions ou de promesses « numéro 1 ». Les liens affiliés sont clairement signalés et qualifiés.
+
+## Installation et contrôles
 
 ```bash
 npm ci --legacy-peer-deps
-npm run dev
 npm run build
-npm run start
+node scripts/verify-seo.mjs
 npm run lint
 npx tsc --noEmit
-```
-
-Les commandes Prisma sont réservées au développement local :
-
-```bash
-npm run db:generate
-npm run db:push
-npm run db:migrate
-npm run db:reset
-```
-
-Avant toute livraison, vérifier également :
-
-```bash
 git diff --check
-node scripts/quick-update-predictions.mjs
-node scripts/update-win-history.mjs
+```
+
+Le script de sitemap peut être relancé avec :
+
+```bash
 node scripts/generate-sitemap.mjs
 ```
 
-## Pipeline de données
+Le script `verify-seo.mjs` ignore uniquement les fichiers techniques sans métadonnées de page, dont le fichier de validation Google, puis contrôle les titres, descriptions et anciennes marques sur les HTML exportés.
 
-Le générateur actuel récupère les fixtures depuis le feed public ESPN, les dédoublonne, les date dans le fuseau métier `Africa/Dakar` et applique une estimation de loi de Poisson à partir de profils de ligue. Il ne revendique pas systématiquement des xG d’équipe, des blessures, une météo ou des cotes de bookmaker lorsqu’elles ne sont pas disponibles.
+## CI/CD
 
-Le feed public peut publier les marchés BTTS et Over 2,5 avec les probabilités calculées par le script. Les données manquantes restent explicitement indisponibles dans l’interface ; aucun fallback d’équipe n’est fabriqué côté client.
+Le workflow `.github/workflows/main.yml` s’exécute sur les pull requests vers `main` pour les validations sans FTP, puis sur les pushes vers `main` pour le build et le déploiement. Il vérifie également la présence du fichier Google dans `public/` et `out/`. Le transfert utilise `SamKirkland/FTP-Deploy-Action@4.3.0`.
 
-`win-history.json` n’ajoute une ligne que si une prédiction contient un score final au format valide, un résultat `Gagné` ou `Perdu` et une source de résultat. Tant qu’aucune ligne ne satisfait ces critères, les statistiques restent à zéro et l’interface l’indique clairement. Les matchs, scores et taux synthétiques ne doivent jamais être ajoutés pour améliorer artificiellement la performance affichée.
+Secrets attendus : `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD` et éventuellement `FTP_SERVER_DIR`. Aucun token GitHub ne doit être placé dans le dépôt ou dans un message.
 
-## CI/CD et déploiement
+## Transparence éditoriale
 
-Deux workflows sont actifs :
+Les expressions « meilleur code promo » ou « bonus garanti » ne sont pas utilisées comme des faits non démontrés. BttsBet peut expliquer pourquoi VISION221 est le code mis en avant sur son lien partenaire, mais seul Linebet peut confirmer l’offre, le pays éligible, les moyens de paiement, le dépôt minimum, les conditions de mise et les règles de retrait.
 
-| Workflow | Déclencheur | Rôle |
-|---|---|---|
-| `.github/workflows/main.yml` | Push sur `main` ou lancement manuel | Génération, validations, build statique et FTP |
-| `.github/workflows/auto-update.yml` | Cron `06:00`, `14:00` et `22:00` UTC ou lancement manuel | Mise à jour planifiée, build statique et FTP |
-
-Les deux workflows utilisent `npm ci`, bloquent le déploiement si la génération des données ou le build échoue, empêchent deux déploiements de production concurrents et utilisent `FTP-Deploy-Action@4.4.0`. Les fichiers nécessaires au routage LWS sont copiés dans `out/` avant le transfert.
-
-Secrets GitHub nécessaires au déploiement : `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD` et, si nécessaire, `FTP_SERVER_DIR`. Aucune clé privée ou base de données locale ne doit être committée. Utiliser `.env.example` comme modèle de développement.
-
-## SEO et indexation
-
-Le domaine canonique est `https://bttsbet.online`. Les métadonnées globales, Open Graph, Twitter Cards, manifest et JSON-LD décrivent uniquement les marchés BTTS et Over 2,5 ainsi que la méthode publique ESPN/Poisson. Le sitemap est généré par `scripts/generate-sitemap.mjs` et exclut les pages FIFA/Aviator tant que leur contenu n’est pas suffisamment vérifié. Ces routes portent aussi `noindex`.
-
-Les pages légales et la page `jouer-responsable` restent accessibles. `robots.txt` autorise l’exploration générale et déclare `https://bttsbet.online/sitemap.xml`. Le fichier `.htaccess` désactive le cache HTML, conserve un cache long pour les assets versionnés et fournit le routage des URLs propres.
-
-## Sécurité et confidentialité
-
-Le fallback local de l’ancien contexte d’authentification a été désactivé : aucun mot de passe n’est stocké dans `localStorage`. Une authentification réelle nécessite une configuration Firebase valide. L’activation VIP actuellement présente dans l’interface est un état local du navigateur ; elle ne vérifie pas un compte bookmaker et ne doit pas être présentée comme une validation externe.
-
-Les identifiants saisis dans le modal VIP sont hashés localement avant stockage. Le site ne doit pas demander ni conserver de mot de passe bookmaker. Toute évolution vers des comptes utilisateurs ou une validation serveur nécessite un backend sécurisé et une décision d’architecture séparée.
-
-## Limites connues
-
-Les taux de réussite et ROI ne sont pas publiés sans résultats finaux vérifiés. Les cartes multi-sports affichent un état d’attente tant qu’aucun feed vérifiable de fixtures et de cotes n’est connecté. Les routes historiques FIFA/Aviator sont conservées pour éviter les liens cassés, mais ne sont pas proposées aux moteurs de recherche.
-
-Les liens d’affiliation sont externes et soumis aux conditions de leurs opérateurs. BttsBet ne prend pas de paris, ne collecte pas de fonds et ne garantit ni l’éligibilité à une offre partenaire ni le résultat d’un pari.
+Le jeu d’argent est réservé aux personnes majeures et comporte un risque financier. Consultez la page [Jouer responsable](/jouer-responsable) et la réglementation de votre pays avant toute action.

@@ -1427,3 +1427,41 @@ code {
   .feed-heading { align-items: flex-start; flex-direction: column; gap: 0.7rem; }
   .feed-heading__count { align-self: flex-start; }
 }
+
+/* ════════════════════════════════════════════════════════════════════════════
+   LINEBET AFFILIATE RELAUNCH — Obsidian / Signal Green
+   ════════════════════════════════════════════════════════════════════════════ */
+.linebet-shell { background: #050706; color: #f4f8f6; }
+.linebet-nav { position: sticky; top: 0; z-index: 50; border-bottom: 1px solid rgba(255,255,255,.07); background: rgba(5,7,6,.78); backdrop-filter: blur(18px); transition: background .2s ease, border-color .2s ease; }
+.linebet-nav-scrolled { background: rgba(5,7,6,.96); border-color: rgba(53,241,127,.15); }
+.linebet-brand-mark { display: inline-flex; height: 2.25rem; width: 2.25rem; align-items: center; justify-content: center; border: 1px solid rgba(53,241,127,.28); border-radius: .7rem; background: rgba(53,241,127,.08); }
+.linebet-nav-link { border-radius: .55rem; padding: .55rem .7rem; font-size: .78rem; font-weight: 700; color: #84928d; transition: color .2s ease, background .2s ease; }
+.linebet-nav-link:hover { color: #fff; background: rgba(255,255,255,.05); }
+.linebet-hero { position: relative; overflow: hidden; background: radial-gradient(ellipse 70% 70% at 82% 15%, rgba(25,214,107,.13), transparent 57%), radial-gradient(ellipse 60% 50% at 5% 0%, rgba(0,224,255,.07), transparent 60%), #050706; }
+.linebet-grid-overlay { position: absolute; inset: 0; pointer-events: none; opacity: .16; background-image: linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px); background-size: 44px 44px; mask-image: linear-gradient(to bottom, black, transparent 80%); }
+.linebet-kicker { font-size: .68rem; font-weight: 900; letter-spacing: .18em; color: #35f17f; }
+.linebet-status-dot { display: inline-block; width: .42rem; height: .42rem; margin-right: .45rem; border-radius: 999px; background: #35f17f; box-shadow: 0 0 0 .2rem rgba(53,241,127,.12); vertical-align: middle; }
+.linebet-gradient-text { background: linear-gradient(110deg, #fff 5%, #35f17f 75%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.linebet-code-card { position: relative; border: 1px solid rgba(53,241,127,.22); border-radius: 1.35rem; padding: 1.25rem; background: linear-gradient(145deg, rgba(18,35,25,.96), rgba(8,15,11,.96)); box-shadow: 0 24px 70px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.08); }
+.linebet-code-card::before { content: ''; position: absolute; top: 0; left: 14%; right: 14%; height: 1px; background: linear-gradient(90deg, transparent, rgba(53,241,127,.8), transparent); }
+.linebet-mini-label { font-size: .62rem; font-weight: 900; letter-spacing: .2em; color: #81948a; }
+.linebet-secure-badge { border: 1px solid rgba(53,241,127,.2); border-radius: 999px; padding: .35rem .55rem; font-size: .6rem; font-weight: 900; color: #35f17f; }
+.linebet-trust-strip { border-top: 1px solid rgba(255,255,255,.07); border-bottom: 1px solid rgba(255,255,255,.07); background: #080d0a; }
+.linebet-trust-strip > div > div { display: grid; grid-template-columns: auto 1fr; column-gap: .7rem; align-items: center; }
+.linebet-trust-strip strong { font-size: .8rem; color: #e5eee9; }
+.linebet-trust-strip p { grid-column: 2; margin-top: .2rem; font-size: .7rem; line-height: 1.4; color: #708079; }
+.linebet-trust-icon { display: inline-flex; width: 2rem; height: 2rem; align-items: center; justify-content: center; border: 1px solid rgba(53,241,127,.2); border-radius: .6rem; color: #35f17f; font-size: .62rem; font-weight: 900; }
+.linebet-step-card, .linebet-region-card { border: 1px solid rgba(255,255,255,.09); border-radius: 1rem; background: rgba(255,255,255,.035); padding: 1.25rem; transition: transform .2s ease, border-color .2s ease, background .2s ease; }
+.linebet-step-card:hover, .linebet-region-card:hover { transform: translateY(-3px); border-color: rgba(53,241,127,.28); background: rgba(53,241,127,.045); }
+.linebet-step-number { color: #35f17f; font: 700 .75rem/1 var(--font-mono); }
+.linebet-region-section, .linebet-faq-section { border-top: 1px solid rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.06); background: #080d0a; }
+.linebet-editorial-card, .linebet-final-cta { border: 1px solid rgba(53,241,127,.16); border-radius: 1.25rem; background: linear-gradient(135deg, rgba(18,36,25,.82), rgba(10,15,12,.92)); padding: 1.4rem; box-shadow: 0 20px 60px rgba(0,0,0,.24); }
+.linebet-faq-item { border: 1px solid rgba(255,255,255,.09); border-radius: .85rem; background: rgba(255,255,255,.025); overflow: hidden; }
+.linebet-faq-item summary { display: flex; align-items: center; justify-content: space-between; gap: 1rem; cursor: pointer; list-style: none; padding: 1.05rem 1.1rem; color: #eef6f1; font-size: .9rem; font-weight: 800; }
+.linebet-faq-item summary::-webkit-details-marker { display: none; }
+.linebet-faq-item summary span { color: #35f17f; font-size: 1.25rem; font-weight: 400; }
+.linebet-faq-item[open] summary { border-bottom: 1px solid rgba(255,255,255,.08); }
+.linebet-faq-item p { padding: 0 1.1rem 1.1rem; color: #8e9e98; font-size: .86rem; line-height: 1.7; }
+.linebet-mobile-cta { position: fixed; right: 0; bottom: 0; left: 0; z-index: 40; display: flex; gap: .5rem; border-top: 1px solid rgba(53,241,127,.18); background: rgba(5,7,6,.95); padding: .6rem .75rem calc(.6rem + env(safe-area-inset-bottom)); backdrop-filter: blur(16px); }
+@media (min-width: 640px) { .linebet-code-card { padding: 1.75rem; } .linebet-editorial-card, .linebet-final-cta { padding: 2rem; } }
+@media (prefers-reduced-motion: reduce) { .linebet-step-card, .linebet-region-card, .linebet-nav-link { transition: none; } .linebet-step-card:hover, .linebet-region-card:hover { transform: none; } }

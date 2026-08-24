@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Code promo Linebet Afrique VISION221</title>
+  <desc id="desc">Guide BttsBet du code partenaire Linebet VISION221</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#050706"/><stop offset="1" stop-color="#0b2115"/></linearGradient>
+    <linearGradient id="signal" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#19d66b"/><stop offset="1" stop-color="#35f17f"/></linearGradient>
+    <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse"><path d="M44 0H0V44" fill="none" stroke="#fff" stroke-opacity=".06"/></pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <circle cx="1010" cy="86" r="250" fill="#19d66b" opacity=".08"/>
+  <circle cx="1010" cy="86" r="150" fill="none" stroke="#35f17f" stroke-opacity=".2" stroke-width="2"/>
+  <rect x="82" y="78" width="56" height="56" rx="16" fill="#19d66b" fill-opacity=".12" stroke="#35f17f" stroke-opacity=".5"/>
+  <circle cx="110" cy="106" r="14" fill="none" stroke="#35f17f" stroke-width="4"/><path d="M110 95v22M99 106h22" stroke="#35f17f" stroke-width="3"/>
+  <text x="164" y="118" fill="#f4f8f6" font-family="Arial, sans-serif" font-size="32" font-weight="800">BttsBet</text>
+  <text x="84" y="272" fill="#35f17f" font-family="Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="5">GUIDE PARTENAIRE AFRIQUE</text>
+  <text x="80" y="354" fill="#ffffff" font-family="Arial, sans-serif" font-size="62" font-weight="800">Code promo Linebet</text>
+  <text x="80" y="432" fill="url(#signal)" font-family="Arial, sans-serif" font-size="72" font-weight="900">VISION221</text>
+  <rect x="82" y="493" width="360" height="2" fill="url(#signal)"/>
+  <text x="82" y="540" fill="#9aaba4" font-family="Arial, sans-serif" font-size="22">Inscription · conditions · Afrique</text>
+  <text x="1080" y="570" text-anchor="end" fill="#6f8178" font-family="Arial, sans-serif" font-size="18">bttsbet.online</text>
+</svg>

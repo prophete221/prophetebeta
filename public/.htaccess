@@ -19,10 +19,10 @@
   RewriteCond %{REQUEST_FILENAME}/../%{REQUEST_URI}.html -f
   RewriteRule ^(.+)/$ /$1.html [L]
 
-  # Preserve the public VIP entry point: VIP is an anchor on the home page in this static app.
-  RewriteRule ^vip/?$ /#vip [R=301,L,NE]
+  # Consolidate retired product URLs on the relevant Linebet guide.
+  RewriteRule ^(?:vip|predictions?|btts|bonus-888starz|bookmakers|btts-c-est-quoi|faille-fifa|prediction-aviator|statistiques|historique|blog)(?:/.*)?$ /code-promo-linebet [R=301,L,NE]
 
-  # 4) No SPA fallback: unknown clean URLs must remain HTTP 404.
+  # No SPA fallback: unknown clean URLs must remain HTTP 404.
 </IfModule>
 
 # Cache static assets

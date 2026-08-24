@@ -1,155 +1,69 @@
-'use client'
+import type { Metadata } from 'next'
+import { FAQ_ITEMS, SITE } from '@/lib/constants'
+import { CookieConsent, Footer, Navbar } from '@/components/bttsbet'
+import LinebetLanding from '@/components/bttsbet/LinebetLanding'
 
-import {
-  Navbar,
-  Hero,
-  HowItWorks,
-  FreePredictions,
-  PromoVip,
-  Footer,
-  CookieConsent,
-  ScrollProgressBar,
-  ErrorBoundary,
-  MobileTabBar,
-  StickyCTABar,
-} from '@/components/bttsbet'
+export const metadata: Metadata = {
+  title: 'Code promo Linebet Afrique VISION221 | BttsBet',
+  description: 'Guide clair du code promo Linebet Afrique VISION221 : inscription, utilisation du code, vérification des conditions et accès au lien partenaire.',
+  alternates: { canonical: 'https://bttsbet.online/' },
+  openGraph: {
+    title: 'Code promo Linebet Afrique VISION221',
+    description: 'Le guide BttsBet pour comprendre et utiliser le code partenaire Linebet VISION221, avec conditions à vérifier selon votre pays.',
+    url: 'https://bttsbet.online/',
+    siteName: 'BttsBet',
+    type: 'website',
+    locale: 'fr_FR',
+    images: [{ url: '/og-linebet.svg', width: 1200, height: 630, alt: 'Code promo Linebet Afrique VISION221' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Code promo Linebet Afrique VISION221',
+    description: 'Guide d’inscription et conditions à vérifier pour le code partenaire Linebet VISION221.',
+    images: ['/og-linebet.svg'],
+  },
+}
 
-// JSON-LD WebSite — SearchAction for Google SERP
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: 'BttsBet',
-  url: 'https://bttsbet.online',
-  description: "Pronostics football BTTS et Over 2,5 fondés sur un modèle Poisson et des fixtures ESPN. Données horodatées et aucune garantie de gain.",
-  inLanguage: 'fr',
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: 'https://bttsbet.online/?q={search_term_string}',
-    'query-input': 'required name=search_term_string',
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: 'BttsBet',
-    url: 'https://bttsbet.online',
-    logo: {
-      '@type': 'ImageObject',
-      url: 'https://bttsbet.online/favicon.svg',
-    },
-  },
-}
-
-// JSON-LD FAQPage — Google SERP rich results
-const faqJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
+  '@graph': [
     {
-      '@type': 'Question',
-      name: "Qu'est-ce que le BTTS ?",
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: "BTTS signifie Both Teams To Score (les deux équipes marquent). C'est un type de pari où vous pariez que les deux équipes marqueront au moins un but durant le match, quelle que soit l'issue finale.",
-      },
+      '@type': 'WebSite',
+      name: SITE.name,
+      url: SITE.url,
+      description: SITE.tagline,
+      inLanguage: ['fr', 'en', 'ar'],
+      publisher: { '@id': `${SITE.url}/#organization` },
     },
     {
-      '@type': 'Question',
-      name: "Comment fonctionne l'IA de BttsBet ?",
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: "Le modèle public utilise les fixtures ESPN et des profils de ligue pour calculer des estimations BTTS et Over 2,5 avec une loi de Poisson. Les xG d’équipe, les blessures, la météo et les cotes ne sont pas inventés lorsqu’ils ne sont pas disponibles. Aucun taux de réussite n’est publié sans résultats finaux vérifiés.",
-      },
+      '@type': 'Organization',
+      '@id': `${SITE.url}/#organization`,
+      name: SITE.name,
+      url: SITE.url,
+      logo: `${SITE.url}/favicon.svg`,
+      description: 'Site indépendant d’information et d’affiliation consacré au code partenaire Linebet VISION221.',
+      areaServed: 'Africa',
+      knowsAbout: ['code promo Linebet', 'inscription Linebet', 'Linebet Afrique'],
     },
     {
-      '@type': 'Question',
-      name: 'Comment utiliser le code promo VISION221 ?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: "Inscrivez-vous sur Linebet via notre lien de parrainage, puis saisissez le code promo VISION221 lors de votre inscription ou dans la section Code Promo de votre compte pour recevoir un bonus exclusif sur votre premier dépôt.",
-      },
+      '@type': 'FAQPage',
+      mainEntity: FAQ_ITEMS.map((item) => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a },
+      })),
     },
-    {
-      '@type': 'Question',
-      name: 'Les pronostics gratuits sont-ils fiables ?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: "Les pronostics gratuits sont des estimations statistiques publiées avec leur date, leur heure et les limites connues du modèle. Ils ne constituent pas une garantie de gain et les performances passées ne préjugent pas des résultats futurs.",
-      },
-    },
-  ],
-}
-
-// JSON-LD Organization — E-E-A-T entity recognition
-const organizationJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'BttsBet',
-  url: 'https://bttsbet.online',
-  logo: 'https://bttsbet.online/favicon.svg',
-  description: "Plateforme de pronostics football BTTS et Over 2,5 fondés sur un modèle Poisson et des fixtures ESPN.",
-  areaServed: ['SN', 'CI', 'CM', 'ML', 'BF', 'FR'],
-  knowsAbout: ['BTTS', 'Over 2.5', 'paris sportifs', 'modèle Poisson', 'football'],
-}
-
-// JSON-LD BreadcrumbList — breadcrumbs in SERP
-const breadcrumbJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://bttsbet.online/' },
-    { '@type': 'ListItem', position: 2, name: 'Pronostics', item: 'https://bttsbet.online/#free-predictions' },
-    { '@type': 'ListItem', position: 3, name: 'VIP', item: 'https://bttsbet.online/#vip' },
   ],
 }
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-midnight relative">
-      {/* JSON-LD Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
-      />
-
-      {/* Skip to content — accessibility */}
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-gold focus:text-midnight focus:font-bold focus:rounded-lg"
-      >
-        Aller au contenu principal
-      </a>
-
-      {/* Scroll Progress Bar */}
-      <ScrollProgressBar />
-
-      {/* Parcours principal : proposition de valeur → pronostics → VIP → méthode → liens utiles. */}
-      <main id="main-content" className="relative z-10">
-        <ErrorBoundary><Navbar /></ErrorBoundary>
-        <ErrorBoundary><Hero /></ErrorBoundary>
-        <ErrorBoundary><FreePredictions /></ErrorBoundary>
-        <ErrorBoundary><PromoVip /></ErrorBoundary>
-        <ErrorBoundary><HowItWorks /></ErrorBoundary>
-        <ErrorBoundary><Footer /></ErrorBoundary>
-      </main>
-
-      {/* Mobile Tab Bar — bottom navigation */}
-      <MobileTabBar />
-
-      {/* Sticky CTA Bar — mobile only, appears after 60% scroll */}
-      <StickyCTABar />
-
-      {/* Cookie Consent Banner (RGPD) */}
+    <div className="min-h-screen bg-[#050706]">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-[#35f17f] focus:px-4 focus:py-3 focus:font-bold focus:text-[#031b0d]">Aller au contenu principal</a>
+      <Navbar />
+      <main id="main-content"><LinebetLanding /></main>
+      <Footer />
       <CookieConsent />
     </div>
   )
