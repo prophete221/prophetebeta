@@ -24,7 +24,7 @@ export default function Navbar() {
       <nav aria-label="Navigation principale" className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3.5 sm:px-8">
         <a href="/" className="flex min-w-0 items-center gap-2.5" onClick={() => setOpen(false)} aria-label="BttsBet, accueil">
           <span className="linebet-brand-mark">
-            <img src="/logos/linebet-icon.svg" alt="" className="h-5 w-5" />
+            <img src="/logos/linebet-icon.png" alt="" className="h-5 w-5" />
           </span>
           <span className="truncate text-base font-black tracking-tight text-white">
             {SITE.name}
@@ -48,7 +48,7 @@ export default function Navbar() {
             rel={AFFILIATE.rel}
             className="hidden items-center gap-2 rounded-xl bg-gradient-to-b from-[#31ef80] to-[#19d66b] px-4 py-2.5 text-xs font-extrabold text-[#031b0d] shadow-[0_8px_24px_rgba(25,214,107,.28)] transition hover:from-[#4aff95] hover:to-[#31ef80] active:scale-[.98] sm:inline-flex"
           >
-            <img src="/logos/linebet-icon.svg" alt="" className="h-4 w-4 rounded" />
+            <img src="/logos/linebet-icon.png" alt="" className="h-4 w-4 rounded" />
             Ouvrir Linebet
           </a>
           <button
@@ -90,7 +90,7 @@ export default function Navbar() {
                 onClick={() => setOpen(false)}
                 className="flex min-h-12 items-center justify-center gap-2 rounded-xl bg-gradient-to-b from-[#31ef80] to-[#19d66b] px-4 py-3.5 text-sm font-extrabold text-[#031b0d] shadow-[0_8px_24px_rgba(25,214,107,.3)]"
               >
-                <img src="/logos/linebet-icon.svg" alt="" className="h-5 w-5 rounded" />
+                <img src="/logos/linebet-icon.png" alt="" className="h-5 w-5 rounded" />
                 S’inscrire sur Linebet
               </a>
             </div>
