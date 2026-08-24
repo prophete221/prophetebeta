@@ -4,13 +4,14 @@ import { Navbar, Footer } from '@/components/bttsbet'
 const SITE_URL = 'https://bttsbet.online'
 const SLUG = 'faille-fifa'
 const PAGE_URL = `${SITE_URL}/${SLUG}`
-const TITLE = 'Faille FIFA Linebet & 888starz : Détecter les Cotes Erronées en 2026'
-const DESCRIPTION = 'Découvrez la faille FIFA sur Linebet et 888starz : comment notre IA détecte automatiquement les cotes erronées des matchs FIFA virtuels, comment exploiter les value bets, et notre stratégie validée. Code promo VISION221.'
+const TITLE = 'FIFA virtuel : informations et jeu responsable'
+const DESCRIPTION = 'Page informative sur les limites des estimations appliquées aux jeux FIFA virtuels. Aucune faille, cote erronée ou garantie de gain n’est établie par BttsBet.'
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
-  keywords: ['faille fifa linebet', 'faille fifa 888starz', 'faille cote linebet', 'hack fifa linebet 2026', 'bot fifa linebet', 'coupon fifa gagnant', 'astuce fifa linebet', 'pari fifa virtuel', 'value bet fifa', 'fifa linebet astuce', 'faille jeux fifa', 'détection faille fifa', 'faille cote fifa', 'cote erronée fifa'],
+  keywords: ['FIFA virtuel', 'jeu responsable', 'estimations statistiques'],
+  robots: { index: false, follow: false },
   alternates: { canonical: PAGE_URL },
   openGraph: {
     title: TITLE,

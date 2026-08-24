@@ -77,7 +77,7 @@ export default function StickyVipBandeau() {
                     </span>
                   </div>
                   <div className="text-xs sm:text-sm font-bold text-white leading-tight">
-                    Historique complet + 10 matchs/jour
+                    Sélections du jour BTTS & Over 2,5
                   </div>
                 </div>
               </div>
@@ -88,25 +88,25 @@ export default function StickyVipBandeau() {
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#00E0FF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
-                  <span className="text-gray-300 font-medium">+10 matchs/jour</span>
+                  <span className="text-gray-300 font-medium">Données du jour</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#00E0FF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
-                  <span className="text-gray-300 font-medium">Précision ~52%</span>
+                  <span className="text-gray-300 font-medium">Taux non publié</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#00E0FF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
-                  <span className="text-gray-300 font-medium">Historique complet</span>
+                  <span className="text-gray-300 font-medium">Détails verrouillés</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#00E0FF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
-                  <span className="text-gray-300 font-medium">5 sports VIP</span>
+                  <span className="text-gray-300 font-medium">BTTS & Over 2,5</span>
                 </div>
               </div>
 
@@ -133,7 +133,7 @@ export default function StickyVipBandeau() {
                     <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
                     <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                   </svg>
-                  Débloquer VIP
+                  Débloquer le combiné VIP
                 </button>
               </div>
             </div>
@@ -142,15 +142,15 @@ export default function StickyVipBandeau() {
             <div className="sm:hidden flex items-center justify-around gap-2 px-4 pb-3 text-[10px]">
               <div className="flex items-center gap-1">
                 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#00E0FF" strokeWidth="2.5"><polyline points="20 6 9 17 4 12" /></svg>
-                <span className="text-gray-400">10 matchs/j</span>
+                <span className="text-gray-400">Données du jour</span>
               </div>
               <div className="flex items-center gap-1">
                 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#00E0FF" strokeWidth="2.5"><polyline points="20 6 9 17 4 12" /></svg>
-                <span className="text-gray-400">~52% précision</span>
+                <span className="text-gray-400">Taux non publié</span>
               </div>
               <div className="flex items-center gap-1">
                 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#00E0FF" strokeWidth="2.5"><polyline points="20 6 9 17 4 12" /></svg>
-                <span className="text-gray-400">5 sports</span>
+                <span className="text-gray-400">BTTS & O2.5</span>
               </div>
             </div>
           </motion.div>

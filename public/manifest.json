@@ -1,7 +1,7 @@
 {
   "name": "BttsBet – Pronostics BTTS & Over 2,5",
   "short_name": "BttsBet",
-  "description": "Pronostics football BTTS et Over 2,5 générés par intelligence artificielle. Code promo Linebet VISION221.",
+  "description": "Pronostics BTTS et Over 2,5 fondés sur un modèle Poisson et des fixtures ESPN. Données horodatées et aucune garantie de gain.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0B1120",
@@ -31,5 +31,13 @@
     }
   ],
   "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Pronostics du jour",
+      "short_name": "Pronostics",
+      "url": "/#free-predictions",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    }
+  ],
   "prefer_related_applications": false
 }

@@ -7,19 +7,19 @@ import { Navbar, Footer } from '@/components/bttsbet'
 const SITE_URL = 'https://bttsbet.online'
 const SLUG = 'code-promo-linebet-senegal'
 const PAGE_URL = `${SITE_URL}/${SLUG}`
-const TITLE = 'Code Promo Linebet Sénégal VISION221 — Bonus 90 000 XOF (150$) | BttsBet'
-const DESCRIPTION = 'Code promo Linebet Sénégal VISION221 — Bonus exclusif 90 000 XOF (150$) sur votre premier dépôt. Inscription facile, dépôt via Wave, Orange Money, Free Money. Guide complet étape par étape.'
+const TITLE = 'Code promo Linebet Sénégal VISION221 | BttsBet'
+const DESCRIPTION = 'Guide informatif sur le code promo Linebet VISION221 au Sénégal. Vérifiez les conditions d’inscription, de dépôt et d’éligibilité directement auprès du partenaire.'
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
-  keywords: ['code promo linebet', 'linebet senegal', 'bonus linebet', 'vision221', 'linebet wave', 'linebet orange money', 'code promo linebet senegal', 'bonus 90000 xof', 'linebet inscription', 'depot linebet senegal', 'linebet free money', 'paris sportifs senegal'],
+  keywords: ['code promo linebet', 'linebet senegal', 'bonus linebet', 'vision221', 'linebet wave', 'linebet orange money', 'code promo linebet senegal', 'linebet inscription', 'depot linebet senegal', 'linebet free money', 'paris sportifs senegal'],
   alternates: {
     canonical: PAGE_URL,
   },
   openGraph: {
     title: TITLE,
-    description: 'Code promo Linebet Sénégal VISION221 — Bonus 90 000 XOF. Dépôt Wave, Orange Money, Free Money.',
+    description: 'Code promo Linebet Sénégal VISION221 | Conditions à vérifier.',
     url: PAGE_URL,
     siteName: 'BttsBet',
     type: 'article',
@@ -30,8 +30,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Code Promo Linebet Sénégal VISION221 — Bonus 90 000 XOF',
-    description: 'Pronostics IA football +87% (historique). Code VISION221 = Bonus 90 000 XOF sur Linebet. Dépôt Wave, Orange Money au Sénégal.',
+    title: 'Code promo Linebet Sénégal VISION221',
+    description: 'Informations sur le code partenaire VISION221. Les conditions d’offre et de dépôt sont fixées par Linebet et doivent être vérifiées directement.',
     images: ['/og-image.png'],
   },
 }

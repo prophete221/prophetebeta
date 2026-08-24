@@ -7,7 +7,7 @@ import { Navbar, Footer } from '@/components/bttsbet'
 const SITE_URL = 'https://bttsbet.online'
 const SLUG = 'gestion-bankroll-paris-sportifs'
 const PAGE_URL = `${SITE_URL}/blog/${SLUG}`
-const TITLE = 'Gestion de Bankroll aux Paris Sportifs : Le Guide Ultime 2026'
+const TITLE = 'Gestion de bankroll : guide des paris sportifs | BttsBet'
 const DESCRIPTION = 'Maîtrisez votre capital de jeu avec notre guide complet sur la gestion de bankroll. La règle des 1-5%, les unités de mise, le flat betting, le critère de Kelly et les erreurs courantes — avec exemples en Franc CFA.'
 
 export const metadata: Metadata = {

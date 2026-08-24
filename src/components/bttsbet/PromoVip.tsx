@@ -1,37 +1,27 @@
 'use client'
 
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { SITE, AFFILIATE } from '@/lib/constants'
-import { useScrollAnimation, useCountUp } from '@/hooks/useAnimations'
+import { useScrollAnimation } from '@/hooks/useAnimations'
 import { staggerContainer, staggerChildFadeUp } from '@/lib/motionPresets'
 import { CrownIcon, FloatingParticles } from './AnimatedIcons'
 import PremiumButton, { DownloadButton } from './PremiumButton'
 import CopyableCode from './CopyableCode'
 import VipUnlockModal from './VipUnlockModal'
 
-// ─── Deterministic daily cote ────────────────────────────────────────────
-function getDailyCote(): number {
-  const today = new Date()
-  const seed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate()
-  const x = Math.sin(seed * 9301 + 49297) * 233280
-  const fraction = x - Math.floor(x)
-  return Math.round((15 + fraction * 15) * 100) / 100
-}
-
 // ─── Match status filter (excludes finished matches) ─────────────────────
 function getMatchStatus(date: string, time?: string): 'live' | 'upcoming' | 'finished' {
   if (!date) return 'finished'
   try {
-    const today = new Date(); today.setHours(0, 0, 0, 0)
-    const matchDay = new Date(date + 'T00:00:00'); matchDay.setHours(0, 0, 0, 0)
-    if (matchDay.getTime() < today.getTime()) return 'finished'
-    if (matchDay.getTime() > today.getTime()) return 'upcoming'
+    const today = new Date().toISOString().slice(0, 10)
+    if (date < today) return 'finished'
+    if (date > today) return 'upcoming'
     if (!time || time === '--:--' || !/^\d{2}:\d{2}$/.test(time)) return 'upcoming'
     const [h, m] = time.split(':').map(Number)
-    const matchDateTime = new Date(date + 'T00:00:00')
-    matchDateTime.setHours(h, m, 0, 0)
-    const diffMs = matchDateTime.getTime() - Date.now()
+    const matchTimestamp = Date.parse(`${date}T${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:00Z`)
+    if (!Number.isFinite(matchTimestamp)) return 'upcoming'
+    const diffMs = matchTimestamp - Date.now()
     const diffHours = diffMs / (1000 * 60 * 60)
     if (diffMs < 0 && diffHours > -2.5) return 'live'
     if (diffMs < 0) return 'finished'
@@ -48,8 +38,6 @@ type VipMatch = {
   time: string
   homeLogo: string
   awayLogo: string
-  cote: number
-  confidence: number
   index: number
   status: 'live' | 'upcoming'
 }
@@ -97,12 +85,10 @@ function VipMatchRow({ m, index }: { m: VipMatch; index: number }) {
         )}
       </div>
 
-      {/* Cote */}
+      {/* Locked market — no odds are published without a verified odds feed */}
       <div className="text-right">
-        <span className="text-[10px] text-gold font-bold tabular-nums blur-[3px] select-none">
-          {m.cote.toFixed(2)}
-        </span>
-        <div className="text-[8px] text-gray-600 uppercase">cote</div>
+        <span className="text-[10px] text-gold font-bold blur-[3px] select-none">N/D</span>
+        <div className="text-[8px] text-gray-600 uppercase">marché</div>
       </div>
     </motion.div>
   )
@@ -114,12 +100,6 @@ export default function PromoVip() {
   const [showVipModal, setShowVipModal] = useState(false)
   const [vipMatches, setVipMatches] = useState<VipMatch[]>([])
   const [couponDate, setCouponDate] = useState('Aujourd\'hui')
-  const dailyCote = useMemo(() => getDailyCote(), [])
-
-  const [coteRef, coteDisplay] = useCountUp(dailyCote, 1500, { decimals: 2, threshold: 0.3 })
-  const [matchCountRef, matchCountDisplay] = useCountUp(0, 1200, { threshold: 0.3 })
-  const [accuracyRef, accuracyDisplay] = useCountUp(52, 1800, { threshold: 0.3, from: 0 })
-  const [streakRef, streakDisplay] = useCountUp(7, 1500, { threshold: 0.3 })
 
   useEffect(() => {
     fetch('/predictions.json')
@@ -145,8 +125,6 @@ export default function PromoVip() {
               time: p.time || '--:--',
               homeLogo: p.homeLogo || '',
               awayLogo: p.awayLogo || '',
-              cote: 1.5,
-              confidence: 92,
               index: 0,
               status: status as 'live' | 'upcoming',
             })
@@ -165,20 +143,13 @@ export default function PromoVip() {
           })
           .slice(0, 8)
 
-        const matchCount = allMatches.length || 1
-        const cotePerMatch = Math.pow(dailyCote, 1 / matchCount)
-        const vipData = allMatches.map((m, i) => ({
-          ...m,
-          cote: cotePerMatch,
-          confidence: 92 + (i % 6),
-          index: i,
-        }))
+        const vipData = allMatches.map((m, i) => ({ ...m, index: i }))
         setVipMatches(vipData)
         const todayMatches = allMatches.filter(m => m.date === today)
         setCouponDate(todayMatches.length > 0 ? "Aujourd'hui" : allMatches[0]?.date || "Aujourd'hui")
       })
       .catch(() => {})
-  }, [dailyCote])
+  }, [])
 
   const liveCount = vipMatches.filter(m => m.status === 'live').length
 
@@ -208,9 +179,8 @@ export default function PromoVip() {
               Pronostics <span className="text-gold">VIP</span> Experts
             </h2>
             <p className="section-subtitle max-w-2xl mx-auto">
-              Coupon du jour verrouillé — 8 matchs sélectionnés par notre IA.
-              Cote totale <span className="text-gold font-bold">{dailyCote.toFixed(2)}</span>.
-              Précision historique ~52%.
+              Fixtures du jour affichées à partir du feed public. Les marchés restent verrouillés.
+              Les cotes et le taux de réussite ne sont pas publiés sans source vérifiée.
             </p>
           </motion.div>
 
@@ -238,12 +208,12 @@ export default function PromoVip() {
                     <img src="/logos/sport-football.svg" alt="Football" className="w-12 h-12 object-contain" loading="lazy" />
                   </div>
                   <div className="min-w-0">
-                    <span className="text-[10px] text-gold-light uppercase tracking-widest font-bold">Coupon VIP</span>
+                    <span className="text-[10px] text-gold-light uppercase tracking-widest font-bold">Combiné VIP du jour</span>
                     <h3 className="text-xl sm:text-2xl font-bold text-white leading-tight mt-0.5">
-                      Pronostics <span className="text-gold">Experts</span>
+                      Sélections <span className="text-gold">verrouillées</span>
                     </h3>
                     <p className="text-[10px] text-gray-500 mt-1 truncate">
-                      BTTS + Over 2.5 — Sélection IA · Contenu verrouillé
+                      Fixtures ESPN · marchés masqués · aucune cote publiée
                     </p>
                   </div>
                 </div>
@@ -259,23 +229,23 @@ export default function PromoVip() {
                 </motion.div>
               </div>
 
-              {/* KPI row */}
+              {/* KPI row — only measured or explicitly unavailable values */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 mt-5">
                 <div className="bg-midnight/40 border border-edge rounded-lg p-2.5 text-center">
-                  <div className="text-base sm:text-lg font-bold text-white tabular-nums" ref={matchCountRef}>{matchCountDisplay}</div>
-                  <div className="text-[9px] text-gray-500 uppercase tracking-widest font-bold">Matchs</div>
+                  <div className="text-base sm:text-lg font-bold text-white tabular-nums">{vipMatches.length || '—'}</div>
+                  <div className="text-[9px] text-gray-500 uppercase tracking-widest font-bold">Fixtures</div>
                 </div>
                 <div className="bg-midnight/40 border border-edge rounded-lg p-2.5 text-center">
-                  <div className="text-base sm:text-lg font-bold text-gold tabular-nums glow-text-gold" ref={coteRef}>{coteDisplay}</div>
-                  <div className="text-[9px] text-gray-500 uppercase tracking-widest font-bold">Cote totale</div>
+                  <div className="text-base sm:text-lg font-bold text-gold">ESPN</div>
+                  <div className="text-[9px] text-gray-500 uppercase tracking-widest font-bold">Source</div>
                 </div>
                 <div className="bg-midnight/40 border border-edge rounded-lg p-2.5 text-center">
-                  <div className="text-base sm:text-lg font-bold text-success tabular-nums glow-text-green" ref={accuracyRef}>~{accuracyDisplay}%</div>
-                  <div className="text-[9px] text-gray-500 uppercase tracking-widest font-bold">Précision</div>
+                  <div className="text-base sm:text-lg font-bold text-success">Masqués</div>
+                  <div className="text-[9px] text-gray-500 uppercase tracking-widest font-bold">Marchés</div>
                 </div>
                 <div className="bg-midnight/40 border border-edge rounded-lg p-2.5 text-center">
-                  <div className="text-base sm:text-lg font-bold text-white tabular-nums" ref={streakRef}>{streakDisplay}</div>
-                  <div className="text-[9px] text-gray-500 uppercase tracking-widest font-bold">Série jours</div>
+                  <div className="text-base sm:text-lg font-bold text-white">N/D</div>
+                  <div className="text-[9px] text-gray-500 uppercase tracking-widest font-bold">Taux vérifié</div>
                 </div>
               </div>
             </div>
@@ -330,10 +300,10 @@ export default function PromoVip() {
                   <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
                   <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                 </svg>
-                Débloquer le coupon VIP
+                Débloquer le combiné VIP
               </button>
               <p className="text-[10px] text-gray-500 text-center mt-2">
-                Inscris-toi avec <CopyableCode code={SITE.promoCode} displayClassName="text-gold-light" /> pour débloquer
+                L’accès est enregistré localement dans ce navigateur après la procédure d’activation.
               </p>
             </div>
           </motion.div>
@@ -375,17 +345,17 @@ export default function PromoVip() {
                     <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
                     <div className="text-[10px] text-gray-500 uppercase tracking-widest font-bold mb-1">Code promo exclusif</div>
                     <div className="text-2xl font-black tracking-[0.2em] promo-code-shimmer">{SITE.promoCode}</div>
-                    <div className="text-[10px] text-gray-500 mt-1">Bonus 90 000 XOF (150$) — Wave / Orange Money / Free Money</div>
+                    <div className="text-[10px] text-gray-500 mt-1">Conditions, dépôt et disponibilité du bonus à vérifier auprès du partenaire</div>
                   </div>
                 </div>
 
                 {/* Right — bookmaker CTAs */}
                 <div className="space-y-2 min-w-[260px]">
                   <PremiumButton variant="linebet" href={AFFILIATE.linebet} fullWidth size="md">
-                    Linebet → Bonus 90 000 XOF
+                    Ouvrir Linebet →
                   </PremiumButton>
                   <PremiumButton variant="star888" href={AFFILIATE.star888} fullWidth size="md">
-                    888starz → Bonus 100%
+                    Ouvrir 888starz →
                   </PremiumButton>
 
                   {/* Download APK buttons */}
@@ -403,10 +373,10 @@ export default function PromoVip() {
               {/* Features grid */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-5 pt-5 border-t border-edge">
                 {[
-                  { label: 'Bonus 90 000 XOF', icon: '💰' },
-                  { label: 'Dépôt instantané', icon: '⚡' },
-                  { label: 'App mobile', icon: '📱' },
-                  { label: 'Paiement sécurisé', icon: '🔒' },
+                  { label: 'Conditions à vérifier', icon: 'ℹ' },
+                  { label: 'Dépôt selon partenaire', icon: '↔' },
+                  { label: 'Lien affilié', icon: '↗' },
+                  { label: 'Jeu responsable', icon: '18+' },
                 ].map((f, i) => (
                   <div key={i} className="flex items-center gap-2 bg-midnight/40 rounded-lg px-3 py-2 border border-edge">
                     <span className="text-base">{f.icon}</span>

@@ -1,72 +1,39 @@
 import type { Metadata } from 'next'
-import StatsDashboard from '@/components/bttsbet/StatsDashboard'
+import { Navbar, Footer } from '@/components/bttsbet'
 
-const SITE_URL = 'https://bttspredict.com'
+const SITE_URL = 'https://bttsbet.online'
 
 export const metadata: Metadata = {
-  title: "Statistiques — Taux de réussite BTTS & Over 2.5 | BttsPredict",
-  description: "Tableau de bord statistique BttsPredict : courbe de réussite sur 30 jours, répartition par championnat, par type de pronostic, ROI simulé. Données transparentes mises à jour quotidiennement.",
+  title: 'Statistiques des pronostics | BttsBet',
+  description: 'État des statistiques publiques BttsBet : les taux sont publiés uniquement lorsque les scores finaux sont vérifiés.',
+  robots: { index: false, follow: false },
   alternates: { canonical: `${SITE_URL}/statistiques` },
-  openGraph: {
-    title: "Statistiques — BttsPredict",
-    description: "Courbe de réussite 30 jours, répartition par ligue, ROI. Transparence totale.",
-    url: `${SITE_URL}/statistiques`,
-    type: 'website',
-  },
-}
-
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Dataset',
-  name: 'Statistiques BttsPredict — Taux de réussite des pronostics BTTS & Over 2.5',
-  description: "Tableau de bord transparent des performances des pronostics BTTS et Over 2.5 validés par l'équipe d'analystes BttsPredict. Compilé quotidiennement à partir des résultats réels.",
-  url: `${SITE_URL}/statistiques`,
-  creator: {
-    '@type': 'Organization',
-    name: 'BttsPredict',
-    url: SITE_URL,
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: 'BttsPredict',
-    url: SITE_URL,
-  },
-  keywords: ['BTTS', 'Over 2.5', 'statistiques', 'taux de réussite', 'pronostics football'],
-  temporalCoverage: 'P30D',
-  inLanguage: 'fr',
-  isAccessibleForFree: true,
-  // Champ "license" obligatoire pour Google Search Console (Dataset)
-  license: 'https://creativecommons.org/licenses/by/4.0/',
-  distribution: [
-    {
-      '@type': 'DataDownload',
-      encodingFormat: 'application/json',
-      contentUrl: `${SITE_URL}/predictions.json`,
-    },
-  ],
 }
 
 export default function StatistiquesPage() {
   return (
-    <div className="min-h-screen bg-midnight relative">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <div className="stadium-glow-top" />
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
-        <header className="text-center mb-10">
-          <span className="eyebrow">📊 Transparence totale</span>
-          <h1 className="section-title mt-3 mb-4">
-            Statistiques <span className="text-gold">en direct</span>
-          </h1>
+    <div className="min-h-screen bg-midnight text-white">
+      <Navbar />
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 py-16">
+        <header className="text-center">
+          <span className="eyebrow">Transparence des données</span>
+          <h1 className="section-title mt-3 mb-4">Statistiques publiques</h1>
           <p className="section-subtitle max-w-2xl mx-auto">
-            Tous nos résultats, gagnés et perdus, calculés à partir des scores réels.
-            Aucune sélection, aucune triche. Les performances passées ne garantissent pas les résultats futurs.
+            Aucun taux de réussite ni ROI n’est publié tant que les scores finaux ne sont pas confirmés par une source vérifiable. Les performances passées ne garantissent pas les résultats futurs.
           </p>
         </header>
-        <StatsDashboard />
-      </div>
+        <section className="squircle-xl p-6 mt-8 border border-edge bg-panel/40 text-center">
+          <div className="text-3xl font-bold text-gold">N/D</div>
+          <h2 className="text-lg font-semibold text-white mt-2">Historique en attente de vérification</h2>
+          <p className="text-sm text-gray-400 leading-relaxed mt-3">
+            Les fixtures et estimations du jour sont disponibles sur la page des pronostics. Cette page sera enrichie lorsque des résultats finaux vérifiés pourront être reliés aux prédictions publiées.
+          </p>
+          <a href="/#free-predictions" className="inline-flex mt-5 px-4 py-2 rounded-lg bg-gold text-midnight font-bold text-sm">
+            Voir les pronostics
+          </a>
+        </section>
+      </main>
+      <Footer />
     </div>
   )
 }

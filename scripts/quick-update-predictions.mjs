@@ -1,9 +1,9 @@
 // ═══════════════════════════════════════════════════════════════════════════════
 // BttsBet – Quick Predictions Update V2 (ESPN Only — Fast & Reliable)
 // ═══════════════════════════════════════════════════════════════════════════════
-// Lightweight version that only uses ESPN API.
-// Generates fresh predictions for today + next 3 days.
-// Balanced Oui/Non distribution using per-match variance from Poisson model.
+// Lightweight version that uses ESPN fixtures and a transparent league-prior model.
+// Generates fresh predictions for today + the next three days.
+// The model does not claim team-level xG, injuries, form or bookmaker odds.
 // ═══════════════════════════════════════════════════════════════════════════════
 
 import fs from 'fs'
@@ -24,7 +24,7 @@ const MAX_PREDICTIONS = 50
 const FUTURE_DAYS = 4
 const HOME_ADVANTAGE = 1.12
 
-const DISPLAY_TZ = 'Europe/Paris'
+const DISPLAY_TZ = 'Africa/Dakar'
 
 function getTodayISO() {
   return new Date().toLocaleDateString('sv-SE', { timeZone: DISPLAY_TZ })
@@ -295,7 +295,7 @@ async function quickUpdate() {
       confidence: result.bttsConfidence,
       time: m.time,
       matchSemantic: generateMatchSemantic(m.homeTeam, m.awayTeam, m.leagueSlug, 'BTTS'),
-      source: 'poisson',
+      source: 'espn-fixture-league-prior-poisson',
       homeLogo: m.homeLogo,
       awayLogo: m.awayLogo,
       analysis: {
@@ -303,8 +303,9 @@ async function quickUpdate() {
         over25Prob: result.over25Prob,
         homeLambda: result.homeLambda,
         awayLambda: result.awayLambda,
-        dataQuality: 4,
-        hasRealData: true,
+        dataQuality: 1,
+        hasRealData: false,
+        modelNote: 'Fixture ESPN + profil de ligue; statistiques d’équipe non disponibles',
       },
     })
 
@@ -317,7 +318,7 @@ async function quickUpdate() {
       confidence: result.over25Confidence,
       time: m.time,
       matchSemantic: generateMatchSemantic(m.homeTeam, m.awayTeam, m.leagueSlug, 'O25'),
-      source: 'poisson',
+      source: 'espn-fixture-league-prior-poisson',
       homeLogo: m.homeLogo,
       awayLogo: m.awayLogo,
       analysis: {
@@ -325,40 +326,16 @@ async function quickUpdate() {
         over25Prob: result.over25Prob,
         homeLambda: result.homeLambda,
         awayLambda: result.awayLambda,
-        dataQuality: 4,
-        hasRealData: true,
+        dataQuality: 1,
+        hasRealData: false,
+        modelNote: 'Fixture ESPN + profil de ligue; statistiques d’équipe non disponibles',
       },
     })
   }
 
-  // Balance distribution if severely skewed (>70% one side)
-  let ouiCount = predictions.filter(p => p.prediction === 'Oui').length
-  let nonCount = predictions.filter(p => p.prediction === 'Non').length
-  
-  // If >70% Oui, flip some low-confidence Oui to Non
-  if (ouiCount > predictions.length * 0.70) {
-    const ouiPreds = predictions.filter(p => p.prediction === 'Oui').sort((a, b) => a.confidence - b.confidence)
-    const targetNon = Math.floor(predictions.length * 0.45)  // Aim for ~45% Non
-    const toFlip = Math.max(0, targetNon - nonCount)
-    for (let i = 0; i < Math.min(toFlip, ouiPreds.length); i++) {
-      ouiPreds[i].prediction = 'Non'
-      ouiPreds[i].confidence = Math.max(40, Math.min(52, ouiPreds[i].confidence))
-    }
-  }
-  // If >70% Non, flip some low-confidence Non to Oui
-  if (nonCount > predictions.length * 0.70) {
-    const nonPreds = predictions.filter(p => p.prediction === 'Non').sort((a, b) => a.confidence - b.confidence)
-    const targetOui = Math.floor(predictions.length * 0.45)
-    const toFlip = Math.max(0, targetOui - ouiCount)
-    for (let i = 0; i < Math.min(toFlip, nonPreds.length); i++) {
-      nonPreds[i].prediction = 'Oui'
-      nonPreds[i].confidence = Math.max(40, Math.min(52, nonPreds[i].confidence))
-    }
-  }
-
-  ouiCount = predictions.filter(p => p.prediction === 'Oui').length
-  nonCount = predictions.filter(p => p.prediction === 'Non').length
-  console.log(`[QuickUpdate] Distribution: ${ouiCount} Oui (${Math.round(ouiCount/predictions.length*100)}%), ${nonCount} Non (${Math.round(nonCount/predictions.length*100)}%)`)
+  const ouiCount = predictions.filter(p => p.prediction === 'Oui').length
+  const nonCount = predictions.filter(p => p.prediction === 'Non').length
+  console.log(`[QuickUpdate] Distribution modelisée: ${ouiCount} Oui (${predictions.length ? Math.round(ouiCount/predictions.length*100) : 0}%), ${nonCount} Non (${predictions.length ? Math.round(nonCount/predictions.length*100) : 0}%)`)
   console.log(`[QuickUpdate] ${predictions.length} predictions generated`)
 
   // Write predictions.json

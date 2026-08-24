@@ -7,8 +7,8 @@ import { Navbar, Footer } from '@/components/bttsbet'
 const SITE_URL = 'https://bttsbet.online'
 const SLUG = 'guide-linebet-inscription'
 const PAGE_URL = `${SITE_URL}/blog/${SLUG}`
-const TITLE = 'Guide Complet Linebet : Inscription, Dépôt et Code Promo VISION221'
-const DESCRIPTION = 'Guide étape par étape pour créer votre compte Linebet, utiliser le code promo VISION221, effectuer un dépôt en Mobile Money ou crypto, et naviguer sur l\'application. Conseils pour les parieurs africains en Franc CFA.'
+const TITLE = 'Guide Linebet : inscription et code VISION221 | BttsBet'
+const DESCRIPTION = 'Guide informatif sur l’inscription Linebet et le code partenaire VISION221. Vérifiez directement les conditions de dépôt, de bonus et d’éligibilité avant toute action.'
 
 export const metadata: Metadata = {
   title: TITLE,

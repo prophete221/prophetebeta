@@ -9,18 +9,23 @@ import { resolveTeamLogo } from '@/lib/teamLogos'
 import PremiumButton from './PremiumButton'
 
 // ─── Helpers ────────────────────────────────────────────────────────────
+const DISPLAY_TZ = 'Africa/Dakar'
+
+function getTodayISO() {
+  return new Date().toLocaleDateString('sv-SE', { timeZone: DISPLAY_TZ })
+}
+
 function getMatchStatus(date: string, time?: string): 'live' | 'upcoming' | 'finished' {
   if (!date) return 'finished'
   try {
-    const today = new Date(); today.setHours(0, 0, 0, 0)
-    const matchDay = new Date(date + 'T00:00:00'); matchDay.setHours(0, 0, 0, 0)
-    if (matchDay.getTime() < today.getTime()) return 'finished'
-    if (matchDay.getTime() > today.getTime()) return 'upcoming'
+    const today = getTodayISO()
+    if (date < today) return 'finished'
+    if (date > today) return 'upcoming'
     if (!time || time === '--:--' || !/^\d{2}:\d{2}$/.test(time)) return 'upcoming'
     const [h, m] = time.split(':').map(Number)
-    const matchDateTime = new Date(date + 'T00:00:00')
-    matchDateTime.setHours(h, m, 0, 0)
-    const diffMs = matchDateTime.getTime() - Date.now()
+    const matchTimestamp = Date.parse(`${date}T${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:00Z`)
+    if (!Number.isFinite(matchTimestamp)) return 'upcoming'
+    const diffMs = matchTimestamp - Date.now()
     const diffHours = diffMs / (1000 * 60 * 60)
     if (diffMs < 0 && diffHours > -2.5) return 'live'
     if (diffMs < 0) return 'finished'
@@ -32,9 +37,9 @@ function getTimeUntil(date: string, time?: string): { value: string; label: stri
   if (!date || !time || time === '--:--' || !/^\d{2}:\d{2}$/.test(time)) return null
   try {
     const [h, m] = time.split(':').map(Number)
-    const matchDateTime = new Date(date + 'T00:00:00')
-    matchDateTime.setHours(h, m, 0, 0)
-    const diffMs = matchDateTime.getTime() - Date.now()
+    const matchTimestamp = Date.parse(`${date}T${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:00Z`)
+    if (!Number.isFinite(matchTimestamp)) return null
+    const diffMs = matchTimestamp - Date.now()
     if (diffMs < 0) return null
     const diffMin = Math.floor(diffMs / (1000 * 60))
     const diffHours = Math.floor(diffMin / 60)
@@ -48,23 +53,21 @@ function getTimeUntil(date: string, time?: string): { value: string; label: stri
 function formatDateShort(dateStr: string) {
   if (!dateStr) return ''
   try {
-    const d = new Date(dateStr + 'T12:00:00')
-    const day = d.getDate().toString().padStart(2, '0')
-    const month = (d.getMonth() + 1).toString().padStart(2, '0')
-    const today = new Date(); today.setHours(12, 0, 0, 0)
-    const matchDate = new Date(dateStr + 'T12:00:00')
-    const diffDays = Math.round((matchDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24))
-    if (diffDays === 0) return "Aujourd'hui"
-    if (diffDays === 1) return 'Demain'
-    const weekdays = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam']
-    return `${weekdays[d.getDay()]} ${day}/${month}`
+    const today = getTodayISO()
+    const tomorrow = new Date(`${today}T00:00:00Z`)
+    tomorrow.setUTCDate(tomorrow.getUTCDate() + 1)
+    const tomorrowISO = tomorrow.toISOString().slice(0, 10)
+    if (dateStr === today) return "Aujourd'hui"
+    if (dateStr === tomorrowISO) return 'Demain'
+    return new Intl.DateTimeFormat('fr-FR', { timeZone: DISPLAY_TZ, weekday: 'short', day: '2-digit', month: '2-digit' })
+      .format(new Date(`${dateStr}T12:00:00Z`))
   } catch { return dateStr }
 }
 
 interface Prediction {
   type: string
   prediction: string
-  confidence: number
+  confidence: number | null
   bttsProb?: number
   over25Prob?: number
   homeLambda?: number
@@ -142,52 +145,8 @@ function TeamLogo({ src, name, size = 48 }: { src?: string; name: string; size?:
 }
 
 // ─── Prediction Card — main component (rich, with BTTS + O2.5 separately) ─
-// ─── Poisson fallback: compute BTTS / Over 2.5 from lambdas ────────────
-// If a match has BTTS but not Over 2.5 (or vice versa), we compute the
-// missing prediction from the available lambdas (expected goals).
-// This ensures EVERY match has both predictions — no "non disponible".
-
-function poissonP(k: number, lambda: number): number {
-  return Math.pow(lambda, k) * Math.exp(-lambda) / factorial(k)
-}
-
-function factorial(n: number): number {
-  let r = 1
-  for (let i = 2; i <= n; i++) r *= i
-  return r
-}
-
-/**
- * Compute P(Over 2.5) from home/away lambdas.
- * P(Over 2.5) = 1 - P(0) - P(1) - P(2) where P(total) = sum over i+j=total of P_home(i)*P_away(j)
- */
-function computeOver25(homeLambda: number, awayLambda: number): number {
-  // P(total goals = n) = sum_{i=0..n} P_home(i) * P_away(n-i)
-  const pTotal = (n: number): number => {
-    let sum = 0
-    for (let i = 0; i <= n; i++) {
-      const j = n - i
-      sum += poissonP(i, homeLambda) * poissonP(j, awayLambda)
-    }
-    return sum
-  }
-  // P(Over 2.5) = 1 - P(0) - P(1) - P(2)
-  return Math.max(0, Math.min(1, 1 - pTotal(0) - pTotal(1) - pTotal(2)))
-}
-
-/**
- * Compute P(BTTS) from home/away lambdas.
- * P(BTTS) = 1 - P(home=0) - P(away=0) + P(home=0 AND away=0)
- * P(home=0) = exp(-homeLambda), P(away=0) = exp(-awayLambda)
- * P(home=0 AND away=0) = exp(-homeLambda) * exp(-awayLambda)
- */
-function computeBtts(homeLambda: number, awayLambda: number): number {
-  const pHome0 = Math.exp(-homeLambda)
-  const pAway0 = Math.exp(-awayLambda)
-  const pBoth0 = pHome0 * pAway0
-  // P(BTTS) = 1 - P(home=0) - P(away=0) + P(both=0)
-  return Math.max(0, Math.min(1, 1 - pHome0 - pAway0 + pBoth0))
-}
+// Missing markets remain explicitly unavailable. The UI never invents a
+// league-average lambda or a probability that was not present in the feed.
 
 // ─── PredictionCard ──────────────────────────────────────────────────────
 function PredictionCard({ match, index }: { match: MatchData; index: number }) {
@@ -202,47 +161,16 @@ function PredictionCard({ match, index }: { match: MatchData; index: number }) {
   const timeUntil = getTimeUntil(match.date, match.time)
   const dateLabel = formatDateShort(match.date)
 
-  // ─── Fallback Poisson: ensure EVERY match has both BTTS + Over 2.5 ──
-  // If a prediction is missing, compute it from available lambdas.
-  // This eliminates all "non disponible" cases for a professional, reliable site.
-
-  // Get existing predictions from scraper data
+  // Only use values explicitly supplied by the feed. Missing markets remain visible
+  // as unavailable rather than being inferred from a generic league average.
   const rawBtts = match.predictions.find(p => p.type === 'BTTS')
   const rawOver25 = match.predictions.find(p => p.type.includes('Over'))
-
-  // Extract lambdas (from either prediction — they're the same model)
-  const homeLambda = rawBtts?.homeLambda || rawOver25?.homeLambda
-  const awayLambda = rawBtts?.awayLambda || rawOver25?.awayLambda
-
-  // Default lambdas if completely missing (league-average fallback: ~1.3 goals/team)
-  const effHomeLambda = homeLambda ?? 1.3
-  const effAwayLambda = awayLambda ?? 1.1
-
-  // Build BTTS prediction (use existing or compute from Poisson)
-  const bttsProb = rawBtts?.bttsProb ?? computeBtts(effHomeLambda, effAwayLambda)
-  const bttsPred = rawBtts || {
-    type: 'BTTS',
-    prediction: bttsProb >= 0.48 ? 'Oui' : 'Non',  // BTTS_THRESHOLD = 0.48 (scraper config)
-    confidence: Math.round(Math.max(40, Math.min(60, bttsProb * 100))),  // 40-60% range (free tier)
-    bttsProb,
-    homeLambda: effHomeLambda,
-    awayLambda: effAwayLambda,
-  }
-
-  // Build Over 2.5 prediction (use existing or compute from Poisson)
-  const over25Prob = rawOver25?.over25Prob ?? computeOver25(effHomeLambda, effAwayLambda)
-  const over25Pred = rawOver25 || {
-    type: 'Over 2.5',
-    prediction: over25Prob >= 0.49 ? 'Oui' : 'Non',  // OVER25_THRESHOLD = 0.49 (scraper config)
-    confidence: Math.round(Math.max(40, Math.min(60, over25Prob * 100))),
-    over25Prob,
-    homeLambda: effHomeLambda,
-    awayLambda: effAwayLambda,
-  }
-
-  // Lambda → expected goals display
-  const homeGoals = effHomeLambda ? effHomeLambda.toFixed(2) : null
-  const awayGoals = effAwayLambda ? effAwayLambda.toFixed(2) : null
+  const bttsPred = rawBtts ?? { type: 'BTTS', prediction: 'Non disponible', confidence: null }
+  const over25Pred = rawOver25 ?? { type: 'Over 2.5', prediction: 'Non disponible', confidence: null }
+  const homeLambda = rawBtts?.homeLambda ?? rawOver25?.homeLambda
+  const awayLambda = rawBtts?.awayLambda ?? rawOver25?.awayLambda
+  const homeGoals = homeLambda !== undefined ? homeLambda.toFixed(2) : null
+  const awayGoals = awayLambda !== undefined ? awayLambda.toFixed(2) : null
 
   return (
     <motion.div
@@ -331,13 +259,13 @@ function PredictionCard({ match, index }: { match: MatchData; index: number }) {
                 <span className="text-[10px] uppercase tracking-widest font-bold text-success-light">BTTS</span>
                 <span className="text-[9px] text-gray-600">Both Score</span>
               </div>
-              {/* BTTS prediction — always available (Poisson fallback) */}
+              {/* BTTS prediction — only when supplied by the feed */}
               <>
                 <div className="flex items-baseline justify-between">
                   <span className="text-xl sm:text-2xl font-bold" style={{ color: bttsPred.prediction === 'Oui' ? undefined : '#5A6577' }} >
                     <span className={bttsPred.prediction === 'Oui' ? 'text-success-light' : ''}>{bttsPred.prediction}</span>
                   </span>
-                  <span className="text-xs font-bold text-gray-400 tabular-nums">{bttsPred.confidence}%</span>
+                  <span className="text-xs font-bold text-gray-400 tabular-nums">{bttsPred.confidence !== null ? `${bttsPred.confidence}%` : 'N/D'}</span>
                 </div>
                 {bttsPred.bttsProb !== undefined && (
                   <ProbabilityBar value={bttsPred.bttsProb} prediction={bttsPred.prediction} color="green" />
@@ -360,13 +288,13 @@ function PredictionCard({ match, index }: { match: MatchData; index: number }) {
                 <span className="text-[10px] uppercase tracking-widest font-bold text-gold-light">Over 2.5</span>
                 <span className="text-[9px] text-gray-600">+2.5 buts</span>
               </div>
-              {/* Over 2.5 prediction — always available (Poisson fallback) */}
+              {/* Over 2.5 prediction — only when supplied by the feed */}
               <>
                 <div className="flex items-baseline justify-between">
                   <span className="text-xl sm:text-2xl font-bold" style={{ color: over25Pred.prediction === 'Oui' ? undefined : '#5A6577' }}>
                     <span className={over25Pred.prediction === 'Oui' ? 'text-gold-light' : ''}>{over25Pred.prediction}</span>
                   </span>
-                  <span className="text-xs font-bold text-gray-400 tabular-nums">{over25Pred.confidence}%</span>
+                  <span className="text-xs font-bold text-gray-400 tabular-nums">{over25Pred.confidence !== null ? `${over25Pred.confidence}%` : 'N/D'}</span>
                 </div>
                 {over25Pred.over25Prob !== undefined && (
                   <ProbabilityBar value={over25Pred.over25Prob} prediction={over25Pred.prediction} color="gold" />
@@ -477,7 +405,7 @@ export default function FreePredictions() {
           matchMap.get(key)!.predictions.push({
             type: p.type,
             prediction: p.prediction,
-            confidence: p.confidence,
+            confidence: typeof p.confidence === 'number' ? p.confidence : null,
             bttsProb: p.analysis?.bttsProb,
             over25Prob: p.analysis?.over25Prob,
             homeLambda: p.analysis?.homeLambda,

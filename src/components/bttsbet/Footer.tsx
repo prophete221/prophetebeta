@@ -139,10 +139,12 @@ export default function Footer() {
               <p className="text-gray-600 text-xs leading-relaxed mb-2">
                 Plateforme de pronostics football BTTS & Over 2,5 propulsée par IA.
               </p>
-              <div className="flex items-center gap-1.5 text-[10px] text-gray-500">
-                <span className="pastille pastille-green" />
-                {SOCIAL_PROOF.members.toLocaleString()}+ parieurs actifs
-              </div>
+              {SOCIAL_PROOF.members !== null && (
+                <div className="flex items-center gap-1.5 text-[10px] text-gray-500">
+                  <span className="pastille pastille-green" />
+                  {SOCIAL_PROOF.members.toLocaleString()}+ parieurs actifs
+                </div>
+              )}
             </div>
 
             <div>

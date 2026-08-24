@@ -6,10 +6,17 @@ on:
       - main
   workflow_dispatch:
 
+concurrency:
+  group: bttsbet-production-deploy
+  cancel-in-progress: false
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout code
@@ -23,27 +30,31 @@ jobs:
           node-version: '22'
 
       - name: Install dependencies
-        run: npm install --legacy-peer-deps
+        run: npm ci --legacy-peer-deps
         env:
           PUPPETEER_SKIP_DOWNLOAD: 'true'
 
       - name: Update predictions (fresh data on every push)
         timeout-minutes: 5
         run: node scripts/quick-update-predictions.mjs
-        continue-on-error: true
+
 
       - name: Update win history
         timeout-minutes: 3
         run: node scripts/update-win-history.mjs
-        continue-on-error: true
 
-      - name: Update transfers
-        timeout-minutes: 2
-        run: node scripts/scrape-transfers.mjs
-        continue-on-error: true
 
       - name: Build Next.js static export
         run: npm run build
+
+      - name: Verify SEO output
+        run: node scripts/verify-seo.mjs
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npx tsc --noEmit
 
       - name: Copy routing files
         run: |
@@ -58,12 +69,12 @@ jobs:
         run: |
           git config --local user.email "bot@bttsbet.online"
           git config --local user.name "BttsBet Bot"
-          git add public/predictions.json public/win-history.json public/predictions-archive/ public/transfers.json
+          git add public/predictions.json public/win-history.json public/predictions-archive/
           git diff --staged --quiet || git commit -m "chore: auto-update data [skip ci]"
           git push || echo "No changes to push"
 
       - name: Deploy to server via FTP
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        uses: SamKirkland/FTP-Deploy-Action@4.4.0
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}

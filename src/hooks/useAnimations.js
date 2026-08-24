@@ -43,22 +43,22 @@ export function useScrollAnimation(threshold = 0.1) {
  * useMousePosition — Hook pour effet tilt 3D au hover.
  */
 export function useMousePosition() {
-  const positionRef = useRef({ x: 0.5, y: 0.5 })
+  const [position, setPosition] = useState({ x: 0.5, y: 0.5 })
 
   const handleMouseMove = useCallback((e) => {
     const rect = e.currentTarget.getBoundingClientRect()
-    positionRef.current = {
+    setPosition({
       x: (e.clientX - rect.left) / rect.width,
       y: (e.clientY - rect.top) / rect.height,
-    }
+    })
   }, [])
 
   const handleMouseLeave = useCallback(() => {
-    positionRef.current = { x: 0.5, y: 0.5 }
+    setPosition({ x: 0.5, y: 0.5 })
   }, [])
 
   const tiltStyle = {
-    transform: `perspective(1000px) rotateX(${(positionRef.current.y - 0.5) * -6}deg) rotateY(${(positionRef.current.x - 0.5) * 6}deg)`,
+    transform: `perspective(1000px) rotateX(${(position.y - 0.5) * -6}deg) rotateY(${(position.x - 0.5) * 6}deg)`,
     transition: 'transform 0.5s ease-out',
   }
 

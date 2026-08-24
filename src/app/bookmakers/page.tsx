@@ -2,12 +2,13 @@ import type { Metadata } from 'next'
 import { AFFILIATE } from '@/lib/constants'
 
 export const metadata: Metadata = {
-  title: "Comparatif Linebet vs 888starz — Bonus, dépôts, cotes | BttsBet",
-  description: "Comparaison détaillée des bookmakers Linebet et 888starz au Sénégal : bonus de bienvenue, méthodes de dépôt (Wave, Orange Money, Free Money), cotes, application mobile, code promo VISION221.",
+  title: 'Bookmakers partenaires : Linebet et 888starz | BttsBet',
+  description: 'Présentation informative des liens partenaires Linebet et 888starz. Vérifiez directement les conditions d’inscription, de dépôt, de bonus et de retrait.',
+  robots: { index: false, follow: false },
   alternates: { canonical: 'https://bttsbet.online/bookmakers' },
   openGraph: {
-    title: "Comparatif Linebet vs 888starz — BttsBet",
-    description: "Bonus, dépôts Wave/Orange Money, cotes, app mobile. Code promo VISION221.",
+    title: 'Bookmakers partenaires Linebet et 888starz | BttsBet',
+    description: 'Informations partenaires et conditions à vérifier directement auprès des opérateurs.',
     url: 'https://bttsbet.online/bookmakers',
     type: 'website',
   },
@@ -18,7 +19,7 @@ const jsonLd = {
   '@type': 'WebPage',
   name: 'Comparatif Linebet vs 888starz au Sénégal',
   url: 'https://bttsbet.online/bookmakers',
-  description: "Comparaison détaillée des bookmakers Linebet et 888starz : bonus, dépôts, cotes, application mobile.",
+  description: 'Informations générales sur les liens partenaires Linebet et 888starz. Les conditions commerciales doivent être vérifiées directement auprès des opérateurs.',
   inLanguage: 'fr',
   isPartOf: { '@type': 'WebSite', name: 'BttsBet', url: 'https://bttsbet.online' },
 }
@@ -33,8 +34,8 @@ type Row = {
 const COMPARISON: Row[] = [
   {
     label: 'Bonus de bienvenue',
-    linebet: '90 000 XOF (150$)',
-    star888: '100% du 1er dépôt',
+    linebet: 'À vérifier',
+    star888: 'À vérifier',
     highlight: 'both',
   },
   {
@@ -44,24 +45,24 @@ const COMPARISON: Row[] = [
   },
   {
     label: 'Dépôt minimum',
-    linebet: '1 000 XOF',
-    star888: '1 000 XOF',
+    linebet: 'À vérifier',
+    star888: 'À vérifier',
   },
   {
     label: 'Retrait minimum',
-    linebet: '2 000 XOF',
-    star888: '2 500 XOF',
+    linebet: 'À vérifier',
+    star888: 'À vérifier',
     highlight: 'linebet',
   },
   {
     label: 'Wave',
-    linebet: 'Oui',
-    star888: 'Oui',
+    linebet: 'À vérifier',
+    star888: 'À vérifier',
   },
   {
     label: 'Orange Money',
-    linebet: 'Oui',
-    star888: 'Oui',
+    linebet: 'À vérifier',
+    star888: 'À vérifier',
   },
   {
     label: 'Free Money',
@@ -71,59 +72,59 @@ const COMPARISON: Row[] = [
   },
   {
     label: 'Carte bancaire',
-    linebet: 'Oui (Visa/Mastercard)',
-    star888: 'Oui (Visa/Mastercard)',
+    linebet: 'À vérifier',
+    star888: 'À vérifier',
   },
   {
     label: 'Crypto',
-    linebet: 'Oui (BTC, ETH, USDT)',
-    star888: 'Oui (BTC, ETH, USDT)',
+    linebet: 'À vérifier',
+    star888: 'À vérifier',
   },
   {
     label: 'Application Android',
-    linebet: 'Oui (APK direct)',
-    star888: 'Oui (APK direct)',
+    linebet: 'À vérifier',
+    star888: 'À vérifier',
   },
   {
     label: 'Application iOS',
-    linebet: 'Via navigateur (PWA)',
-    star888: 'Via navigateur (PWA)',
+    linebet: 'À vérifier',
+    star888: 'À vérifier',
   },
   {
     label: 'Live streaming',
-    linebet: 'Oui',
-    star888: 'Oui',
+    linebet: 'À vérifier',
+    star888: 'À vérifier',
   },
   {
     label: 'Cash-out',
-    linebet: 'Oui',
-    star888: 'Oui',
+    linebet: 'À vérifier',
+    star888: 'À vérifier',
   },
   {
     label: 'Paris en direct',
-    linebet: 'Oui',
-    star888: 'Oui',
+    linebet: 'À vérifier',
+    star888: 'À vérifier',
   },
   {
     label: 'Cotes FIFA / Esport',
-    linebet: 'Très larges',
-    star888: 'Larges',
+    linebet: 'À vérifier',
+    star888: 'À vérifier',
     highlight: 'linebet',
   },
   {
     label: 'Aviator',
-    linebet: 'Oui',
-    star888: 'Oui',
+    linebet: 'À vérifier',
+    star888: 'À vérifier',
   },
   {
     label: 'Support client FR',
-    linebet: '24/7 (chat, Telegram)',
-    star888: '24/7 (chat, Telegram)',
+    linebet: 'À vérifier',
+    star888: 'À vérifier',
   },
   {
     label: 'Licence',
-    linebet: 'Curaçao eGaming',
-    star888: 'Curaçao eGaming',
+    linebet: 'À vérifier',
+    star888: 'À vérifier',
   },
 ]
 

@@ -3,17 +3,13 @@
 import {
   Navbar,
   Hero,
-  SportMarquee,
-  StickyVipBandeau,
   LiveTicker,
   HowItWorks,
+  About,
   FreePredictions,
   PromoVip,
   VipSports,
-  AviatorVip,
   WinHistory,
-  FifaLinebet,
-  About,
   Footer,
   CookieConsent,
   ScrollProgressBar,
@@ -28,7 +24,7 @@ const jsonLd = {
   '@type': 'WebSite',
   name: 'BttsBet',
   url: 'https://bttsbet.online',
-  description: "Pronostics football BTTS & Over 2,5 générés par IA. Value bets FIFA sur Linebet et 888starz. Statistiques Aviator. Code promo VISION221.",
+  description: "Pronostics football BTTS et Over 2,5 fondés sur un modèle Poisson et des fixtures ESPN. Données horodatées et aucune garantie de gain.",
   inLanguage: 'fr',
   potentialAction: {
     '@type': 'SearchAction',
@@ -64,7 +60,7 @@ const faqJsonLd = {
       name: "Comment fonctionne l'IA de BttsBet ?",
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "Notre intelligence artificielle analyse des centaines de variables en temps réel : Expected Goals (xG), forme récente, blessés, historique des confrontations, conditions météo. L'algorithme est entraîné sur plus de 50 000 matchs avec environ 52% de précision historique. Ces performances passées ne garantissent pas les résultats futurs.",
+        text: "Le modèle public utilise les fixtures ESPN et des profils de ligue pour calculer des estimations BTTS et Over 2,5 avec une loi de Poisson. Les xG d’équipe, les blessures, la météo et les cotes ne sont pas inventés lorsqu’ils ne sont pas disponibles. Aucun taux de réussite n’est publié sans résultats finaux vérifiés.",
       },
     },
     {
@@ -80,15 +76,7 @@ const faqJsonLd = {
       name: 'Les pronostics gratuits sont-ils fiables ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "Nos pronostics gratuits sont générés par la même IA que nos pronostics premium. Ils couvrent les matchs les plus populaires du jour avec une analyse complète. Aucun résultat n'est garanti.",
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Peut-on prédire Aviator ou une faille de cotes FIFA ?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: "Non. Aviator est un jeu 100% aléatoire basé sur un générateur certifié 'provably fair' — aucun outil ne peut prédire un round futur. Nos statistiques Aviator observent l'historique, pas l'avenir. Les Value Bets FIFA sont des estimations statistiques, pas des garanties de gain.",
+        text: "Les pronostics gratuits sont des estimations statistiques publiées avec leur date, leur heure et les limites connues du modèle. Ils ne constituent pas une garantie de gain et les performances passées ne préjugent pas des résultats futurs.",
       },
     },
   ],
@@ -101,9 +89,9 @@ const organizationJsonLd = {
   name: 'BttsBet',
   url: 'https://bttsbet.online',
   logo: 'https://bttsbet.online/favicon.svg',
-  description: "Plateforme de pronostics football BTTS & Over 2,5 basés sur l'IA. Value bets FIFA sur Linebet et 888starz. Statistiques Aviator.",
+  description: "Plateforme de pronostics football BTTS et Over 2,5 fondés sur un modèle Poisson et des fixtures ESPN.",
   areaServed: ['SN', 'CI', 'CM', 'ML', 'BF', 'FR'],
-  knowsAbout: ['BTTS', 'Over 2.5', 'paris sportifs', 'IA', 'football', 'value bets FIFA', 'statistiques Aviator'],
+  knowsAbout: ['BTTS', 'Over 2.5', 'paris sportifs', 'modèle Poisson', 'football'],
 }
 
 // JSON-LD BreadcrumbList — breadcrumbs in SERP
@@ -114,7 +102,6 @@ const breadcrumbJsonLd = {
     { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://bttsbet.online/' },
     { '@type': 'ListItem', position: 2, name: 'Pronostics', item: 'https://bttsbet.online/#free-predictions' },
     { '@type': 'ListItem', position: 3, name: 'VIP', item: 'https://bttsbet.online/#vip' },
-    { '@type': 'ListItem', position: 4, name: 'Value Bets FIFA', item: 'https://bttsbet.online/#fifa-linebet' },
   ],
 }
 
@@ -161,8 +148,6 @@ export default function Home() {
         <ErrorBoundary><WinHistory /></ErrorBoundary>
         <ErrorBoundary><PromoVip /></ErrorBoundary>
         <ErrorBoundary><VipSports /></ErrorBoundary>
-        <ErrorBoundary><FifaLinebet /></ErrorBoundary>
-        <ErrorBoundary><AviatorVip /></ErrorBoundary>
         <ErrorBoundary><HowItWorks /></ErrorBoundary>
         <ErrorBoundary><About /></ErrorBoundary>
         <ErrorBoundary><Footer /></ErrorBoundary>

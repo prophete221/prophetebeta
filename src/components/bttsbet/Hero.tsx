@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useScrollAnimation } from '@/hooks/useAnimations'
 import { AFFILIATE, SITE } from '@/lib/constants'
 import CopyableCode from './CopyableCode'
@@ -25,21 +25,9 @@ const C = {
 }
 
 // ─── Data ────────────────────────────────────────────────────────────────
-const ACCURACY = { vip: { overall: 52, btts: 50, over: 54, value: 56 } }
-
 const ANALYSIS_STEPS = [
-  'Forme récente', 'xG', 'Blessures', 'Cotes', 'Historique',
-  'Value Bet', 'BTTS', 'Over 2.5', 'Score Exact', 'Double Chance',
+  'Fixture ESPN', 'Profil de ligue', 'Modèle Poisson', 'BTTS', 'Over 2.5',
 ]
-
-const TRANSFERS = [
-  { player: 'Mbappé', from: 'PSG', to: 'Real Madrid', fee: 'Libre', country: '🇪🇸' },
-  { player: 'Haaland', from: 'Dortmund', to: 'Man City', fee: '60M€', country: '🇬🇧' },
-  { player: 'Bellingham', from: 'Dortmund', to: 'Real Madrid', fee: '103M€', country: '🇪🇸' },
-  { player: 'Vinicius Jr', from: 'Real Madrid', to: 'Al-Ahli', fee: '200M€', country: '🇸🇦' },
-]
-
-const SPARKLINE = [62, 65, 68, 64, 70, 73, 69, 75, 78, 76, 80, 82, 79, 85]
 
 // ═══════════════════════════════════════════════════════════════════════
 // NeuralNetworkCanvas — subtle particles
@@ -102,96 +90,6 @@ function NeuralNetworkCanvas() {
 }
 
 // ═══════════════════════════════════════════════════════════════════════
-// CountUpNumber
-// ═══════════════════════════════════════════════════════════════════════
-function CountUpNumber({ target, duration = 1500, suffix = '%' }: { target: number; duration?: number; suffix?: string }) {
-  // FIX BUG 2.1: Initialize with target value (not 0) so it's visible immediately
-  const [display, setDisplay] = useState(target)
-  const ref = useRef<HTMLSpanElement>(null)
-  const started = useRef(false)
-  useEffect(() => {
-    // Respect reduced motion
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      setDisplay(target)
-      return
-    }
-    const obs = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting && !started.current) {
-        started.current = true; const start = performance.now()
-        // Reset to 0 for animation
-        setDisplay(0)
-        const tick = (now: number) => {
-          const t = Math.min(1, (now - start) / duration)
-          const eased = 1 - Math.pow(1 - t, 3)
-          setDisplay(Math.round(eased * target))
-          if (t < 1) requestAnimationFrame(tick)
-        }
-        requestAnimationFrame(tick)
-      }
-    }, { threshold: 0.3, rootMargin: '0px 0px -10% 0px' })
-    if (ref.current) obs.observe(ref.current)
-    // Fallback: if observer hasn't fired in 800ms, show final value
-    const fallback = setTimeout(() => {
-      if (!started.current) { setDisplay(target); started.current = true }
-    }, 800)
-    return () => { obs.disconnect(); clearTimeout(fallback) }
-  }, [target, duration])
-  return <span ref={ref} className="tabular-nums">{display}{suffix}</span>
-}
-
-// ═══════════════════════════════════════════════════════════════════════
-// TransferFeed — cycling latest transfers
-// ═══════════════════════════════════════════════════════════════════════
-function TransferFeed() {
-  const [index, setIndex] = useState(0)
-  const [transfers, setTransfers] = useState(TRANSFERS)
-  useEffect(() => {
-    fetch('/transfers.json').then(r => r.json()).then(data => {
-      if (data?.transfers?.length > 0) setTransfers(data.transfers.slice(0, 6))
-    }).catch(() => {})
-  }, [])
-  useEffect(() => {
-    const interval = setInterval(() => setIndex(i => (i + 1) % transfers.length), 3500)
-    return () => clearInterval(interval)
-  }, [transfers.length])
-  const item = transfers[index]; if (!item) return null
-  return (
-    <div className="relative h-[52px] rounded-[12px] overflow-hidden" style={{ backgroundColor: '#121620', border: '1px solid #1E2636' }}>
-      <AnimatePresence mode="wait">
-        <motion.div key={index} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.3 }}
-          className="absolute inset-0 flex items-center justify-between px-3">
-          <div className="flex items-center gap-2.5">
-            <span className="text-base flex-shrink-0">{item.country}</span>
-            <div className="flex flex-col">
-              <span className="font-mono text-[13px] font-medium text-white">{item.player}</span>
-              <span className="font-mono text-[10px] text-[#5A667A]">{item.from} → {item.to}</span>
-            </div>
-          </div>
-          <span className="px-2.5 h-[24px] rounded-full flex items-center" style={{ backgroundColor: '#211D0E', border: '1px solid #FFB80020' }}>
-            <span className="font-mono text-[11px] font-bold" style={{ color: C.gold }}>{item.fee}</span>
-          </span>
-        </motion.div>
-      </AnimatePresence>
-    </div>
-  )
-}
-
-// ═══════════════════════════════════════════════════════════════════════
-// Sparkline — 14-day trend
-// ═══════════════════════════════════════════════════════════════════════
-function Sparkline() {
-  const max = Math.max(...SPARKLINE), min = Math.min(...SPARKLINE), range = max - min || 1
-  const pts = SPARKLINE.map((v, i) => (i / (SPARKLINE.length - 1)) * 100 + ',' + (88 - ((v - min) / range) * 70 - 8)).join(' ')
-  return (
-    <svg viewBox="0 0 100 88" preserveAspectRatio="none" className="w-full h-[88px]">
-      <defs><linearGradient id="spark" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor={C.ultra} stopOpacity="0.25" /><stop offset="100%" stopColor={C.ultra} stopOpacity="0" /></linearGradient></defs>
-      <motion.polygon initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.5 }} points={'0,88 ' + pts + ' 100,88'} fill="url(#spark)" />
-      <motion.polyline initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1.5, ease: 'easeOut' }} points={pts} fill="none" stroke={C.ultra} strokeWidth="1.5" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
-    </svg>
-  )
-}
-
-// ═══════════════════════════════════════════════════════════════════════
 // Main Hero — Quantum Stadium V16 PRO Mobile-First
 // ═══════════════════════════════════════════════════════════════════════
 export default function Hero() {
@@ -227,7 +125,7 @@ export default function Hero() {
           className="inline-flex items-center gap-2 self-start px-3 h-[28px] rounded-full"
           style={{ backgroundColor: '#102A2E', border: '1px solid rgba(0, 224, 255, 0.2)' }}>
           <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: C.ultra, boxShadow: '0 0 8px ' + C.ultra }} />
-          <span className="font-mono text-[10px] font-bold tracking-[0.14em] live-text" style={{ color: C.ultra }}>IA ACTIVE EN TEMPS RÉEL</span>
+          <span className="font-mono text-[10px] font-bold tracking-[0.14em] live-text" style={{ color: C.ultra }}>DONNÉES DU JOUR</span>
         </motion.div>
 
         {/* ═══ TITRE ═══ */}
@@ -236,10 +134,10 @@ export default function Hero() {
             Plateforme de Prédictions Football par <span style={{ color: C.ultra }}>Intelligence Artificielle</span>
           </h1>
           <p className="mt-2 text-[13px] font-medium leading-[1.4]" style={{ color: C.textSec }}>
-            Votre IA analyse plus de 1200 matchs chaque jour.
+            Fixtures du jour récupérées depuis une source sportive publique.
           </p>
           <p className="mt-1 text-[14px] leading-[1.6]" style={{ color: C.textSec, maxWidth: '320px' }}>
-            Obtenez des pronostics de haute précision. Inscrivez-vous sur Linebet avec le code{' '}
+            Consultez des estimations BTTS et Over 2,5 documentées. Inscrivez-vous sur Linebet avec le code{' '}
             <CopyableCode code={SITE.promoCode} displayClassName="font-bold" />{' '}pour débloquer l'accès VIP.
           </p>
         </motion.div>
@@ -293,41 +191,28 @@ export default function Hero() {
               <span className="w-1 h-1 rounded-full" style={{ backgroundColor: C.success }} /> Mis à jour quotidien
             </span>
           </div>
-          <TransferFeed />
         </motion.div>
 
-        {/* ═══ CARTE STATS (Sparkline + KPIs) ═══ */}
+        {/* ═══ CARTE MÉTHODE ET LIMITES ═══ */}
         <motion.div initial={{ opacity: 0, y: 8 }} animate={isVisible ? { opacity: 1, y: 0 } : undefined} transition={{ duration: 0.5, delay: 0.5 }}
-          className="rounded-[20px] px-4 pt-4 pb-3"
+          className="rounded-[20px] px-4 pt-4 pb-4"
           style={{ backgroundColor: C.card, border: '1px solid ' + C.border, boxShadow: '0 8px 24px rgba(0,0,0,0.3)' }}>
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-[13px] font-semibold text-white">Précision IA</span>
-            <span className="font-mono text-[13px] font-bold" style={{ color: C.ultra }}>+85%</span>
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-[13px] font-semibold text-white">Méthode publique</span>
+            <span className="font-mono text-[10px] font-bold uppercase tracking-wider" style={{ color: C.ultra }}>Transparente</span>
           </div>
-          <Sparkline />
-          {/* KPI grid */}
-          <div className="grid grid-cols-2 gap-3 pt-2">
-            {[
-              { label: 'CONFIANCE', value: ACCURACY.vip.overall, color: C.ultra },
-              { label: 'BTTS', value: ACCURACY.vip.btts, color: C.ultra },
-              { label: 'OVER 2.5', value: ACCURACY.vip.over, color: C.ultraDark },
-              { label: 'VALUE BET', value: ACCURACY.vip.value, color: C.gold },
-            ].map((m, i) => (
-              <motion.div key={m.label} initial={{ opacity: 0, scale: 0.95 }} animate={isVisible ? { opacity: 1, scale: 1 } : undefined} transition={{ duration: 0.3, delay: 0.6 + i * 0.1 }}
-                className="rounded-[16px] p-3.5 flex flex-col gap-2.5"
-                style={{ backgroundColor: '#121620', border: '1px solid #1E2636', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.03)' }}>
-                <div className="flex items-start justify-between">
-                  <span className="font-mono text-[10px] font-bold tracking-[0.12em]" style={{ color: C.textSec }}>{m.label}</span>
-                </div>
-                <div className="text-[22px] font-bold" style={{ color: m.color, textShadow: '0 0 10px ' + m.color + '50' }}>
-                  <CountUpNumber target={m.value} />
-                </div>
-                <div className="h-[3px] w-full rounded-full overflow-hidden" style={{ backgroundColor: '#1C2333' }}>
-                  <motion.div initial={{ width: 0 }} animate={isVisible ? { width: m.value + '%' } : undefined} transition={{ duration: 1, delay: 0.8 + i * 0.1 }}
-                    className="h-full rounded-full" style={{ backgroundColor: m.color, boxShadow: '0 0 4px ' + m.color }} />
-                </div>
-              </motion.div>
-            ))}
+          <p className="text-[11px] leading-relaxed" style={{ color: C.textSec }}>
+            Estimations BTTS et Over 2,5 calculées à partir des fixtures ESPN, d’un profil de ligue et d’une loi de Poisson. Les données d’équipe, les blessures et les cotes ne sont pas inventées lorsqu’elles ne sont pas disponibles.
+          </p>
+          <div className="grid grid-cols-2 gap-2 mt-3">
+            <div className="rounded-xl px-3 py-2" style={{ backgroundColor: '#121620', border: '1px solid #1E2636' }}>
+              <div className="text-[10px] font-bold uppercase tracking-wider" style={{ color: C.textMute }}>Marchés</div>
+              <div className="text-xs font-semibold text-white mt-1">BTTS · Over 2,5</div>
+            </div>
+            <div className="rounded-xl px-3 py-2" style={{ backgroundColor: '#121620', border: '1px solid #1E2636' }}>
+              <div className="text-[10px] font-bold uppercase tracking-wider" style={{ color: C.textMute }}>Taux vérifié</div>
+              <div className="text-xs font-semibold text-white mt-1">Non publié</div>
+            </div>
           </div>
         </motion.div>
 
@@ -342,7 +227,7 @@ export default function Hero() {
             aria-label="S'inscrire sur Linebet avec le code promo VISION221"
             data-cta="hero-primary">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
-            S'inscrire · Bonus 90 000 XOF
+            S'inscrire sur Linebet
           </motion.a>
           {/* CTA secondaire — ghost, atténué */}
           <motion.button whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }} onClick={() => document.getElementById('free-predictions')?.scrollIntoView({ behavior: 'smooth' })}
@@ -357,7 +242,7 @@ export default function Hero() {
         {/* ═══ MEMBRES VIP ═══ */}
         <motion.div initial={{ opacity: 0 }} animate={isVisible ? { opacity: 1 } : undefined} transition={{ duration: 0.5, delay: 0.8 }}
           className="text-center text-[11px] mt-1" style={{ color: C.textMute }}>
-          +2,430 membres VIP actifs · 18+ · Les paris comportent des risques
+          18+ · Les paris comportent des risques · Les résultats passés ne garantissent rien
         </motion.div>
       </div>
     </section>

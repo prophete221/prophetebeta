@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports -- This standalone .cjs script intentionally uses CommonJS. */
 const http = require('http');
 http.get('http://localhost:3000/', { timeout: 10000 }, (res) => {
   let data = '';

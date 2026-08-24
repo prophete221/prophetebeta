@@ -7,9 +7,9 @@ import { staggerContainer, staggerChildFadeUp } from '@/lib/motionPresets'
 const CARDS = [
   {
     step: '01',
-    title: 'Données temps réel',
-    subtitle: 'Data ingestion',
-    description: 'Notre IA agrège 200+ variables par match : Expected Goals (xG), forme récente, blessés, historique des confrontations, conditions météo. Plus de 50 000 matchs analysés en continu.',
+    title: 'Fixtures publiques',
+    subtitle: 'Data source',
+    description: 'Le pipeline récupère les fixtures disponibles depuis ESPN et affiche la date, l’heure et les équipes lorsqu’elles sont publiées. Les statistiques d’équipe, blessures et cotes ne sont pas inventées.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M3 3v18h18" />
@@ -21,15 +21,15 @@ const CARDS = [
       </svg>
     ),
     stats: [
-      { label: 'Matchs analysés', value: '50 000+' },
-      { label: 'Variables par match', value: '200+' },
+      { label: 'Source des fixtures', value: 'ESPN' },
+      { label: 'Données d’équipe', value: 'N/D' },
     ],
   },
   {
     step: '02',
     title: 'Modèles Poisson calibrés',
     subtitle: 'Statistical engine',
-    description: 'Nous calibrons des modèles de Poisson sur les buts attendus, avec corrections systématiques pour BTTS (+2%) et Over 2.5 (+1%). Le Poisson sous-estime le BTTS — nous corrigeons ce biais connu.',
+    description: 'Le moteur applique une loi de Poisson à des paramètres de ligue pour produire des estimations BTTS et Over 2,5. Cette approche reste indicative lorsque les paramètres propres aux équipes ne sont pas disponibles.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10" />
@@ -39,15 +39,15 @@ const CARDS = [
       </svg>
     ),
     stats: [
-      { label: 'Calibration', value: '+2% BTTS' },
-      { label: 'Validation', value: '50K matchs' },
+      { label: 'Modèle', value: 'Poisson' },
+      { label: 'Paramètres équipe', value: 'N/D' },
     ],
   },
   {
     step: '03',
-    title: 'Contrôle humain + historique',
+    title: 'Limites et historique',
     subtitle: 'Quality layer',
-    description: 'Chaque pronostic est validé par notre équipe avant publication. Nous publions transparemment gagnés ET perdus, avec un taux de réussite calculé sur les pronostics réellement publiés.',
+    description: 'Les estimations sont publiées avec leurs limites connues. Un résultat n’est ajouté à l’historique qu’après confirmation d’un score final par une source vérifiable.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M9 12l2 2 4-4" />
@@ -55,8 +55,8 @@ const CARDS = [
       </svg>
     ),
     stats: [
-      { label: 'Précision historique', value: '~52%' },
-      { label: 'Transparence', value: '100%' },
+      { label: 'Taux vérifié', value: 'N/D' },
+      { label: 'Score final', value: 'À confirmer' },
     ],
   },
 ]
@@ -79,7 +79,7 @@ export default function HowItWorks() {
             Comment fonctionne <span className="text-success">l'IA BttsBet</span>
           </h2>
           <p className="section-subtitle max-w-2xl mx-auto">
-            Trois couches technologiques pour des pronostics fiables.
+            Trois repères pour interpréter les estimations avec prudence.
             Aucune garantie future — les paris sportifs comportent des risques.
           </p>
         </motion.div>

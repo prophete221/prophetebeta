@@ -59,17 +59,8 @@ export function AuthProvider({ children }) {
     if (auth && firebaseConfig.apiKey !== 'AIzaSyDemoKeyReplaceMeWithYourOwn') {
       setIsFirebaseReady(true)
     } else {
-      // Fallback: use localStorage for demo/offline mode
+      // No local authentication fallback: never store credentials in the browser.
       setIsFirebaseReady(false)
-      // Load from localStorage
-      const saved = localStorage.getItem('bttsbet_user')
-      if (saved) {
-        try {
-          const parsed = JSON.parse(saved)
-          setUser(parsed)
-          setUserProfile(parsed.profile || null)
-        } catch (e) { /* ignore */ }
-      }
       setLoading(false)
     }
   }, [])
@@ -116,18 +107,7 @@ export function AuthProvider({ children }) {
       const cred = await signInWithEmailAndPassword(auth, email, password)
       return cred.user
     }
-    // Fallback: localStorage
-    const saved = localStorage.getItem('bttsbet_users')
-    const users = saved ? JSON.parse(saved) : {}
-    const u = users[email]
-    if (!u || u.password !== password) {
-      throw new Error('Email ou mot de passe incorrect')
-    }
-    const userData = { uid: u.uid, email, displayName: u.displayName, profile: u.profile }
-    setUser(userData)
-    setUserProfile(u.profile || null)
-    localStorage.setItem('bttsbet_user', JSON.stringify(userData))
-    return userData
+    throw new Error('Connexion indisponible : Firebase n’est pas configuré')
   }, [isFirebaseReady])
 
   const register = useCallback(async (email, password, displayName) => {
@@ -152,34 +132,7 @@ export function AuthProvider({ children }) {
       await setDoc(doc(db, 'users', cred.user.uid), profile)
       return cred.user
     }
-    // Fallback: localStorage
-    const saved = localStorage.getItem('bttsbet_users')
-    const users = saved ? JSON.parse(saved) : {}
-    if (users[email]) {
-      throw new Error('Cet email est déjà utilisé')
-    }
-    const uid = 'local_' + Date.now()
-    const profile = {
-      displayName,
-      email,
-      createdAt: new Date().toISOString(),
-      country: '',
-      phone: '',
-      linebetId: '',
-      isVip: false,
-      vipExpiry: null,
-      favoriteLeagues: [],
-      points: 0,
-      predictionsViewed: 0,
-      streak: 0,
-    }
-    users[email] = { uid, password, displayName, profile }
-    localStorage.setItem('bttsbet_users', JSON.stringify(users))
-    const userData = { uid, email, displayName, profile }
-    setUser(userData)
-    setUserProfile(profile)
-    localStorage.setItem('bttsbet_user', JSON.stringify(userData))
-    return userData
+    throw new Error('Inscription indisponible : Firebase n’est pas configuré')
   }, [isFirebaseReady])
 
   const logout = useCallback(async () => {
@@ -231,11 +184,7 @@ export function AuthProvider({ children }) {
     if (isFirebaseReady && db && user) {
       await setDoc(doc(db, 'users', user.uid), data, { merge: true })
     } else if (user) {
-      const updated = { ...userProfile, ...data }
-      setUserProfile(updated)
-      const userData = { ...user, profile: updated }
-      setUser(userData)
-      localStorage.setItem('bttsbet_user', JSON.stringify(userData))
+      throw new Error('Mise à jour indisponible : aucun backend sécurisé n’est configuré')
     }
   }, [isFirebaseReady, user, userProfile])
 
