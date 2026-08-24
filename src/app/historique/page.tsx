@@ -7,8 +7,8 @@ import { Navbar, Footer, WinHistory, ErrorBoundary } from '@/components/bttsbet'
 const SITE_URL = 'https://bttsbet.online'
 const SLUG = 'historique'
 const PAGE_URL = `${SITE_URL}/${SLUG}`
-const TITLE = 'Historique Pronostics BttsBet — Résultats Vérifiés BTTS & Over 2.5'
-const DESCRIPTION = 'Historique complet des pronostics BTTS & Over 2.5 de BttsBet — tous les résultats, gagnés et perdus, sans filtrage. Transparence totale avec preuves vérifiables. Précision historique ~52%.'
+const TITLE = 'Historique des pronostics | BttsBet'
+const DESCRIPTION = 'Consultez l’état de l’historique public BTTS et Over 2,5. Les taux et résultats sont publiés uniquement après vérification des scores finaux.'
 
 export const metadata: Metadata = {
   title: TITLE,

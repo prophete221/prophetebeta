@@ -22,12 +22,12 @@ export function useCountUp(
     triggerOnce?: boolean
     threshold?: number
   } = {}
-): [React.RefObject<HTMLElement | null>, string, boolean] {
+): [React.RefObject<HTMLDivElement>, string, boolean] {
   const { from = 0, decimals = 0, triggerOnce = true, threshold = 0.4 } = options
   // FIX BUG 2.1: Initialize with the FINAL value, not 'from'.
   // The animation will override this once it triggers.
   // This ensures the correct value is visible immediately (SSR + above-the-fold).
-  const ref = useRef<HTMLElement>(null)
+  const ref = useRef<HTMLDivElement>(null)
   const [display, setDisplay] = useState(target.toFixed(decimals))
   const [hasAnimated, setHasAnimated] = useState(false)
 
@@ -101,7 +101,7 @@ export function useCountUp(
     }
   }, [target, duration, from, decimals, triggerOnce, threshold, hasAnimated])
 
-  return [ref as React.RefObject<HTMLElement | null>, display, hasAnimated]
+  return [ref as unknown as React.RefObject<HTMLDivElement>, display, hasAnimated]
 }
 
 /**
@@ -115,7 +115,7 @@ export function useCountUp(
 export function useRevealOnScroll(
   threshold = 0.15,
   variant: 'fade-up' | 'fade-left' | 'fade-right' | 'scale' | 'blur' = 'fade-up'
-): [React.RefObject<HTMLDivElement | null>, boolean] {
+): [React.RefObject<HTMLDivElement>, boolean] {
   const ref = useRef<HTMLDivElement>(null)
   const [isVisible, setIsVisible] = useState(false)
 
@@ -143,7 +143,7 @@ export function useRevealOnScroll(
   return [ref, isVisible]
 }
 
-export function useScrollAnimation(threshold = 0.1): [React.RefObject<HTMLDivElement | null>, boolean] {
+export function useScrollAnimation(threshold = 0.1): [React.RefObject<HTMLDivElement>, boolean] {
   const ref = useRef<HTMLDivElement>(null)
   const [isVisible, setIsVisible] = useState(false)
 
@@ -187,7 +187,7 @@ export function useScrollAnimation(threshold = 0.1): [React.RefObject<HTMLDivEle
 export function useStaggerReveal(
   threshold = 0.1,
   variant: 'default' | 'from-left' | 'from-right' | 'scale-in' | 'blur-in' = 'default'
-): [React.RefObject<HTMLDivElement | null>, boolean] {
+): [React.RefObject<HTMLDivElement>, boolean] {
   const ref = useRef<HTMLDivElement>(null)
   const [isVisible, setIsVisible] = useState(false)
 
@@ -233,7 +233,7 @@ export function useStaggerReveal(
 export function useRevealEntry(
   variant: 'reveal-fade-up' | 'reveal-fade-left' | 'reveal-scale' | 'reveal-on-scroll' = 'reveal-fade-up',
   threshold = 0.1
-): [React.RefObject<HTMLDivElement | null>, boolean] {
+): [React.RefObject<HTMLDivElement>, boolean] {
   const ref = useRef<HTMLDivElement>(null)
   const [isVisible, setIsVisible] = useState(false)
 

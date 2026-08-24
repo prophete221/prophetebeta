@@ -7,32 +7,16 @@ import { Navbar, Footer } from '@/components/bttsbet'
 const SITE_URL = 'https://bttsbet.online'
 const SLUG = 'prediction-aviator'
 const PAGE_URL = `${SITE_URL}/${SLUG}`
-const TITLE = 'Prédiction Aviator 2026 : Signaux IA, Astuces & Stratégie Gagnante sur Linebet & 888starz'
-const DESCRIPTION = 'Découvrez les signaux de prédiction Aviator 2026 : comment fonctionne l\'algorithme Aviator, utiliser l\'IA pour les signaux, stratégie cash out, astuces sur Linebet & 888starz avec le code promo VISION221. Jeu responsable.'
+const TITLE = 'Aviator : fonctionnement du jeu et jeu responsable'
+const DESCRIPTION = 'Guide informatif sur le fonctionnement aléatoire d’Aviator, les limites des statistiques historiques et les principes du jeu responsable. Aucun signal ne permet de prédire un tour futur.'
 
-const KEYWORDS = [
-  'prédiction aviator',
-  'signal aviator',
-  'hack aviator',
-  'aviator predictor',
-  'aviator AI',
-  'multiplicateur aviator',
-  'astuce aviator',
-  'aviator en direct',
-  'bot aviator',
-  'signaux aviator gratuit',
-  'aviator Linebet',
-  'aviator 888starz',
-  'code promo aviator',
-  'cash out aviator',
-  'stratégie aviator',
-  'aviator hack 2026',
-]
+const KEYWORDS = ['Aviator', 'jeu responsable', 'fonctionnement Aviator', 'aléatoire']
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   keywords: KEYWORDS,
+  robots: { index: false, follow: false },
   alternates: {
     canonical: PAGE_URL,
   },

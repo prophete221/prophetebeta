@@ -1,183 +1,125 @@
-# BttsBet — Plateforme de Pronostics Football IA
+# BttsBet
 
-Site web de pronostics football **BTTS** (Both Teams To Score) et **Over 2.5** générés par intelligence artificielle.
-Code promo `VISION221` pour les bookmakers Linebet et 888starz (bonus 90 000 XOF).
+BttsBet est une plateforme statique de consultation d’estimations football **BTTS** (Both Teams To Score) et **Over 2,5**. Les pages publiques affichent la date et l’heure des fixtures, la source disponible et les limites connues du modèle. Les paris sportifs comportent un risque financier : **aucune estimation ne constitue une garantie de gain**.
 
-🌐 **Site en production** : [bttsbet.online](https://bttsbet.online)
+Le domaine public est [bttsbet.online](https://bttsbet.online). Les liens partenaires et le code promotionnel `VISION221` sont présentés comme des informations d’affiliation ; les conditions d’inscription, de dépôt et de bonus doivent être vérifiées directement auprès du partenaire.
 
----
+## Stack technique
 
-## 🎨 Stack Technique
+| Technologie | Usage |
+|---|---|
+| Next.js 16 | App Router et export statique |
+| React 19 | Interface utilisateur |
+| TypeScript | Composants typés et scripts d’interface |
+| Tailwind CSS 4 | Système de styles |
+| Framer Motion | Animations avec respect de la préférence de mouvement réduit |
+| Node.js | Scripts de génération et de validation des données |
+| ESPN public feed | Fixtures utilisées par le générateur actuel |
+| Prisma / SQLite | Schéma de développement uniquement ; aucun compte n’est actif en production statique |
 
-| Technologie | Version | Usage |
-|---|---|---|
-| **Next.js** | 16.1.3 | Framework React (App Router, mode `output: "export"`) |
-| **React** | 19 | UI |
-| **TypeScript** | 5 | Typage statique |
-| **Tailwind CSS** | 4 | Styles + design system |
-| **shadcn/ui + Radix UI** | — | Composants accessibles |
-| **Framer Motion** | 12 | Animations |
-| **Recharts** | 2 | Graphiques (page /statistiques) |
-| **Prisma** | 6 | ORM (SQLite — schema de base, non utilisé en production car export statique) |
-| **Puppeteer** | 25 | Scraping (CI) |
-| **z-ai-web-dev-sdk** | 0.0.17 | SDK IA (backend uniquement) |
+Le build produit le dossier `out/`. L’hébergement de production est assuré par FTP sur LWS via GitHub Actions.
 
-### Polices
-- **Space Grotesk** — titres (display)
-- **Inter** — corps de texte
-- **JetBrains Mono** — données statistiques, scores
+## Structure utile
 
----
+```text
+src/
+├── app/
+│   ├── page.tsx                         # Accueil et données structurées
+│   ├── layout.tsx                       # Domaine canonique, SEO global et PWA
+│   ├── statistiques/                    # État des statistiques, non indexé sans résultats vérifiés
+│   ├── historique/                      # Consultation de l’historique public
+│   ├── btts-c-est-quoi/                 # Guide explicatif BTTS
+│   ├── code-promo-linebet-senegal/      # Page d’information partenaire
+│   ├── bonus-888starz/                  # Page d’information partenaire
+│   ├── prediction-aviator/              # Route conservée, non indexée
+│   ├── faille-fifa/                     # Route conservée, non indexée
+│   ├── blog/                            # Articles éditoriaux
+│   └── pages légales                    # CGU, mentions, confidentialité, jeu responsable
+├── components/bttsbet/                  # Composants actifs de l’accueil
+├── contexts/AuthContext.jsx             # Auth Firebase uniquement si configurée
+├── lib/constants.ts                     # Domaine, liens et textes centraux
+└── data/constants.js                    # Corpus historique de composants hérités
 
-## 🎨 Design System — "Quantum Stadium" v15
+public/
+├── predictions.json                     # Feed public généré
+├── predictions-archive/                 # Archives de prédictions
+├── win-history.json                     # Résultats confirmés uniquement
+├── sitemap.xml                          # Sitemap généré
+├── robots.txt                            # Directives robots
+├── manifest.json                        # Manifest PWA
+├── .htaccess                             # Routage et cache LWS
+└── logos/                               # Logos partenaires et sports
 
-| Token | Valeur | Usage |
-|---|---|---|
-| `--color-midnight` | `#0B0E14` | Surface principale (onyx) |
-| `--color-gold` | `#FFB800` | Accent primaire (or champagne) |
-| `--color-success` | `#00E5A0` | Victoire, gains |
-| `--color-ultra` | `#00E0FF` | Data viz, accents tech |
-| `--color-lose` | `#FF4D6D` | Pertes |
-
-Voir `src/app/globals.css` pour le système complet (squircle, glassmorphism, gradients, animations).
-
----
-
-## 📂 Structure du Projet
-
-```
-├── src/
-│   ├── app/                    # Next.js App Router
-│   │   ├── page.tsx            # Accueil (assemble les sections)
-│   │   ├── layout.tsx          # Layout racine (fonts, SEO, PWA)
-│   │   ├── globals.css         # Design system Quantum Stadium
-│   │   ├── statistiques/       # Dashboard Recharts (NOUVEAU v15)
-│   │   ├── bookmakers/         # Comparateur Linebet vs 888starz (NOUVEAU v15)
-│   │   ├── blog/               # 6 articles SEO
-│   │   ├── bonus-888starz/     # Page conversion 888starz
-│   │   ├── code-promo-linebet-senegal/
-│   │   ├── prediction-aviator/
-│   │   ├── faille-fifa/        # "Value Bets FIFA" (renommé pour conformité)
-│   │   ├── historique/
-│   │   ├── btts-c-est-quoi/
-│   │   ├── cgu, mentions-legales, politique-confidentialite, jouer-responsable
-│   │   └── api/route.ts        # API placeholder
-│   ├── components/
-│   │   ├── bttsbet/            # 20 composants principaux
-│   │   │   ├── Hero.tsx             # Hero avec top pronostic du jour
-│   │   │   ├── Navbar.tsx           # Navigation sticky premium
-│   │   │   ├── FreePredictions.tsx  # Pronostics gratuits (filtres)
-│   │   │   ├── WinHistory.tsx       # Historique résultats
-│   │   │   ├── StatsDashboard.tsx   # Dashboard Recharts (NOUVEAU)
-│   │   │   ├── AviatorVip.tsx       # Stats Aviator (avec disclaimers)
-│   │   │   ├── FifaLinebet.tsx      # Value bets FIFA
-│   │   │   ├── VipSports, PromoVip, VipUnlockModal
-│   │   │   ├── AgeVerification, CookieConsent  # Conformité RGPD/18+
-│   │   │   ├── SiteLoader, ScrollProgressBar, ErrorBoundary
-│   │   │   └── AnimatedIcons        # Football3D, FloatingParticles
-│   │   └── ui/                 # shadcn/ui
-│   ├── lib/
-│   │   ├── constants.ts        # Config centrale (SITE, AFFILIATE, BOOKMAKERS)
-│   │   ├── motionPresets.ts    # Animations Framer Motion réutilisables
-│   │   ├── teamLogos.ts
-│   │   └── db.ts               # Prisma client
-│   ├── hooks/
-│   ├── contexts/
-│   └── data/
-├── public/
-│   ├── predictions.json        # 50 pronostics du jour (généré par scraper)
-│   ├── win-history.json        # Historique résultats (généré par scraper)
-│   ├── predictions-archive/    # Archives quotidiennes
-│   ├── manifest.json           # PWA manifest
-│   ├── sw.js                   # Service worker
-│   ├── sitemap.xml, robots.txt
-│   ├── og-image.png, logo.png, favicon.svg
-│   └── logos/                  # Logos Linebet, 888starz, Android
-├── scripts/
-│   ├── scraper.js              # Scraper V23 (multi-sources)
-│   ├── quick-update-predictions.mjs  # Update ESPN rapide
-│   ├── update-win-history.mjs
-│   └── generate-sitemap.mjs
-├── prisma/schema.prisma        # Schema (User, Post — template)
-├── .github/workflows/
-│   ├── main.yml                # Push → build → FTP (safe mode, sans clean-slate)
-│   ├── scraper.yml             # Cron 06:00 UTC → scraper complet → FTP
-│   └── results-update.yml      # Cron 22:00 UTC → update résultats soir → FTP
-├── next.config.ts              # output: "export", images unoptimized
-├── tailwind.config.ts
-├── tsconfig.json
-└── package.json
+scripts/
+├── quick-update-predictions.mjs         # Fixtures ESPN + modèle Poisson
+├── update-win-history.mjs               # Historique réservé aux scores vérifiés
+└── generate-sitemap.mjs                 # Génération du sitemap public
 ```
 
----
-
-## 🚀 Commandes
+## Installation et commandes
 
 ```bash
-npm install --legacy-peer-deps   # Installer les dépendances
-npm run dev                       # Serveur dev (port 3000)
-npm run build                     # Build statique → out/
-npm run start                     # Servir le build (npx serve out -l 3000)
-npm run lint                      # ESLint
-npm run db:push                   # Prisma → SQLite (dev only)
+npm ci --legacy-peer-deps
+npm run dev
+npm run build
+npm run start
+npm run lint
+npx tsc --noEmit
 ```
 
----
+Les commandes Prisma sont réservées au développement local :
 
-## 🔄 CI/CD
+```bash
+npm run db:generate
+npm run db:push
+npm run db:migrate
+npm run db:reset
+```
 
-3 workflows GitHub Actions (sans `dangerous-clean-slate` — safe mode) :
+Avant toute livraison, vérifier également :
 
-| Workflow | Trigger | Rôle |
+```bash
+git diff --check
+node scripts/quick-update-predictions.mjs
+node scripts/update-win-history.mjs
+node scripts/generate-sitemap.mjs
+```
+
+## Pipeline de données
+
+Le générateur actuel récupère les fixtures depuis le feed public ESPN, les dédoublonne, les date dans le fuseau métier `Africa/Dakar` et applique une estimation de loi de Poisson à partir de profils de ligue. Il ne revendique pas systématiquement des xG d’équipe, des blessures, une météo ou des cotes de bookmaker lorsqu’elles ne sont pas disponibles.
+
+Le feed public peut publier les marchés BTTS et Over 2,5 avec les probabilités calculées par le script. Les données manquantes restent explicitement indisponibles dans l’interface ; aucun fallback d’équipe n’est fabriqué côté client.
+
+`win-history.json` n’ajoute une ligne que si une prédiction contient un score final au format valide, un résultat `Gagné` ou `Perdu` et une source de résultat. Tant qu’aucune ligne ne satisfait ces critères, les statistiques restent à zéro et l’interface l’indique clairement. Les matchs, scores et taux synthétiques ne doivent jamais être ajoutés pour améliorer artificiellement la performance affichée.
+
+## CI/CD et déploiement
+
+Deux workflows sont actifs :
+
+| Workflow | Déclencheur | Rôle |
 |---|---|---|
-| `main.yml` | Push sur `main` + cron 06:00 UTC | Build + deploy FTP |
-| `scraper.yml` | Cron 06:00 UTC | Scraper V23 multi-sources + build + FTP |
-| `results-update.yml` | Cron 22:00 UTC | Update résultats du soir + build + FTP |
+| `.github/workflows/main.yml` | Push sur `main` ou lancement manuel | Génération, validations, build statique et FTP |
+| `.github/workflows/auto-update.yml` | Cron `06:00`, `14:00` et `22:00` UTC ou lancement manuel | Mise à jour planifiée, build statique et FTP |
 
-**Secrets GitHub requis :**
-- `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`, `FTP_SERVER_DIR`
-- `API_FOOTBALL_KEY` (pour cross-validation des dates)
+Les deux workflows utilisent `npm ci`, bloquent le déploiement si la génération des données ou le build échoue, empêchent deux déploiements de production concurrents et utilisent `FTP-Deploy-Action@4.4.0`. Les fichiers nécessaires au routage LWS sont copiés dans `out/` avant le transfert.
 
----
+Secrets GitHub nécessaires au déploiement : `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD` et, si nécessaire, `FTP_SERVER_DIR`. Aucune clé privée ou base de données locale ne doit être committée. Utiliser `.env.example` comme modèle de développement.
 
-## 📊 Pipeline de données
+## SEO et indexation
 
-Le scraper V23 agrège 6 sources (par priorité) :
-1. **Forebet** — pronostics BTTS/Over d'experts
-2. **Windrawwin** — pronostics BTTS
-3. **ESPN API** — matchs réels (40+ ligues)
-4. **API-Football** — cross-validation des dates
-5. **Soccerbase** — fixtures HTTP
-6. **TheSportsDB** — backup
+Le domaine canonique est `https://bttsbet.online`. Les métadonnées globales, Open Graph, Twitter Cards, manifest et JSON-LD décrivent uniquement les marchés BTTS et Over 2,5 ainsi que la méthode publique ESPN/Poisson. Le sitemap est généré par `scripts/generate-sitemap.mjs` et exclut les pages FIFA/Aviator tant que leur contenu n’est pas suffisamment vérifié. Ces routes portent aussi `noindex`.
 
-Modèle statistique : **Poisson calibré** (seuils 0.48 BTTS / 0.49 Over 2.5, corrections +2% / +1%).
-Génère 50 pronostics/jour sur 4 jours glissants.
+Les pages légales et la page `jouer-responsable` restent accessibles. `robots.txt` autorise l’exploration générale et déclare `https://bttsbet.online/sitemap.xml`. Le fichier `.htaccess` désactive le cache HTML, conserve un cache long pour les assets versionnés et fournit le routage des URLs propres.
 
----
+## Sécurité et confidentialité
 
-## 🔍 SEO
+Le fallback local de l’ancien contexte d’authentification a été désactivé : aucun mot de passe n’est stocké dans `localStorage`. Une authentification réelle nécessite une configuration Firebase valide. L’activation VIP actuellement présente dans l’interface est un état local du navigateur ; elle ne vérifie pas un compte bookmaker et ne doit pas être présentée comme une validation externe.
 
-- **Schema.org JSON-LD** : WebSite, Organization, FAQPage, BreadcrumbList, Dataset (sur /statistiques), WebPage (sur /bookmakers)
-- **Meta tags** : OpenGraph, Twitter Card, canonical, geo (Sénégal)
-- **Sitemap XML** généré automatiquement avant build
-- **Prerendering** : export statique HTML pour crawlers
-- **Pages légales** : CGU, mentions légales, politique de confidentialité, jeu responsable (lien begambleaware.org)
-- **18+** : modal de vérification d'âge + badge dans le Hero
+Les identifiants saisis dans le modal VIP sont hashés localement avant stockage. Le site ne doit pas demander ni conserver de mot de passe bookmaker. Toute évolution vers des comptes utilisateurs ou une validation serveur nécessite un backend sécurisé et une décision d’architecture séparée.
 
----
+## Limites connues
 
-## ⚖️ Conformité légale
+Les taux de réussite et ROI ne sont pas publiés sans résultats finaux vérifiés. Les cartes multi-sports affichent un état d’attente tant qu’aucun feed vérifiable de fixtures et de cotes n’est connecté. Les routes historiques FIFA/Aviator sont conservées pour éviter les liens cassés, mais ne sont pas proposées aux moteurs de recherche.
 
-- ❌ Aucun terme "garanti", "faille", "hack", "predictor", "bot"
-- ✅ Disclaimers "provably fair" sur Aviator
-- ✅ Disclaimer "value bets statistiques" sur FIFA
-- ✅ Transparence résultats (gagnés ET perdus affichés)
-- ✅ Modal 18+ obligatoire
-- ✅ Bannière cookies RGPD
-- ✅ Lien begambleaware.org
-
----
-
-## 🌍 Domaine
-
-Déployé sur **bttsbet.online** via FTP (CI/CD GitHub Actions).
+Les liens d’affiliation sont externes et soumis aux conditions de leurs opérateurs. BttsBet ne prend pas de paris, ne collecte pas de fonds et ne garantit ni l’éligibilité à une offre partenaire ni le résultat d’un pari.

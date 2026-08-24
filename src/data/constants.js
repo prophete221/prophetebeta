@@ -7,7 +7,7 @@ export const SITE = {
   url: 'https://bttsbet.online',
   tagline: 'Pronostics football BTTS & Over 2,5 basés sur l\'IA pour parieurs sérieux',
   promoCode: 'VISION221',
-  accuracy: '~87%',
+  accuracy: 'N/D',
   whatsapp: 'https://wa.me/15406704172',
 }
 
@@ -40,7 +40,7 @@ export const HOW_IT_WORKS = [
   {
     step: '01',
     title: 'L\'IA scanne les matchs',
-    desc: 'Notre intelligence artificielle analyse en temps réel plus de 200 variables statistiques pour chaque match : xG, forme récente, blessés, historique des confrontations.',
+    desc: 'Le modèle calcule des estimations à partir des fixtures ESPN et de profils de ligue documentés. Les statistiques d’équipe non disponibles ne sont pas inventées.',
   },
   {
     step: '02',
@@ -56,9 +56,9 @@ export const HOW_IT_WORKS = [
 
 // ─── Stats Hero ───
 export const HERO_STATS = [
-  { value: '~87%', label: 'Précision historique', icon: 'target' },
-  { value: '15 000+', label: 'Pronostics analysés', icon: 'chart' },
-  { value: '50+', label: 'Championnats couverts', icon: 'globe' },
+  { value: 'N/D', label: 'Taux vérifié', icon: 'target' },
+  { value: '2', label: 'Marchés publiés', icon: 'chart' },
+  { value: 'ESPN', label: 'Source des fixtures', icon: 'globe' },
 ]
 
 // ─── Why Linebet ───
@@ -135,7 +135,7 @@ export const FAQ_ITEMS = [
   },
   {
     q: 'Comment fonctionne l\'IA de BttsBet ?',
-    a: 'Notre intelligence artificielle analyse des centaines de variables en temps réel : Expected Goals (xG), forme récente des équipes, blessés et suspensions, historique des confrontations directes, conditions météo, motivation des équipes (fin de saison, matchs décisifs), et bien plus encore. L\'algorithme est entraîné sur plus de 50 000 matchs et affiche des résultats historiques d\'environ 87% de précision. Chaque pronostic est accompagné d\'un indice de confiance calculé par le modèle.',
+    a: 'Le modèle publié utilise les fixtures ESPN et des profils de ligue pour calculer des estimations BTTS et Over 2,5 avec une loi de Poisson. Il ne dispose pas systématiquement des xG d’équipe, des blessures, de la météo ou des cotes de bookmaker. Les performances passées ne garantissent pas les résultats futurs.',
   },
   {
     q: 'Comment utiliser le code promo VISION221 ?',
@@ -348,8 +348,8 @@ export const LEGAL = {
 export const SEO_BLOCK = {
   title: 'Pronostics football BTTS & Over 2,5 – Intelligence artificielle',
   paragraphs: [
-    'BttsBet est une plateforme dédiée aux pronostics BTTS (Both Teams To Score) et Over 2,5 générés par intelligence artificielle. Notre algorithme analyse en temps réel plus de 200 variables statistiques pour chaque match de football, incluant les Expected Goals (xG), la forme récente des équipes, les blessures et suspensions, l\'historique des confrontations, et les conditions météorologiques.',
-    'Avec des résultats historiques d\'environ 87% sur plus de 15 000 pronostics analysés, notre IA peut aider les parieurs à prendre de meilleures décisions sur les marchés BTTS et Over/Under 2,5 buts. Nos pronostics couvrent plus de 50 championnats à travers le monde, des ligues européennes majeures aux championnats africains et asiatiques.',
+    'BttsBet publie des estimations BTTS (Both Teams To Score) et Over 2,5 calculées à partir de fixtures ESPN et de profils de ligue. La méthode Poisson, les dates et les limites de données sont décrites pour que chaque visiteur puisse interpréter le résultat avec prudence.',
+    'Le taux de réussite n’est pas publié tant que les scores finaux ne sont pas vérifiés par une source officielle. Les performances passées ne garantissent pas les résultats futurs et aucun contenu ne constitue une promesse de gain.',
     'Profitez du code promo VISION221 sur Linebet pour bénéficier d\'un bonus exclusif sur le premier dépôt (soumis à conditions : mise x5, cote minimale 1,40). BttsBet s\'engage pour le jeu responsable : nos pronostics sont des outils d\'aide à la décision, pas des garanties de gain. Pariez toujours de manière responsable et dans les limites de votre budget.',
   ],
 }

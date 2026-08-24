@@ -25,7 +25,7 @@ interface HistoryItem {
 
 interface WinData {
   date: string
-  stats: { total: number; won: number; rate: string; last30Rate: string }
+  stats: { total: number; won: number; lost?: number; rate: string; last30Rate: string }
   history: HistoryItem[]
 }
 
@@ -254,7 +254,7 @@ export default function WinHistory() {
   const historyArr = winData?.history ?? []
   const total = winData?.stats?.total ?? historyArr.length
   const won = winData?.stats?.won ?? historyArr.filter(h => h.result === 'Gagné').length
-  const lost = total - won
+  const lost = winData?.stats?.lost ?? historyArr.filter(h => h.result === 'Perdu').length
   const rate = total ? (won / total) * 100 : 0
 
   const [totalRef, totalDisplay] = useCountUp(total, 1500, { threshold: 0.3 })
@@ -292,7 +292,7 @@ export default function WinHistory() {
         <div className="max-w-5xl mx-auto text-center">
           <div className="flex justify-center mb-2"><TrophyIcon size={40} /></div>
           <h2 className="section-title">Historique des <span className="text-success">Pronostics</span></h2>
-          <p className="text-gray-500 text-sm mt-2">Historique en cours de mise à jour…</p>
+          <p className="text-gray-500 text-sm mt-2">Aucun résultat vérifié n’est encore disponible. Les scores seront ajoutés uniquement après confirmation d’une source officielle.</p>
         </div>
       </section>
     )
@@ -313,7 +313,7 @@ export default function WinHistory() {
             Historique & <span className="text-success">Statistiques</span>
           </h2>
           <p className="section-subtitle max-w-2xl mx-auto">
-            Transparence totale — gagnés ET perdus affichés.
+            Historique vérifié — aucune ligne n’est ajoutée sans score final confirmé.
             Les performances passées ne garantissent pas les résultats futurs.
           </p>
         </motion.div>
@@ -447,11 +447,11 @@ export default function WinHistory() {
           transition={{ duration: 0.3, delay: 0.4 }}
           className="flex items-center justify-center gap-2 mt-6"
         >
-          <span className="badge badge-mint">
+            <span className="badge badge-mint">
             <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12" /></svg>
-            Résultats vérifiés
+            Scores confirmés
           </span>
-          <span className="text-[10px] text-gray-500">Gagnés ET perdus affichés en transparence</span>
+          <span className="text-[10px] text-gray-500">Résultats ajoutés après vérification</span>
         </motion.div>
       </div>
     </section>

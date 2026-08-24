@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 // ═══════════════════════════════════════════════════════════════
-// BttsBet – Générateur de sitemap.xml complet (toutes les pages)
+// BttsBet – Générateur de sitemap.xml des pages publiables
 // Usage : node scripts/generate-sitemap.mjs
-// Ce script génère un sitemap.xml exhaustif dans /public/sitemap.xml
-// incluant toutes les pages SEO, landing pages, blog et pages légales.
+// Les pages exclues du sitemap peuvent rester accessibles, mais ne sont pas
+// proposées aux moteurs tant que leur contenu n’est pas vérifié et conforme.
 // ═══════════════════════════════════════════════════════════════
 
 import fs from 'fs'
@@ -18,13 +18,11 @@ const TODAY = new Date().toISOString().split('T')[0]
 
 // ─── Pages SEO / Landing Pages ───
 const SEO_PAGES = [
-  { path: '/', priority: '1.0', changefreq: 'daily', lastmod: TODAY, image: true, imageTitle: 'BttsBet – Pronostics BTTS & Over 2,5 | Faille FIFA & Signaux Aviator', imageCaption: 'Pronostics football IA, faille FIFA, signaux Aviator, code promo VISION221' },
+  { path: '/', priority: '1.0', changefreq: 'daily', lastmod: TODAY, image: true, imageTitle: 'BttsBet – Pronostics BTTS & Over 2,5 du jour', imageCaption: 'Pronostics football fondés sur un modèle Poisson et des fixtures ESPN' },
   { path: '/historique', priority: '0.9', changefreq: 'daily', lastmod: TODAY, image: true, imageTitle: 'Historique Pronostics BttsBet – Résultats vérifiés', imageCaption: 'Historique complet des pronostics BTTS et Over 2,5 — transparence totale' },
   { path: '/btts-c-est-quoi', priority: '0.9', changefreq: 'monthly', lastmod: '2026-07-06', image: true, imageTitle: 'BTTS (Both Teams To Score) – Guide complet', imageCaption: 'Qu\'est-ce que le BTTS ? Guide explicatif avec FAQ et stratégies' },
   { path: '/code-promo-linebet-senegal', priority: '0.95', changefreq: 'weekly', lastmod: TODAY, image: true, imageTitle: 'Code promo Linebet Sénégal VISION221 – Bonus 90 000 XOF', imageCaption: 'Bonus Linebet Sénégal avec le code VISION221. Dépôt Wave, Orange Money, Free Money.' },
   { path: '/bonus-888starz', priority: '0.85', changefreq: 'weekly', lastmod: TODAY, image: true, imageTitle: 'Bonus 888starz – Code promo & inscription', imageCaption: 'Bonus exclusif 888starz avec code promo. Inscription et dépôt.' },
-  { path: '/prediction-aviator', priority: '0.95', changefreq: 'weekly', lastmod: '2026-07-06', image: true, imageTitle: 'Prédiction Aviator 2026 – Signaux IA & Stratégie', imageCaption: 'Signaux de prédiction Aviator, stratégie cash out, Linebet & 888starz' },
-  { path: '/faille-fifa', priority: '0.95', changefreq: 'weekly', lastmod: '2026-07-06', image: true, imageTitle: 'Faille FIFA Linebet & 888starz – Cotes erronées', imageCaption: 'Détection IA des cotes erronées FIFA, value bets Linebet & 888starz' },
   { path: '/jouer-responsable', priority: '0.4', changefreq: 'yearly', lastmod: '2026-06-01' },
   { path: '/mentions-legales', priority: '0.3', changefreq: 'yearly', lastmod: '2026-06-01' },
   { path: '/cgu', priority: '0.3', changefreq: 'yearly', lastmod: '2026-06-01' },
@@ -37,7 +35,6 @@ const BLOG_ARTICLES = [
   { slug: 'strategie-mise-over-2-5', priority: '0.7', lastmod: '2026-05-28', title: 'Stratégie de mise Over 2,5 : optimiser ses gains en 2026' },
   { slug: 'gestion-bankroll-paris-sportifs', priority: '0.7', lastmod: '2026-05-20', title: 'Gestion de bankroll aux paris sportifs : le guide ultime' },
   { slug: 'meilleurs-championnats-btts', priority: '0.7', lastmod: '2026-05-25', title: 'Les 10 meilleurs championnats pour les paris BTTS en 2026' },
-  { slug: 'faille-fifa-linebet', priority: '0.9', lastmod: '2026-07-06', title: 'Faille FIFA Linebet : Cotes erronées détectées par IA' },
   { slug: 'guide-linebet-inscription', priority: '0.8', lastmod: '2026-05-15', title: 'Guide complet Linebet : inscription, dépôt et code promo VISION221' },
 ]
 

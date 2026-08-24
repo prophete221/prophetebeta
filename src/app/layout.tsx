@@ -24,24 +24,23 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bttspredict.com"),
+  metadataBase: new URL("https://bttsbet.online"),
   title: {
-    default: "BttsPredict — Pronostics Football BTTS & Over 2.5 | Code Promo VISION221",
-    template: "%s | BttsPredict",
+    default: "BttsBet — Pronostics BTTS et Over 2,5 du jour",
+    template: "%s | BttsBet",
   },
-  description: "Code promo Linebet Sénégal VISION221 — Bonus 90 000 XOF (150$). Pronostics BTTS & Over 2.5 validés par notre équipe d'analystes (précision historique ~52%). Dépôt Wave, Orange Money, Free Money.",
+  description: "Pronostics BTTS et Over 2,5 fondés sur un modèle Poisson et des fixtures ESPN. Données horodatées, méthode documentée et aucune garantie de gain.",
   keywords: [
     "BTTS", "Over 2.5", "pronostics football", "analystes", "experts football",
-    "paris sportifs", "VISION221", "BttsPredict",
-    "value bets FIFA", "pronostic FIFA esport", "statistiques Aviator",
+    "paris sportifs", "VISION221", "BttsBet",
     "bonus paris sportifs",
     "pronostics gratuits", "pronostics Sénégal", "Wave paris sportifs",
   ],
-  authors: [{ name: "BttsPredict" }],
-  creator: "BttsPredict",
-  publisher: "BttsPredict",
+  authors: [{ name: "BttsBet" }],
+  creator: "BttsBet",
+  publisher: "BttsBet",
   alternates: {
-    canonical: "https://bttspredict.com/",
+    canonical: "https://bttsbet.online/",
   },
   other: {
     'geo.region': 'SN',
@@ -72,18 +71,18 @@ export const metadata: Metadata = {
   },
   manifest: "/manifest.json",
   openGraph: {
-    title: "BttsPredict — Pronostics Football BTTS & Over 2.5 | Code Promo VISION221",
-    description: "Code promo Linebet Sénégal VISION221 — Bonus 90 000 XOF. Pronostics BTTS & Over 2.5 validés par nos analystes (précision historique ~52%). Dépôt Wave, Orange Money.",
-    url: "https://bttspredict.com",
-    siteName: "BttsPredict",
+    title: "BttsBet — Pronostics BTTS et Over 2,5 du jour",
+    description: "Pronostics BTTS et Over 2,5 fondés sur un modèle Poisson et des fixtures ESPN. Données horodatées, méthode documentée et aucune garantie de gain.",
+    url: "https://bttsbet.online",
+    siteName: "BttsBet",
     type: "website",
     locale: "fr_FR",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "BttsPredict — Pronostics Football BTTS & Over 2.5 | Code VISION221" }],
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "BttsBet — Pronostics BTTS et Over 2,5" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "BttsPredict — Pronostics Football BTTS & Over 2.5 | Code Promo VISION221",
-    description: "Pronostics football BTTS & Over 2.5 validés par nos analystes (précision historique ~52%). Code VISION221 = Bonus 90 000 XOF sur Linebet. Dépôt Wave, Orange Money au Sénégal.",
+    title: "BttsBet — Pronostics BTTS et Over 2,5 du jour",
+    description: "Pronostics BTTS et Over 2,5 fondés sur un modèle Poisson et des fixtures ESPN. Données horodatées, méthode documentée et aucune garantie de gain.",
     images: ["/og-image.png"],
   },
   category: "sports",
@@ -112,34 +111,29 @@ export default function RootLayout({
         {/* Apple mobile web app — standalone feel */}
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="apple-mobile-web-app-title" content="BttsPredict" />
+        <meta name="apple-mobile-web-app-title" content="BttsBet" />
         {/* Service worker cleanup + cache busting — force users to see latest version */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
               (function(){
-                var VERSION = 'v33-search-console-dataset-license-neon-tabbar-2026-08-05';
+                var VERSION = 'v34-total-audit-2026-08-24';
                 try {
-                  // 1. Unregister all service workers
-                  if('serviceWorker' in navigator){
-                    navigator.serviceWorker.getRegistrations().then(function(regs){
-                      regs.forEach(function(reg){ reg.unregister(); });
-                    });
-                  }
-                  // 2. Clear all caches
-                  if(window.caches){
-                    caches.keys().then(function(names){
-                      names.forEach(function(name){ caches.delete(name); });
-                    });
-                  }
-                  // 3. Force hard reload if version mismatch (only once)
                   var stored = localStorage.getItem('bttsbet_ver');
-                  if(stored && stored !== VERSION){
-                    // Version changed — force reload from server (bypass browser cache)
+                  if(stored !== VERSION){
                     localStorage.setItem('bttsbet_ver', VERSION);
-                    window.location.reload();
-                  } else if(!stored){
-                    localStorage.setItem('bttsbet_ver', VERSION);
+                    // Clear legacy service workers and caches once per release only.
+                    if('serviceWorker' in navigator){
+                      navigator.serviceWorker.getRegistrations().then(function(regs){
+                        regs.forEach(function(reg){ reg.unregister(); });
+                      });
+                    }
+                    if(window.caches){
+                      caches.keys().then(function(names){
+                        names.forEach(function(name){ caches.delete(name); });
+                      });
+                    }
+                    if(stored){ window.location.reload(); }
                   }
                 } catch(e){}
               })();

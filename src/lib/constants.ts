@@ -7,12 +7,12 @@ export const SITE = {
   url: 'https://bttsbet.online',
   tagline: "Pronostics football BTTS & Over 2,5 basés sur l'IA pour parieurs sérieux",
   promoCode: 'VISION221',
-  accuracy: '~52%',
+  accuracy: 'N/D',
 
-  vipAccuracy: '~52%',
-  vipMinDeposit: '10 000 XOF',
-  historyRate: '88.3%',
-  last30Rate: '52%',
+  vipAccuracy: 'N/D',
+  vipMinDeposit: 'Voir les conditions du partenaire',
+  historyRate: 'N/D',
+  last30Rate: 'N/D',
 }
 
 export const AFFILIATE = {
@@ -38,8 +38,8 @@ export const BOOKMAKERS = [
     downloadLink: AFFILIATE.linebetDownload,
     promoCode: 'VISION221',
     color: 'emerald',
-    bonus: 'Bonus 90 000 XOF (150$)',
-    description: 'Bookmaker #1 en Afrique — Bonus exclusif de 90 000 XOF (150$)',
+    bonus: 'Conditions à vérifier',
+    description: 'Lien partenaire Linebet — vérifiez les conditions de l’offre avant inscription.',
     logoFull: '/logos/linebet.svg',
     logoIcon: '/logos/linebet-icon.svg',
   },
@@ -50,8 +50,8 @@ export const BOOKMAKERS = [
     downloadLink: AFFILIATE.star888Download,
     promoCode: 'VISION221',
     color: 'gold',
-    bonus: 'Bonus 100%',
-    description: 'Nouveau bookmaker partenaire — Bonus 100% sur le 1er dépôt',
+    bonus: 'Conditions à vérifier',
+    description: 'Lien partenaire 888starz — vérifiez les conditions de l’offre avant inscription.',
     logoFull: '/logos/888starz.svg',
     logoIcon: '/logos/888starz-icon.svg',
   },
@@ -60,11 +60,10 @@ export const BOOKMAKERS = [
 // Logo Android — utilisé sur les boutons de téléchargement APK
 export const ANDROID_LOGO = '/logos/android.svg'
 
-export const NAV_LINKS = [
+export const NAV_LINKS: Array<{ label: string; href?: string; scrollTarget?: string; highlight?: boolean }> = [
   { label: 'Accueil', href: '/' },
   { label: 'Pronostics', scrollTarget: 'free-predictions' },
   { label: 'Résultats', scrollTarget: 'win-history' },
-  { label: 'Value Bets FIFA', scrollTarget: 'fifa-linebet', highlight: true },
   { label: 'VIP & Bonus', scrollTarget: 'vip' },
   { label: 'FAQ', scrollTarget: 'faq' },
 ]
@@ -72,13 +71,13 @@ export const NAV_LINKS = [
 export const HOW_IT_WORKS = [
   {
     step: '01',
-    title: "L'IA scanne les matchs",
-    desc: "Notre intelligence artificielle analyse en temps réel plus de 200 variables statistiques pour chaque match : xG, forme récente, blessés, historique des confrontations.",
+      title: 'Le modèle lit les fixtures',
+      desc: 'Le modèle utilise les fixtures ESPN et un profil de ligue pour calculer des estimations Poisson. Les données absentes ne sont pas inventées.',
   },
   {
     step: '02',
-    title: 'On sélectionne les meilleurs',
-    desc: "Seuls les pronostics BTTS et Over 2,5 avec le plus haut indice de confiance sont retenus et publiés sur la plateforme.",
+      title: 'On affiche les estimations',
+      desc: 'Les marchés BTTS et Over 2,5 sont affichés avec la date, l’heure et les limites connues du modèle.',
   },
   {
     step: '03',
@@ -88,9 +87,9 @@ export const HOW_IT_WORKS = [
 ]
 
 export const HERO_STATS = [
-  { value: '~52%', label: 'Précision historique', icon: 'target' },
-  { value: '15 000+', label: 'Pronostics analysés', icon: 'chart' },
-  { value: '50+', label: 'Championnats couverts', icon: 'globe' },
+  { value: '2', label: 'Marchés publiés', icon: 'target' },
+  { value: 'ESPN', label: 'Source des fixtures', icon: 'chart' },
+  { value: 'N/D', label: 'Taux vérifié', icon: 'globe' },
 ]
 
 export const FAQ_ITEMS = [
@@ -100,19 +99,19 @@ export const FAQ_ITEMS = [
   },
   {
     q: "Comment fonctionne l'IA de BttsBet ?",
-    a: "Notre intelligence artificielle analyse des centaines de variables en temps réel : Expected Goals (xG), forme récente des équipes, blessés et suspensions, historique des confrontations directes, conditions météo, motivation des équipes (fin de saison, matchs décisifs), et bien plus encore. L'algorithme est entraîné sur plus de 50 000 matchs et affiche des résultats historiques d'environ 52% de précision. Chaque pronostic est accompagné d'un indice de confiance calculé par le modèle. Ces performances passées ne garantissent pas les résultats futurs.",
+    a: "Le modèle public utilise les fixtures ESPN et des profils de ligue pour calculer des estimations BTTS et Over 2,5 avec une loi de Poisson. Les xG d'équipe, les blessures, la météo et les cotes ne sont pas inventés lorsqu'ils ne sont pas disponibles. Aucun taux de réussite n'est publié sans résultats finaux vérifiés.",
   },
   {
     q: 'Comment utiliser le code promo VISION221 ?',
-    a: "C'est très simple : inscrivez-vous sur Linebet via notre lien de parrainage, puis saisissez le code promo VISION221 lors de votre inscription ou dans la section \"Code Promo\" de votre compte. Vous recevrez automatiquement un bonus exclusif sur votre premier dépôt. Ce bonus vous permettra de commencer à parier avec un capital supplémentaire et de tester nos pronostics avec un budget accru.",
+    a: "Le code VISION221 est présenté comme information de partenaire. Vérifiez directement auprès de Linebet les conditions d'inscription, le dépôt minimal, l'éligibilité et le montant éventuel du bonus avant toute action.",
   },
   {
     q: 'Les pronostics gratuits sont-ils fiables ?',
-    a: "Nos pronostics gratuits sont générés par la même IA que nos pronostics premium. Ils couvrent les matchs les plus populaires du jour avec une analyse complète. La différence avec les pronostics premium réside dans le nombre de matchs analysés et l'accès à des marchés supplémentaires. Comme pour tout pronostic, aucun résultat n'est garanti — les performances historiques ne préjugent pas des résultats futurs.",
+    a: "Les pronostics gratuits sont des estimations statistiques publiées avec leur date, leur heure et les limites connues du modèle. Les marchés supplémentaires ne sont pas publiés sans source de données vérifiable. Aucun résultat n'est garanti et les performances passées ne préjugent pas des résultats futurs.",
   },
   {
     q: 'Quels championnats sont couverts ?',
-    a: "Nous couvrons plus de 50 championnats à travers le monde : Premier League, La Liga, Serie A, Bundesliga, Ligue 1, Champions League, Europa League, et de nombreux championnats africains, asiatiques et sud-américains. Notre IA s'adapte aux spécificités de chaque ligue pour fournir des pronostics les plus précis possibles.",
+    a: "Les fixtures actuellement publiées proviennent du feed ESPN disponible au moment de la génération. La couverture varie selon les compétitions accessibles et la plateforme affiche la source et la date des données plutôt qu'une promesse de couverture fixe.",
   },
   {
     q: 'Comment utiliser les pronostics BttsBet ?',
@@ -134,21 +133,22 @@ export const TESTIMONIALS = [
 ]
 
 export const SOCIAL_PROOF = {
-  members: 2437,
-  winsToday: 12,
-  currentStreak: 7,
+  // Aucun compteur d’audience ou de gains n’est mesuré côté produit.
+  members: null as number | null,
+  winsToday: null as number | null,
+  currentStreak: null as number | null,
 }
 
-export const VIP_DESCRIPTION = 'VIP: Historique complet + 10 matchs/jour — Débloque avec inscription via VISION221'
+export const VIP_DESCRIPTION = 'VIP : sélections du jour BTTS et Over 2,5 — détails verrouillés'
 
 export const PAYMENT_METHODS = ['Wave', 'Orange Money', 'Free Money']
 
 export const LONASE = { name: 'LONASE', description: 'Loterie Nationale du Sénégal' }
 
 export const URGENCY_MESSAGES = [
-  "✅ {n} pronostics gagnants ce matin",
-  "⚡ Série en cours : {n} victoires consécutives",
-  "🎯 Code VISION221 = Bonus 90 000 XOF (150$) sur Linebet",
+  "📊 Données du jour disponibles",
+  "🕒 Consulte la date et l’heure de chaque fixture",
+  "🎯 Code VISION221 — conditions du partenaire à vérifier avant inscription",
 ]
 
 export const LEGAL = {

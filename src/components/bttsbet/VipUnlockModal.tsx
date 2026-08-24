@@ -9,17 +9,17 @@ import { modalBackdrop, modalContent, buttonHover } from '@/lib/motionPresets'
    VipUnlockModal — Premium unlock conditions modal
    ────────────────────────────────────────────────────────────────────────────
    Shows the conditions to unlock VIP:
-   1. Open a NEW account on Linebet (code VISION221 — uppercase)
-      OR 888starz (code vision221 — lowercase)
-   2. Make a minimum deposit of 5 000 XOF
-   3. Verify with player ID (local only — no data collection)
+   1. If you choose a partner, open an account through the displayed link
+      and check the current promotion and code conditions directly.
+   2. Any deposit requirement, bonus and eligibility condition is set by the partner; BttsBet does not guarantee it.
+   3. Enter a player ID to record the local access state (no bookmaker verification)
 
-   The ID verification is purely local: the user enters their bookmaker ID,
+   The access record is purely local: the user enters their bookmaker ID,
    we hash it locally with SHA-256 and store the hash in localStorage.
-   No personal data leaves the browser.
+   No bookmaker or server verification is performed, and no personal data leaves the browser.
 
-   If the user already has unlocked VIP (hash in localStorage matching their
-   self-declared bookmaker), they see a "VIP active" confirmation instead.
+   If the user already has a local access flag in localStorage, they see a
+   local-access confirmation instead.
    ════════════════════════════════════════════════════════════════════════════ */
 
 const STORAGE_KEY = 'bttsbet_vip_unlocked'
@@ -67,7 +67,7 @@ export default function VipUnlockModal({
     }
     if (isOpen) {
       window.addEventListener('keydown', handleEsc)
-      // Check if already unlocked
+          // Check if a local access state already exists
       try {
         const stored = localStorage.getItem(STORAGE_KEY)
         if (stored === 'true') setAlreadyUnlocked(true)
@@ -87,7 +87,7 @@ export default function VipUnlockModal({
   const handleVerify = async () => {
     setVerificationError('')
     if (!selectedBookmaker) {
-      setVerificationError('Sélectionne un bookmaker')
+        setVerificationError('Sélectionne un bookmaker partenaire')
       return
     }
     if (!playerId.trim()) {
@@ -95,7 +95,7 @@ export default function VipUnlockModal({
       return
     }
     if (playerId.trim().length < 3) {
-      setVerificationError('ID trop court (minimum 3 caractères)')
+        setVerificationError('ID trop court (minimum 3 caractères)')
       return
     }
 
@@ -110,13 +110,13 @@ export default function VipUnlockModal({
         localStorage.setItem('bttsbet_vip_bookmaker', selectedBookmaker)
       } catch {}
 
-      // Simulate verification process
+      // This only records a local access state; it does not verify a bookmaker account.
       setTimeout(() => {
         setIsUnlocking(false)
         setStep('success')
-      }, 1200)
+      }, 300)
     } catch (err) {
-      setVerificationError('Erreur de vérification. Réessaie.')
+      setVerificationError('Erreur d’enregistrement local. Réessaie.')
       setIsUnlocking(false)
     }
   }
@@ -198,7 +198,7 @@ export default function VipUnlockModal({
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
                     <span className="text-xs text-success font-semibold">
-                      Tu as déjà débloqué le VIP. Tu peux accéder à tous les pronostics.
+                      Un accès local a déjà été enregistré dans ce navigateur.
                     </span>
                   </div>
                 )}
@@ -218,7 +218,7 @@ export default function VipUnlockModal({
                         1
                       </span>
                       <div className="text-gray-300">
-                        <strong className="text-white">Ouvre un nouveau compte</strong> chez l'un de nos bookmakers partenaires :
+                        <strong className="text-white">Si tu choisis un partenaire</strong>, consulte ses conditions actuelles avant toute inscription :
                         <div className="mt-2 space-y-2">
                           {/* Linebet option */}
                           <button
@@ -235,14 +235,14 @@ export default function VipUnlockModal({
                             <div className="flex items-center gap-2">
                               <img src="/logos/linebet.svg" alt="Linebet" className="h-5 w-auto flex-shrink-0" loading="lazy" />
                               <span className="text-sm font-semibold text-white">Linebet</span>
-                              <span className="ml-auto text-xs text-success-light">Bonus 90 000 XOF</span>
+                              <span className="ml-auto text-xs text-success-light">Conditions à vérifier</span>
                             </div>
                             <div className="mt-2 text-[11px] text-gray-400">
                               Code promo :{' '}
                               <code className="px-1.5 py-0.5 bg-success/10 border border-success/30 rounded text-success-light font-mono font-bold tracking-wider">
                                 VISION221
                               </code>
-                              <span className="ml-1 text-gray-500">(en majuscules)</span>
+                              <span className="ml-1 text-gray-500">(à confirmer chez le partenaire)</span>
                             </div>
                           </button>
 
@@ -261,14 +261,14 @@ export default function VipUnlockModal({
                             <div className="flex items-center gap-2">
                               <img src="/logos/888starz.svg" alt="888starz" className="h-5 w-auto flex-shrink-0" loading="lazy" />
                               <span className="text-sm font-semibold text-white">888starz</span>
-                              <span className="ml-auto text-xs text-gold-light">Bonus 100%</span>
+                              <span className="ml-auto text-xs text-gold-light">Conditions à vérifier</span>
                             </div>
                             <div className="mt-2 text-[11px] text-gray-400">
                               Code promo :{' '}
                               <code className="px-1.5 py-0.5 bg-gold/10 border border-gold/30 rounded text-gold-light font-mono font-bold tracking-wider">
                                 vision221
                               </code>
-                              <span className="ml-1 text-gray-500">(en minuscules)</span>
+                              <span className="ml-1 text-gray-500">(à confirmer chez le partenaire)</span>
                             </div>
                           </button>
                         </div>
@@ -284,8 +284,7 @@ export default function VipUnlockModal({
                         2
                       </span>
                       <div className="text-gray-300">
-                        Effectue un <strong className="text-white">dépôt minimum de 5 000 XOF</strong> avec le code promo
-                        pour activer ton bonus de bienvenue.
+                        Vérifie directement auprès du partenaire les conditions d’inscription, de dépôt et d’éligibilité au bonus. BttsBet ne valide pas ces conditions.
                       </div>
                     </li>
 
@@ -298,9 +297,9 @@ export default function VipUnlockModal({
                         3
                       </span>
                       <div className="text-gray-300">
-                        <strong className="text-white">Vérifie ton ID joueur</strong> ci-dessous pour activer le VIP.
+                        <strong className="text-white">Indique ton ID joueur</strong> ci-dessous pour enregistrer l’accès local.
                         <span className="block mt-1 text-[11px] text-gray-500">
-                          🔒 Aucune donnée collectée — l'ID est hashé localement (SHA-256) dans ton navigateur.
+                          🔒 Aucun compte bookmaker n’est vérifié — l’ID est hashé localement (SHA-256) dans ton navigateur.
                         </span>
                       </div>
                     </li>
@@ -374,14 +373,14 @@ export default function VipUnlockModal({
                         <svg className="animate-spin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                           <path d="M21 12a9 9 0 1 1-6.219-8.56" />
                         </svg>
-                        Vérification…
+                        Enregistrement…
                       </>
                     ) : (
                       <>
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                           <polyline points="20 6 9 17 4 12" />
                         </svg>
-                        Vérifier mon ID
+                        Enregistrer mon accès
                       </>
                     )}
                   </motion.button>
@@ -395,16 +394,16 @@ export default function VipUnlockModal({
                       <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                     </svg>
                     <p className="text-[11px] text-gray-400 leading-relaxed">
-                      <strong className="text-gold-light">Confidentialité totale :</strong> ton ID n'est jamais envoyé à nos serveurs.
+                      <strong className="text-gold-light">Traitement local :</strong> ton ID n'est jamais envoyé à nos serveurs.
                       Il est hashé localement (SHA-256) et stocké uniquement dans ton navigateur (localStorage).
-                      Nous ne collectons aucune donnée personnelle.
+                      Cet enregistrement ne confirme pas ton compte bookmaker.
                     </p>
                   </div>
                 </div>
               </motion.div>
             )}
 
-            {/* ═════ SUCCESS STEP ═════ */}
+            {/* ═════ LOCAL ACCESS STEP ═════ */}
             {step === 'success' && (
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -423,21 +422,20 @@ export default function VipUnlockModal({
                   </svg>
                 </motion.div>
 
-                <h3 className="text-xl font-bold text-white mb-2">VIP débloqué ! 🎉</h3>
+                <h3 className="text-xl font-bold text-white mb-2">Accès local enregistré</h3>
                 <p className="text-sm text-gray-400 mb-4 leading-relaxed">
-                  Ton ID <span className="text-gold-light font-mono">{playerId.slice(0, 4)}•••••</span> a été vérifié
-                  chez <strong className="text-white">{selectedBookmaker === 'linebet' ? 'Linebet' : '888starz'}</strong>.
-                  Tu as maintenant accès à tous les pronostics VIP.
+                  Ton ID <span className="text-gold-light font-mono">{playerId.slice(0, 4)}•••••</span> a été enregistré localement
+                  pour le bookmaker sélectionné. Cette étape ne vérifie pas ton compte et ne garantit aucun résultat.
                 </p>
 
                 <div className="grid grid-cols-2 gap-2 mb-4">
                   <div className="bg-midnight/60 border border-edge rounded-lg p-2.5 text-center">
-                    <div className="text-base font-bold text-success">{(85 + (playerId.length % 3)).toFixed(1)}%</div>
-                    <div className="text-[9px] text-gray-500 uppercase tracking-widest">Taux VIP</div>
+                    <div className="text-base font-bold text-success">Local</div>
+                    <div className="text-[9px] text-gray-500 uppercase tracking-widest">État enregistré</div>
                   </div>
                   <div className="bg-midnight/60 border border-edge rounded-lg p-2.5 text-center">
-                    <div className="text-base font-bold text-gold">10+</div>
-                    <div className="text-[9px] text-gray-500 uppercase tracking-widest">Matchs/jour</div>
+                    <div className="text-base font-bold text-gold">N/D</div>
+                    <div className="text-[9px] text-gray-500 uppercase tracking-widest">Taux vérifié</div>
                   </div>
                 </div>
 
@@ -445,7 +443,7 @@ export default function VipUnlockModal({
                   onClick={onClose}
                   className="w-full px-4 py-3 btn-gold cta-glow text-[#1A1206] text-sm font-bold rounded-xl"
                 >
-                  Accéder aux pronostics VIP →
+                  Voir les pronostics VIP →
                 </button>
               </motion.div>
             )}
