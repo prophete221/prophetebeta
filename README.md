@@ -1,8 +1,8 @@
 # BttsBet — Code promo Linebet Afrique
 
-BttsBet est désormais une plateforme éditoriale indépendante consacrée au code partenaire Linebet Afrique **VISION221**. Le site ne publie plus de matchs, de pronostics, de résultats, de marchés VIP, de contenus Aviator/FIFA ou de pages 888starz. Son objectif est de présenter clairement le code, le parcours d’inscription et les points à vérifier avant toute utilisation de Linebet.
+BttsBet est désormais une plateforme éditoriale indépendante consacrée en priorité au code partenaire Linebet Afrique **VISION221**, avec une page séparée pour le code 888starz **btts221**. Le site ne publie plus de matchs, de pronostics, de résultats, de marchés VIP ou de contenus Aviator/FIFA. Son objectif est de présenter clairement le code, le parcours d’inscription et les points à vérifier avant toute utilisation de Linebet.
 
-Le domaine public est [bttsbet.online](https://bttsbet.online). Les liens vers Linebet sont des liens d’affiliation qualifiés `sponsored nofollow`. BttsBet n’est pas Linebet, ne gère aucun compte, ne collecte aucun dépôt et ne garantit ni bonus, ni éligibilité, ni résultat financier. Les conditions affichées par Linebet dans le pays de l’utilisateur font foi.
+Le domaine public est [bttsbet.online](https://bttsbet.online). Les liens vers Linebet et 888starz sont des liens d’affiliation qualifiés `sponsored nofollow`. BttsBet n’est pas Linebet, ne gère aucun compte, ne collecte aucun dépôt et ne garantit ni bonus, ni éligibilité, ni résultat financier. Les conditions affichées par Linebet dans le pays de l’utilisateur font foi.
 
 ## Stack et fonctionnement
 
@@ -26,6 +26,7 @@ Le build produit `out/`. L’hébergement de production est assuré par FTP via 
 | `/code-promo-linebet-senegal` | Variante locale Sénégal |
 | `/linebet-inscription` | Guide d’inscription et de vérification |
 | `/linebet-afrique` | Guide régional Afrique |
+| `/code-promo-888starz` | Guide séparé du code 888starz btts221 |
 | `/jouer-responsable` | Prévention et limites |
 | `/mentions-legales` | Identité et affiliation |
 | `/politique-confidentialite` | Cookies et données techniques |
@@ -38,6 +39,7 @@ Les anciennes URLs de matchs, de pronostics, de VIP, de jeux et de blog sont con
 - `public/sitemap.xml` est généré par `node scripts/generate-sitemap.mjs` et ne contient que les pages réellement publiables.
 - `public/robots.txt` autorise l’exploration générale, exclut la page 404 et déclare le sitemap.
 - `public/og-linebet.svg` remplace l’ancien visuel Open Graph lié aux prédictions.
+- `public/og-888starz.svg` est réservé à la page secondaire du code 888starz btts221.
 - `public/googlecbd8cccd08774ec4.html` est le fichier de validation Google à la racine publique. Son contenu doit rester exactement : `google-site-verification: googlecbd8cccd08774ec4.html`.
 
 La stratégie SEO privilégie une page pilier forte, des guides complémentaires distincts et un maillage interne utile. Elle n’utilise pas de pages pays quasi identiques, de keyword stuffing, de fausses positions ou de promesses « numéro 1 ». Les liens affiliés sont clairement signalés et qualifiés.
@@ -69,6 +71,6 @@ Secrets attendus : `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD` et éventuelleme
 
 ## Transparence éditoriale
 
-Les expressions « meilleur code promo » ou « bonus garanti » ne sont pas utilisées comme des faits non démontrés. BttsBet peut expliquer pourquoi VISION221 est le code mis en avant sur son lien partenaire, mais seul Linebet peut confirmer l’offre, le pays éligible, les moyens de paiement, le dépôt minimum, les conditions de mise et les règles de retrait.
+Les expressions « meilleur code promo » ou « bonus garanti » ne sont pas utilisées comme des faits non démontrés. BttsBet peut expliquer pourquoi VISION221 est le code principal mis en avant sur son lien partenaire. Le code 888starz btts221 est présenté séparément. Seuls les partenaires concernés peuvent confirmer l’offre, le pays éligible, les moyens de paiement, le dépôt minimum, les conditions de mise et les règles de retrait.
 
 Le jeu d’argent est réservé aux personnes majeures et comporte un risque financier. Consultez la page [Jouer responsable](/jouer-responsable) et la réglementation de votre pays avant toute action.

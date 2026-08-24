@@ -8,6 +8,8 @@ export const SITE = {
 export const AFFILIATE = {
   linebet: 'https://lb-aff.com/L?tag=d_5589568m_22611c_site&site=5589568&ad=22611&r=registration',
   linebetDownload: 'https://lb-aff.com/L?tag=d_5589568m_66803c_apk1&site=5589568&ad=66803',
+  star888: 'https://888ghta.com/8hwF6V',
+  star888Download: 'https://888ghta.com/5o6glw',
   rel: 'sponsored nofollow',
 }
 
@@ -16,6 +18,7 @@ export const NAV_LINKS = [
   { label: 'Le code', href: '/code-promo-linebet' },
   { label: 'Inscription', href: '/linebet-inscription' },
   { label: 'Afrique', href: '/linebet-afrique' },
+  { label: '888starz', href: '/code-promo-888starz' },
   { label: 'FAQ', href: '/#faq' },
 ] as const
 
@@ -43,6 +46,10 @@ export const FAQ_ITEMS = [
   {
     q: 'BttsBet est-il Linebet ?',
     a: 'Non. BttsBet est un site indépendant d’information et d’affiliation. Nous ne sommes pas le bookmaker, nous ne gérons aucun compte joueur et nous ne collectons aucun dépôt.',
+  },
+  {
+    q: 'Quel est le code promo 888starz présenté sur BttsBet ?',
+    a: 'Le code partenaire 888starz présenté séparément sur BttsBet est btts221, en minuscules. Vérifiez directement auprès de 888starz sa disponibilité, l’éligibilité de votre compte et les conditions de toute offre avant une inscription ou un dépôt.',
   },
 ]
 
