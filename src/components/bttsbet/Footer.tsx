@@ -14,13 +14,13 @@ export default function Footer() {
       <div className="linebet-mobile-cta sm:hidden">
         <div className="linebet-mobile-code">
           <span>Code</span>
-          <CopyableCode code={SITE.promoCode} displayClassName="text-[#35f17f]" />
+          <CopyableCode code={SITE.promoCode} displayClassName="text-[#4ade80]" />
         </div>
         <a
           href={AFFILIATE.linebet}
           target="_blank"
           rel={AFFILIATE.rel}
-          className="flex min-h-11 flex-1 items-center justify-center gap-2 rounded-xl bg-gradient-to-b from-[#31ef80] to-[#19d66b] px-3 text-xs font-extrabold text-[#031b0d] shadow-[0_6px_20px_rgba(25,214,107,.25)]"
+          className="flex min-h-11 flex-1 items-center justify-center gap-2 rounded-xl bg-gradient-to-b from-[#4ade80] to-[#22c55e] px-3 text-xs font-extrabold text-[#052e16] shadow-[0_6px_20px_rgba(25,214,107,.25)]"
         >
           <img src="/logos/linebet-icon.png" alt="" className="h-4 w-4 rounded" />
           Ouvrir Linebet
@@ -33,16 +33,16 @@ export default function Footer() {
           <div>
             <a href="/" className="text-lg font-black tracking-tight text-white">
               {SITE.name}
-              <span className="text-[#35f17f]">/PREMIUM</span>
+              <span className="text-[#4ade80]">/PREMIUM</span>
             </a>
             <p className="mt-4 max-w-sm text-sm leading-6 text-[#84928d]">
               Plateforme premium du <strong className="text-[#cfe0d8]">meilleur code promo Linebet Afrique VISION221</strong> et freebets. Aussi code 888starz <strong className="text-[#dcb5c1]">btts221</strong>.
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-3">
-              <div className="rounded-xl border border-[#35f17f]/25 bg-[#35f17f]/[.08] px-3.5 py-2.5 text-xs font-black text-[#35f17f] shadow-[0_0_16px_rgba(53,241,127,.1)]">
-                <CopyableCode code={SITE.promoCode} displayClassName="text-[#35f17f]" />
+              <div className="rounded-xl border border-[#4ade80]/25 bg-[#4ade80]/[.08] px-3.5 py-2.5 text-xs font-black text-[#4ade80] shadow-[0_0_16px_rgba(53,241,127,.1)]">
+                <CopyableCode code={SITE.promoCode} displayClassName="text-[#4ade80]" />
               </div>
-              <a href={AFFILIATE.linebet} target="_blank" rel={AFFILIATE.rel} className="inline-flex items-center gap-2 text-sm font-bold text-[#35f17f] transition hover:text-white">
+              <a href={AFFILIATE.linebet} target="_blank" rel={AFFILIATE.rel} className="inline-flex items-center gap-2 text-sm font-bold text-[#4ade80] transition hover:text-white">
                 Ouvrir Linebet <span aria-hidden="true">↗</span>
               </a>
             </div>
@@ -51,24 +51,24 @@ export default function Footer() {
           <div>
             <h2 className="text-[11px] font-extrabold uppercase tracking-[.2em] text-white">Parcours</h2>
             <div className="mt-5 grid gap-3.5 text-sm text-[#84928d]">
-              <a href="/code-promo-linebet" className="transition hover:text-[#35f17f]">Meilleur code Linebet Afrique</a>
-              <a href="/linebet-inscription" className="transition hover:text-[#35f17f]">Inscription Linebet</a>
-              <a href="/#applications" className="transition hover:text-[#35f17f]">Télécharger une application</a>
-              <a href="/code-promo-888starz" className="transition hover:text-[#ffd4df]">Code 888starz btts221</a>
-              <a href="/ar/code-promo-888starz" className="transition hover:text-[#ffd4df]">الدليل العربي 888starz</a>
+              <a href="/code-promo-linebet" className="transition hover:text-[#4ade80]">Meilleur code Linebet Afrique</a>
+              <a href="/linebet-inscription" className="transition hover:text-[#4ade80]">Inscription Linebet</a>
+              <a href="/#applications" className="transition hover:text-[#4ade80]">Télécharger une application</a>
+              <a href="/code-promo-888starz" className="transition hover:text-[#fb7185]">Code 888starz btts221</a>
+              <a href="/ar/code-promo-888starz" className="transition hover:text-[#fb7185]">الدليل العربي 888starz</a>
             </div>
           </div>
 
           <div>
             <h2 className="text-[11px] font-extrabold uppercase tracking-[.2em] text-white">Confiance</h2>
             <div className="mt-5 grid gap-3.5 text-sm text-[#84928d]">
-              <a href="/linebet-afrique" className="transition hover:text-[#35f17f]">Linebet en Afrique</a>
-              <a href="/#faq" className="transition hover:text-[#35f17f]">Questions fréquentes</a>
-              <a href="/mentions-legales" className="transition hover:text-[#35f17f]">Mentions légales</a>
-              <a href="/politique-confidentialite" className="transition hover:text-[#35f17f]">Confidentialité</a>
-              <a href="/jouer-responsable" className="transition hover:text-[#35f17f]">Jouer responsable</a>
-              <a href="/cgu" className="transition hover:text-[#35f17f]">CGU</a>
-              <button type="button" onClick={reopenCookieSettings} className="text-left transition hover:text-[#35f17f]">
+              <a href="/linebet-afrique" className="transition hover:text-[#4ade80]">Linebet en Afrique</a>
+              <a href="/#faq" className="transition hover:text-[#4ade80]">Questions fréquentes</a>
+              <a href="/mentions-legales" className="transition hover:text-[#4ade80]">Mentions légales</a>
+              <a href="/politique-confidentialite" className="transition hover:text-[#4ade80]">Confidentialité</a>
+              <a href="/jouer-responsable" className="transition hover:text-[#4ade80]">Jouer responsable</a>
+              <a href="/cgu" className="transition hover:text-[#4ade80]">CGU</a>
+              <button type="button" onClick={reopenCookieSettings} className="text-left transition hover:text-[#4ade80]">
                 Paramètres cookies
               </button>
             </div>
