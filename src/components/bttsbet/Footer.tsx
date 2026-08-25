@@ -14,7 +14,7 @@ export default function Footer() {
       <div className="linebet-mobile-cta sm:hidden">
         <div className="linebet-mobile-code">
           <span>Code</span>
-          <CopyableCode code={SITE.promoCode} displayClassName="text-[#00e676]" />
+          <CopyableCode code={SITE.promoCode} displayClassName="text-[#ffb800]" />
         </div>
         <a href={AFFILIATE.linebet} target="_blank" rel={AFFILIATE.rel} className="btn-platform btn-platform-green flex-1 !min-h-11 !text-xs">
           <img src="/logos/linebet-icon.png" alt="" className="h-4 w-4 rounded object-cover" />
@@ -26,16 +26,16 @@ export default function Footer() {
         <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-[1.2fr_.75fr_.9fr]">
           <div>
             <a href="/" className="text-lg font-black tracking-tight text-white">
-              {SITE.name}<span className="text-[#00e676]">/PRO</span>
+              {SITE.name}<span className="text-[#ffb800]">/PRO</span>
             </a>
             <p className="mt-4 max-w-sm text-sm leading-6 text-[#84928d]">
               Plateforme premium — <strong className="text-[#cfe0d8]">meilleur code promo Linebet Afrique VISION221</strong> + freebets. Aussi 888starz <strong className="text-[#fca5a5]">btts221</strong>.
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-3">
-              <div className="rounded-xl border border-[#00e676]/30 bg-[#00e676]/[.1] px-3.5 py-2.5 text-xs font-black text-[#00e676]">
-                <CopyableCode code={SITE.promoCode} displayClassName="text-[#00e676]" />
+              <div className="rounded-xl border border-[#ffb800]/30 bg-[#ffb800]/[.1] px-3.5 py-2.5 text-xs font-black text-[#ffb800]">
+                <CopyableCode code={SITE.promoCode} displayClassName="text-[#ffb800]" />
               </div>
-              <a href={AFFILIATE.linebet} target="_blank" rel={AFFILIATE.rel} className="text-sm font-bold text-[#00e676] transition hover:text-white">
+              <a href={AFFILIATE.linebet} target="_blank" rel={AFFILIATE.rel} className="text-sm font-bold text-[#ffb800] transition hover:text-white">
                 Ouvrir Linebet ↗
               </a>
             </div>
@@ -43,9 +43,9 @@ export default function Footer() {
           <div>
             <h2 className="text-[11px] font-extrabold uppercase tracking-[.2em] text-white">Parcours</h2>
             <div className="mt-5 grid gap-3.5 text-sm text-[#84928d]">
-              <a href="/code-promo-linebet" className="transition hover:text-[#00e676]">Meilleur code Linebet Afrique</a>
-              <a href="/linebet-inscription" className="transition hover:text-[#00e676]">Inscription Linebet</a>
-              <a href="/#applications" className="transition hover:text-[#00e676]">Applications</a>
+              <a href="/code-promo-linebet" className="transition hover:text-[#ffb800]">Meilleur code Linebet Afrique</a>
+              <a href="/linebet-inscription" className="transition hover:text-[#ffb800]">Inscription Linebet</a>
+              <a href="/#applications" className="transition hover:text-[#ffb800]">Applications</a>
               <a href="/code-promo-888starz" className="transition hover:text-[#f87171]">Code 888starz btts221</a>
               <a href="/ar/code-promo-888starz" className="transition hover:text-[#f87171]">الدليل العربي 888starz</a>
             </div>
@@ -53,13 +53,13 @@ export default function Footer() {
           <div>
             <h2 className="text-[11px] font-extrabold uppercase tracking-[.2em] text-white">Confiance</h2>
             <div className="mt-5 grid gap-3.5 text-sm text-[#84928d]">
-              <a href="/linebet-afrique" className="transition hover:text-[#00e676]">Linebet en Afrique</a>
-              <a href="/#faq" className="transition hover:text-[#00e676]">FAQ</a>
-              <a href="/mentions-legales" className="transition hover:text-[#00e676]">Mentions légales</a>
-              <a href="/politique-confidentialite" className="transition hover:text-[#00e676]">Confidentialité</a>
-              <a href="/jouer-responsable" className="transition hover:text-[#00e676]">Jouer responsable</a>
-              <a href="/cgu" className="transition hover:text-[#00e676]">CGU</a>
-              <button type="button" onClick={reopenCookieSettings} className="text-left transition hover:text-[#00e676]">Cookies</button>
+              <a href="/linebet-afrique" className="transition hover:text-[#ffb800]">Linebet en Afrique</a>
+              <a href="/#faq" className="transition hover:text-[#ffb800]">FAQ</a>
+              <a href="/mentions-legales" className="transition hover:text-[#ffb800]">Mentions légales</a>
+              <a href="/politique-confidentialite" className="transition hover:text-[#ffb800]">Confidentialité</a>
+              <a href="/jouer-responsable" className="transition hover:text-[#ffb800]">Jouer responsable</a>
+              <a href="/cgu" className="transition hover:text-[#ffb800]">CGU</a>
+              <button type="button" onClick={reopenCookieSettings} className="text-left transition hover:text-[#ffb800]">Cookies</button>
             </div>
           </div>
         </div>

@@ -71,7 +71,7 @@ export default function LinebetLanding() {
                   <p className="linebet-code-note">Meilleur code · Freebets</p>
                 </div>
                 <div className="linebet-code-value">
-                  <CopyableCode code={SITE.promoCode} displayClassName="text-[#00e676]" />
+                  <CopyableCode code={SITE.promoCode} displayClassName="text-[#ffb800]" />
                 </div>
               </div>
               <div className="linebet-code-row linebet-code-row-secondary">
@@ -136,8 +136,8 @@ export default function LinebetLanding() {
                 </div>
               </div>
               <div className="mt-4 flex items-center justify-between">
-                <span className="text-sm font-bold text-[#00e676]">Télécharger</span>
-                <span className="text-[#00e676]">↗</span>
+                <span className="text-sm font-bold text-[#ffb800]">Télécharger</span>
+                <span className="text-[#ffb800]">↗</span>
               </div>
             </a>
             <a href={AFFILIATE.star888Download} target="_blank" rel={AFFILIATE.rel} className="linebet-app-card linebet-app-888 platform-card-3d platform-card-3d-red">
