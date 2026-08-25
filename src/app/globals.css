@@ -1527,46 +1527,57 @@ code {
 @media (max-width: 420px) { .linebet-hero > .mx-auto { gap: 1.7rem; } .linebet-hero h1 { max-width: 10ch; font-size: 2.7rem; } }
 
 /* ════════════════════════════════════════════════════════════════════════════
-   PLATFORM PREMIUM v40 — 3D cards · conversion buttons · mobile · scroll
-   Not a blog. A fintech / betting platform surface.
-   Linebet = light green | 888starz = red
+   CONVERSION COLORS v41 — neutral dark + electric green CTA + 888 red
+   Why: green-tinted backgrounds kill contrast. Neutral black converts better.
+   CTA green = money/go. Gold accent = premium. Red = 888 only.
    ════════════════════════════════════════════════════════════════════════════ */
 
 :root {
-  --lb: #22c55e;
-  --lb-bright: #4ade80;
-  --lb-deep: #16a34a;
-  --lb-ink: #052e16;
-  --st: #e11d48;
-  --st-bright: #fb7185;
-  --st-ink: #4c0519;
-  --platform-bg: #030504;
-  --platform-elevated: #0a0f0c;
-  --platform-card: #0d1510;
+  --bg: #0a0c10;
+  --bg-2: #0e1218;
+  --card: #141a22;
+  --card-2: #1a222d;
+  --border: rgba(255, 255, 255, 0.08);
+  --text: #ffffff;
+  --muted: #94a3b8;
+  --cta: #00e676;
+  --cta-hover: #69f0ae;
+  --cta-ink: #003d1f;
+  --cta-glow: rgba(0, 230, 118, 0.4);
+  --gold: #ffc107;
+  --red: #ef4444;
+  --red-bright: #f87171;
+  --red-ink: #450a0a;
 }
 
-/* ── Shell ── */
+body {
+  background-color: var(--bg) !important;
+  background-image:
+    radial-gradient(ellipse 90% 50% at 50% -20%, rgba(0, 230, 118, 0.07), transparent 55%),
+    radial-gradient(ellipse 40% 30% at 100% 50%, rgba(255, 193, 7, 0.03), transparent 50%) !important;
+  color: var(--text);
+}
+
 .linebet-shell {
-  background: var(--platform-bg);
-  color: #f0fdf4;
+  background: transparent;
+  color: var(--text);
   min-height: 100vh;
 }
 
-/* ── Navbar platform ── */
+/* Nav */
 .linebet-nav {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(3, 5, 4, 0.75) !important;
-  backdrop-filter: blur(20px) saturate(160%);
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
-  border-bottom: 1px solid rgba(34, 197, 94, 0.1) !important;
-  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  background: rgba(10, 12, 16, 0.85) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border) !important;
 }
 .linebet-nav-scrolled {
-  background: rgba(3, 5, 4, 0.94) !important;
-  border-color: rgba(34, 197, 94, 0.2) !important;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55) !important;
+  background: rgba(10, 12, 16, 0.96) !important;
+  border-color: rgba(0, 230, 118, 0.2) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
 }
 .linebet-brand-mark {
   display: inline-flex;
@@ -1574,378 +1585,321 @@ code {
   width: 2.35rem;
   align-items: center;
   justify-content: center;
-  border-radius: 0.75rem;
-  border: 1px solid rgba(34, 197, 94, 0.35);
-  background: linear-gradient(145deg, rgba(34, 197, 94, 0.2), rgba(34, 197, 94, 0.04));
-  box-shadow: 0 4px 16px rgba(34, 197, 94, 0.15), inset 0 1px 0 rgba(255,255,255,0.08);
+  border-radius: 0.7rem;
+  border: 1px solid rgba(0, 230, 118, 0.35);
+  background: rgba(0, 230, 118, 0.12);
+  box-shadow: 0 0 20px rgba(0, 230, 118, 0.15);
+  overflow: hidden;
 }
 .linebet-nav-link {
-  border-radius: 0.65rem;
+  border-radius: 0.6rem;
   padding: 0.5rem 0.75rem;
   font-size: 0.78rem;
   font-weight: 700;
-  color: #84928d;
-  transition: color 0.2s, background 0.2s, transform 0.2s;
+  color: var(--muted);
+  transition: color 0.2s, background 0.2s;
 }
 .linebet-nav-link:hover {
   color: #fff !important;
-  background: rgba(34, 197, 94, 0.08);
+  background: rgba(255, 255, 255, 0.06);
 }
 
-/* ── 3D Platform Card ── */
-.platform-card-3d {
-  position: relative;
-  border-radius: 1.25rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background:
-    linear-gradient(165deg, rgba(18, 32, 24, 0.95) 0%, rgba(8, 14, 10, 0.98) 100%);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.06) inset,
-    0 20px 50px rgba(0, 0, 0, 0.45),
-    0 8px 16px rgba(0, 0, 0, 0.3);
-  transform: perspective(1000px) rotateX(0deg) translateZ(0);
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.25s ease;
-  overflow: hidden;
-}
-.platform-card-3d::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(135deg, rgba(255,255,255,0.07) 0%, transparent 40%, transparent 60%, rgba(34,197,94,0.04) 100%);
-  pointer-events: none;
-}
-.platform-card-3d:hover {
-  transform: perspective(1000px) rotateX(2deg) translateY(-6px) translateZ(12px);
-  border-color: rgba(34, 197, 94, 0.35);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.1) inset,
-    0 32px 64px rgba(0, 0, 0, 0.5),
-    0 0 40px rgba(34, 197, 94, 0.12);
-}
-.platform-card-3d-red:hover {
-  border-color: rgba(225, 29, 72, 0.4);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.08) inset,
-    0 32px 64px rgba(0, 0, 0, 0.5),
-    0 0 40px rgba(225, 29, 72, 0.12);
-}
-
-/* Code card hero — elevated 3D */
-.linebet-code-card {
-  position: relative;
-  border-radius: 1.35rem !important;
-  border: 1px solid rgba(34, 197, 94, 0.35) !important;
-  padding: 1.35rem !important;
-  background:
-    linear-gradient(160deg, rgba(14, 36, 22, 0.98), rgba(6, 14, 10, 0.99)) !important;
-  box-shadow:
-    0 1px 0 rgba(74, 222, 128, 0.15) inset,
-    0 28px 70px rgba(0, 0, 0, 0.5),
-    0 0 60px rgba(34, 197, 94, 0.1) !important;
-  transform: perspective(900px) rotateY(-2deg) rotateX(2deg);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-.linebet-code-card:hover {
-  transform: perspective(900px) rotateY(0deg) rotateX(0deg) translateY(-4px);
-  box-shadow:
-    0 1px 0 rgba(74, 222, 128, 0.2) inset,
-    0 36px 80px rgba(0, 0, 0, 0.55),
-    0 0 70px rgba(34, 197, 94, 0.15) !important;
-}
-.linebet-code-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 12%;
-  right: 12%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(74, 222, 128, 0.9), transparent);
-}
-
-/* ── Premium Buttons ── */
-.btn-platform {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  min-height: 3.15rem;
-  padding: 0.85rem 1.35rem;
-  border-radius: 0.95rem;
-  font-size: 0.875rem;
-  font-weight: 800;
-  letter-spacing: -0.01em;
-  border: none;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.25s ease, filter 0.2s ease;
-}
-.btn-platform::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(255,255,255,0.22), transparent 45%);
-  pointer-events: none;
-}
-.btn-platform-green {
-  background: linear-gradient(180deg, #4ade80 0%, #22c55e 45%, #16a34a 100%);
-  color: #052e16;
-  box-shadow:
-    0 1px 0 rgba(255,255,255,0.35) inset,
-    0 8px 24px rgba(34, 197, 94, 0.35),
-    0 2px 4px rgba(0,0,0,0.2);
-}
-.btn-platform-green:hover {
-  transform: translateY(-3px) scale(1.02);
-  filter: brightness(1.08);
-  box-shadow:
-    0 1px 0 rgba(255,255,255,0.4) inset,
-    0 14px 36px rgba(34, 197, 94, 0.45),
-    0 0 40px rgba(34, 197, 94, 0.2);
-}
-.btn-platform-green:active {
-  transform: translateY(0) scale(0.98);
-}
-.btn-platform-red {
-  background: linear-gradient(180deg, #fb7185 0%, #e11d48 50%, #be123c 100%);
-  color: #fff;
-  box-shadow:
-    0 1px 0 rgba(255,255,255,0.2) inset,
-    0 8px 24px rgba(225, 29, 72, 0.35);
-}
-.btn-platform-red:hover {
-  transform: translateY(-3px) scale(1.02);
-  filter: brightness(1.08);
-  box-shadow:
-    0 1px 0 rgba(255,255,255,0.25) inset,
-    0 14px 36px rgba(225, 29, 72, 0.45);
-}
-.btn-platform-ghost {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.12);
-  color: #fff;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-}
-.btn-platform-ghost:hover {
-  background: rgba(255,255,255,0.08);
-  border-color: rgba(34, 197, 94, 0.35);
-  transform: translateY(-2px);
-}
-
-/* ── Hero platform ── */
+/* Hero — clean, not muddy */
 .linebet-hero {
   position: relative;
   overflow: hidden;
-  background:
-    radial-gradient(ellipse 80% 55% at 90% 0%, rgba(34, 197, 94, 0.18), transparent 55%),
-    radial-gradient(ellipse 50% 40% at 0% 20%, rgba(74, 222, 128, 0.06), transparent 50%),
-    radial-gradient(ellipse 40% 30% at 50% 100%, rgba(34, 197, 94, 0.04), transparent 50%),
-    #030504 !important;
+  background: transparent !important;
 }
 .linebet-grid-overlay {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.2;
+  opacity: 0.12;
   background-image:
-    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: linear-gradient(to bottom, black 0%, transparent 75%);
-  -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 75%);
+    linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: linear-gradient(to bottom, black, transparent 70%);
+  -webkit-mask-image: linear-gradient(to bottom, black, transparent 70%);
 }
 .linebet-kicker {
   font-size: 0.68rem;
   font-weight: 900;
-  letter-spacing: 0.2em;
-  color: #4ade80 !important;
+  letter-spacing: 0.18em;
+  color: var(--cta) !important;
 }
 .linebet-status-dot {
   display: inline-block;
-  width: 0.45rem;
-  height: 0.45rem;
-  margin-right: 0.45rem;
+  width: 0.42rem;
+  height: 0.42rem;
+  margin-right: 0.4rem;
   border-radius: 999px;
-  background: #22c55e !important;
-  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.15), 0 0 12px rgba(34, 197, 94, 0.6);
+  background: var(--cta) !important;
+  box-shadow: 0 0 0 4px rgba(0, 230, 118, 0.15), 0 0 14px var(--cta-glow);
   animation: platform-pulse 2s ease-in-out infinite;
+  vertical-align: middle;
 }
 @keyframes platform-pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.7; transform: scale(0.9); }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
 }
 .linebet-gradient-text {
-  background: linear-gradient(110deg, #ffffff 0%, #86efac 40%, #22c55e 100%) !important;
+  background: linear-gradient(105deg, #fff 0%, var(--cta) 55%, var(--cta-hover) 100%) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
   color: transparent !important;
 }
 
-/* Code rows */
+/* 3D cards — neutral elevated */
+.platform-card-3d,
+.linebet-step-card,
+.linebet-region-card {
+  position: relative;
+  border-radius: 1.15rem !important;
+  border: 1px solid var(--border) !important;
+  background: linear-gradient(165deg, #1a222d 0%, #121820 100%) !important;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.05) inset,
+    0 16px 40px rgba(0, 0, 0, 0.4) !important;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s, box-shadow 0.3s !important;
+  padding: 1.25rem !important;
+}
+.platform-card-3d:hover,
+.linebet-step-card:hover,
+.linebet-region-card:hover {
+  transform: translateY(-6px) !important;
+  border-color: rgba(0, 230, 118, 0.35) !important;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.08) inset,
+    0 24px 50px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(0, 230, 118, 0.1) !important;
+}
+.platform-card-3d-red:hover {
+  border-color: rgba(239, 68, 68, 0.4) !important;
+  box-shadow:
+    0 24px 50px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(239, 68, 68, 0.12) !important;
+}
+
+/* Code card — main conversion surface */
+.linebet-code-card {
+  position: relative;
+  border-radius: 1.25rem !important;
+  border: 1px solid rgba(0, 230, 118, 0.35) !important;
+  padding: 1.35rem !important;
+  background: linear-gradient(165deg, #152019 0%, #0e1410 100%) !important;
+  box-shadow:
+    0 1px 0 rgba(0, 230, 118, 0.2) inset,
+    0 24px 60px rgba(0, 0, 0, 0.5),
+    0 0 50px rgba(0, 230, 118, 0.12) !important;
+}
+.linebet-code-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cta), transparent);
+  border-radius: 2px;
+}
+.linebet-mini-label { font-size: 0.62rem; font-weight: 900; letter-spacing: 0.16em; color: var(--muted); }
+.linebet-secure-badge {
+  border: 1px solid rgba(0, 230, 118, 0.35);
+  border-radius: 999px;
+  padding: 0.3rem 0.55rem;
+  font-size: 0.6rem;
+  font-weight: 900;
+  color: var(--cta);
+  background: rgba(0, 230, 118, 0.08);
+}
+
 .linebet-code-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
-  min-height: 4rem;
-  padding: 0.85rem 1rem;
-  border-radius: 1rem;
-  border: 1px solid rgba(255,255,255,0.08);
-  background: rgba(0,0,0,0.25);
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  min-height: 3.85rem;
+  padding: 0.8rem 1rem;
+  border-radius: 0.95rem;
+  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, border-color 0.2s;
 }
-.linebet-code-row:hover {
-  transform: translateX(4px);
-}
+.linebet-code-row:hover { transform: translateX(3px); }
 .linebet-code-row-primary {
-  border-color: rgba(34, 197, 94, 0.4) !important;
-  background: linear-gradient(110deg, rgba(22, 80, 45, 0.7), rgba(6, 20, 12, 0.85)) !important;
-  box-shadow: 0 8px 24px rgba(34, 197, 94, 0.12);
+  border-color: rgba(0, 230, 118, 0.4) !important;
+  background: linear-gradient(110deg, rgba(0, 80, 40, 0.45), rgba(0, 0, 0, 0.35)) !important;
 }
 .linebet-code-row-secondary {
-  border-color: rgba(225, 29, 72, 0.35) !important;
-  background: linear-gradient(110deg, rgba(70, 15, 30, 0.55), rgba(15, 8, 10, 0.8)) !important;
+  border-color: rgba(239, 68, 68, 0.35) !important;
+  background: linear-gradient(110deg, rgba(80, 15, 20, 0.4), rgba(0, 0, 0, 0.35)) !important;
 }
-.linebet-code-name { color: #edf7f1; font-size: 0.85rem; font-weight: 850; }
-.linebet-code-note { margin-top: 0.2rem; color: #7a9488; font-size: 0.68rem; }
-.linebet-code-value { flex: 0 0 auto; font: 800 1.05rem/1 var(--font-mono); letter-spacing: 0.06em; }
-.linebet-mini-label { font-size: 0.62rem; font-weight: 900; letter-spacing: 0.18em; color: #7a9488; }
-.linebet-secure-badge {
-  border: 1px solid rgba(34, 197, 94, 0.3);
-  border-radius: 999px;
-  padding: 0.3rem 0.55rem;
-  font-size: 0.6rem;
-  font-weight: 900;
-  color: #4ade80;
+.linebet-code-name { color: #fff; font-size: 0.85rem; font-weight: 800; }
+.linebet-code-note { margin-top: 0.15rem; color: var(--muted); font-size: 0.68rem; }
+.linebet-code-value { flex: 0 0 auto; font: 800 1.05rem/1 var(--font-mono); letter-spacing: 0.05em; }
+
+/* CTA buttons — max conversion */
+.btn-platform {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 3.2rem;
+  padding: 0.85rem 1.4rem;
+  border-radius: 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.25s ease, filter 0.2s;
+}
+.btn-platform::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.25), transparent 50%);
+  pointer-events: none;
+}
+.btn-platform-green {
+  background: linear-gradient(180deg, #69f0ae 0%, #00e676 40%, #00c853 100%) !important;
+  color: var(--cta-ink) !important;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.4) inset,
+    0 6px 20px var(--cta-glow),
+    0 2px 6px rgba(0,0,0,0.25) !important;
+}
+.btn-platform-green:hover {
+  transform: translateY(-3px) scale(1.02);
+  filter: brightness(1.08);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.45) inset,
+    0 12px 32px rgba(0, 230, 118, 0.5),
+    0 0 40px rgba(0, 230, 118, 0.25) !important;
+}
+.btn-platform-green:active { transform: translateY(0) scale(0.98); }
+.btn-platform-red {
+  background: linear-gradient(180deg, #f87171 0%, #ef4444 45%, #dc2626 100%) !important;
+  color: #fff !important;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.2) inset, 0 6px 20px rgba(239, 68, 68, 0.35) !important;
+}
+.btn-platform-red:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(239, 68, 68, 0.45) !important;
+}
+.btn-platform-ghost {
+  background: rgba(255,255,255,0.05) !important;
+  border: 1px solid var(--border) !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+.btn-platform-ghost:hover {
+  border-color: rgba(0, 230, 118, 0.4) !important;
+  background: rgba(0, 230, 118, 0.08) !important;
 }
 
-/* Trust strip */
+/* Trust */
 .linebet-trust-strip {
-  border-top: 1px solid rgba(255,255,255,0.06);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  background: #070c09;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-2);
 }
-.linebet-trust-strip strong { font-size: 0.82rem; color: #e5eee9; }
-.linebet-trust-strip p { font-size: 0.7rem; color: #6b8075; margin-top: 0.15rem; }
+.linebet-trust-strip strong { font-size: 0.82rem; color: #fff; }
+.linebet-trust-strip p { font-size: 0.7rem; color: var(--muted); margin-top: 0.1rem; }
 .linebet-trust-icon {
   display: inline-flex;
   width: 2.1rem;
   height: 2.1rem;
   align-items: center;
   justify-content: center;
-  border-radius: 0.65rem;
-  border: 1px solid rgba(34, 197, 94, 0.3);
-  color: #4ade80;
+  border-radius: 0.6rem;
+  border: 1px solid rgba(0, 230, 118, 0.3);
+  color: var(--cta);
   font-size: 0.65rem;
   font-weight: 900;
-  background: rgba(34, 197, 94, 0.08);
-  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.1);
+  background: rgba(0, 230, 118, 0.1);
 }
-
-/* Step / region cards → 3D */
-.linebet-step-card,
-.linebet-region-card {
-  border-radius: 1.15rem !important;
-  border: 1px solid rgba(255,255,255,0.08) !important;
-  background: linear-gradient(165deg, rgba(16, 28, 20, 0.9), rgba(8, 12, 10, 0.95)) !important;
-  padding: 1.35rem !important;
-  box-shadow: 0 12px 32px rgba(0,0,0,0.3), 0 1px 0 rgba(255,255,255,0.04) inset;
-  transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), border-color 0.25s, box-shadow 0.3s;
-}
-.linebet-step-card:hover,
-.linebet-region-card:hover {
-  transform: translateY(-8px) scale(1.02) !important;
-  border-color: rgba(34, 197, 94, 0.4) !important;
-  box-shadow: 0 24px 48px rgba(0,0,0,0.4), 0 0 32px rgba(34, 197, 94, 0.1);
-}
-.linebet-step-number { color: #4ade80 !important; font: 700 0.8rem/1 var(--font-mono); }
+.linebet-step-number { color: var(--cta) !important; font: 700 0.8rem/1 var(--font-mono); }
 
 /* Apps */
 .linebet-apps-panel {
-  border-radius: 1.25rem;
-  border: 1px solid rgba(255,255,255,0.08);
-  background: rgba(255,255,255,0.02);
+  border-radius: 1.2rem;
+  border: 1px solid var(--border);
+  background: var(--card);
   padding: 1.35rem;
-  box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.3);
 }
 .linebet-app-card {
   display: block;
-  border-radius: 1.1rem;
-  border: 1px solid rgba(255,255,255,0.1);
-  padding: 1.15rem;
-  transition: transform 0.3s ease, border-color 0.25s, box-shadow 0.3s;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  border-radius: 1rem;
+  border: 1px solid var(--border);
+  padding: 1.1rem;
+  transition: transform 0.25s ease, border-color 0.25s, box-shadow 0.25s;
 }
-.linebet-app-card:hover {
-  transform: translateY(-6px) scale(1.02);
-}
+.linebet-app-card:hover { transform: translateY(-5px); }
 .linebet-app-linebet {
-  background: linear-gradient(145deg, rgba(20, 90, 48, 0.55), rgba(8, 20, 12, 0.95)) !important;
+  background: linear-gradient(145deg, rgba(0, 60, 30, 0.5), var(--card)) !important;
 }
 .linebet-app-linebet:hover {
-  border-color: rgba(74, 222, 128, 0.5) !important;
-  box-shadow: 0 16px 40px rgba(34, 197, 94, 0.15);
+  border-color: rgba(0, 230, 118, 0.45) !important;
+  box-shadow: 0 12px 32px rgba(0, 230, 118, 0.12);
 }
 .linebet-app-888 {
-  background: linear-gradient(145deg, rgba(90, 18, 35, 0.55), rgba(18, 8, 12, 0.95)) !important;
+  background: linear-gradient(145deg, rgba(60, 10, 15, 0.5), var(--card)) !important;
 }
 .linebet-app-888:hover {
-  border-color: rgba(251, 113, 133, 0.5) !important;
-  box-shadow: 0 16px 40px rgba(225, 29, 72, 0.12);
+  border-color: rgba(239, 68, 68, 0.45) !important;
+  box-shadow: 0 12px 32px rgba(239, 68, 68, 0.12);
 }
 .linebet-app-icon {
+  display: inline-flex;
+  height: 3rem;
+  width: 3rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.85rem;
+  border: 1px solid var(--border);
+  background: rgba(0,0,0,0.35);
+  overflow: hidden;
+}
+.linebet-app-icon img { width: 100%; height: 100%; object-fit: cover; }
+
+/* 888 card */
+.linebet-secondary-card {
+  border-radius: 1.2rem !important;
+  border: 1px solid rgba(239, 68, 68, 0.3) !important;
+  background: linear-gradient(145deg, rgba(50, 12, 18, 0.55), var(--card)) !important;
+  padding: 1.25rem !important;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.3) !important;
+}
+.linebet-partner-logo {
   display: inline-flex;
   height: 3.1rem;
   width: 3.1rem;
   align-items: center;
   justify-content: center;
   border-radius: 0.9rem;
-  border: 1px solid rgba(255,255,255,0.1);
-  background: rgba(0,0,0,0.3);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  background: rgba(239, 68, 68, 0.1);
   overflow: hidden;
-}
-.linebet-app-icon img { width: 100%; height: 100%; object-fit: cover; }
-
-/* Secondary 888 */
-.linebet-secondary-card {
-  border-radius: 1.25rem !important;
-  border: 1px solid rgba(225, 29, 72, 0.32) !important;
-  background: linear-gradient(145deg, rgba(55, 14, 26, 0.6), rgba(12, 8, 10, 0.95)) !important;
-  padding: 1.35rem !important;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.3), 0 0 40px rgba(225, 29, 72, 0.08) !important;
-}
-.linebet-partner-logo {
-  display: inline-flex;
-  height: 3.25rem;
-  width: 3.25rem;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.95rem;
-  border: 1px solid rgba(225, 29, 72, 0.35);
-  background: rgba(225, 29, 72, 0.12);
-  overflow: hidden;
-  box-shadow: 0 6px 16px rgba(225, 29, 72, 0.15);
 }
 .linebet-partner-logo img { width: 100%; height: 100%; object-fit: cover; }
 
 /* FAQ */
 .linebet-faq-section {
-  border-top: 1px solid rgba(255,255,255,0.06);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  background: #070c09;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-2);
 }
 .linebet-faq-item {
-  border-radius: 1rem !important;
-  border: 1px solid rgba(255,255,255,0.08) !important;
-  background: rgba(255,255,255,0.02) !important;
+  border-radius: 0.95rem !important;
+  border: 1px solid var(--border) !important;
+  background: var(--card) !important;
   overflow: hidden;
-  transition: border-color 0.25s, box-shadow 0.25s;
 }
-.linebet-faq-item:hover {
-  border-color: rgba(34, 197, 94, 0.25) !important;
-}
+.linebet-faq-item:hover { border-color: rgba(0, 230, 118, 0.25) !important; }
 .linebet-faq-item summary {
   display: flex;
   align-items: center;
@@ -1953,127 +1907,73 @@ code {
   gap: 1rem;
   cursor: pointer;
   list-style: none;
-  padding: 1.1rem 1.15rem;
-  color: #eef6f1;
-  font-size: 0.92rem;
+  padding: 1.05rem 1.1rem;
+  color: #fff;
+  font-size: 0.9rem;
   font-weight: 800;
 }
 .linebet-faq-item summary::-webkit-details-marker { display: none; }
-.linebet-faq-item summary span { color: #4ade80; font-size: 1.3rem; font-weight: 400; }
-.linebet-faq-item[open] {
-  border-color: rgba(34, 197, 94, 0.28) !important;
-  box-shadow: 0 12px 32px rgba(0,0,0,0.2);
-}
-.linebet-faq-item[open] summary { border-bottom: 1px solid rgba(255,255,255,0.06); }
+.linebet-faq-item summary span { color: var(--cta); font-size: 1.25rem; }
+.linebet-faq-item[open] { border-color: rgba(0, 230, 118, 0.3) !important; }
+.linebet-faq-item[open] summary { border-bottom: 1px solid var(--border); }
 .linebet-faq-item p {
-  padding: 0 1.15rem 1.15rem;
-  color: #8e9e98;
-  font-size: 0.88rem;
-  line-height: 1.7;
+  padding: 0 1.1rem 1.1rem;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.65;
 }
 
-/* Final CTA */
 .linebet-editorial-card,
 .linebet-final-cta {
-  border-radius: 1.35rem !important;
-  border: 1px solid rgba(34, 197, 94, 0.28) !important;
-  background: linear-gradient(150deg, rgba(14, 40, 24, 0.9), rgba(6, 12, 9, 0.98)) !important;
-  padding: 1.75rem !important;
-  box-shadow: 0 24px 60px rgba(0,0,0,0.35), 0 0 50px rgba(34, 197, 94, 0.08) !important;
+  border-radius: 1.25rem !important;
+  border: 1px solid rgba(0, 230, 118, 0.3) !important;
+  background: linear-gradient(150deg, #152019, var(--card)) !important;
+  padding: 1.5rem !important;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.35), 0 0 40px rgba(0, 230, 118, 0.08) !important;
 }
 
-/* Mobile sticky bar — app-like */
+/* Mobile bar */
 .linebet-mobile-cta {
   position: fixed;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  right: 0; bottom: 0; left: 0;
   z-index: 40;
   display: flex;
   align-items: center;
-  gap: 0.55rem;
-  border-top: 1px solid rgba(34, 197, 94, 0.25);
-  background: rgba(3, 5, 4, 0.96);
-  padding: 0.65rem 0.85rem calc(0.65rem + env(safe-area-inset-bottom));
-  backdrop-filter: blur(20px);
-  box-shadow: 0 -16px 40px rgba(0,0,0,0.45);
+  gap: 0.5rem;
+  border-top: 1px solid rgba(0, 230, 118, 0.25);
+  background: rgba(10, 12, 16, 0.97);
+  padding: 0.6rem 0.8rem calc(0.6rem + env(safe-area-inset-bottom));
+  backdrop-filter: blur(16px);
+  box-shadow: 0 -12px 32px rgba(0,0,0,0.5);
 }
 .linebet-mobile-code {
   display: flex;
-  min-height: 2.85rem;
+  min-height: 2.8rem;
   align-items: center;
   gap: 0.4rem;
   padding: 0 0.7rem;
-  border-radius: 0.85rem;
-  border: 1px solid rgba(34, 197, 94, 0.3);
-  background: rgba(34, 197, 94, 0.08);
-  color: #7f938b;
+  border-radius: 0.8rem;
+  border: 1px solid rgba(0, 230, 118, 0.3);
+  background: rgba(0, 230, 118, 0.08);
+  color: var(--muted);
   font-size: 0.62rem;
   font-weight: 800;
 }
 
-/* Scroll reveal helper */
-.scroll-reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1);
-}
-.scroll-reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Mobile layout polish */
 @media (max-width: 640px) {
-  .linebet-hero > .mx-auto {
-    padding-top: 1.75rem !important;
-    padding-bottom: 2rem !important;
-    gap: 1.5rem !important;
-  }
-  .linebet-hero h1 {
-    font-size: 2.35rem !important;
-    line-height: 1.02 !important;
-    max-width: none !important;
-  }
-  .linebet-code-card {
-    transform: none !important;
-    padding: 1.1rem !important;
-    border-radius: 1.15rem !important;
-  }
-  .linebet-code-card:hover { transform: none !important; }
-  .platform-card-3d:hover {
-    transform: translateY(-4px);
-  }
-  .linebet-step-card:hover,
-  .linebet-region-card:hover {
-    transform: translateY(-4px) !important;
-  }
-  .btn-platform {
-    width: 100%;
-    min-height: 3.25rem;
-  }
-  body { padding-bottom: 5.5rem; }
+  .linebet-hero h1 { font-size: 2.3rem !important; line-height: 1.05 !important; }
+  .linebet-code-card { transform: none !important; }
+  .btn-platform { width: 100%; }
+  body { padding-bottom: 5.25rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .platform-card-3d,
-  .linebet-code-card,
-  .linebet-step-card,
-  .linebet-app-card,
-  .btn-platform,
-  .scroll-reveal {
+  .platform-card-3d, .linebet-step-card, .linebet-app-card, .btn-platform, .linebet-status-dot {
     transition: none !important;
     transform: none !important;
     animation: none !important;
   }
-  .linebet-status-dot { animation: none !important; }
 }
 
-::selection {
-  background: rgba(34, 197, 94, 0.35) !important;
-  color: #fff !important;
-}
-:focus-visible {
-  outline: 2px solid #4ade80 !important;
-  outline-offset: 2px;
-}
+::selection { background: rgba(0, 230, 118, 0.35); color: #fff; }
+:focus-visible { outline: 2px solid var(--cta); outline-offset: 2px; }

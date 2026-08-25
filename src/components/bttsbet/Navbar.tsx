@@ -27,7 +27,7 @@ export default function Navbar() {
             <img src="/logos/linebet-icon.png" alt="" className="h-5 w-5 rounded object-cover" />
           </span>
           <span className="truncate text-base font-black tracking-tight text-white">
-            {SITE.name}<span className="text-[#4ade80]">/PRO</span>
+            {SITE.name}<span className="text-[#00e676]">/PRO</span>
           </span>
         </a>
 
@@ -38,8 +38,8 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-2">
-          <div className="hidden rounded-xl border border-[#22c55e]/30 bg-[#22c55e]/[.1] px-3 py-1.5 text-xs font-black text-[#4ade80] shadow-[0_0_20px_rgba(34,197,94,.12)] sm:block">
-            <CopyableCode code={SITE.promoCode} displayClassName="text-[#4ade80]" />
+          <div className="hidden rounded-xl border border-[#00e676]/30 bg-[#00e676]/[.1] px-3 py-1.5 text-xs font-black text-[#00e676] shadow-[0_0_20px_rgba(34,197,94,.12)] sm:block">
+            <CopyableCode code={SITE.promoCode} displayClassName="text-[#00e676]" />
           </div>
           <a href={AFFILIATE.linebet} target="_blank" rel={AFFILIATE.rel} className="btn-platform btn-platform-green hidden !min-h-10 !px-3.5 !text-xs sm:inline-flex">
             <img src="/logos/linebet-icon.png" alt="" className="h-4 w-4 rounded object-cover" />
@@ -60,7 +60,7 @@ export default function Navbar() {
       </nav>
 
       {open && (
-        <div id="mobile-menu" className="border-t border-white/10 bg-[#030504]/98 px-5 py-5 shadow-2xl backdrop-blur-2xl lg:hidden">
+        <div id="mobile-menu" className="border-t border-white/10 bg-[#0a0c10]/98 px-5 py-5 shadow-2xl backdrop-blur-2xl lg:hidden">
           <div className="mx-auto max-w-6xl space-y-1">
             {NAV_LINKS.map((link) => (
               <a key={link.href} href={link.href} onClick={() => setOpen(false)} className="block rounded-xl px-4 py-3.5 text-sm font-semibold text-[#cfdbd6] transition hover:bg-white/[.05] hover:text-white">
@@ -68,9 +68,9 @@ export default function Navbar() {
               </a>
             ))}
             <div className="mt-4 border-t border-white/10 pt-4">
-              <div className="mb-3 flex items-center justify-between rounded-xl border border-[#22c55e]/30 bg-[#22c55e]/[.1] px-4 py-3.5 text-sm">
+              <div className="mb-3 flex items-center justify-between rounded-xl border border-[#00e676]/30 bg-[#00e676]/[.1] px-4 py-3.5 text-sm">
                 <span className="text-[#91a09b]">Code</span>
-                <CopyableCode code={SITE.promoCode} displayClassName="text-[#4ade80]" />
+                <CopyableCode code={SITE.promoCode} displayClassName="text-[#00e676]" />
               </div>
               <a href={AFFILIATE.linebet} target="_blank" rel={AFFILIATE.rel} onClick={() => setOpen(false)} className="btn-platform btn-platform-green w-full">
                 <img src="/logos/linebet-icon.png" alt="" className="h-5 w-5 rounded object-cover" />

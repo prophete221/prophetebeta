@@ -71,7 +71,7 @@ export default function LinebetLanding() {
                   <p className="linebet-code-note">Meilleur code · Freebets</p>
                 </div>
                 <div className="linebet-code-value">
-                  <CopyableCode code={SITE.promoCode} displayClassName="text-[#4ade80]" />
+                  <CopyableCode code={SITE.promoCode} displayClassName="text-[#00e676]" />
                 </div>
               </div>
               <div className="linebet-code-row linebet-code-row-secondary">
@@ -80,7 +80,7 @@ export default function LinebetLanding() {
                   <p className="linebet-code-note">Code secondaire</p>
                 </div>
                 <div className="linebet-code-value">
-                  <CopyableCode code="btts221" displayClassName="text-[#fb7185]" />
+                  <CopyableCode code="btts221" displayClassName="text-[#f87171]" />
                 </div>
               </div>
             </div>
@@ -136,8 +136,8 @@ export default function LinebetLanding() {
                 </div>
               </div>
               <div className="mt-4 flex items-center justify-between">
-                <span className="text-sm font-bold text-[#4ade80]">Télécharger</span>
-                <span className="text-[#4ade80]">↗</span>
+                <span className="text-sm font-bold text-[#00e676]">Télécharger</span>
+                <span className="text-[#00e676]">↗</span>
               </div>
             </a>
             <a href={AFFILIATE.star888Download} target="_blank" rel={AFFILIATE.rel} className="linebet-app-card linebet-app-888 platform-card-3d platform-card-3d-red">
@@ -149,8 +149,8 @@ export default function LinebetLanding() {
                 </div>
               </div>
               <div className="mt-4 flex items-center justify-between">
-                <span className="text-sm font-bold text-[#fb7185]">Télécharger</span>
-                <span className="text-[#fb7185]">↗</span>
+                <span className="text-sm font-bold text-[#f87171]">Télécharger</span>
+                <span className="text-[#f87171]">↗</span>
               </div>
             </a>
           </div>
@@ -163,12 +163,12 @@ export default function LinebetLanding() {
             <div className="flex items-center gap-3">
               <span className="linebet-partner-logo"><img src="/logos/888starz-icon.png" alt="888starz" className="h-full w-full object-cover" /></span>
               <div>
-                <p className="linebet-kicker" style={{ color: '#fb7185' }}>888STARZ</p>
-                <h2 className="mt-0.5 text-xl font-black text-white">Code <span className="text-[#fb7185]">btts221</span></h2>
+                <p className="linebet-kicker" style={{ color: '#f87171' }}>888STARZ</p>
+                <h2 className="mt-0.5 text-xl font-black text-white">Code <span className="text-[#f87171]">btts221</span></h2>
               </div>
             </div>
-            <div className="rounded-xl border border-[#e11d48]/35 bg-black/30 px-4 py-2.5">
-              <CopyableCode code="btts221" displayClassName="text-[#fb7185]" />
+            <div className="rounded-xl border border-[#ef4444]/35 bg-black/30 px-4 py-2.5">
+              <CopyableCode code="btts221" displayClassName="text-[#f87171]" />
             </div>
           </div>
         </motion.div>

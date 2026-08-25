@@ -66,9 +66,9 @@ const jsonLd = {
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#050706]">
+    <div className="min-h-screen bg-[#0a0c10]">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-[#4ade80] focus:px-4 focus:py-3 focus:font-bold focus:text-[#052e16]">Aller au contenu principal</a>
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-[#00e676] focus:px-4 focus:py-3 focus:font-bold focus:text-[#003d1f]">Aller au contenu principal</a>
       <Navbar />
       <main id="main-content"><LinebetLanding /></main>
       <Footer />
