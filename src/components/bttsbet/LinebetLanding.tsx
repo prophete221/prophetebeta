@@ -79,15 +79,12 @@ export default function LinebetLanding() {
               <img src="/logos/888starz-icon.png" alt="" className="hx-sec-icon" />
               <div>
                 <p className="hx-sec-name">888starz</p>
-                <p className="hx-sec-code">btts221</p>
+                <CopyableCode code="btts221" displayClassName="hx-sec-code" />
               </div>
             </div>
-            <div className="hx-sec-actions">
-              <CopyableCode code="btts221" displayClassName="hx-sec-copy" />
-              <a href={AFFILIATE.star888} target="_blank" rel={AFFILIATE.rel} className="hx-sec-link">
-                Ouvrir ↗
-              </a>
-            </div>
+            <a href={AFFILIATE.star888} target="_blank" rel={AFFILIATE.rel} className="hx-sec-link">
+              Ouvrir ↗
+            </a>
           </motion.div>
         </div>
       </section>
