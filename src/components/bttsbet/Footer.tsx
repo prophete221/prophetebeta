@@ -29,7 +29,7 @@ export default function Footer() {
               {SITE.name}<span className="text-[#ffb800]">/PRO</span>
             </a>
             <p className="mt-4 max-w-sm text-sm leading-6 text-[#84928d]">
-              Plateforme premium — <strong className="text-[#cfe0d8]">meilleur code promo Linebet Afrique VISION221</strong> + freebets. Aussi 888starz <strong className="text-[#fca5a5]">btts221</strong>.
+              Meilleur <strong className="text-[#cfe0d8]">code promo Linebet Afrique VISION221</strong>. Bonus 888starz <strong className="text-[#fca5a5]">btts221</strong> : 100 tours Lucky Wheel + freebet 1€/lundi.
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <div className="rounded-xl border border-[#ffb800]/30 bg-[#ffb800]/[.1] px-3.5 py-2.5 text-xs font-black text-[#ffb800]">
@@ -43,10 +43,10 @@ export default function Footer() {
           <div>
             <h2 className="text-[11px] font-extrabold uppercase tracking-[.2em] text-white">Parcours</h2>
             <div className="mt-5 grid gap-3.5 text-sm text-[#84928d]">
-              <a href="/code-promo-linebet" className="transition hover:text-[#ffb800]">Meilleur code Linebet Afrique</a>
+              <a href="/code-promo-linebet" className="transition hover:text-[#ffb800]">Code promo Linebet VISION221</a>
               <a href="/linebet-inscription" className="transition hover:text-[#ffb800]">Inscription Linebet</a>
               <a href="/#applications" className="transition hover:text-[#ffb800]">Applications</a>
-              <a href="/code-promo-888starz" className="transition hover:text-[#f87171]">Code 888starz btts221</a>
+              <a href="/code-promo-888starz" className="transition hover:text-[#f87171]">Bonus 888starz btts221</a>
               <a href="/ar/code-promo-888starz" className="transition hover:text-[#f87171]">الدليل العربي 888starz</a>
             </div>
           </div>
