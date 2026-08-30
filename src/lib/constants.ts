@@ -1,7 +1,7 @@
 export const SITE = {
   name: 'BttsBet',
   url: 'https://bttsbet.online',
-  tagline: 'Meilleur code promo Linebet Afrique VISION221 — bonus 888starz btts221',
+  tagline: 'Code promo Linebet VISION221 — guide clair et transparent',
   promoCode: 'VISION221',
   promo888: 'btts221',
 }
@@ -14,70 +14,85 @@ export const AFFILIATE = {
   rel: 'sponsored nofollow',
 }
 
-export const OFFERS_888 = {
-  code: 'btts221',
-  wheel: '100 tours Lucky Wheel gratuits à l’inscription',
-  monday: 'Freebet de 1 € chaque lundi',
-  wheelShort: '100 tours Lucky Wheel',
-  mondayShort: 'Freebet 1 € / lundi',
-}
+export const AFRICA_COUNTRIES = [
+  { name: 'Sénégal', href: '/code-promo-linebet-senegal' },
+  { name: "Côte d'Ivoire", href: '/linebet-afrique' },
+  { name: 'Cameroun', href: '/linebet-afrique' },
+  { name: 'Mali', href: '/linebet-afrique' },
+  { name: 'Burkina Faso', href: '/linebet-afrique' },
+  { name: 'Guinée', href: '/linebet-afrique' },
+  { name: 'Bénin', href: '/linebet-afrique' },
+  { name: 'Togo', href: '/linebet-afrique' },
+  { name: 'RDC', href: '/linebet-afrique' },
+  { name: 'Gabon', href: '/linebet-afrique' },
+  { name: 'Congo', href: '/linebet-afrique' },
+  { name: 'Niger', href: '/linebet-afrique' },
+] as const
 
 export const NAV_LINKS = [
   { label: 'Accueil', href: '/' },
-  { label: 'Code Linebet', href: '/code-promo-linebet' },
-  { label: 'Inscription', href: '/linebet-inscription' },
+  { label: 'Code VISION221', href: '/code-promo-linebet' },
+  { label: 'Comment ça marche', href: '/#comment-ca-marche' },
   { label: 'Afrique', href: '/linebet-afrique' },
-  { label: 'Bonus 888starz', href: '/code-promo-888starz' },
-  { label: 'Applications', href: '/#applications' },
   { label: 'FAQ', href: '/#faq' },
 ] as const
 
 export const FAQ_ITEMS = [
   {
-    q: 'Quel est le meilleur code promo Linebet Afrique ?',
-    a: 'Le meilleur code promo Linebet Afrique mis en avant sur BttsBet est VISION221. C’est le code partenaire recommandé pour l’inscription Linebet : freebets et parcours officiel. Copiez VISION221, ouvrez le lien partenaire et saisissez-le à l’inscription.',
+    q: 'Quel est le code promo Linebet ?',
+    a: 'Sur BttsBet, le code mis en avant est VISION221. Saisissez-le lors de l’inscription Linebet via le parcours partenaire pour accéder aux offres éventuellement disponibles selon votre pays.',
   },
   {
-    q: 'Comment utiliser le code promo Linebet VISION221 ?',
-    a: '1) Cliquez sur « Utiliser VISION221 ». 2) Créez votre compte Linebet. 3) Saisissez VISION221 en majuscules dans le champ code promo. 4) Vérifiez les freebets et conditions affichés par Linebet avant de déposer.',
+    q: 'Comment utiliser VISION221 ?',
+    a: '1) Cliquez sur « Utiliser VISION221 ». 2) Créez votre compte Linebet. 3) Saisissez VISION221 en majuscules dans le champ code promo. 4) Vérifiez les conditions affichées par Linebet avant tout dépôt.',
   },
   {
-    q: 'Y a-t-il des freebets avec le code promo Linebet VISION221 ?',
-    a: 'Oui. Le parcours partenaire VISION221 donne régulièrement accès à des freebets et promotions Linebet. Montants et conditions (pays, mise) sont confirmés sur Linebet pendant l’inscription.',
+    q: 'Où saisir le code promo ?',
+    a: 'Le champ code promo apparaît généralement pendant l’inscription ou dans l’espace promotion du compte Linebet. Suivez les indications affichées sur le site ou l’application Linebet.',
   },
   {
-    q: 'Quel est le code promo 888starz / bonus 888starz ?',
-    a: 'Le code promo 888starz est btts221. Avec btts221 : 100 tours Lucky Wheel gratuits à l’inscription, et un freebet de 1 € chaque lundi (selon conditions 888starz). Vérifiez toujours l’offre affichée sur 888starz.',
+    q: 'Le code fonctionne-t-il dans mon pays ?',
+    a: 'La disponibilité dépend de votre localisation et des règles Linebet. Consultez les conditions affichées lors de l’inscription pour confirmer l’éligibilité dans votre pays.',
   },
   {
-    q: 'Comment obtenir 100 tours Lucky Wheel sur 888starz ?',
-    a: 'Utilisez le code promo 888starz btts221 à l’inscription via le lien partenaire BttsBet. L’offre « 100 tours Lucky Wheel gratuits » est liée au parcours partenaire ; la disponibilité exacte est confirmée sur 888starz.',
-  },
-  {
-    q: 'C’est quoi le freebet 1 € chaque lundi 888starz ?',
-    a: 'Avec le code btts221, l’offre partenaire inclut un freebet de 1 € chaque lundi, selon les règles 888starz (éligibilité, pays, conditions de mise). Consultez votre compte 888starz pour l’activation hebdomadaire.',
-  },
-  {
-    q: 'VISION221 marche-t-il partout en Afrique ?',
-    a: 'Linebet et le code promo Linebet VISION221 sont disponibles dans de nombreux pays d’Afrique. La disponibilité finale dépend de votre localisation et des règles du partenaire.',
+    q: 'Comment vérifier une offre ?',
+    a: 'Seules les informations affichées par Linebet (ou 888starz) font foi : montants, conditions de mise, dates et pays. BttsBet n’affiche que le code et le parcours partenaire.',
   },
   {
     q: 'Le bonus est-il garanti ?',
-    a: 'Aucun site d’affiliation ne peut garantir un bonus. VISION221 et btts221 ouvrent le parcours partenaire officiel. Montants, freebets et conditions sont confirmés uniquement par Linebet ou 888starz.',
+    a: 'Non. Aucun site d’affiliation ne peut garantir un bonus. VISION221 ouvre un parcours partenaire ; les offres exactes sont définies et confirmées par le bookmaker.',
   },
   {
-    q: 'BttsBet est-il Linebet ou 888starz ?',
-    a: 'Non. BttsBet est une plateforme indépendante d’information et d’affiliation sur le meilleur code promo Linebet (VISION221) et le bonus 888starz (btts221). L’inscription et les dépôts se font uniquement chez les bookmakers.',
+    q: 'BttsBet est-il Linebet ?',
+    a: 'Non. BttsBet est un site indépendant d’information et d’affiliation. Nous ne gérons aucun compte joueur et ne collectons aucun dépôt.',
+  },
+  {
+    q: 'BttsBet reçoit-il une commission ?',
+    a: 'Oui. Certains liens sont des liens partenaires et peuvent générer une commission pour BttsBet, sans coût supplémentaire pour vous.',
+  },
+  {
+    q: 'Quel âge faut-il avoir ?',
+    a: 'Les paris sportifs sont réservés aux personnes majeures (18+ selon la législation locale). Respectez toujours l’âge légal de votre pays.',
+  },
+  {
+    q: 'Quels sont les risques des paris sportifs ?',
+    a: 'Les paris comportent un risque de perte d’argent. Ne misez jamais plus que ce que vous pouvez vous permettre de perdre. En cas de besoin, consultez les ressources « Jouer responsable ».',
+  },
+  {
+    q: 'Quel est le code promo 888starz ?',
+    a: 'Le code secondaire présenté sur BttsBet est btts221. Vérifiez toujours les conditions et la disponibilité directement sur 888starz.',
   },
 ]
 
 export const LEGAL = {
-  disclaimer: 'Les paris et jeux d’argent comportent des risques financiers. BttsBet est un site informatif et d’affiliation : nous ne prenons aucun pari, ne collectons aucun fonds et ne garantissons aucun bonus, gain ou résultat. Les offres (freebets, Lucky Wheel, etc.) sont définies par les partenaires et peuvent varier selon le pays.',
-  responsible: 'Vérifiez la législation de votre pays, respectez l’âge légal (18+) et ne misez jamais plus que ce que vous pouvez vous permettre de perdre.',
-  copyright: `© ${new Date().getFullYear()} BttsBet — Code promo Linebet VISION221 & bonus 888starz btts221. Tous droits réservés.`,
+  disclaimer:
+    'Les paris et jeux d’argent comportent des risques financiers. BttsBet est un site informatif et d’affiliation : nous ne prenons aucun pari, ne collectons aucun fonds et ne garantissons aucun bonus, gain ou résultat. Les offres dépendent du partenaire, du pays et des conditions en vigueur.',
+  responsible:
+    'Vérifiez la législation de votre pays, respectez l’âge légal (18+) et ne misez jamais plus que ce que vous pouvez vous permettre de perdre.',
+  copyright: `© ${new Date().getFullYear()} BttsBet. Tous droits réservés.`,
   links: [
     { label: 'Mentions légales', href: '/mentions-legales' },
-    { label: 'Politique de confidentialité', href: '/politique-confidentialite' },
+    { label: 'Confidentialité', href: '/politique-confidentialite' },
     { label: 'Jouer responsable', href: '/jouer-responsable' },
     { label: 'CGU', href: '/cgu' },
   ],
