@@ -1,8 +1,9 @@
 export const SITE = {
   name: 'BttsBet',
   url: 'https://bttsbet.online',
-  tagline: 'Meilleur code promo Linebet Afrique — VISION221 & freebets',
+  tagline: 'Meilleur code promo Linebet Afrique VISION221 — bonus 888starz btts221',
   promoCode: 'VISION221',
+  promo888: 'btts221',
 }
 
 export const AFFILIATE = {
@@ -13,12 +14,20 @@ export const AFFILIATE = {
   rel: 'sponsored nofollow',
 }
 
+export const OFFERS_888 = {
+  code: 'btts221',
+  wheel: '100 tours Lucky Wheel gratuits à l’inscription',
+  monday: 'Freebet de 1 € chaque lundi',
+  wheelShort: '100 tours Lucky Wheel',
+  mondayShort: 'Freebet 1 € / lundi',
+}
+
 export const NAV_LINKS = [
-  { label: 'Accueil', href: '/' },
-  { label: 'Le code', href: '/code-promo-linebet' },
+  { label: 'Code Linebet', href: '/' },
+  { label: 'VISION221', href: '/code-promo-linebet' },
   { label: 'Inscription', href: '/linebet-inscription' },
   { label: 'Afrique', href: '/linebet-afrique' },
-  { label: '888starz', href: '/code-promo-888starz' },
+  { label: 'Bonus 888starz', href: '/code-promo-888starz' },
   { label: 'Applications', href: '/#applications' },
   { label: 'FAQ', href: '/#faq' },
 ] as const
@@ -26,38 +35,46 @@ export const NAV_LINKS = [
 export const FAQ_ITEMS = [
   {
     q: 'Quel est le meilleur code promo Linebet Afrique ?',
-    a: 'Sur BttsBet, le code partenaire mis en avant est VISION221. C’est le code que nous recommandons pour Linebet en Afrique. Copiez-le, ouvrez le lien officiel et saisissez-le lors de l’inscription pour accéder aux offres et freebets disponibles selon votre pays.',
+    a: 'Le meilleur code promo Linebet Afrique mis en avant sur BttsBet est VISION221. C’est le code partenaire recommandé pour l’inscription Linebet : freebets et parcours officiel. Copiez VISION221, ouvrez le lien partenaire et saisissez-le à l’inscription.',
   },
   {
-    q: 'Comment utiliser le code VISION221 ?',
-    a: '1) Cliquez sur le bouton « Utiliser VISION221 ». 2) Créez votre compte Linebet. 3) Saisissez VISION221 (majuscules) dans le champ code promo. 4) Vérifiez les conditions de l’offre et les freebets affichés avant de déposer.',
+    q: 'Comment utiliser le code promo Linebet VISION221 ?',
+    a: '1) Cliquez sur « Utiliser VISION221 ». 2) Créez votre compte Linebet. 3) Saisissez VISION221 en majuscules dans le champ code promo. 4) Vérifiez les freebets et conditions affichés par Linebet avant de déposer.',
   },
   {
-    q: 'Y a-t-il des freebets avec VISION221 ?',
-    a: 'Oui, le parcours partenaire VISION221 donne régulièrement accès à des freebets et promotions Linebet. La disponibilité exacte (montant, conditions de mise, pays) est définie par Linebet et visible dans le parcours d’inscription.',
+    q: 'Y a-t-il des freebets avec le code promo Linebet VISION221 ?',
+    a: 'Oui. Le parcours partenaire VISION221 donne régulièrement accès à des freebets et promotions Linebet. Montants et conditions (pays, mise) sont confirmés sur Linebet pendant l’inscription.',
+  },
+  {
+    q: 'Quel est le code promo 888starz / bonus 888starz ?',
+    a: 'Le code promo 888starz est btts221. Avec btts221 : 100 tours Lucky Wheel gratuits à l’inscription, et un freebet de 1 € chaque lundi (selon conditions 888starz). Vérifiez toujours l’offre affichée sur 888starz.',
+  },
+  {
+    q: 'Comment obtenir 100 tours Lucky Wheel sur 888starz ?',
+    a: 'Utilisez le code promo 888starz btts221 à l’inscription via le lien partenaire BttsBet. L’offre « 100 tours Lucky Wheel gratuits » est liée au parcours partenaire ; la disponibilité exacte est confirmée sur 888starz.',
+  },
+  {
+    q: 'C’est quoi le freebet 1 € chaque lundi 888starz ?',
+    a: 'Avec le code btts221, l’offre partenaire inclut un freebet de 1 € chaque lundi, selon les règles 888starz (éligibilité, pays, conditions de mise). Consultez votre compte 888starz pour l’activation hebdomadaire.',
   },
   {
     q: 'VISION221 marche-t-il partout en Afrique ?',
-    a: 'Linebet et le code VISION221 sont disponibles dans de nombreux pays africains (Afrique de l’Ouest, centrale, de l’Est, du Nord et australe). La disponibilité finale dépend toujours de votre localisation et des règles du partenaire.',
+    a: 'Linebet et le code promo Linebet VISION221 sont disponibles dans de nombreux pays d’Afrique. La disponibilité finale dépend de votre localisation et des règles du partenaire.',
   },
   {
     q: 'Le bonus est-il garanti ?',
-    a: 'Aucun site d’affiliation ne peut garantir un bonus. VISION221 ouvre le parcours partenaire officiel. Les montants, freebets, minimums de dépôt et conditions de mise sont confirmés uniquement par Linebet avant votre dépôt.',
+    a: 'Aucun site d’affiliation ne peut garantir un bonus. VISION221 et btts221 ouvrent le parcours partenaire officiel. Montants, freebets et conditions sont confirmés uniquement par Linebet ou 888starz.',
   },
   {
-    q: 'BttsBet est-il Linebet ?',
-    a: 'Non. BttsBet est une plateforme indépendante d’information et d’affiliation. Nous ne gérons aucun compte joueur et ne collectons aucun dépôt. L’inscription et les freebets se font exclusivement sur Linebet.',
-  },
-  {
-    q: 'Quel est le code promo 888starz ?',
-    a: 'Le code partenaire 888starz présenté sur BttsBet est btts221 (en minuscules). Vérifiez sa disponibilité et les conditions directement sur 888starz avant toute inscription.',
+    q: 'BttsBet est-il Linebet ou 888starz ?',
+    a: 'Non. BttsBet est une plateforme indépendante d’information et d’affiliation sur le meilleur code promo Linebet (VISION221) et le bonus 888starz (btts221). L’inscription et les dépôts se font uniquement chez les bookmakers.',
   },
 ]
 
 export const LEGAL = {
-  disclaimer: 'Les paris et jeux d’argent comportent des risques financiers. BttsBet est un site informatif et d’affiliation : nous ne prenons aucun pari, ne collectons aucun fonds et ne garantissons aucun bonus, gain ou résultat.',
+  disclaimer: 'Les paris et jeux d’argent comportent des risques financiers. BttsBet est un site informatif et d’affiliation : nous ne prenons aucun pari, ne collectons aucun fonds et ne garantissons aucun bonus, gain ou résultat. Les offres (freebets, Lucky Wheel, etc.) sont définies par les partenaires et peuvent varier selon le pays.',
   responsible: 'Vérifiez la législation de votre pays, respectez l’âge légal (18+) et ne misez jamais plus que ce que vous pouvez vous permettre de perdre.',
-  copyright: `© ${new Date().getFullYear()} BttsBet. Tous droits réservés.`,
+  copyright: `© ${new Date().getFullYear()} BttsBet — Code promo Linebet VISION221 & bonus 888starz btts221. Tous droits réservés.`,
   links: [
     { label: 'Mentions légales', href: '/mentions-legales' },
     { label: 'Politique de confidentialité', href: '/politique-confidentialite' },
