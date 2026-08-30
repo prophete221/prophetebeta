@@ -14,6 +14,12 @@ export const AFFILIATE = {
   rel: 'sponsored nofollow',
 }
 
+
+export const OFFERS_888 = {
+  code: 'btts221',
+  note: 'Offres et conditions définies par 888starz — vérifiez à l’inscription.',
+}
+
 export const AFRICA_COUNTRIES = [
   { name: 'Sénégal', href: '/code-promo-linebet-senegal' },
   { name: "Côte d'Ivoire", href: '/linebet-afrique' },
