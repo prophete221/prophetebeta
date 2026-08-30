@@ -11,62 +11,73 @@ function reopenCookieSettings() {
 export default function Footer() {
   return (
     <>
-      <div className="linebet-mobile-cta sm:hidden">
-        <div className="linebet-mobile-code">
-          <span>Code</span>
-          <CopyableCode code={SITE.promoCode} displayClassName="text-[#ffb800]" />
+      <div className="bb-sticky-cta sm:hidden" role="region" aria-label="Accès rapide code promo">
+        <div className="bb-sticky-code">
+          <CopyableCode code={SITE.promoCode} displayClassName="text-[#F5C518] text-sm tracking-wide" />
         </div>
-        <a href={AFFILIATE.linebet} target="_blank" rel={AFFILIATE.rel} className="btn-platform btn-platform-green flex-1 !min-h-11 !text-xs">
-          <img src="/logos/linebet-icon.png" alt="" className="h-4 w-4 rounded object-cover" />
-          Linebet ↗
+        <a href={AFFILIATE.linebet} target="_blank" rel={AFFILIATE.rel} className="bb-btn bb-btn-primary bb-btn-sm flex-1">
+          UTILISER
         </a>
       </div>
 
-      <footer className="border-t border-white/10 bg-[#020403] px-5 pb-12 pt-16 sm:px-8">
-        <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-[1.2fr_.75fr_.9fr]">
+      <footer className="bb-footer">
+        <div className="bb-footer-grid">
           <div>
-            <a href="/" className="text-lg font-black tracking-tight text-white">
-              {SITE.name}<span className="text-[#ffb800]">/PRO</span>
+            <a href="/" className="bb-logo-text text-lg">
+              {SITE.name}
+              <span className="bb-logo-accent">/PRO</span>
             </a>
-            <p className="mt-4 max-w-sm text-sm leading-6 text-[#84928d]">
-              Meilleur <strong className="text-[#cfe0d8]">code promo Linebet Afrique VISION221</strong>. Bonus 888starz <strong className="text-[#fca5a5]">btts221</strong> : 100 tours Lucky Wheel + freebet 1€/lundi.
+            <p className="mt-3 max-w-xs text-sm leading-relaxed text-[#A7B0C0]">
+              Plateforme d’information sur le code promo Linebet <strong className="text-white">VISION221</strong>.
+              Site indépendant — affiliation transparente.
             </p>
-            <div className="mt-6 flex flex-wrap items-center gap-3">
-              <div className="rounded-xl border border-[#ffb800]/30 bg-[#ffb800]/[.1] px-3.5 py-2.5 text-xs font-black text-[#ffb800]">
-                <CopyableCode code={SITE.promoCode} displayClassName="text-[#ffb800]" />
-              </div>
-              <a href={AFFILIATE.linebet} target="_blank" rel={AFFILIATE.rel} className="text-sm font-bold text-[#ffb800] transition hover:text-white">
-                Ouvrir Linebet ↗
-              </a>
+            <div className="mt-4">
+              <CopyableCode code={SITE.promoCode} displayClassName="text-[#F5C518]" />
             </div>
           </div>
+
           <div>
-            <h2 className="text-[11px] font-extrabold uppercase tracking-[.2em] text-white">Parcours</h2>
-            <div className="mt-5 grid gap-3.5 text-sm text-[#84928d]">
-              <a href="/code-promo-linebet" className="transition hover:text-[#ffb800]">Code promo Linebet VISION221</a>
-              <a href="/linebet-inscription" className="transition hover:text-[#ffb800]">Inscription Linebet</a>
-              <a href="/#applications" className="transition hover:text-[#ffb800]">Applications</a>
-              <a href="/code-promo-888starz" className="transition hover:text-[#f87171]">Bonus 888starz btts221</a>
-              <a href="/ar/code-promo-888starz" className="transition hover:text-[#f87171]">الدليل العربي 888starz</a>
+            <h2 className="bb-footer-title">Linebet</h2>
+            <div className="bb-footer-links">
+              <a href="/code-promo-linebet">Code promo VISION221</a>
+              <a href="/linebet-inscription">Inscription</a>
+              <a href="/linebet-afrique">Afrique</a>
+              <a href="/#comment-ca-marche">Comment ça marche</a>
             </div>
           </div>
+
           <div>
-            <h2 className="text-[11px] font-extrabold uppercase tracking-[.2em] text-white">Confiance</h2>
-            <div className="mt-5 grid gap-3.5 text-sm text-[#84928d]">
-              <a href="/linebet-afrique" className="transition hover:text-[#ffb800]">Linebet en Afrique</a>
-              <a href="/#faq" className="transition hover:text-[#ffb800]">FAQ</a>
-              <a href="/mentions-legales" className="transition hover:text-[#ffb800]">Mentions légales</a>
-              <a href="/politique-confidentialite" className="transition hover:text-[#ffb800]">Confidentialité</a>
-              <a href="/jouer-responsable" className="transition hover:text-[#ffb800]">Jouer responsable</a>
-              <a href="/cgu" className="transition hover:text-[#ffb800]">CGU</a>
-              <button type="button" onClick={reopenCookieSettings} className="text-left transition hover:text-[#ffb800]">Cookies</button>
+            <h2 className="bb-footer-title">Informations</h2>
+            <div className="bb-footer-links">
+              <a href="/#faq">FAQ</a>
+              <a href="/jouer-responsable">Jouer responsable</a>
+              <a href="/politique-confidentialite">Confidentialité</a>
+              <a href="/cgu">CGU</a>
+              <a href="/mentions-legales">Mentions légales</a>
+              <button type="button" onClick={reopenCookieSettings} className="text-left">
+                Cookies
+              </button>
             </div>
+          </div>
+
+          <div>
+            <h2 className="bb-footer-title">Transparence</h2>
+            <p className="text-sm leading-relaxed text-[#A7B0C0]">
+              BttsBet n’est ni Linebet ni 888starz. Certains liens sont partenaires et peuvent générer une commission
+              sans coût pour vous.
+            </p>
+            <a href="/code-promo-888starz" className="mt-3 inline-block text-sm font-semibold text-[#A7B0C0] hover:text-white">
+              Offre 888starz btts221 →
+            </a>
           </div>
         </div>
-        <div className="mx-auto mt-14 max-w-6xl border-t border-white/10 pt-7 text-xs leading-6 text-[#66736e]">
-          <p><strong className="text-[#a8b5b0]">Affiliation :</strong> BttsBet peut recevoir une commission via les liens partenaires. Nous ne gérons aucun compte ni dépôt.</p>
-          <p className="mt-2">{LEGAL.disclaimer} {LEGAL.responsible}</p>
-          <p className="mt-5 text-[#4e5a55]">{LEGAL.copyright}</p>
+
+        <div className="bb-footer-bottom">
+          <p>
+            <strong className="text-[#A7B0C0]">18+</strong> — {LEGAL.disclaimer}
+          </p>
+          <p className="mt-2">{LEGAL.responsible}</p>
+          <p className="mt-4 text-[#5A6577]">{LEGAL.copyright}</p>
         </div>
       </footer>
     </>
