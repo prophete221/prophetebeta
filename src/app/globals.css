@@ -3119,3 +3119,64 @@ body {
 @media (max-width: 640px) {
   body { padding-bottom: 4.5rem !important; }
 }
+
+/* v47 — 888 offer card on home */
+.hx-offer888 {
+  margin-top: .75rem;
+  padding: 1rem;
+  border-radius: .95rem;
+  border: 1px solid rgba(239, 68, 68, .28);
+  background: linear-gradient(150deg, rgba(70, 12, 18, .42), #0c0f14 70%);
+}
+.hx-offer888-head {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  margin-bottom: .75rem;
+}
+.hx-offer888-title {
+  font-size: .95rem;
+  font-weight: 800;
+  color: #fff;
+  margin-top: .1rem;
+}
+.hx-offer888-list {
+  list-style: none;
+  margin: 0 0 .85rem;
+  padding: 0;
+  display: grid;
+  gap: .45rem;
+}
+.hx-offer888-list li {
+  font-size: .84rem;
+  line-height: 1.4;
+  color: #d4d8de;
+  padding: .55rem .7rem;
+  border-radius: .6rem;
+  background: rgba(0, 0, 0, .28);
+  border: 1px solid rgba(255, 255, 255, .06);
+}
+.hx-offer888-list strong {
+  color: #f87171;
+}
+.hx-offer888-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .6rem;
+  flex-wrap: wrap;
+}
+.hx-offer888-code {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  font-size: .7rem;
+  font-weight: 700;
+  color: #8b95a5;
+}
+.hx-offer888-note {
+  margin-top: .7rem;
+  font-size: .68rem;
+  line-height: 1.45;
+  color: #6b7580;
+}
