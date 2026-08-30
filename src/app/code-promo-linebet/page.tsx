@@ -4,7 +4,7 @@ import { CookieConsent, Footer, Navbar } from '@/components/bttsbet'
 import CopyableCodeClient from '@/components/bttsbet/CopyableCode'
 
 export const metadata: Metadata = {
-  title: 'Code promo Linebet VISION221 — Meilleur code promo Linebet Afrique',
+  title: 'Code promo Linebet VISION221 — Meilleur code Afrique',
   description:
     'Code promo Linebet VISION221 : le meilleur code promo Linebet Afrique. Freebets et inscription via le parcours partenaire officiel. Copiez VISION221 et activez votre offre.',
   keywords: [
