@@ -9,8 +9,8 @@ const jetbrainsMono = JetBrains_Mono({ variable: '--font-mono', subsets: ['latin
 export const metadata: Metadata = {
   metadataBase: new URL('https://bttsbet.online'),
   title: {
-    default: 'Code promo Linebet Afrique VISION221 — Meilleur code | BttsBet',
-    template: '%s | BttsBet Code promo Linebet',
+    default: 'Code promo Linebet VISION221 — Meilleur code Afrique',
+    template: '%s | BttsBet',
   },
   description:
     'Meilleur code promo Linebet Afrique : VISION221. Freebets Linebet. Bonus 888starz btts221 : 100 tours Lucky Wheel gratuits à l’inscription + freebet 1 € chaque lundi. Inscrivez-vous via le parcours officiel.',
