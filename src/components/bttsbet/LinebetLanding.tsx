@@ -1,13 +1,13 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { AFFILIATE, FAQ_ITEMS, SITE } from '@/lib/constants'
+import { AFFILIATE, FAQ_ITEMS, OFFERS_888, SITE } from '@/lib/constants'
 import CopyableCode from './CopyableCode'
 
 const steps = [
-  { number: '01', title: 'Ouvrir Linebet', text: 'Cliquez sur le bouton partenaire officiel.' },
-  { number: '02', title: 'Saisir VISION221', text: 'Entrez le code en majuscules dans le champ promo.' },
-  { number: '03', title: 'Profiter', text: 'Vérifiez l’offre et les freebets sur Linebet.' },
+  { number: '01', title: 'Ouvrir le lien', text: 'Cliquez sur Utiliser VISION221 (parcours officiel).' },
+  { number: '02', title: 'Saisir VISION221', text: 'Code en majuscules dans le champ promo Linebet.' },
+  { number: '03', title: 'Profiter', text: 'Vérifiez freebets et offres sur votre compte.' },
 ]
 
 const fadeUp = {
@@ -18,47 +18,40 @@ const fadeUp = {
 export default function LinebetLanding() {
   return (
     <div className="linebet-shell v46">
-      {/* ===== HERO — product card, not blog ===== */}
       <section className="hx-hero" aria-labelledby="hero-title">
         <div className="hx-bg" aria-hidden="true" />
         <div className="hx-wrap">
           <motion.div initial="hidden" animate="show" variants={fadeUp} className="hx-top">
             <div className="hx-badge">
               <span className="hx-dot" />
-              Linebet Afrique · Partenaire officiel
+              Meilleur code promo Linebet · Afrique
             </div>
             <h1 id="hero-title" className="hx-title">
-              Code promo <span className="hx-gold">VISION221</span>
+              Code promo Linebet <span className="hx-gold">VISION221</span>
             </h1>
             <p className="hx-sub">
-              Freebets réguliers via le parcours partenaire. Copiez, activez, profitez.
+              Le code promo Linebet n°1 en Afrique. Freebets via le parcours partenaire officiel.
             </p>
           </motion.div>
 
-          {/* Product card — the code is the product */}
           <motion.div initial="hidden" animate="show" variants={fadeUp} className="hx-card">
             <div className="hx-card-brand">
-              <img src="/logos/linebet-icon.png" alt="" className="hx-brand-icon" />
+              <img src="/logos/linebet-icon.png" alt="Linebet" className="hx-brand-icon" />
               <div>
                 <p className="hx-brand-name">Linebet</p>
-                <p className="hx-brand-tag">Meilleur code Afrique</p>
+                <p className="hx-brand-tag">Meilleur code promo Linebet Afrique</p>
               </div>
               <span className="hx-18">18+</span>
             </div>
 
             <div className="hx-code-block">
-              <span className="hx-code-label">Code promo</span>
+              <span className="hx-code-label">Code promo Linebet</span>
               <div className="hx-code-row">
                 <CopyableCode code={SITE.promoCode} className="hx-code-copy" displayClassName="hx-code-value" />
               </div>
             </div>
 
-            <a
-              href={AFFILIATE.linebet}
-              target="_blank"
-              rel={AFFILIATE.rel}
-              className="hx-cta"
-            >
+            <a href={AFFILIATE.linebet} target="_blank" rel={AFFILIATE.rel} className="hx-cta">
               <img src="/logos/linebet-icon.png" alt="" className="hx-cta-icon" />
               Utiliser VISION221
               <span aria-hidden="true">→</span>
@@ -69,33 +62,49 @@ export default function LinebetLanding() {
               <i aria-hidden="true" />
               <span>Inscription rapide</span>
               <i aria-hidden="true" />
-              <span>Parcours officiel</span>
+              <span>Partenaire officiel</span>
             </div>
           </motion.div>
 
-          {/* Secondary code — compact */}
-          <motion.div initial="hidden" animate="show" variants={fadeUp} className="hx-secondary">
-            <div className="hx-sec-left">
-              <img src="/logos/888starz-icon.png" alt="" className="hx-sec-icon" />
+          {/* 888starz offer card — clear benefits */}
+          <motion.div initial="hidden" animate="show" variants={fadeUp} className="hx-offer888">
+            <div className="hx-offer888-head">
+              <img src="/logos/888starz-icon.png" alt="888starz" className="hx-sec-icon" />
               <div>
-                <p className="hx-sec-name">888starz</p>
-                <CopyableCode code="btts221" displayClassName="hx-sec-code" />
+                <p className="hx-sec-name">Bonus 888starz · Code {OFFERS_888.code}</p>
+                <p className="hx-offer888-title">Offre d’inscription claire</p>
               </div>
             </div>
-            <a href={AFFILIATE.star888} target="_blank" rel={AFFILIATE.rel} className="hx-sec-link">
-              Ouvrir ↗
-            </a>
+            <ul className="hx-offer888-list">
+              <li>
+                <strong>100 tours</strong> Lucky Wheel gratuits à l’inscription
+              </li>
+              <li>
+                <strong>Freebet 1 €</strong> chaque lundi
+              </li>
+            </ul>
+            <div className="hx-offer888-actions">
+              <div className="hx-offer888-code">
+                <span>Code</span>
+                <CopyableCode code={OFFERS_888.code} displayClassName="hx-sec-code" />
+              </div>
+              <a href={AFFILIATE.star888} target="_blank" rel={AFFILIATE.rel} className="hx-sec-link">
+                Activer btts221 ↗
+              </a>
+            </div>
+            <p className="hx-offer888-note">
+              Offres partenaires 888starz — conditions et disponibilité selon pays, confirmées à l’inscription.
+            </p>
           </motion.div>
         </div>
       </section>
 
-      {/* ===== TRUST ===== */}
-      <section className="hx-strip" aria-label="Points clés">
+      <section className="hx-strip" aria-label="Pourquoi ce code">
         <div className="hx-wrap hx-strip-grid">
           {[
-            { n: '01', t: 'Meilleur code Afrique', d: 'VISION221 mis en avant' },
-            { n: '02', t: 'Freebets réguliers', d: 'Parcours partenaire officiel' },
-            { n: '03', t: 'Conditions claires', d: 'Vérifiées sur Linebet' },
+            { n: '01', t: 'Meilleur code Linebet', d: 'VISION221 — focus Afrique' },
+            { n: '02', t: 'Bonus 888starz clair', d: '100 tours + freebet 1€/lundi' },
+            { n: '03', t: 'Parcours officiel', d: 'Liens partenaires sécurisés' },
           ].map((item) => (
             <div key={item.n} className="hx-strip-item">
               <span className="hx-strip-n">{item.n}</span>
@@ -108,12 +117,11 @@ export default function LinebetLanding() {
         </div>
       </section>
 
-      {/* ===== STEPS ===== */}
       <section id="comment-ca-marche" className="hx-section" aria-labelledby="steps-title">
         <div className="hx-wrap">
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: '-60px' }} variants={fadeUp}>
             <p className="hx-kicker">3 ÉTAPES</p>
-            <h2 id="steps-title" className="hx-h2">Comment activer le code</h2>
+            <h2 id="steps-title" className="hx-h2">Activer le code promo Linebet</h2>
           </motion.div>
           <div className="hx-steps">
             {steps.map((step) => (
@@ -127,18 +135,17 @@ export default function LinebetLanding() {
         </div>
       </section>
 
-      {/* ===== APPS ===== */}
       <section id="applications" className="hx-section" aria-labelledby="apps-title">
         <div className="hx-wrap">
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: '-60px' }} variants={fadeUp}>
             <p className="hx-kicker">APPLICATIONS</p>
-            <h2 id="apps-title" className="hx-h2">Télécharger l’app</h2>
+            <h2 id="apps-title" className="hx-h2">Apps Linebet & 888starz</h2>
           </motion.div>
           <div className="hx-apps">
             <a href={AFFILIATE.linebetDownload} target="_blank" rel={AFFILIATE.rel} className="hx-app hx-app-lb">
               <img src="/logos/linebet-icon.png" alt="Linebet" className="hx-app-icon" />
               <div>
-                <p className="hx-app-tag">App Linebet</p>
+                <p className="hx-app-tag">App + code VISION221</p>
                 <h3>Linebet</h3>
               </div>
               <span className="hx-app-go">Télécharger →</span>
@@ -146,7 +153,7 @@ export default function LinebetLanding() {
             <a href={AFFILIATE.star888Download} target="_blank" rel={AFFILIATE.rel} className="hx-app hx-app-88">
               <img src="/logos/888starz-icon.png" alt="888starz" className="hx-app-icon" />
               <div>
-                <p className="hx-app-tag">App 888starz</p>
+                <p className="hx-app-tag">App + code btts221</p>
                 <h3>888starz</h3>
               </div>
               <span className="hx-app-go hx-app-go-red">Télécharger →</span>
@@ -155,12 +162,11 @@ export default function LinebetLanding() {
         </div>
       </section>
 
-      {/* ===== FAQ ===== */}
       <section id="faq" className="hx-section hx-faq-sec" aria-labelledby="faq-title">
         <div className="hx-wrap hx-faq">
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}>
             <p className="hx-kicker">FAQ</p>
-            <h2 id="faq-title" className="hx-h2">Questions</h2>
+            <h2 id="faq-title" className="hx-h2">Code promo Linebet & bonus 888starz</h2>
           </motion.div>
           <div className="hx-faq-list">
             {FAQ_ITEMS.map((item) => (
