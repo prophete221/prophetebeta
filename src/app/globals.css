@@ -2213,3 +2213,279 @@ body {
 .pv-faq-item p { padding: 0 0 1.2rem; font-size: .92rem; line-height: 1.7; color: #8a959f; }
 
 @media (prefers-reduced-motion: reduce) { .pv-cta-gold::after { animation: none; } }
+
+/* ============================================================================
+   PREMIUM v45 — CLEAN REFINED (Binance-grade, low noise)
+   Less glow, sharper gold, tighter hierarchy, mobile-first.
+   ============================================================================ */
+.linebet-shell.v45 {
+  --v45-bg: #07090d;
+  --v45-surface: #0e1117;
+  --v45-card: #12161e;
+  --v45-border: rgba(255, 255, 255, 0.08);
+  --v45-gold: #f5c518;
+  --v45-gold-soft: #ffe566;
+  --v45-gold-deep: #d4a017;
+  --v45-ink: #0c0a02;
+  --v45-muted: #8b95a5;
+  --v45-text: #f4f6f8;
+  background: var(--v45-bg);
+  color: var(--v45-text);
+}
+
+/* Body ambient — subtle, not muddy */
+body {
+  background-color: #07090d !important;
+  background-image:
+    radial-gradient(ellipse 60% 35% at 50% -8%, rgba(245, 197, 24, 0.07), transparent 55%),
+    radial-gradient(ellipse 40% 25% at 100% 60%, rgba(239, 68, 68, 0.03), transparent 50%) !important;
+}
+
+/* Navbar */
+.linebet-shell.v45 ~ * .linebet-nav,
+.linebet-nav {
+  background: rgba(7, 9, 13, 0.9) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
+  backdrop-filter: blur(20px);
+}
+.linebet-nav-scrolled {
+  background: rgba(7, 9, 13, 0.97) !important;
+  border-color: rgba(245, 197, 24, 0.18) !important;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45) !important;
+}
+.linebet-brand-mark {
+  border-color: rgba(245, 197, 24, 0.35) !important;
+  background: rgba(245, 197, 24, 0.1) !important;
+  box-shadow: none !important;
+}
+
+/* HERO */
+.linebet-shell.v45 .pv-hero {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.linebet-shell.v45 .pv-hero-bg {
+  background:
+    radial-gradient(ellipse 50% 40% at 20% 0%, rgba(245, 197, 24, 0.1), transparent 60%),
+    radial-gradient(ellipse 40% 30% at 90% 10%, rgba(245, 197, 24, 0.05), transparent 55%),
+    linear-gradient(180deg, #0a0c11 0%, #07090d 100%) !important;
+}
+.linebet-shell.v45 .pv-badge {
+  border: 1px solid rgba(245, 197, 24, 0.28);
+  background: rgba(245, 197, 24, 0.07);
+  color: var(--v45-gold);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+}
+.linebet-shell.v45 .pv-dot {
+  background: var(--v45-gold);
+  box-shadow: 0 0 8px rgba(245, 197, 24, 0.6);
+}
+.linebet-shell.v45 .pv-hero-title {
+  font-size: clamp(2.1rem, 6.5vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+.linebet-shell.v45 .pv-gold {
+  background: linear-gradient(115deg, #ffe566 0%, #f5c518 45%, #d4a017 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: none;
+}
+.linebet-shell.v45 .pv-hero-sub {
+  color: #9aa3af;
+  font-size: 1rem;
+  line-height: 1.65;
+  max-width: 32rem;
+}
+
+/* CTA — solid premium gold, no excessive glow */
+.linebet-shell.v45 .pv-cta-gold {
+  background: linear-gradient(180deg, #ffe566 0%, #f5c518 50%, #e0b010 100%);
+  color: var(--v45-ink);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.45) inset,
+    0 4px 14px rgba(245, 197, 24, 0.28),
+    0 1px 3px rgba(0, 0, 0, 0.3);
+  border-radius: 0.85rem;
+}
+.linebet-shell.v45 .pv-cta-gold::after {
+  opacity: 0.35;
+}
+.linebet-shell.v45 .pv-cta-gold:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.5) inset,
+    0 8px 22px rgba(245, 197, 24, 0.35) !important;
+}
+
+.linebet-shell.v45 .pv-code-pill {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 0.85rem;
+}
+.linebet-shell.v45 .pv-code-label {
+  color: #6b7580;
+}
+
+/* CODE CARD — clean, less glow */
+.linebet-shell.v45 .pv-code-card {
+  background: linear-gradient(165deg, #141820 0%, #0e1117 100%);
+  border: 1px solid rgba(245, 197, 24, 0.22);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.04) inset,
+    0 16px 40px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  border-radius: 1.15rem;
+}
+.linebet-shell.v45 .pv-code-card::before {
+  content: none;
+}
+.linebet-shell.v45 .pv-mini-label {
+  color: var(--v45-gold);
+}
+.linebet-shell.v45 .pv-code-card-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+.linebet-shell.v45 .pv-18 {
+  border-color: rgba(245, 197, 24, 0.3);
+  color: var(--v45-gold);
+  background: rgba(245, 197, 24, 0.06);
+}
+.linebet-shell.v45 .pv-code-row {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 0.85rem;
+}
+.linebet-shell.v45 .pv-code-row-primary {
+  border-color: rgba(245, 197, 24, 0.28);
+  background: linear-gradient(110deg, rgba(80, 60, 8, 0.35), rgba(10, 12, 16, 0.6));
+}
+.linebet-shell.v45 .pv-code-row-secondary {
+  border-color: rgba(239, 68, 68, 0.28);
+  background: linear-gradient(110deg, rgba(70, 14, 20, 0.35), rgba(10, 8, 10, 0.6));
+}
+
+/* TRUST */
+.linebet-shell.v45 .pv-trust {
+  background: rgba(14, 17, 23, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.linebet-shell.v45 .pv-trust-num {
+  border-color: rgba(245, 197, 24, 0.25);
+  color: var(--v45-gold);
+  background: rgba(245, 197, 24, 0.06);
+  box-shadow: none;
+}
+
+/* STEPS */
+.linebet-shell.v45 .pv-kicker {
+  color: var(--v45-gold);
+}
+.linebet-shell.v45 .pv-step-card {
+  background: linear-gradient(165deg, #141820, #0e1117);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: none;
+}
+.linebet-shell.v45 .pv-step-card:hover {
+  border-color: rgba(245, 197, 24, 0.25);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+  transform: translateY(-2px);
+}
+.linebet-shell.v45 .pv-step-num {
+  background: linear-gradient(180deg, #ffe566, #f5c518);
+  color: var(--v45-ink);
+  box-shadow: 0 4px 12px rgba(245, 197, 24, 0.25);
+}
+
+/* APPS */
+.linebet-shell.v45 .pv-app-linebet {
+  background: linear-gradient(145deg, rgba(70, 50, 5, 0.4), #0e1117);
+  border-color: rgba(245, 197, 24, 0.22);
+}
+.linebet-shell.v45 .pv-app-linebet:hover {
+  border-color: rgba(245, 197, 24, 0.4);
+}
+.linebet-shell.v45 .pv-app-888 {
+  background: linear-gradient(145deg, rgba(70, 12, 18, 0.4), #0e1117);
+  border-color: rgba(239, 68, 68, 0.22);
+}
+.linebet-shell.v45 .pv-app-dl-gold {
+  color: var(--v45-gold);
+}
+
+/* 888 strip */
+.linebet-shell.v45 .pv-888strip {
+  background: linear-gradient(150deg, rgba(70, 12, 18, 0.4), #0e1117);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+/* FAQ */
+.linebet-shell.v45 .pv-faq-item {
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.025);
+}
+.linebet-shell.v45 .pv-faq-item:hover,
+.linebet-shell.v45 .pv-faq-item[open] {
+  border-color: rgba(245, 197, 24, 0.28);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+.linebet-shell.v45 .pv-faq-item summary span {
+  color: var(--v45-gold);
+}
+
+/* Platform buttons (nav / sticky) */
+.btn-platform-green {
+  background: linear-gradient(180deg, #ffe566 0%, #f5c518 45%, #e0b010 100%) !important;
+  color: #0c0a02 !important;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.4) inset,
+    0 4px 14px rgba(245, 197, 24, 0.28) !important;
+}
+.btn-platform-green:hover {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.45) inset,
+    0 8px 22px rgba(245, 197, 24, 0.38) !important;
+}
+
+/* Mobile sticky CTA */
+.linebet-mobile-cta {
+  background: rgba(7, 9, 13, 0.96) !important;
+  border-top: 1px solid rgba(245, 197, 24, 0.2) !important;
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.4) !important;
+}
+.linebet-mobile-code {
+  border-color: rgba(245, 197, 24, 0.25) !important;
+  background: rgba(245, 197, 24, 0.06) !important;
+}
+
+/* Selection + focus */
+::selection {
+  background: rgba(245, 197, 24, 0.3);
+  color: #fff;
+}
+:focus-visible {
+  outline: 2px solid #f5c518;
+  outline-offset: 2px;
+}
+
+/* Mobile typography tighten */
+@media (max-width: 640px) {
+  .linebet-shell.v45 .pv-hero-title {
+    font-size: 2rem !important;
+    line-height: 1.08 !important;
+  }
+  .linebet-shell.v45 .pv-hero .pv-container {
+    padding-top: 2.25rem;
+    padding-bottom: 2.25rem;
+    gap: 1.75rem;
+  }
+  .linebet-shell.v45 .pv-code-card {
+    padding: 1.2rem;
+  }
+  body {
+    padding-bottom: 5rem;
+  }
+}
