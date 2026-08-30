@@ -11,13 +11,13 @@ const steps = [
 ]
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 28 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: 'easeOut' as const } },
+  hidden: { opacity: 0, y: 18 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' as const } },
 }
 
 export default function LinebetLanding() {
   return (
-    <div className="linebet-shell v44">
+    <div className="linebet-shell v45">
       {/* ===== HERO ===== */}
       <section className="pv-hero" aria-labelledby="hero-title">
         <div className="pv-hero-bg" aria-hidden="true" />
@@ -70,7 +70,7 @@ export default function LinebetLanding() {
                   <p className="pv-code-name">Linebet Afrique</p>
                   <p className="pv-code-note">Meilleur code · Freebets</p>
                 </div>
-                <CopyableCode code={SITE.promoCode} displayClassName="text-[#ffd54f]" />
+                <CopyableCode code={SITE.promoCode} displayClassName="text-[#f5c518]" />
               </div>
               <div className="pv-code-row pv-code-row-secondary">
                 <div>
