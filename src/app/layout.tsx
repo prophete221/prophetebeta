@@ -77,7 +77,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <meta name="apple-mobile-web-app-title" content="BttsBet Linebet" />
         <script
           dangerouslySetInnerHTML={{
-            __html: `(()=>{try{const v='v45-1-mobile-layout-2026-08-30',k='bttsbet_ver',old=localStorage.getItem(k);if(old!==v){localStorage.setItem(k,v);if('serviceWorker'in navigator)navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister()));if(window.caches)caches.keys().then(ns=>ns.forEach(n=>caches.delete(n)));if(old)location.reload()}}catch(e){}})()`,
+            __html: `(()=>{try{const v='v46-product-hero-2026-08-30',k='bttsbet_ver',old=localStorage.getItem(k);if(old!==v){localStorage.setItem(k,v);if('serviceWorker'in navigator)navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister()));if(window.caches)caches.keys().then(ns=>ns.forEach(n=>caches.delete(n)));if(old)location.reload()}}catch(e){}})()`,
           }}
         />
       </head>
