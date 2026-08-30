@@ -22,7 +22,7 @@ export default function Navbar() {
   return (
     <header className={`linebet-nav ${scrolled ? 'linebet-nav-scrolled' : ''}`}>
       <nav aria-label="Navigation principale" className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3.5 sm:px-8">
-        <a href="/" className="flex min-w-0 items-center gap-2.5" onClick={() => setOpen(false)} aria-label="BttsBet, accueil">
+        <a href="/" className="flex min-w-0 items-center gap-2.5" onClick={() => setOpen(false)} aria-label="BttsBet — code promo Linebet VISION221, accueil">
           <span className="linebet-brand-mark">
             <img src="/logos/linebet-icon.png" alt="" className="h-5 w-5 rounded object-cover" />
           </span>
@@ -74,7 +74,7 @@ export default function Navbar() {
               </div>
               <a href={AFFILIATE.linebet} target="_blank" rel={AFFILIATE.rel} onClick={() => setOpen(false)} className="btn-platform btn-platform-green w-full">
                 <img src="/logos/linebet-icon.png" alt="" className="h-5 w-5 rounded object-cover" />
-                S’inscrire sur Linebet
+                Utiliser VISION221
               </a>
             </div>
           </div>
