@@ -4,7 +4,7 @@ import { CookieConsent, Footer, Navbar } from '@/components/bttsbet'
 import CopyableCodeClient from '@/components/bttsbet/CopyableCode'
 
 export const metadata: Metadata = {
-  title: 'Code promo 888starz btts221 — 100 tours Lucky Wheel + freebet 1€/lundi',
+  title: 'Code promo 888starz btts221 — 100 tours + freebet 1€',
   description:
     'Bonus 888starz avec le code promo btts221 : 100 tours Lucky Wheel gratuits à l’inscription et freebet de 1 € chaque lundi. Meilleur code 888starz via BttsBet.',
   keywords: [
