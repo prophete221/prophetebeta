@@ -2489,3 +2489,347 @@ body {
     padding-bottom: 5rem;
   }
 }
+
+/* ============================================================================
+   v45.1 — MOBILE LAYOUT FIX
+   Titres plus compacts, boutons proportionnés, hero présentable
+   ============================================================================ */
+
+/* —— Hero content rhythm —— */
+.linebet-shell.v45 .pv-hero .pv-container {
+  gap: 1.5rem;
+  padding-top: 1.75rem;
+  padding-bottom: 1.75rem;
+}
+@media (min-width: 640px) {
+  .linebet-shell.v45 .pv-hero .pv-container {
+    gap: 2rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+@media (min-width: 1024px) {
+  .linebet-shell.v45 .pv-hero .pv-container {
+    gap: 3rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+/* Badge more compact */
+.linebet-shell.v45 .pv-badge {
+  padding: 0.35rem 0.7rem;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  gap: 0.4rem;
+}
+.linebet-shell.v45 .pv-dot {
+  width: 0.4rem;
+  height: 0.4rem;
+}
+
+/* Title — mobile-first readable, not huge */
+.linebet-shell.v45 .pv-hero-title {
+  margin-top: 0.9rem;
+  font-size: 1.75rem !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+}
+@media (min-width: 400px) {
+  .linebet-shell.v45 .pv-hero-title {
+    font-size: 1.95rem !important;
+  }
+}
+@media (min-width: 640px) {
+  .linebet-shell.v45 .pv-hero-title {
+    font-size: 2.5rem !important;
+    line-height: 1.08 !important;
+  }
+}
+@media (min-width: 1024px) {
+  .linebet-shell.v45 .pv-hero-title {
+    font-size: 3.2rem !important;
+  }
+}
+
+/* Subtitle */
+.linebet-shell.v45 .pv-hero-sub {
+  margin-top: 0.75rem;
+  font-size: 0.9rem !important;
+  line-height: 1.55 !important;
+  color: #9aa3af;
+}
+@media (min-width: 640px) {
+  .linebet-shell.v45 .pv-hero-sub {
+    font-size: 1rem !important;
+    line-height: 1.65 !important;
+  }
+}
+
+/* Actions stack */
+.linebet-shell.v45 .pv-hero-actions {
+  margin-top: 1.15rem;
+  gap: 0.65rem;
+}
+
+/* CTA button — balanced, not oversized */
+.linebet-shell.v45 .pv-cta {
+  padding: 0.8rem 1.15rem;
+  font-size: 0.92rem;
+  border-radius: 0.75rem;
+  min-height: 2.85rem;
+  gap: 0.45rem;
+}
+.linebet-shell.v45 .pv-cta-icon {
+  height: 1.15rem;
+  width: 1.15rem;
+  border-radius: 0.3rem;
+}
+.linebet-shell.v45 .pv-cta-arrow {
+  font-size: 1rem;
+}
+.linebet-shell.v45 .pv-cta-gold {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.4) inset,
+    0 3px 10px rgba(245, 197, 24, 0.22),
+    0 1px 2px rgba(0, 0, 0, 0.25);
+}
+.linebet-shell.v45 .pv-cta-gold:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.45) inset,
+    0 6px 16px rgba(245, 197, 24, 0.3) !important;
+}
+
+/* Code pill — same height language as CTA */
+.linebet-shell.v45 .pv-code-pill {
+  padding: 0.65rem 0.95rem;
+  border-radius: 0.75rem;
+  min-height: 2.85rem;
+  gap: 0.45rem;
+  font-size: 0.9rem;
+}
+.linebet-shell.v45 .pv-code-label {
+  font-size: 0.65rem;
+}
+
+/* Meta line */
+.linebet-shell.v45 .pv-meta {
+  margin-top: 0.75rem;
+  font-size: 0.72rem;
+  gap: 0.4rem;
+}
+
+/* Code card — tighter on mobile */
+.linebet-shell.v45 .pv-code-card {
+  padding: 1.1rem;
+  border-radius: 1rem;
+}
+.linebet-shell.v45 .pv-code-card-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+.linebet-shell.v45 .pv-mini-label {
+  font-size: 0.62rem;
+}
+.linebet-shell.v45 .pv-18 {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.65rem;
+}
+.linebet-shell.v45 .pv-code-list {
+  margin-top: 0.9rem;
+  gap: 0.55rem;
+}
+.linebet-shell.v45 .pv-code-row {
+  padding: 0.75rem 0.85rem;
+  border-radius: 0.75rem;
+  min-height: 3.2rem;
+}
+.linebet-shell.v45 .pv-code-name {
+  font-size: 0.82rem;
+}
+.linebet-shell.v45 .pv-code-note {
+  font-size: 0.7rem;
+}
+
+/* Sections */
+.linebet-shell.v45 .pv-section {
+  padding: 2.25rem 0;
+}
+@media (min-width: 640px) {
+  .linebet-shell.v45 .pv-section {
+    padding: 3.5rem 0;
+  }
+}
+.linebet-shell.v45 .pv-section-title {
+  font-size: 1.45rem !important;
+  letter-spacing: -0.03em;
+}
+@media (min-width: 640px) {
+  .linebet-shell.v45 .pv-section-title {
+    font-size: 1.9rem !important;
+  }
+}
+.linebet-shell.v45 .pv-kicker {
+  font-size: 0.65rem;
+}
+
+/* Steps */
+.linebet-shell.v45 .pv-steps {
+  margin-top: 1.25rem;
+  gap: 0.75rem;
+}
+.linebet-shell.v45 .pv-step-card {
+  padding: 1.15rem;
+  border-radius: 0.9rem;
+}
+.linebet-shell.v45 .pv-step-num {
+  width: 2.15rem;
+  height: 2.15rem;
+  font-size: 0.8rem;
+  border-radius: 0.6rem;
+  box-shadow: 0 3px 8px rgba(245, 197, 24, 0.2);
+}
+.linebet-shell.v45 .pv-step-title {
+  margin-top: 0.85rem;
+  font-size: 1rem;
+}
+.linebet-shell.v45 .pv-step-text {
+  margin-top: 0.35rem;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+/* Trust */
+.linebet-shell.v45 .pv-trust-grid {
+  gap: 0.9rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.linebet-shell.v45 .pv-trust-num {
+  width: 1.7rem;
+  height: 1.7rem;
+  font-size: 0.65rem;
+}
+.linebet-shell.v45 .pv-trust-item strong {
+  font-size: 0.85rem;
+}
+.linebet-shell.v45 .pv-trust-item p {
+  font-size: 0.75rem;
+}
+
+/* Apps */
+.linebet-shell.v45 .pv-apps {
+  margin-top: 1.25rem;
+  gap: 0.75rem;
+}
+.linebet-shell.v45 .pv-app-card {
+  padding: 1rem;
+  border-radius: 0.9rem;
+  gap: 0.75rem;
+}
+.linebet-shell.v45 .pv-app-icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.7rem;
+}
+.linebet-shell.v45 .pv-app-body h3 {
+  font-size: 1.05rem;
+}
+.linebet-shell.v45 .pv-app-tag {
+  font-size: 0.6rem;
+}
+.linebet-shell.v45 .pv-app-dl {
+  font-size: 0.78rem;
+}
+
+/* 888 strip */
+.linebet-shell.v45 .pv-888strip {
+  margin-top: 0.9rem;
+  padding: 1rem;
+  border-radius: 0.9rem;
+  gap: 0.75rem;
+}
+.linebet-shell.v45 .pv-888-title {
+  font-size: 1.1rem;
+}
+.linebet-shell.v45 .pv-888-code {
+  padding: 0.55rem 0.85rem;
+  border-radius: 0.65rem;
+}
+
+/* FAQ */
+.linebet-shell.v45 .pv-faq-list {
+  margin-top: 1.15rem;
+  gap: 0.55rem;
+}
+.linebet-shell.v45 .pv-faq-item {
+  border-radius: 0.8rem;
+  padding: 0 0.95rem;
+}
+.linebet-shell.v45 .pv-faq-item summary {
+  padding: 0.9rem 0;
+  font-size: 0.88rem;
+}
+.linebet-shell.v45 .pv-faq-item p {
+  font-size: 0.84rem;
+  padding-bottom: 0.95rem;
+}
+
+/* Platform buttons (nav + sticky) — proportional */
+.btn-platform {
+  min-height: 2.6rem !important;
+  padding: 0.65rem 1rem !important;
+  font-size: 0.82rem !important;
+  border-radius: 0.7rem !important;
+}
+.btn-platform-green {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.35) inset,
+    0 3px 10px rgba(245, 197, 24, 0.22) !important;
+}
+
+/* Sticky mobile bar */
+.linebet-mobile-cta {
+  padding: 0.5rem 0.65rem calc(0.5rem + env(safe-area-inset-bottom)) !important;
+  gap: 0.45rem !important;
+}
+.linebet-mobile-code {
+  min-height: 2.5rem !important;
+  padding: 0 0.55rem !important;
+  border-radius: 0.65rem !important;
+  font-size: 0.58rem !important;
+}
+.linebet-mobile-cta .btn-platform {
+  min-height: 2.5rem !important;
+  font-size: 0.75rem !important;
+  padding: 0.5rem 0.75rem !important;
+}
+
+/* Navbar tighter on mobile */
+@media (max-width: 640px) {
+  .linebet-nav nav {
+    padding-top: 0.65rem !important;
+    padding-bottom: 0.65rem !important;
+  }
+  .linebet-brand-mark {
+    height: 2rem !important;
+    width: 2rem !important;
+  }
+}
+
+/* Container padding mobile */
+@media (max-width: 640px) {
+  .pv-container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
+
+/* Body bottom space for sticky */
+@media (max-width: 640px) {
+  body {
+    padding-bottom: 4.5rem !important;
+  }
+}
