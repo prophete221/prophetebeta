@@ -4,7 +4,7 @@ import { CookieConsent, Footer, Navbar } from '@/components/bttsbet'
 import CopyableCodeClient from '@/components/bttsbet/CopyableCode'
 
 export const metadata: Metadata = {
-  title: 'كود برومو 888starz btts221 — 100 لفة Lucky Wheel + فري بيت 1€ كل اثنين',
+  title: 'كود برومو 888starz btts221 — 100 لفة + فري بيت 1€',
   description:
     'بونص 888starz مع كود btts221: 100 لفة Lucky Wheel مجانية عند التسجيل وفري بيت 1 يورو كل يوم اثنين. أفضل كود 888starz.',
   keywords: [
