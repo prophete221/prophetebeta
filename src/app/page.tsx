@@ -4,38 +4,23 @@ import { CookieConsent, Footer, Navbar } from '@/components/bttsbet'
 import LinebetLanding from '@/components/bttsbet/LinebetLanding'
 
 export const metadata: Metadata = {
-  title: 'Code promo Linebet VISION221 — Meilleur code Afrique',
+  title: 'Code promo Linebet VISION221 — Guide clair Afrique',
   description:
-    'Meilleur code promo Linebet Afrique : VISION221. Freebets Linebet + bonus 888starz btts221 (100 tours Lucky Wheel à l’inscription, freebet 1€ chaque lundi). Copiez le code, inscrivez-vous, profitez.',
-  keywords: [
-    'code promo Linebet',
-    'meilleur code promo Linebet',
-    'code promo Linebet Afrique',
-    'VISION221',
-    'bonus Linebet',
-    'freebet Linebet',
-    'inscription Linebet',
-    'code promo 888starz',
-    'bonus 888starz',
-    'btts221',
-    '888starz lucky wheel',
-    'freebet 888starz',
-  ],
+    'Code promo Linebet VISION221 : comment l’utiliser, vérifier les offres selon votre pays et accéder au parcours partenaire. Guide transparent BttsBet.',
   alternates: { canonical: 'https://bttsbet.online/' },
   openGraph: {
-    title: 'Code promo Linebet VISION221 — Meilleur code Afrique',
-    description:
-      'VISION221 : meilleur code promo Linebet Afrique. Aussi bonus 888starz btts221 — 100 tours Lucky Wheel + freebet 1€ chaque lundi.',
+    title: 'Code promo Linebet VISION221',
+    description: 'Guide clair pour utiliser VISION221 et vérifier les conditions Linebet selon votre pays.',
     url: 'https://bttsbet.online/',
-    siteName: 'BttsBet — Code promo Linebet',
+    siteName: 'BttsBet',
     type: 'website',
     locale: 'fr_FR',
     images: [{ url: '/og-linebet.svg', width: 1200, height: 630, alt: 'Code promo Linebet VISION221' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Code promo Linebet VISION221 | Bonus 888starz btts221',
-    description: 'Meilleur code promo Linebet Afrique + 100 tours Lucky Wheel 888starz et freebet 1€/lundi.',
+    title: 'Code promo Linebet VISION221',
+    description: 'Comment utiliser VISION221 — guide transparent Afrique.',
     images: ['/og-linebet.svg'],
   },
 }
@@ -45,16 +30,11 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'WebSite',
-      name: 'BttsBet — Code promo Linebet',
+      name: 'BttsBet',
       url: SITE.url,
       description: SITE.tagline,
-      inLanguage: ['fr', 'en', 'ar'],
+      inLanguage: ['fr', 'ar'],
       publisher: { '@id': `${SITE.url}/#organization` },
-      potentialAction: {
-        '@type': 'SearchAction',
-        target: `${SITE.url}/code-promo-linebet`,
-        'query-input': 'required name=search_term_string',
-      },
     },
     {
       '@type': 'Organization',
@@ -63,19 +43,8 @@ const jsonLd = {
       url: SITE.url,
       logo: `${SITE.url}/favicon.svg`,
       description:
-        'Plateforme du meilleur code promo Linebet Afrique VISION221 et du bonus 888starz btts221 (100 tours Lucky Wheel, freebet 1€ chaque lundi).',
+        'Site indépendant d’information et d’affiliation sur le code promo Linebet VISION221.',
       areaServed: 'Africa',
-      knowsAbout: [
-        'code promo Linebet',
-        'meilleur code promo Linebet Afrique',
-        'VISION221',
-        'bonus Linebet',
-        'freebet Linebet',
-        'code promo 888starz',
-        'bonus 888starz',
-        'btts221',
-        'Lucky Wheel 888starz',
-      ],
     },
     {
       '@type': 'FAQPage',
@@ -90,11 +59,18 @@ const jsonLd = {
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#07090d]">
+    <div className="min-h-screen bg-[#05070B]">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-[#f5c518] focus:px-4 focus:py-3 focus:font-bold focus:text-[#0c0a02]">Aller au contenu principal</a>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-[#F5C518] focus:px-4 focus:py-3 focus:font-bold focus:text-[#05070B]"
+      >
+        Aller au contenu principal
+      </a>
       <Navbar />
-      <main id="main-content"><LinebetLanding /></main>
+      <main id="main-content">
+        <LinebetLanding />
+      </main>
       <Footer />
       <CookieConsent />
     </div>
