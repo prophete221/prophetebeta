@@ -4,7 +4,7 @@ import { CookieConsent, Footer, Navbar } from '@/components/bttsbet'
 import LinebetLanding from '@/components/bttsbet/LinebetLanding'
 
 export const metadata: Metadata = {
-  title: 'Code promo Linebet Afrique VISION221 — Meilleur code 2026 | BttsBet',
+  title: 'Code promo Linebet VISION221 — Meilleur code Afrique',
   description:
     'Meilleur code promo Linebet Afrique : VISION221. Freebets Linebet + bonus 888starz btts221 (100 tours Lucky Wheel à l’inscription, freebet 1€ chaque lundi). Copiez le code, inscrivez-vous, profitez.',
   keywords: [
