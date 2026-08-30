@@ -23,8 +23,8 @@ export const OFFERS_888 = {
 }
 
 export const NAV_LINKS = [
-  { label: 'Code Linebet', href: '/' },
-  { label: 'VISION221', href: '/code-promo-linebet' },
+  { label: 'Accueil', href: '/' },
+  { label: 'Code Linebet', href: '/code-promo-linebet' },
   { label: 'Inscription', href: '/linebet-inscription' },
   { label: 'Afrique', href: '/linebet-afrique' },
   { label: 'Bonus 888starz', href: '/code-promo-888starz' },
