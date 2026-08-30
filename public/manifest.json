@@ -1,25 +1,15 @@
 {
-  "name": "BttsBet — Code promo Linebet Afrique",
-  "short_name": "BttsBet Linebet",
-  "description": "Guide indépendant du code partenaire Linebet Afrique VISION221, de l’inscription et des conditions à vérifier.",
+  "name": "BttsBet — Code promo Linebet VISION221",
+  "short_name": "Code Linebet",
+  "description": "Meilleur code promo Linebet Afrique VISION221. Bonus 888starz btts221 : 100 tours Lucky Wheel + freebet 1€ chaque lundi.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#050706",
-  "theme_color": "#050706",
-  "orientation": "portrait-primary",
+  "background_color": "#07090d",
+  "theme_color": "#07090d",
   "lang": "fr",
-  "scope": "/",
-  "categories": ["finance", "lifestyle"],
+  "orientation": "portrait-primary",
   "icons": [
     { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
-    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" },
-    { "src": "/icon-1024.png", "sizes": "1024x1024", "type": "image/png", "purpose": "any" }
-  ],
-  "screenshots": [],
-  "shortcuts": [
-    { "name": "Code promo Linebet", "short_name": "Le code", "url": "/code-promo-linebet", "icons": [{ "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" }] },
-    { "name": "Inscription Linebet", "short_name": "Inscription", "url": "/linebet-inscription", "icons": [{ "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" }] },
-    { "name": "Code promo 888starz", "short_name": "888starz", "url": "/code-promo-888starz", "icons": [{ "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" }] }
-  ],
-  "prefer_related_applications": false
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
 }
